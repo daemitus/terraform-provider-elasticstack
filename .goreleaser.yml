@@ -50,7 +50,7 @@ signs:
       - "${artifact}"
 release:
   github:
-    owner: elastic
+    owner: daemitus
     name: terraform-provider-elasticstack
   # If you want to manually examine the release before its live, uncomment this line:
   # draft: true
