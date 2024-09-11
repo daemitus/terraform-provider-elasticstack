@@ -12,7 +12,6 @@ import (
 	"github.com/elastic/terraform-provider-elasticstack/internal/clients"
 	"github.com/elastic/terraform-provider-elasticstack/internal/models"
 	"github.com/elastic/terraform-provider-elasticstack/internal/utils"
-	fwdiags "github.com/hashicorp/terraform-plugin-framework/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 )
 
@@ -246,19 +245,16 @@ func DeleteIndexTemplate(ctx context.Context, apiClient *clients.ApiClient, temp
 	return diags
 }
 
-func PutIndex(ctx context.Context, apiClient *clients.ApiClient, index *models.Index, params *models.PutIndexParams) fwdiags.Diagnostics {
+func PutIndex(ctx context.Context, apiClient *clients.ApiClient, index *models.Index, params *models.PutIndexParams) diag.Diagnostics {
+	var diags diag.Diagnostics
 	indexBytes, err := json.Marshal(index)
 	if err != nil {
-		return fwdiags.Diagnostics{
-			fwdiags.NewErrorDiagnostic(err.Error(), err.Error()),
-		}
+		return diag.FromErr(err)
 	}
 
 	esClient, err := apiClient.GetESClient()
 	if err != nil {
-		return fwdiags.Diagnostics{
-			fwdiags.NewErrorDiagnostic(err.Error(), err.Error()),
-		}
+		return diag.FromErr(err)
 	}
 
 	opts := []func(*esapi.IndicesCreateRequest){
@@ -276,46 +272,45 @@ func PutIndex(ctx context.Context, apiClient *clients.ApiClient, index *models.I
 		opts...,
 	)
 	if err != nil {
-		return fwdiags.Diagnostics{
-			fwdiags.NewErrorDiagnostic(err.Error(), err.Error()),
-		}
+		return diag.FromErr(err)
 	}
 	defer res.Body.Close()
-	diags := utils.CheckError(res, fmt.Sprintf("Unable to create index: %s", index.Name))
-	return utils.FrameworkDiagsFromSDK(diags)
+	if diags := utils.CheckError(res, fmt.Sprintf("Unable to create index: %s", index.Name)); diags.HasError() {
+		return diags
+	}
+	return diags
 }
 
-func DeleteIndex(ctx context.Context, apiClient *clients.ApiClient, name string) fwdiags.Diagnostics {
+func DeleteIndex(ctx context.Context, apiClient *clients.ApiClient, name string) diag.Diagnostics {
+	var diags diag.Diagnostics
+
 	esClient, err := apiClient.GetESClient()
 	if err != nil {
-		return fwdiags.Diagnostics{
-			fwdiags.NewErrorDiagnostic(err.Error(), err.Error()),
-		}
+		return diag.FromErr(err)
 	}
 	res, err := esClient.Indices.Delete([]string{name}, esClient.Indices.Delete.WithContext(ctx))
 	if err != nil {
-		return fwdiags.Diagnostics{
-			fwdiags.NewErrorDiagnostic(err.Error(), err.Error()),
-		}
+		return diag.FromErr(err)
 	}
 	defer res.Body.Close()
-	diags := utils.CheckError(res, fmt.Sprintf("Unable to delete the index: %s", name))
-	return utils.FrameworkDiagsFromSDK(diags)
+	if diags := utils.CheckError(res, fmt.Sprintf("Unable to delete the index: %s", name)); diags.HasError() {
+		return diags
+	}
+
+	return diags
 }
 
-func GetIndex(ctx context.Context, apiClient *clients.ApiClient, name string) (*models.Index, fwdiags.Diagnostics) {
+func GetIndex(ctx context.Context, apiClient *clients.ApiClient, name string) (*models.Index, diag.Diagnostics) {
+	var diags diag.Diagnostics
+
 	esClient, err := apiClient.GetESClient()
 	if err != nil {
-		return nil, fwdiags.Diagnostics{
-			fwdiags.NewErrorDiagnostic(err.Error(), err.Error()),
-		}
+		return nil, diag.FromErr(err)
 	}
 	req := esClient.Indices.Get.WithFlatSettings(true)
 	res, err := esClient.Indices.Get([]string{name}, req, esClient.Indices.Get.WithContext(ctx))
 	if err != nil {
-		return nil, fwdiags.Diagnostics{
-			fwdiags.NewErrorDiagnostic(err.Error(), err.Error()),
-		}
+		return nil, diag.FromErr(err)
 	}
 	defer res.Body.Close()
 	// if there is no index found, return the empty struct, which should force the creation of the index
@@ -324,104 +319,94 @@ func GetIndex(ctx context.Context, apiClient *clients.ApiClient, name string) (*
 	}
 
 	if diags := utils.CheckError(res, fmt.Sprintf("Unable to get requested index: %s", name)); diags.HasError() {
-		return nil, utils.FrameworkDiagsFromSDK(diags)
+		return nil, diags
 	}
 
 	indices := make(map[string]models.Index)
 	if err := json.NewDecoder(res.Body).Decode(&indices); err != nil {
-		return nil, fwdiags.Diagnostics{
-			fwdiags.NewErrorDiagnostic(err.Error(), err.Error()),
-		}
+		return nil, diag.FromErr(err)
 	}
 	index := indices[name]
-	return &index, nil
+	return &index, diags
 }
 
-func DeleteIndexAlias(ctx context.Context, apiClient *clients.ApiClient, index string, aliases []string) fwdiags.Diagnostics {
+func DeleteIndexAlias(ctx context.Context, apiClient *clients.ApiClient, index string, aliases []string) diag.Diagnostics {
+	var diags diag.Diagnostics
 	esClient, err := apiClient.GetESClient()
 	if err != nil {
-		return fwdiags.Diagnostics{
-			fwdiags.NewErrorDiagnostic(err.Error(), err.Error()),
-		}
+		return diag.FromErr(err)
 	}
 	res, err := esClient.Indices.DeleteAlias([]string{index}, aliases, esClient.Indices.DeleteAlias.WithContext(ctx))
 	if err != nil {
-		return fwdiags.Diagnostics{
-			fwdiags.NewErrorDiagnostic(err.Error(), err.Error()),
-		}
+		return diag.FromErr(err)
 	}
 	defer res.Body.Close()
-	diags := utils.CheckError(res, fmt.Sprintf("Unable to delete aliases '%v' for index '%s'", index, aliases))
-	return utils.FrameworkDiagsFromSDK(diags)
+	if diags := utils.CheckError(res, fmt.Sprintf("Unable to delete aliases '%v' for index '%s'", index, aliases)); diags.HasError() {
+		return diags
+	}
+	return diags
 }
 
-func UpdateIndexAlias(ctx context.Context, apiClient *clients.ApiClient, index string, alias *models.IndexAlias) fwdiags.Diagnostics {
+func UpdateIndexAlias(ctx context.Context, apiClient *clients.ApiClient, index string, alias *models.IndexAlias) diag.Diagnostics {
+	var diags diag.Diagnostics
 	aliasBytes, err := json.Marshal(alias)
 	if err != nil {
-		return fwdiags.Diagnostics{
-			fwdiags.NewErrorDiagnostic(err.Error(), err.Error()),
-		}
+		return diag.FromErr(err)
 	}
 	esClient, err := apiClient.GetESClient()
 	if err != nil {
-		return fwdiags.Diagnostics{
-			fwdiags.NewErrorDiagnostic(err.Error(), err.Error()),
-		}
+		return diag.FromErr(err)
 	}
 	req := esClient.Indices.PutAlias.WithBody(bytes.NewReader(aliasBytes))
 	res, err := esClient.Indices.PutAlias([]string{index}, alias.Name, req, esClient.Indices.PutAlias.WithContext(ctx))
 	if err != nil {
-		return fwdiags.Diagnostics{
-			fwdiags.NewErrorDiagnostic(err.Error(), err.Error()),
-		}
+		return diag.FromErr(err)
 	}
 	defer res.Body.Close()
-	diags := utils.CheckError(res, fmt.Sprintf("Unable to update alias '%v' for index '%s'", index, alias.Name))
-	return utils.FrameworkDiagsFromSDK(diags)
+	if diags := utils.CheckError(res, fmt.Sprintf("Unable to update alias '%v' for index '%s'", index, alias.Name)); diags.HasError() {
+		return diags
+	}
+	return diags
 }
 
-func UpdateIndexSettings(ctx context.Context, apiClient *clients.ApiClient, index string, settings map[string]interface{}) fwdiags.Diagnostics {
+func UpdateIndexSettings(ctx context.Context, apiClient *clients.ApiClient, index string, settings map[string]interface{}) diag.Diagnostics {
+	var diags diag.Diagnostics
 	settingsBytes, err := json.Marshal(settings)
 	if err != nil {
-		return fwdiags.Diagnostics{
-			fwdiags.NewErrorDiagnostic(err.Error(), err.Error()),
-		}
+		return diag.FromErr(err)
 	}
 	esClient, err := apiClient.GetESClient()
 	if err != nil {
-		return fwdiags.Diagnostics{
-			fwdiags.NewErrorDiagnostic(err.Error(), err.Error()),
-		}
+		return diag.FromErr(err)
 	}
 	req := esClient.Indices.PutSettings.WithIndex(index)
 	res, err := esClient.Indices.PutSettings(bytes.NewReader(settingsBytes), req, esClient.Indices.PutSettings.WithContext(ctx))
 	if err != nil {
-		return fwdiags.Diagnostics{
-			fwdiags.NewErrorDiagnostic(err.Error(), err.Error()),
-		}
+		return diag.FromErr(err)
 	}
 	defer res.Body.Close()
-	diags := utils.CheckError(res, "Unable to update index settings")
-	return utils.FrameworkDiagsFromSDK(diags)
+	if diags := utils.CheckError(res, "Unable to update index settings"); diags.HasError() {
+		return diags
+	}
+	return diags
 }
 
-func UpdateIndexMappings(ctx context.Context, apiClient *clients.ApiClient, index, mappings string) fwdiags.Diagnostics {
+func UpdateIndexMappings(ctx context.Context, apiClient *clients.ApiClient, index, mappings string) diag.Diagnostics {
+	var diags diag.Diagnostics
 	esClient, err := apiClient.GetESClient()
 	if err != nil {
-		return fwdiags.Diagnostics{
-			fwdiags.NewErrorDiagnostic(err.Error(), err.Error()),
-		}
+		return diag.FromErr(err)
 	}
 	req := esClient.Indices.PutMapping.WithIndex(index)
 	res, err := esClient.Indices.PutMapping(strings.NewReader(mappings), req, esClient.Indices.PutMapping.WithContext(ctx))
 	if err != nil {
-		return fwdiags.Diagnostics{
-			fwdiags.NewErrorDiagnostic(err.Error(), err.Error()),
-		}
+		return diag.FromErr(err)
 	}
 	defer res.Body.Close()
-	diags := utils.CheckError(res, "Unable to update index mappings")
-	return utils.FrameworkDiagsFromSDK(diags)
+	if diags := utils.CheckError(res, "Unable to update index mappings"); diags.HasError() {
+		return diags
+	}
+	return diags
 }
 
 func PutDataStream(ctx context.Context, apiClient *clients.ApiClient, dataStreamName string) diag.Diagnostics {

@@ -12,7 +12,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 )
 
-func GetEsFWConnectionBlock(keyName string, isProviderConfiguration bool) fwschema.Block {
+func GetEsFWConnectionBlock(keyName string) fwschema.Block {
 	usernamePath := path.MatchRelative().AtParent().AtName("username")
 	passwordPath := path.MatchRelative().AtParent().AtName("password")
 	apiKeyPath := path.MatchRelative().AtParent().AtName("api_key")
@@ -27,7 +27,6 @@ func GetEsFWConnectionBlock(keyName string, isProviderConfiguration bool) fwsche
 	return fwschema.ListNestedBlock{
 		MarkdownDescription: "Elasticsearch connection configuration block. ",
 		Description:         "Elasticsearch connection configuration block. ",
-		DeprecationMessage:  getDeprecationMessage(isProviderConfiguration),
 		NestedObject: fwschema.NestedBlockObject{
 			Attributes: map[string]fwschema.Attribute{
 				"username": fwschema.StringAttribute{
