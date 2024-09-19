@@ -131,7 +131,7 @@ func resourceOutputCreateElasticsearch(ctx context.Context, d *schema.ResourceDa
 		}
 	}
 	if hosts != nil {
-		reqData.Hosts = &hosts
+		reqData.Hosts = hosts
 	}
 	if value, ok := d.Get("output_id").(string); ok && value != "" {
 		reqData.Id = &value
@@ -213,16 +213,16 @@ func resourceOutputCreateLogstash(ctx context.Context, d *schema.ResourceData, m
 	if value, ok := d.GetOk("ssl"); ok {
 		ssl := value.([]interface{})[0].(map[string]interface{})
 		reqData.Ssl = &struct {
-			Certificate            *string   `json:"certificate,omitempty"`
-			CertificateAuthorities *[]string `json:"certificate_authorities,omitempty"`
-			Key                    *string   `json:"key,omitempty"`
+			Certificate            *string  `json:"certificate,omitempty"`
+			CertificateAuthorities []string `json:"certificate_authorities,omitempty"`
+			Key                    *string  `json:"key,omitempty"`
 		}{}
 		if value, ok := ssl["certificate_authorities"].([]interface{}); ok {
 			certs := make([]string, len(value))
 			for i, v := range value {
 				certs[i] = v.(string)
 			}
-			reqData.Ssl.CertificateAuthorities = &certs
+			reqData.Ssl.CertificateAuthorities = certs
 		}
 		if value, ok := ssl["certificate"].(string); ok {
 			reqData.Ssl.Certificate = &value
@@ -345,7 +345,7 @@ func resourceOutputUpdateLogstash(ctx context.Context, d *schema.ResourceData, m
 		}
 	}
 	if hosts != nil {
-		reqData.Hosts = &hosts
+		reqData.Hosts = hosts
 	}
 	if value := d.Get("default_integrations").(bool); value {
 		reqData.IsDefault = &value
@@ -359,16 +359,16 @@ func resourceOutputUpdateLogstash(ctx context.Context, d *schema.ResourceData, m
 	if value, ok := d.GetOk("ssl"); ok {
 		ssl := value.([]interface{})[0].(map[string]interface{})
 		reqData.Ssl = &struct {
-			Certificate            *string   `json:"certificate,omitempty"`
-			CertificateAuthorities *[]string `json:"certificate_authorities,omitempty"`
-			Key                    *string   `json:"key,omitempty"`
+			Certificate            *string  `json:"certificate,omitempty"`
+			CertificateAuthorities []string `json:"certificate_authorities,omitempty"`
+			Key                    *string  `json:"key,omitempty"`
 		}{}
 		if value, ok := ssl["certificate_authorities"].([]interface{}); ok {
 			certs := make([]string, len(value))
 			for i, v := range value {
 				certs[i] = v.(string)
 			}
-			reqData.Ssl.CertificateAuthorities = &certs
+			reqData.Ssl.CertificateAuthorities = certs
 		}
 		if value, ok := ssl["certificate"].(string); ok {
 			reqData.Ssl.Certificate = &value
@@ -419,7 +419,7 @@ func resourceOutputReadElasticsearch(d *schema.ResourceData, data fleetapi.Outpu
 		return diag.FromErr(err)
 	}
 	if data.Hosts != nil {
-		if err := d.Set("hosts", *data.Hosts); err != nil {
+		if err := d.Set("hosts", data.Hosts); err != nil {
 			return diag.FromErr(err)
 		}
 	}
@@ -547,7 +547,7 @@ func flattenSslConfig(data fleetapi.OutputCreateRequestLogstash) []interface{} {
 
 	ssl := make(map[string]interface{})
 	if data.Ssl.CertificateAuthorities != nil {
-		ssl["certificate_authorities"] = *data.Ssl.CertificateAuthorities
+		ssl["certificate_authorities"] = data.Ssl.CertificateAuthorities
 	}
 	if data.Ssl.Certificate != nil {
 		ssl["certificate"] = *data.Ssl.Certificate

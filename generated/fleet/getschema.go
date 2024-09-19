@@ -72,6 +72,7 @@ var transformers = []TransformFunc{
 	transformInlinePackageDefinitions,
 	transformAddPackagePolicyVars,
 	transformFixPackageSearchResult,
+	transformRemoveUnnecessaryGoPointers,
 }
 
 // transformFilterPaths filters the paths in a schema down to
@@ -342,6 +343,57 @@ func transformFixPackageSearchResult(schema *Schema) {
 	}
 	properties.Delete("icons")
 	properties.Delete("installationInfo")
+}
+
+// transformRemoveUnnecessaryGoPointers removes unneeded pointers from
+// map and slice objects.
+func transformRemoveUnnecessaryGoPointers(schema *Schema) {
+	var schemaMap map[string]any
+	bytes, err := json.Marshal(schema)
+	if err != nil {
+		panic(err)
+	}
+	err = json.Unmarshal(bytes, &schemaMap)
+	if err != nil {
+		panic(err)
+	}
+
+	var iterate func(val any)
+	iterate = func(val any) {
+		switch tval := val.(type) {
+		case []any:
+			for _, v := range tval {
+				iterate(v)
+			}
+		case map[string]any:
+			for _, v := range tval {
+				iterate(v)
+			}
+			vtype, hasType := tval["type"]
+			_, hasProps := tval["properties"]
+			if hasType {
+				switch vtype {
+				case "array":
+					tval["x-go-type-skip-optional-pointer"] = true
+				case "object":
+					if !hasProps {
+						tval["x-go-type-skip-optional-pointer"] = true
+					}
+				}
+			}
+		}
+	}
+
+	iterate(schemaMap)
+
+	bytes, err = json.Marshal(schemaMap)
+	if err != nil {
+		panic(err)
+	}
+	err = json.Unmarshal(bytes, schema)
+	if err != nil {
+		panic(err)
+	}
 }
 
 // downloadFile will download a file from url and return the

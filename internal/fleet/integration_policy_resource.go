@@ -158,7 +158,7 @@ func resourceIntegrationPolicyCreate(ctx context.Context, d *schema.ResourceData
 		if err := json.Unmarshal([]byte(varsRaw), &vars); err != nil {
 			panic(err)
 		}
-		req.Vars = &vars
+		req.Vars = vars
 	}
 
 	values := d.Get("input").([]interface{})
@@ -179,20 +179,20 @@ func resourceIntegrationPolicyCreate(ctx context.Context, d *schema.ResourceData
 				if err := json.Unmarshal([]byte(streamsRaw), &streams); err != nil {
 					panic(err)
 				}
-				input.Streams = &streams
+				input.Streams = streams
 			}
 			if varsRaw, _ := inputData["vars_json"].(string); varsRaw != "" {
 				vars := map[string]interface{}{}
 				if err := json.Unmarshal([]byte(varsRaw), &vars); err != nil {
 					panic(err)
 				}
-				input.Vars = &vars
+				input.Vars = vars
 			}
 
 			inputMap[inputID] = input
 		}
 
-		req.Inputs = &inputMap
+		req.Inputs = inputMap
 	}
 
 	obj, diags := fleet.CreatePackagePolicy(ctx, fleetClient, req)
@@ -238,7 +238,7 @@ func resourceIntegrationPolicyUpdate(ctx context.Context, d *schema.ResourceData
 		if err := json.Unmarshal([]byte(varsRaw), &vars); err != nil {
 			panic(err)
 		}
-		req.Vars = &vars
+		req.Vars = vars
 	}
 
 	if values := d.Get("input").([]interface{}); len(values) > 0 {
@@ -258,20 +258,20 @@ func resourceIntegrationPolicyUpdate(ctx context.Context, d *schema.ResourceData
 				if err := json.Unmarshal([]byte(streamsRaw), &streams); err != nil {
 					panic(err)
 				}
-				input.Streams = &streams
+				input.Streams = streams
 			}
 			if varsRaw, _ := inputData["vars_json"].(string); varsRaw != "" {
 				vars := map[string]interface{}{}
 				if err := json.Unmarshal([]byte(varsRaw), &vars); err != nil {
 					panic(err)
 				}
-				input.Vars = &vars
+				input.Vars = vars
 			}
 
 			inputMap[inputID] = input
 		}
 
-		req.Inputs = &inputMap
+		req.Inputs = inputMap
 	}
 
 	_, diags = fleet.UpdatePackagePolicy(ctx, fleetClient, d.Id(), req)
@@ -324,11 +324,11 @@ func resourceIntegrationPolicyRead(ctx context.Context, d *schema.ResourceData, 
 	}
 	if pkgPolicy.Vars != nil {
 
-		vars := make(map[string]any, len(*pkgPolicy.Vars))
+		vars := make(map[string]any, len(pkgPolicy.Vars))
 		// Var values are wrapped in a type/value struct and need
 		// to be extracted. The only applies to reading values back
 		// from the API, sending var values does not use this format.
-		for k, v := range *pkgPolicy.Vars {
+		for k, v := range pkgPolicy.Vars {
 			wrappedTypeValue, _ := v.(map[string]any)
 			if wrappedValue, ok := wrappedTypeValue["value"]; ok {
 				vars[k] = wrappedValue
@@ -352,14 +352,14 @@ func resourceIntegrationPolicyRead(ctx context.Context, d *schema.ResourceData, 
 		}
 
 		if input.Streams != nil {
-			data, err := json.Marshal(*input.Streams)
+			data, err := json.Marshal(input.Streams)
 			if err != nil {
 				return diag.FromErr(err)
 			}
 			inputData["streams_json"] = string(data)
 		}
 		if input.Vars != nil {
-			data, err := json.Marshal(*input.Vars)
+			data, err := json.Marshal(input.Vars)
 			if err != nil {
 				return diag.FromErr(err)
 			}
