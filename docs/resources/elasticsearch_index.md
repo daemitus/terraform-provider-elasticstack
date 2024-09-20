@@ -123,7 +123,7 @@ If specified, this mapping can include: field names, [field data types](https://
 - `search_slowlog_threshold_query_info` (String) Set the cutoff for shard level slow search logging of slow searches in the query phase, in time units, e.g. `5s`
 - `search_slowlog_threshold_query_trace` (String) Set the cutoff for shard level slow search logging of slow searches in the query phase, in time units, e.g. `500ms`
 - `search_slowlog_threshold_query_warn` (String) Set the cutoff for shard level slow search logging of slow searches in the query phase, in time units, e.g. `10s`
-- `settings` (Block List, Max: 1, Deprecated) DEPRECATED: Please use dedicated setting field. Configuration options for the index. See, https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules.html#index-modules-settings.
+- `settings` (Block List, Max: 1, Deprecated) DEPRECATED: Please use dedicated setting field. Configuration options for the index. See https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules.html#index-modules-settings.
 **NOTE:** Static index settings (see: https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules.html#_static_index_settings) can be only set on the index creation and later cannot be removed or updated - _apply_ will return error (see [below for nested schema](#nestedblock--settings))
 - `shard_check_on_startup` (String) Whether or not shards should be checked for corruption before opening. When corruption is detected, it will prevent the shard from being opened. Accepts `false`, `true`, `checksum`.
 - `sort_field` (Set of String) The field to sort shards in this index by.

@@ -8,7 +8,7 @@ description: |-
 
 # Data Source: elasticstack_elasticsearch_security_user
 
-Use this data source to get information about existing Elasticsearch user. See, https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-get-user.html".
+Use this data source to get information about existing Elasticsearch user. See https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-get-user.html".
 
 ## Example Usage
 

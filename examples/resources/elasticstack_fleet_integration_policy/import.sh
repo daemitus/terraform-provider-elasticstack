@@ -1,1 +1,0 @@
-terraform import elasticstack_fleet_integration_policy.my_policy <fleet_integration_policy_id>

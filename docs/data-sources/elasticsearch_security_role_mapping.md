@@ -8,7 +8,7 @@ description: |-
 
 # Data Source: elasticstack_elasticsearch_security_role_mapping
 
-Retrieves role mappings. See, https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-get-role-mapping.html
+Retrieves role mappings. See https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-get-role-mapping.html
 
 ## Example Usage
 

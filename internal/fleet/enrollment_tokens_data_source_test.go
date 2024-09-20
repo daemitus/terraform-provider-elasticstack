@@ -1,48 +1,46 @@
 package fleet_test
 
 import (
+	"fmt"
 	"testing"
 
-	"github.com/elastic/terraform-provider-elasticstack/internal/acctest"
-	"github.com/elastic/terraform-provider-elasticstack/internal/versionutils"
-	"github.com/hashicorp/go-version"
-	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
+	"github.com/daemitus/terraform-provider-elasticstack/internal/acctest"
+	"github.com/hashicorp/terraform-plugin-testing/helper/resource"
 )
 
-var minVersionEnrollmentTokens = version.Must(version.NewVersion("8.6.0"))
+func TestAccDataSourceEnrollmentTokensByPolicy(t *testing.T) {
+	policyId := acctest.RandUUID()
+	policyName := acctest.RandString(22)
 
-func TestAccDataSourceEnrollmentTokens(t *testing.T) {
 	resource.Test(t, resource.TestCase{
-		PreCheck:                 func() { acctest.PreCheck(t) },
-		ProtoV6ProviderFactories: acctest.Providers,
+		PreCheck:                 acctest.PreCheck(t),
+		ProtoV6ProviderFactories: acctest.ProviderFactories,
 		CheckDestroy:             checkResourceAgentPolicyDestroy,
 		Steps: []resource.TestStep{
 			{
-				SkipFunc: versionutils.CheckIfVersionIsUnsupported(minVersionEnrollmentTokens),
-				Config:   testAccDataSourceEnrollmentToken,
+				Config: testAccDataSourceEnrollmentTokensByPolicy(policyId, policyName),
 				Check: resource.ComposeTestCheckFunc(
-					resource.TestCheckResourceAttr("data.elasticstack_fleet_enrollment_tokens.test", "policy_id", "223b1bf8-240f-463f-8466-5062670d0754"),
-					resource.TestCheckResourceAttr("data.elasticstack_fleet_enrollment_tokens.test", "tokens.0.policy_id", "223b1bf8-240f-463f-8466-5062670d0754"),
+					resource.TestCheckResourceAttr("data.elasticstack_fleet_enrollment_tokens.test", "policy_id", policyId),
+					resource.TestCheckResourceAttr("data.elasticstack_fleet_enrollment_tokens.test", "tokens.0.policy_id", policyId),
 				),
 			},
 		},
 	})
 }
 
-const testAccDataSourceEnrollmentToken = `
-provider "elasticstack" {
-  elasticsearch {}
-  kibana {}
-}
+func testAccDataSourceEnrollmentTokensByPolicy(policyId string, name string) string {
+	return fmt.Sprintf(`
+provider "elasticstack" {}
 
 resource "elasticstack_fleet_agent_policy" "test" {
-  policy_id   = "223b1bf8-240f-463f-8466-5062670d0754"
-  name        = "Test Agent Policy"
-  namespace   = "default"
-  description = "Agent Policy for testing Enrollment Tokens"
+	policy_id = "%s"
+	name = "Policy %s"
+	namespace = "default"
+	description = "Agent Policy for testing Enrollment Tokens"
 }
 
 data "elasticstack_fleet_enrollment_tokens" "test" {
-  policy_id = elasticstack_fleet_agent_policy.test.policy_id
+	policy_id = elasticstack_fleet_agent_policy.test.policy_id
 }
-`
+`, policyId, name)
+}

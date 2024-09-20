@@ -8,7 +8,7 @@ description: |-
 
 # Resource: elasticstack_elasticsearch_component_template
 
-Creates or updates a component template. Component templates are building blocks for constructing index templates that specify index mappings, settings, and aliases. See, https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-component-template.html
+Creates or updates a component template. Component templates are building blocks for constructing index templates that specify index mappings, settings, and aliases. See https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-component-template.html
 
 ## Example Usage
 
@@ -64,14 +64,14 @@ Optional:
 
 - `alias` (Block Set) Alias to add. (see [below for nested schema](#nestedblock--template--alias))
 - `mappings` (String) Mapping for fields in the index.
-- `settings` (String) Configuration options for the index. See, https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules.html#index-modules-settings
+- `settings` (String) Configuration options for the index. See https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules.html#index-modules-settings
 
 <a id="nestedblock--template--alias"></a>
 ### Nested Schema for `template.alias`
 
 Required:
 
-- `name` (String) The alias name. Index alias names support date math. See, https://www.elastic.co/guide/en/elasticsearch/reference/current/date-math-index-names.html
+- `name` (String) The alias name. Index alias names support date math. See https://www.elastic.co/guide/en/elasticsearch/reference/current/date-math-index-names.html
 
 Optional:
 

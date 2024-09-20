@@ -1,1 +1,0 @@
-terraform import elasticstack_elasticsearch_component_template.my_template <cluster_uuid>/<component_name>

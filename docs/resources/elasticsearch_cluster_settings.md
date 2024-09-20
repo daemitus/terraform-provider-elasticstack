@@ -8,7 +8,7 @@ description: |-
 
 # Resource: elasticstack_elasticsearch_cluster_settings
 
-Updates cluster-wide settings. If the Elasticsearch security features are enabled, you must have the manage cluster privilege to use this API. See, https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-update-settings.html
+Updates cluster-wide settings. If the Elasticsearch security features are enabled, you must have the manage cluster privilege to use this API. See https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-update-settings.html
 
 ## Example Usage
 

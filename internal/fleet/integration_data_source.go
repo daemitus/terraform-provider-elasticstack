@@ -2,73 +2,83 @@ package fleet
 
 import (
 	"context"
+	"fmt"
 
-	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
-	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
-
-	"github.com/elastic/terraform-provider-elasticstack/internal/clients/fleet"
-	"github.com/elastic/terraform-provider-elasticstack/internal/utils"
+	"github.com/daemitus/terraform-provider-elasticstack/internal/api/fleet"
+	"github.com/daemitus/terraform-provider-elasticstack/internal/clients"
+	"github.com/hashicorp/terraform-plugin-framework/datasource"
+	"github.com/hashicorp/terraform-plugin-framework/datasource/schema"
+	"github.com/hashicorp/terraform-plugin-framework/types"
 )
 
-func DataSourceIntegration() *schema.Resource {
-	packageSchema := map[string]*schema.Schema{
-		"name": {
+var (
+	_ datasource.DataSource = &IntegrationDataSource{}
+)
+
+func NewIntegrationDataSource(client *clients.FleetClient) *IntegrationDataSource {
+	return &IntegrationDataSource{client: client}
+}
+
+type IntegrationDataSource struct {
+	client *clients.FleetClient
+}
+
+func (d *IntegrationDataSource) Metadata(ctx context.Context, req datasource.MetadataRequest, resp *datasource.MetadataResponse) {
+	resp.TypeName = fmt.Sprintf("%s_%s", req.ProviderTypeName, "fleet_integration")
+}
+
+func (d *IntegrationDataSource) Schema(ctx context.Context, req datasource.SchemaRequest, resp *datasource.SchemaResponse) {
+	resp.Schema.Description = "Retrieves the latest version of an integration package in Fleet."
+	resp.Schema.Attributes = map[string]schema.Attribute{
+		"name": schema.StringAttribute{
 			Description: "The integration package name.",
-			Type:        schema.TypeString,
 			Required:    true,
 		},
-		"prerelease": {
+		"prerelease": schema.BoolAttribute{
 			Description: "Include prerelease packages.",
-			Type:        schema.TypeBool,
 			Optional:    true,
 		},
-		"version": {
+		"version": schema.StringAttribute{
 			Description: "The integration package version.",
-			Type:        schema.TypeString,
 			Computed:    true,
 		},
 	}
-
-	return &schema.Resource{
-		Description: "Retrieves the latest version of an integration package in Fleet.",
-
-		ReadContext: dataSourceIntegrationRead,
-
-		Schema: packageSchema,
-	}
 }
 
-func dataSourceIntegrationRead(ctx context.Context, d *schema.ResourceData, meta interface{}) diag.Diagnostics {
-	fleetClient, diags := getFleetClient(d, meta)
+func (d *IntegrationDataSource) Read(ctx context.Context, req datasource.ReadRequest, resp *datasource.ReadResponse) {
+	var data integrationDataSourceModel
+
+	diags := req.Config.Get(ctx, &data)
+	resp.Diagnostics.Append(diags...)
 	if diags.HasError() {
-		return diags
+		return
 	}
 
-	pkgName := d.Get("name").(string)
-	if d.Id() == "" {
-		hash, err := utils.StringToHash(pkgName)
-		if err != nil {
-			return diag.FromErr(err)
-		}
-		d.SetId(*hash)
-	}
-
-	prerelease := d.Get("prerelease").(bool)
-	allPackages, diags := fleet.AllPackages(ctx, fleetClient, prerelease)
+	prerelease := data.Prerelease.ValueBool()
+	packages, diags := d.client.ListPackages(ctx, prerelease)
+	resp.Diagnostics.Append(diags...)
 	if diags.HasError() {
-		return diags
+		return
 	}
 
-	for _, v := range allPackages {
-		if v.Name != pkgName {
-			continue
-		}
+	pkgName := data.Name.ValueString()
+	data.fromApi(pkgName, packages)
+	diags = resp.State.Set(ctx, data)
+	resp.Diagnostics.Append(diags...)
+}
 
-		if err := d.Set("version", v.Version); err != nil {
-			return diag.FromErr(err)
+type integrationDataSourceModel struct {
+	Name       types.String `tfsdk:"name"`
+	Prerelease types.Bool   `tfsdk:"prerelease"`
+	Version    types.String `tfsdk:"version"`
+}
+
+func (m *integrationDataSourceModel) fromApi(pkgName string, data fleet.SearchResults) {
+	m.Version = types.StringNull()
+	for _, pkg := range data {
+		if pkg.Name == pkgName {
+			m.Version = types.StringValue(pkg.Version)
+			break
 		}
-		break
 	}
-
-	return diags
 }

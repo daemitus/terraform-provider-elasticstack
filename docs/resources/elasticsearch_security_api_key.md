@@ -3,12 +3,12 @@ subcategory: "Security"
 layout: ""
 page_title: "Elasticstack: elasticstack_elasticsearch_security_api_key Resource"
 description: |-
-  Creates an API key for access without requiring basic authentication. See, https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-create-api-key.html
+  Creates an API key for access without requiring basic authentication. See https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-create-api-key.html
 ---
 
 # elasticstack_elasticsearch_security_api_key (Resource)
 
-Creates an API key for access without requiring basic authentication. See, https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-create-api-key.html
+Creates an API key for access without requiring basic authentication. See https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-create-api-key.html
 
 ## Example Usage
 

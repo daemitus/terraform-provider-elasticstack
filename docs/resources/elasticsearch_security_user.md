@@ -8,7 +8,7 @@ description: |-
 
 # Resource: elasticstack_elasticsearch_security_user
 
-Adds and updates users in the native realm. These users are commonly referred to as native users. See, https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-put-user.html
+Adds and updates users in the native realm. These users are commonly referred to as native users. See https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-put-user.html
 
 ## Example Usage
 

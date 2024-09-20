@@ -2,286 +2,259 @@ package fleet
 
 import (
 	"context"
+	"fmt"
+	"slices"
 
-	fleetapi "github.com/elastic/terraform-provider-elasticstack/generated/fleet"
-	"github.com/elastic/terraform-provider-elasticstack/internal/clients/fleet"
+	"github.com/daemitus/terraform-provider-elasticstack/internal/api/fleet"
+	"github.com/daemitus/terraform-provider-elasticstack/internal/clients"
+	"github.com/hashicorp/terraform-plugin-framework/path"
+	"github.com/hashicorp/terraform-plugin-framework/resource"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
-	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
-	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 )
 
-const (
-	monitorLogs    = "logs"
-	monitorMetrics = "metrics"
+var (
+	_ resource.Resource                = &AgentPolicyResource{}
+	_ resource.ResourceWithImportState = &AgentPolicyResource{}
 )
 
-func ResourceAgentPolicy() *schema.Resource {
-	agentPolicySchema := map[string]*schema.Schema{
-		"policy_id": {
+func NewAgentPolicyResource(client *clients.FleetClient) *AgentPolicyResource {
+	return &AgentPolicyResource{client: client}
+}
+
+type AgentPolicyResource struct {
+	client *clients.FleetClient
+}
+
+func (r *AgentPolicyResource) Metadata(ctx context.Context, req resource.MetadataRequest, resp *resource.MetadataResponse) {
+	resp.TypeName = fmt.Sprintf("%s_%s", req.ProviderTypeName, "fleet_agent_policy")
+}
+
+func (r *AgentPolicyResource) Schema(ctx context.Context, req resource.SchemaRequest, resp *resource.SchemaResponse) {
+	resp.Schema.Description = "Creates a new Fleet Agent Policy. See https://www.elastic.co/guide/en/fleet/current/agent-policy.html"
+	resp.Schema.Attributes = map[string]schema.Attribute{
+		"id": schema.StringAttribute{
+			Description: "The ID of this resource.",
+			Computed:    true,
+			PlanModifiers: []planmodifier.String{
+				stringplanmodifier.UseStateForUnknown(),
+			},
+		},
+		"policy_id": schema.StringAttribute{
 			Description: "Unique identifier of the agent policy.",
-			Type:        schema.TypeString,
 			Computed:    true,
 			Optional:    true,
-			ForceNew:    true,
+			PlanModifiers: []planmodifier.String{
+				stringplanmodifier.RequiresReplace(),
+				stringplanmodifier.UseStateForUnknown(),
+			},
 		},
-		"name": {
+		"name": schema.StringAttribute{
 			Description: "The name of the agent policy.",
-			Type:        schema.TypeString,
 			Required:    true,
 		},
-		"namespace": {
+		"namespace": schema.StringAttribute{
 			Description: "The namespace of the agent policy.",
-			Type:        schema.TypeString,
 			Required:    true,
 		},
-		"description": {
+		"description": schema.StringAttribute{
 			Description: "The description of the agent policy.",
-			Type:        schema.TypeString,
 			Optional:    true,
 		},
-		"data_output_id": {
+		"data_output_id": schema.StringAttribute{
 			Description: "The identifier for the data output.",
-			Type:        schema.TypeString,
 			Optional:    true,
 		},
-		"monitoring_output_id": {
+		"monitoring_output_id": schema.StringAttribute{
 			Description: "The identifier for monitoring output.",
-			Type:        schema.TypeString,
 			Optional:    true,
 		},
-		"fleet_server_host_id": {
+		"fleet_server_host_id": schema.StringAttribute{
 			Description: "The identifier for the Fleet server host.",
-			Type:        schema.TypeString,
 			Optional:    true,
 		},
-		"download_source_id": {
+		"download_source_id": schema.StringAttribute{
 			Description: "The identifier for the Elastic Agent binary download server.",
-			Type:        schema.TypeString,
 			Optional:    true,
 		},
-		"sys_monitoring": {
-			Description: "Enable collection of system logs and metrics.",
-			Type:        schema.TypeBool,
-			Optional:    true,
-		},
-		"monitor_logs": {
+		"monitor_logs": schema.BoolAttribute{
 			Description: "Enable collection of agent logs.",
-			Type:        schema.TypeBool,
+			Computed:    true,
 			Optional:    true,
 		},
-		"monitor_metrics": {
+		"monitor_metrics": schema.BoolAttribute{
 			Description: "Enable collection of agent metrics.",
-			Type:        schema.TypeBool,
+			Computed:    true,
 			Optional:    true,
 		},
-		"skip_destroy": {
+		"skip_destroy": schema.BoolAttribute{
 			Description: "Set to true if you do not wish the agent policy to be deleted at destroy time, and instead just remove the agent policy from the Terraform state.",
-			Type:        schema.TypeBool,
 			Optional:    true,
 		},
 	}
+}
 
-	return &schema.Resource{
-		Description: "Creates a new Fleet Agent Policy. See https://www.elastic.co/guide/en/fleet/current/agent-policy.html",
+func (r *AgentPolicyResource) ImportState(ctx context.Context, req resource.ImportStateRequest, resp *resource.ImportStateResponse) {
+	resource.ImportStatePassthroughID(ctx, path.Root("id"), req, resp)
+}
 
-		CreateContext: resourceAgentPolicyCreate,
-		ReadContext:   resourceAgentPolicyRead,
-		UpdateContext: resourceAgentPolicyUpdate,
-		DeleteContext: resourceAgentPolicyDelete,
+func (r *AgentPolicyResource) Read(ctx context.Context, req resource.ReadRequest, resp *resource.ReadResponse) {
+	var data agentPolicyModel
 
-		Importer: &schema.ResourceImporter{
-			StateContext: schema.ImportStatePassthroughContext,
-		},
+	diags := req.State.Get(ctx, &data)
+	resp.Diagnostics.Append(diags...)
+	if diags.HasError() {
+		return
+	}
 
-		Schema: agentPolicySchema,
+	policyId := data.PolicyId.ValueString()
+	policy, diags := r.client.ReadAgentPolicy(ctx, policyId)
+	resp.Diagnostics.Append(diags...)
+	if diags.HasError() {
+		return
+	}
+
+	data.fromApi(policy)
+	diags = resp.State.Set(ctx, data)
+	resp.Diagnostics.Append(diags...)
+}
+
+func (r *AgentPolicyResource) Create(ctx context.Context, req resource.CreateRequest, resp *resource.CreateResponse) {
+	var data agentPolicyModel
+
+	diags := req.Plan.Get(ctx, &data)
+	resp.Diagnostics.Append(diags...)
+	if diags.HasError() {
+		return
+	}
+
+	monitoring := []fleet.AgentPolicyMonitoringEnabled{}
+	if data.MonitorLogs.ValueBool() {
+		monitoring = append(monitoring, fleet.AgentPolicyMonitoringEnabledLogs)
+	}
+	if data.MonitorMetrics.ValueBool() {
+		monitoring = append(monitoring, fleet.AgentPolicyMonitoringEnabledMetrics)
+	}
+
+	body := fleet.CreateAgentPolicyRequest{
+		AgentFeatures:      nil,
+		DataOutputId:       data.DataOutputId.ValueStringPointer(),
+		Description:        data.Description.ValueStringPointer(),
+		DownloadSourceId:   data.DownloadSourceId.ValueStringPointer(),
+		FleetServerHostId:  data.FleetServerHostId.ValueStringPointer(),
+		Id:                 data.PolicyId.ValueStringPointer(),
+		InactivityTimeout:  nil,
+		IsProtected:        nil,
+		MonitoringEnabled:  monitoring,
+		MonitoringOutputId: data.MonitoringOutputId.ValueStringPointer(),
+		Name:               data.Name.ValueString(),
+		Namespace:          data.Namespace.ValueString(),
+		UnenrollTimeout:    nil,
+	}
+	policy, diags := r.client.CreateAgentPolicy(ctx, body)
+	resp.Diagnostics.Append(diags...)
+	if diags.HasError() {
+		return
+	}
+
+	data.fromApi(policy)
+	diags = resp.State.Set(ctx, data)
+	resp.Diagnostics.Append(diags...)
+}
+
+func (r *AgentPolicyResource) Update(ctx context.Context, req resource.UpdateRequest, resp *resource.UpdateResponse) {
+	var data agentPolicyModel
+
+	diags := req.Plan.Get(ctx, &data)
+	resp.Diagnostics.Append(diags...)
+	if diags.HasError() {
+		return
+	}
+
+	monitoring := []fleet.AgentPolicyMonitoringEnabled{}
+	if data.MonitorLogs.ValueBool() {
+		monitoring = append(monitoring, fleet.AgentPolicyMonitoringEnabledLogs)
+	}
+	if data.MonitorMetrics.ValueBool() {
+		monitoring = append(monitoring, fleet.AgentPolicyMonitoringEnabledMetrics)
+	}
+
+	policyId := data.PolicyId.ValueString()
+	body := fleet.UpdateAgentPolicyRequest{
+		AgentFeatures:      nil,
+		DataOutputId:       data.DataOutputId.ValueStringPointer(),
+		Description:        data.Description.ValueStringPointer(),
+		DownloadSourceId:   data.DownloadSourceId.ValueStringPointer(),
+		FleetServerHostId:  data.FleetServerHostId.ValueStringPointer(),
+		InactivityTimeout:  nil,
+		IsProtected:        nil,
+		MonitoringEnabled:  monitoring,
+		MonitoringOutputId: data.MonitoringOutputId.ValueStringPointer(),
+		Name:               data.Name.ValueString(),
+		Namespace:          data.Namespace.ValueString(),
+		UnenrollTimeout:    nil,
+	}
+	policy, diags := r.client.UpdateAgentPolicy(ctx, policyId, body)
+	resp.Diagnostics.Append(diags...)
+	if diags.HasError() {
+		return
+	}
+
+	data.fromApi(policy)
+	diags = resp.State.Set(ctx, data)
+	resp.Diagnostics.Append(diags...)
+}
+
+func (r *AgentPolicyResource) Delete(ctx context.Context, req resource.DeleteRequest, resp *resource.DeleteResponse) {
+	var data agentPolicyModel
+
+	diags := req.State.Get(ctx, &data)
+	resp.Diagnostics.Append(diags...)
+	if diags.HasError() {
+		return
+	}
+
+	policyId := data.PolicyId.ValueString()
+	skipDestroy := data.SkipDestroy.ValueBool()
+	if skipDestroy {
+		tflog.Debug(ctx, "Skipping destroy of Agent Policy", map[string]any{"policy_id": policyId})
+	} else {
+		diags = r.client.DeleteAgentPolicy(ctx, policyId)
+		resp.Diagnostics.Append(diags...)
 	}
 }
 
-func resourceAgentPolicyCreate(ctx context.Context, d *schema.ResourceData, meta interface{}) diag.Diagnostics {
-	fleetClient, diags := getFleetClient(d, meta)
-	if diags.HasError() {
-		return diags
-	}
-
-	if id := d.Get("policy_id").(string); id != "" {
-		d.SetId(id)
-	}
-
-	req := fleetapi.AgentPolicyCreateRequest{
-		Name:      d.Get("name").(string),
-		Namespace: d.Get("namespace").(string),
-	}
-
-	if value := d.Get("policy_id").(string); value != "" {
-		req.Id = &value
-	}
-	if value := d.Get("description").(string); value != "" {
-		req.Description = &value
-	}
-	if value := d.Get("data_output_id").(string); value != "" {
-		req.DataOutputId = &value
-	}
-	if value := d.Get("download_source_id").(string); value != "" {
-		req.DownloadSourceId = &value
-	}
-	if value := d.Get("fleet_server_host_id").(string); value != "" {
-		req.FleetServerHostId = &value
-	}
-	if value := d.Get("monitoring_output_id").(string); value != "" {
-		req.MonitoringOutputId = &value
-	}
-
-	monitoringValues := make([]fleetapi.AgentPolicyCreateRequestMonitoringEnabled, 0, 2)
-	if value := d.Get("monitor_logs").(bool); value {
-		monitoringValues = append(monitoringValues, monitorLogs)
-	}
-	if value := d.Get("monitor_metrics").(bool); value {
-		monitoringValues = append(monitoringValues, monitorMetrics)
-	}
-	req.MonitoringEnabled = &monitoringValues
-
-	policy, diags := fleet.CreateAgentPolicy(ctx, fleetClient, req)
-	if diags.HasError() {
-		return diags
-	}
-
-	d.SetId(policy.Id)
-	if err := d.Set("policy_id", policy.Id); err != nil {
-		return diag.FromErr(err)
-	}
-
-	return resourceAgentPolicyRead(ctx, d, meta)
+type agentPolicyModel struct {
+	Id                 types.String `tfsdk:"id"`
+	PolicyId           types.String `tfsdk:"policy_id"`
+	Name               types.String `tfsdk:"name"`
+	Namespace          types.String `tfsdk:"namespace"`
+	Description        types.String `tfsdk:"description"`
+	DataOutputId       types.String `tfsdk:"data_output_id"`
+	MonitoringOutputId types.String `tfsdk:"monitoring_output_id"`
+	FleetServerHostId  types.String `tfsdk:"fleet_server_host_id"`
+	DownloadSourceId   types.String `tfsdk:"download_source_id"`
+	MonitorLogs        types.Bool   `tfsdk:"monitor_logs"`
+	MonitorMetrics     types.Bool   `tfsdk:"monitor_metrics"`
+	SkipDestroy        types.Bool   `tfsdk:"skip_destroy"`
 }
 
-func resourceAgentPolicyUpdate(ctx context.Context, d *schema.ResourceData, meta interface{}) diag.Diagnostics {
-	fleetClient, diags := getFleetClient(d, meta)
-	if diags.HasError() {
-		return diags
+func (m *agentPolicyModel) fromApi(data *fleet.AgentPolicy) {
+	if data == nil {
+		return
 	}
-
-	req := fleetapi.AgentPolicyUpdateRequest{
-		Name:      d.Get("name").(string),
-		Namespace: d.Get("namespace").(string),
-	}
-
-	if value := d.Get("description").(string); value != "" {
-		req.Description = &value
-	}
-	if value := d.Get("data_output_id").(string); value != "" {
-		req.DataOutputId = &value
-	}
-	if value := d.Get("download_source_id").(string); value != "" {
-		req.DownloadSourceId = &value
-	}
-	if value := d.Get("fleet_server_host_id").(string); value != "" {
-		req.FleetServerHostId = &value
-	}
-	if value := d.Get("monitoring_output_id").(string); value != "" {
-		req.MonitoringOutputId = &value
-	}
-
-	monitoringValues := make([]fleetapi.AgentPolicyUpdateRequestMonitoringEnabled, 0, 2)
-	if value := d.Get("monitor_logs").(bool); value {
-		monitoringValues = append(monitoringValues, monitorLogs)
-	}
-	if value := d.Get("monitor_metrics").(bool); value {
-		monitoringValues = append(monitoringValues, monitorMetrics)
-	}
-	req.MonitoringEnabled = &monitoringValues
-
-	_, diags = fleet.UpdateAgentPolicy(ctx, fleetClient, d.Id(), req)
-	if diags.HasError() {
-		return diags
-	}
-
-	return resourceAgentPolicyRead(ctx, d, meta)
-}
-
-func resourceAgentPolicyRead(ctx context.Context, d *schema.ResourceData, meta interface{}) diag.Diagnostics {
-	fleetClient, diags := getFleetClient(d, meta)
-	if diags.HasError() {
-		return diags
-	}
-
-	agentPolicy, diags := fleet.ReadAgentPolicy(ctx, fleetClient, d.Id())
-	if diags.HasError() {
-		return diags
-	}
-
-	// Not found.
-	if agentPolicy == nil {
-		d.SetId("")
-		return nil
-	}
-
-	if err := d.Set("name", agentPolicy.Name); err != nil {
-		return diag.FromErr(err)
-	}
-	if err := d.Set("namespace", agentPolicy.Namespace); err != nil {
-		return diag.FromErr(err)
-	}
-	if err := d.Set("policy_id", agentPolicy.Id); err != nil {
-		return diag.FromErr(err)
-	}
-	if agentPolicy.Description != nil {
-		if err := d.Set("description", *agentPolicy.Description); err != nil {
-			return diag.FromErr(err)
-		}
-	}
-	if agentPolicy.DataOutputId != nil {
-		if err := d.Set("data_output_id", *agentPolicy.DataOutputId); err != nil {
-			return diag.FromErr(err)
-		}
-	}
-	if agentPolicy.DownloadSourceId != nil {
-		if err := d.Set("download_source_id", *agentPolicy.DownloadSourceId); err != nil {
-			return diag.FromErr(err)
-		}
-	}
-	if agentPolicy.FleetServerHostId != nil {
-		if err := d.Set("fleet_server_host_id", *agentPolicy.FleetServerHostId); err != nil {
-			return diag.FromErr(err)
-		}
-	}
-	if agentPolicy.MonitoringOutputId != nil {
-		if err := d.Set("monitoring_output_id", *agentPolicy.MonitoringOutputId); err != nil {
-			return diag.FromErr(err)
-		}
-	}
-	if agentPolicy.MonitoringEnabled != nil {
-		for _, v := range *agentPolicy.MonitoringEnabled {
-			switch v {
-			case monitorLogs:
-				if err := d.Set("monitor_logs", true); err != nil {
-					return diag.FromErr(err)
-				}
-			case monitorMetrics:
-				if err := d.Set("monitor_metrics", true); err != nil {
-					return diag.FromErr(err)
-
-				}
-			}
-		}
-	}
-
-	return nil
-}
-
-func resourceAgentPolicyDelete(ctx context.Context, d *schema.ResourceData, meta interface{}) diag.Diagnostics {
-	if d.Get("skip_destroy").(bool) {
-		tflog.Debug(ctx, "Skipping destroy of Agent Policy", map[string]interface{}{"policy_id": d.Id()})
-		return nil
-	}
-
-	fleetClient, diags := getFleetClient(d, meta)
-	if diags.HasError() {
-		return diags
-	}
-
-	if diags = fleet.DeleteAgentPolicy(ctx, fleetClient, d.Id()); diags.HasError() {
-		return diags
-	}
-	d.SetId("")
-
-	return diags
+	m.Id = types.StringValue(data.Id)
+	m.PolicyId = types.StringValue(data.Id)
+	m.DataOutputId = types.StringPointerValue(data.DataOutputId)
+	m.Description = types.StringPointerValue(data.Description)
+	m.DownloadSourceId = types.StringPointerValue(data.DownloadSourceId)
+	m.FleetServerHostId = types.StringPointerValue(data.FleetServerHostId)
+	m.MonitorLogs = types.BoolValue(slices.Contains(data.MonitoringEnabled, fleet.AgentPolicyMonitoringEnabledLogs))
+	m.MonitorMetrics = types.BoolValue(slices.Contains(data.MonitoringEnabled, fleet.AgentPolicyMonitoringEnabledMetrics))
+	m.MonitoringOutputId = types.StringPointerValue(data.MonitoringOutputId)
+	m.Name = types.StringValue(data.Name)
+	m.Namespace = types.StringValue(data.Namespace)
 }

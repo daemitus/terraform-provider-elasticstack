@@ -1,7 +1,7 @@
 .DEFAULT_GOAL = help
 SHELL := /bin/bash
 
-VERSION ?= 0.11.4
+VERSION ?= 0.11.5-pre
 
 NAME = elasticstack
 BINARY = terraform-provider-${NAME}
@@ -13,15 +13,10 @@ ACCTEST_COUNT = 1
 TEST ?= ./...
 SWAGGER_VERSION ?= 8.7
 
-GOVERSION ?= $(shell grep -e '^go' go.mod | cut -f 2 -d ' ')
-
-STACK_VERSION ?= 8.13.4
-
 ELASTICSEARCH_NAME ?= terraform-elasticstack-es
 ELASTICSEARCH_ENDPOINTS ?= http://$(ELASTICSEARCH_NAME):9200
 ELASTICSEARCH_USERNAME ?= elastic
 ELASTICSEARCH_PASSWORD ?= password
-ELASTICSEARCH_NETWORK ?= elasticstack-network
 ELASTICSEARCH_MEM ?= 1024m
 
 KIBANA_NAME ?= terraform-elasticstack-kb
@@ -49,7 +44,6 @@ build-ci: ## build the terraform provider
 .PHONY: build
 build: lint build-ci ## build the terraform provider
 
-
 .PHONY: testacc
 testacc: ## Run acceptance tests
 	TF_ACC=1 go test -v ./... -count $(ACCTEST_COUNT) -parallel $(ACCTEST_PARALLELISM) $(TESTARGS) -timeout $(ACCTEST_TIMEOUT)
@@ -57,16 +51,6 @@ testacc: ## Run acceptance tests
 .PHONY: test
 test: ## Run unit tests
 	go test -v $(TEST) $(TESTARGS) -timeout=5m -parallel=4
-
-# Retry command - first argumment is how many attempts are required, second argument is the command to run
-# Backoff starts with 1 second and double with next itteration
-retry = until [ $$(if [ -z "$$attempt" ]; then echo -n "0"; else echo -n "$$attempt"; fi) -ge $(1) ]; do \
-		backoff=$$(if [ -z "$$backoff" ]; then echo "1"; else echo "$$backoff"; fi); \
-		sleep $$backoff; \
-		$(2) && break; \
-		attempt=$$((attempt + 1)); \
-		backoff=$$((backoff * 2)); \
-	done
 
 # To run specific test (e.g. TestAccResourceActionConnector) execute `make docker-testacc TESTARGS='-run ^TestAccResourceActionConnector$$'`
 # To enable tracing (or debugging), execute `make docker-testacc TF_LOG=TRACE`
@@ -83,129 +67,14 @@ docker-testacc: docker-elasticsearch docker-kibana ## Run acceptance tests in th
 		-v "$(SOURCE_LOCATION):/provider" \
 		golang:$(GOVERSION) make testacc TESTARGS="$(TESTARGS)"
 
-# To run specific test (e.g. TestAccResourceActionConnector) execute `make docker-testacc TESTARGS='-run ^TestAccResourceActionConnector$$'`
-# To enable tracing (or debugging), execute `make docker-testacc TF_LOG=TRACE`
-.PHONY: docker-testacc-with-token
-docker-testacc-with-token:
-	@ docker run --rm \
-		-e ELASTICSEARCH_ENDPOINTS="$(ELASTICSEARCH_ENDPOINTS)" \
-		-e KIBANA_ENDPOINT="$(KIBANA_ENDPOINT)" \
-		-e ELASTICSEARCH_BEARER_TOKEN="$(ELASTICSEARCH_BEARER_TOKEN)" \
-		-e KIBANA_USERNAME="$(ELASTICSEARCH_USERNAME)" \
-		-e KIBANA_PASSWORD="$(ELASTICSEARCH_PASSWORD)" \
-		-e TF_LOG="$(TF_LOG)" \
-		--network $(ELASTICSEARCH_NETWORK) \
-		-w "/provider" \
-		-v "$(SOURCE_LOCATION):/provider" \
-		golang:$(GOVERSION) make testacc TESTARGS="$(TESTARGS)"
-
-.PHONY: docker-elasticsearch
-docker-elasticsearch: docker-network ## Start Elasticsearch single node cluster in docker container
-	@ docker rm -f $(ELASTICSEARCH_NAME) &> /dev/null || true
-	@ $(call retry, 5, if ! docker ps --format '{{.Names}}' | grep -w $(ELASTICSEARCH_NAME) > /dev/null 2>&1 ; then \
-		docker run -d \
-		--memory $(ELASTICSEARCH_MEM) \
-		-p 9200:9200 -p 9300:9300 \
-		-e "discovery.type=single-node" \
-		-e "xpack.security.enabled=true" \
-		-e "xpack.security.authc.api_key.enabled=true" \
-		-e "xpack.security.authc.token.enabled=true" \
-		-e "xpack.watcher.enabled=true" \
-		-e "xpack.license.self_generated.type=trial" \
-		-e "repositories.url.allowed_urls=https://example.com/*" \
-		-e "path.repo=/tmp" \
-		-e ELASTIC_PASSWORD=$(ELASTICSEARCH_PASSWORD) \
-		--name $(ELASTICSEARCH_NAME) \
-		--network $(ELASTICSEARCH_NETWORK) \
-		docker.elastic.co/elasticsearch/elasticsearch:$(STACK_VERSION); \
-		fi)
-
-.PHONY: docker-kibana
-docker-kibana: docker-network docker-elasticsearch set-kibana-password ## Start Kibana node in docker container
-	@ docker rm -f $(KIBANA_NAME)  &> /dev/null || true
-	@ $(call retry, 5, if ! docker ps --format '{{.Names}}' | grep -w $(KIBANA_NAME) > /dev/null 2>&1 ; then \
-		docker run -d \
-		-p 5601:5601 \
-		-e SERVER_NAME=kibana \
-		-e ELASTICSEARCH_HOSTS=$(ELASTICSEARCH_ENDPOINTS) \
-		-e ELASTICSEARCH_USERNAME=$(KIBANA_SYSTEM_USERNAME) \
-		-e ELASTICSEARCH_PASSWORD=$(KIBANA_SYSTEM_PASSWORD) \
-		-e XPACK_ENCRYPTEDSAVEDOBJECTS_ENCRYPTIONKEY=a7a6311933d3503b89bc2dbc36572c33a6c10925682e591bffcab6911c06786d \
-		-e "logging.root.level=debug" \
-		--name $(KIBANA_NAME) \
-		--network $(ELASTICSEARCH_NETWORK) \
-		docker.elastic.co/kibana/kibana:$(STACK_VERSION); \
-		fi)
-
-.PHONY: docker-kibana-with-tls
-docker-kibana-with-tls: docker-network docker-elasticsearch set-kibana-password
-	@ docker rm -f $(KIBANA_NAME)  &> /dev/null || true
-	@ mkdir -p certs
-	@ CAROOT=certs mkcert localhost $(KIBANA_NAME)
-	@ mv localhost*.pem certs/
-
-	@ $(call retry, 5, if ! docker ps --format '{{.Names}}' | grep -w $(KIBANA_NAME) > /dev/null 2>&1 ; then \
-		docker run -d \
-		-p 5601:5601 \
-		-v $(shell pwd)/certs:/certs \
-		-e SERVER_NAME=kibana \
-		-e ELASTICSEARCH_HOSTS=$(ELASTICSEARCH_ENDPOINTS) \
-		-e ELASTICSEARCH_USERNAME=$(KIBANA_SYSTEM_USERNAME) \
-		-e ELASTICSEARCH_PASSWORD=$(KIBANA_SYSTEM_PASSWORD) \
-		-e XPACK_ENCRYPTEDSAVEDOBJECTS_ENCRYPTIONKEY=a7a6311933d3503b89bc2dbc36572c33a6c10925682e591bffcab6911c06786d \
-		-e SERVER_SSL_CERTIFICATE=/certs/localhost+1.pem \
-		-e SERVER_SSL_KEY=/certs/localhost+1-key.pem \
-		-e SERVER_SSL_ENABLED=true \
-		-e "logging.root.level=debug" \
-		--name $(KIBANA_NAME) \
-		--network $(ELASTICSEARCH_NETWORK) \
-		docker.elastic.co/kibana/kibana:$(STACK_VERSION); \
-		fi)
-
-
-.PHONY: docker-network
-docker-network: ## Create a dedicated network for ES and test runs
-	@ if ! docker network ls --format '{{.Name}}' | grep -w $(ELASTICSEARCH_NETWORK) > /dev/null 2>&1 ; then \
-		docker network create $(ELASTICSEARCH_NETWORK); \
-		fi
-
-.PHONY: set-kibana-password
-set-kibana-password: ## Sets the ES KIBANA_SYSTEM_USERNAME's password to KIBANA_SYSTEM_PASSWORD. This expects Elasticsearch to be available at localhost:9200
-	@ $(call retry, 10, curl -X POST -u $(ELASTICSEARCH_USERNAME):$(ELASTICSEARCH_PASSWORD) -H "Content-Type: application/json" http://localhost:9200/_security/user/$(KIBANA_SYSTEM_USERNAME)/_password -d "{\"password\":\"$(KIBANA_SYSTEM_PASSWORD)\"}" | grep -q "^{}")
-
-.PHONY: create-es-api-key
-create-es-api-key: ## Creates and outputs a new API Key. This expects Elasticsearch to be available at localhost:9200
-	@ $(call retry, 10, curl -X POST -u $(ELASTICSEARCH_USERNAME):$(ELASTICSEARCH_PASSWORD) -H "Content-Type: application/json" http://localhost:9200/_security/api_key -d "{\"name\":\"$(KIBANA_API_KEY_NAME)\"}")
-
-.PHONY: create-es-bearer-token
-create-es-bearer-token:
-	@ $(call retry, 10, curl -X POST -u $(ELASTICSEARCH_USERNAME):$(ELASTICSEARCH_PASSWORD) -H "Content-Type: application/json" http://localhost:9200/_security/oauth2/token -d "{\"grant_type\": \"client_credentials\"}")
-
-.PHONY: docker-clean
-docker-clean: ## Try to remove provisioned nodes and assigned network
-	@ docker rm -f $(ELASTICSEARCH_NAME) $(KIBANA_NAME) || true
-	@ docker network rm $(ELASTICSEARCH_NETWORK) || true
-
 
 .PHONY: docs-generate
 docs-generate: tools ## Generate documentation for the provider
 	@ $(GOBIN)/tfplugindocs
 
-
 .PHONY: gen
 gen: docs-generate ## Generate the code and documentation
 	@ go generate ./...
-
-
-.PHONY: clean
-clean: ## Remove built binary
-	rm -f ${BINARY}
-
-
-.PHONY: install
-install: build ## Install built provider into the local terraform cache
-	mkdir -p ~/.terraform.d/plugins/registry.terraform.io/elastic/${NAME}/${VERSION}/${MARCH}
-	mv ${BINARY} ~/.terraform.d/plugins/registry.terraform.io/elastic/${NAME}/${VERSION}/${MARCH}
 
 
 .PHONY: tools

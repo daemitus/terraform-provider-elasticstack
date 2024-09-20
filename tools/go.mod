@@ -1,16 +1,13 @@
-module github.com/elastic/terraform-provider-elasticstack/tools
+module github.com/daemitus/terraform-provider-elasticstack/tools
 
 go 1.22
 
 toolchain go1.22.2
 
 require (
-	github.com/client9/misspell v0.3.4
-	github.com/deepmap/oapi-codegen/v2 v2.1.0
 	github.com/golangci/golangci-lint v1.59.1
 	github.com/goreleaser/goreleaser v1.26.1
 	github.com/hashicorp/terraform-plugin-docs v0.18.0
-	go.uber.org/mock v0.4.0
 )
 
 require (

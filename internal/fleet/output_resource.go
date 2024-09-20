@@ -2,559 +2,385 @@ package fleet
 
 import (
 	"context"
+	"fmt"
 
-	fleetapi "github.com/elastic/terraform-provider-elasticstack/generated/fleet"
-	"github.com/elastic/terraform-provider-elasticstack/internal/clients/fleet"
-	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
-	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
-	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
+	"github.com/daemitus/terraform-provider-elasticstack/internal/api/fleet"
+	"github.com/daemitus/terraform-provider-elasticstack/internal/clients"
+	"github.com/daemitus/terraform-provider-elasticstack/internal/util"
+	"github.com/hashicorp/terraform-plugin-framework-validators/listvalidator"
+	"github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
+	"github.com/hashicorp/terraform-plugin-framework/diag"
+	"github.com/hashicorp/terraform-plugin-framework/path"
+	"github.com/hashicorp/terraform-plugin-framework/resource"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringdefault"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
+	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/samber/lo"
 )
 
-func ResourceOutput() *schema.Resource {
-	outputSchema := map[string]*schema.Schema{
-		"output_id": {
+var (
+	_ resource.Resource                = &OutputResource{}
+	_ resource.ResourceWithImportState = &OutputResource{}
+)
+
+func NewOutputResource(client *clients.FleetClient) *OutputResource {
+	return &OutputResource{client: client}
+}
+
+type OutputResource struct {
+	client *clients.FleetClient
+}
+
+func (r *OutputResource) Metadata(ctx context.Context, req resource.MetadataRequest, resp *resource.MetadataResponse) {
+	resp.TypeName = fmt.Sprintf("%s_%s", req.ProviderTypeName, "fleet_output")
+}
+
+func (r *OutputResource) Schema(ctx context.Context, req resource.SchemaRequest, resp *resource.SchemaResponse) {
+	resp.Schema.Description = "Creates a new Fleet Output."
+	resp.Schema.Attributes = map[string]schema.Attribute{
+		"id": schema.StringAttribute{
+			Description: "The ID of this resource.",
+			Computed:    true,
+			PlanModifiers: []planmodifier.String{
+				stringplanmodifier.UseStateForUnknown(),
+			},
+		},
+		"output_id": schema.StringAttribute{
 			Description: "Unique identifier of the output.",
-			Type:        schema.TypeString,
 			Computed:    true,
 			Optional:    true,
+			PlanModifiers: []planmodifier.String{
+				stringplanmodifier.RequiresReplace(),
+				stringplanmodifier.UseStateForUnknown(),
+			},
 		},
-		"name": {
+		"name": schema.StringAttribute{
 			Description: "The name of the output.",
-			Type:        schema.TypeString,
 			Required:    true,
 		},
-		"type": {
-			Description:  "The output type.",
-			Type:         schema.TypeString,
-			Required:     true,
-			ValidateFunc: validation.StringInSlice([]string{"elasticsearch", "logstash"}, false),
+		"type": schema.StringAttribute{
+			Description: "The output type.",
+			Required:    true,
+			Validators: []validator.String{
+				stringvalidator.OneOf(
+					string(fleet.OutputTypeElasticsearch),
+					string(fleet.OutputTypeRemoteElasticsearch),
+				),
+			},
 		},
-		"hosts": {
+		"hosts": schema.ListAttribute{
 			Description: "A list of hosts.",
-			Type:        schema.TypeList,
 			Optional:    true,
-			MinItems:    1,
-			Elem: &schema.Schema{
-				Type: schema.TypeString,
+			ElementType: types.StringType,
+			Validators: []validator.List{
+				listvalidator.SizeAtLeast(1),
 			},
 		},
-		"ca_sha256": {
-			Description: "Fingerprint of the Elasticsearch CA certificate.",
-			Type:        schema.TypeString,
-			Optional:    true,
-		},
-		"ca_trusted_fingerprint": {
-			Description: "Fingerprint of trusted CA.",
-			Type:        schema.TypeString,
-			Optional:    true,
-		},
-		"default_integrations": {
+		"default_integrations": schema.BoolAttribute{
 			Description: "Make this output the default for agent integrations.",
-			Type:        schema.TypeBool,
 			Optional:    true,
 		},
-		"default_monitoring": {
+		"default_monitoring": schema.BoolAttribute{
 			Description: "Make this output the default for agent monitoring.",
-			Type:        schema.TypeBool,
 			Optional:    true,
 		},
-		"ssl": {
-			Description: "SSL configuration.",
-			Type:        schema.TypeList,
+		"preset": schema.StringAttribute{
+			Description: "Performance tuning presets are curated output settings for common use cases.",
+			Computed:    true,
 			Optional:    true,
-			MaxItems:    1,
-			Elem: &schema.Resource{
-				Schema: map[string]*schema.Schema{
-					"certificate_authorities": {
-						Description: "Server SSL certificate authorities.",
-						Type:        schema.TypeList,
-						Optional:    true,
-						Elem: &schema.Schema{
-							Type: schema.TypeString,
-						},
-					},
-					"certificate": {
-						Description: "Client SSL certificate.",
-						Type:        schema.TypeString,
-						Required:    true,
-					},
-					"key": {
-						Description: "Client SSL certificate key.",
-						Type:        schema.TypeString,
-						Required:    true,
-						Sensitive:   true,
-					},
-				},
+			Default:     stringdefault.StaticString("balanced"),
+			Validators: []validator.String{
+				stringvalidator.OneOf(
+					string(fleet.OutputPresetBalanced),
+					string(fleet.OutputPresetCustom),
+					string(fleet.OutputPresetThroughput),
+					string(fleet.OutputPresetScale),
+					string(fleet.OutputPresetLatency),
+				),
 			},
 		},
-		"config_yaml": {
+		"service_token": schema.StringAttribute{
+			Description: "A service token for authentication when using remote_elasticsearch.",
+			Computed:    true,
+			Optional:    true,
+			Sensitive:   true,
+			PlanModifiers: []planmodifier.String{
+				stringplanmodifier.UseStateForUnknown(),
+			},
+		},
+		"service_token_secret_id": schema.StringAttribute{
+			Description: "The service token secret storage ID.",
+			Computed:    true,
+			PlanModifiers: []planmodifier.String{
+				stringplanmodifier.UseStateForUnknown(),
+			},
+		},
+		"config_yaml": schema.StringAttribute{
 			Description: "Advanced YAML configuration. YAML settings here will be added to the output section of each agent policy.",
-			Type:        schema.TypeString,
 			Optional:    true,
 			Sensitive:   true,
 		},
 	}
-
-	return &schema.Resource{
-		Description: "Creates a new Fleet Output.",
-
-		CreateContext: resourceOutputCreate,
-		ReadContext:   resourceOutputRead,
-		UpdateContext: resourceOutputUpdate,
-		DeleteContext: resourceOutputDelete,
-
-		Importer: &schema.ResourceImporter{
-			StateContext: schema.ImportStatePassthroughContext,
-		},
-
-		Schema: outputSchema,
-	}
 }
 
-func resourceOutputCreateElasticsearch(ctx context.Context, d *schema.ResourceData, meta interface{}) diag.Diagnostics {
-	fleetClient, diags := getFleetClient(d, meta)
-	if diags.HasError() {
-		return diags
-	}
-
-	reqData := fleetapi.OutputCreateRequestElasticsearch{
-		Name: d.Get("name").(string),
-		Type: fleetapi.OutputCreateRequestElasticsearchTypeElasticsearch,
-	}
-
-	var hosts []string
-	if value := d.Get("hosts").([]interface{}); len(value) > 0 {
-		for _, v := range value {
-			if vStr, ok := v.(string); ok && vStr != "" {
-				hosts = append(hosts, vStr)
-			}
-		}
-	}
-	if hosts != nil {
-		reqData.Hosts = &hosts
-	}
-	if value, ok := d.Get("output_id").(string); ok && value != "" {
-		reqData.Id = &value
-	}
-	if value := d.Get("default_integrations").(bool); value {
-		reqData.IsDefault = &value
-	}
-	if value := d.Get("default_monitoring").(bool); value {
-		reqData.IsDefaultMonitoring = &value
-	}
-	if value, ok := d.Get("ca_sha256").(string); ok && value != "" {
-		reqData.CaSha256 = &value
-	}
-	if value, ok := d.Get("ca_trusted_fingerprint").(string); ok && value != "" {
-		reqData.CaTrustedFingerprint = &value
-	}
-	if value, ok := d.Get("config_yaml").(string); ok && value != "" {
-		reqData.ConfigYaml = &value
-	}
-
-	req := fleetapi.PostOutputsJSONRequestBody{}
-	if err := req.FromOutputCreateRequestElasticsearch(reqData); err != nil {
-		return diag.FromErr(err)
-	}
-
-	rawOutput, diags := fleet.CreateOutput(ctx, fleetClient, req)
-	if diags.HasError() {
-		return diags
-	}
-
-	output, err := rawOutput.AsOutputCreateRequestElasticsearch()
-	if err != nil {
-		return diag.FromErr(err)
-	}
-
-	d.SetId(*output.Id)
-	if err := d.Set("output_id", output.Id); err != nil {
-		return diag.FromErr(err)
-	}
-
-	return nil
+func (r *OutputResource) ImportState(ctx context.Context, req resource.ImportStateRequest, resp *resource.ImportStateResponse) {
+	resource.ImportStatePassthroughID(ctx, path.Root("id"), req, resp)
 }
 
-func resourceOutputCreateLogstash(ctx context.Context, d *schema.ResourceData, meta interface{}) diag.Diagnostics {
-	fleetClient, diags := getFleetClient(d, meta)
+func (r *OutputResource) Read(ctx context.Context, req resource.ReadRequest, resp *resource.ReadResponse) {
+	var data outputModel
+
+	diags := req.State.Get(ctx, &data)
+	resp.Diagnostics.Append(diags...)
 	if diags.HasError() {
-		return diags
+		return
 	}
 
-	reqData := fleetapi.OutputCreateRequestLogstash{
-		Name: d.Get("name").(string),
-		Type: fleetapi.OutputCreateRequestLogstashTypeLogstash,
-	}
-
-	var hosts []string
-	if value := d.Get("hosts").([]interface{}); len(value) > 0 {
-		for _, v := range value {
-			if vStr, ok := v.(string); ok && vStr != "" {
-				hosts = append(hosts, vStr)
-			}
-		}
-	}
-	reqData.Hosts = hosts
-	if value, ok := d.Get("output_id").(string); ok && value != "" {
-		reqData.Id = &value
-	}
-	if value := d.Get("default_integrations").(bool); value {
-		reqData.IsDefault = &value
-	}
-	if value := d.Get("default_monitoring").(bool); value {
-		reqData.IsDefaultMonitoring = &value
-	}
-	if value, ok := d.Get("ca_sha256").(string); ok && value != "" {
-		reqData.CaSha256 = &value
-	}
-	if value, ok := d.Get("ca_trusted_fingerprint").(string); ok && value != "" {
-		reqData.CaTrustedFingerprint = &value
-	}
-	if value, ok := d.GetOk("ssl"); ok {
-		ssl := value.([]interface{})[0].(map[string]interface{})
-		reqData.Ssl = &struct {
-			Certificate            *string   `json:"certificate,omitempty"`
-			CertificateAuthorities *[]string `json:"certificate_authorities,omitempty"`
-			Key                    *string   `json:"key,omitempty"`
-		}{}
-		if value, ok := ssl["certificate_authorities"].([]interface{}); ok {
-			certs := make([]string, len(value))
-			for i, v := range value {
-				certs[i] = v.(string)
-			}
-			reqData.Ssl.CertificateAuthorities = &certs
-		}
-		if value, ok := ssl["certificate"].(string); ok {
-			reqData.Ssl.Certificate = &value
-		}
-		if value, ok := ssl["key"].(string); ok {
-			reqData.Ssl.Key = &value
-		}
-	}
-	if value, ok := d.Get("config_yaml").(string); ok && value != "" {
-		reqData.ConfigYaml = &value
-	}
-
-	req := fleetapi.PostOutputsJSONRequestBody{}
-	if err := req.FromOutputCreateRequestLogstash(reqData); err != nil {
-		return diag.FromErr(err)
-	}
-
-	rawOutput, diags := fleet.CreateOutput(ctx, fleetClient, req)
+	outputId := data.OutputId.ValueString()
+	output, diags := r.client.ReadOutput(ctx, outputId)
+	resp.Diagnostics.Append(diags...)
 	if diags.HasError() {
-		return diags
+		return
 	}
 
-	output, err := rawOutput.AsOutputCreateRequestElasticsearch()
-	if err != nil {
-		return diag.FromErr(err)
+	diags = data.fromApi(output)
+	resp.Diagnostics.Append(diags...)
+	if diags.HasError() {
+		return
 	}
 
-	d.SetId(*output.Id)
-	if err := d.Set("output_id", output.Id); err != nil {
-		return diag.FromErr(err)
-	}
-
-	return nil
+	diags = resp.State.Set(ctx, data)
+	resp.Diagnostics.Append(diags...)
 }
 
-func resourceOutputCreate(ctx context.Context, d *schema.ResourceData, meta interface{}) diag.Diagnostics {
-	outputType := d.Get("type").(string)
+func (r *OutputResource) Create(ctx context.Context, req resource.CreateRequest, resp *resource.CreateResponse) {
+	var data outputModel
+
+	diags := req.Plan.Get(ctx, &data)
+	resp.Diagnostics.Append(diags...)
+	if diags.HasError() {
+		return
+	}
+
+	union, diags := data.toApi(ctx, false)
+	resp.Diagnostics.Append(diags...)
+	if diags.HasError() {
+		return
+	}
+
+	body := fleet.CreateOutputRequest(*union)
+	output, diags := r.client.CreateOutput(ctx, body)
+	resp.Diagnostics.Append(diags...)
+	if diags.HasError() {
+		return
+	}
+
+	diags = data.fromApi(output)
+	resp.Diagnostics.Append(diags...)
+	if diags.HasError() {
+		return
+	}
+
+	diags = resp.State.Set(ctx, data)
+	resp.Diagnostics.Append(diags...)
+}
+
+func (r *OutputResource) Update(ctx context.Context, req resource.UpdateRequest, resp *resource.UpdateResponse) {
+	var data outputModel
+
+	diags := req.Plan.Get(ctx, &data)
+	resp.Diagnostics.Append(diags...)
+	if diags.HasError() {
+		return
+	}
+
+	union, diags := data.toApi(ctx, true)
+	resp.Diagnostics.Append(diags...)
+	if diags.HasError() {
+		return
+	}
+
+	outputId := data.OutputId.ValueString()
+	body := fleet.UpdateOutputRequest(*union)
+	output, diags := r.client.UpdateOutput(ctx, outputId, body)
+	resp.Diagnostics.Append(diags...)
+	if diags.HasError() {
+		return
+	}
+
+	diags = data.fromApi(output)
+	resp.Diagnostics.Append(diags...)
+	if diags.HasError() {
+		return
+	}
+
+	diags = resp.State.Set(ctx, data)
+	resp.Diagnostics.Append(diags...)
+}
+
+func (r *OutputResource) Delete(ctx context.Context, req resource.DeleteRequest, resp *resource.DeleteResponse) {
+	var data outputModel
+
+	diags := req.State.Get(ctx, &data)
+	resp.Diagnostics.Append(diags...)
+	if diags.HasError() {
+		return
+	}
+
+	outputId := data.OutputId.ValueString()
+	diags = r.client.DeleteOutput(ctx, outputId)
+	resp.Diagnostics.Append(diags...)
+}
+
+type outputModel struct {
+	Id                   types.String `tfsdk:"id"`
+	OutputId             types.String `tfsdk:"output_id"`
+	Name                 types.String `tfsdk:"name"`
+	Type                 types.String `tfsdk:"type"`
+	Hosts                types.List   `tfsdk:"hosts"`
+	DefaultIntegrations  types.Bool   `tfsdk:"default_integrations"`
+	DefaultMonitoring    types.Bool   `tfsdk:"default_monitoring"`
+	Preset               types.String `tfsdk:"preset"`
+	ServiceToken         types.String `tfsdk:"service_token"`
+	ServiceTokenSecretId types.String `tfsdk:"service_token_secret_id"`
+	ConfigYaml           types.String `tfsdk:"config_yaml"`
+}
+
+func (m *outputModel) toApi(ctx context.Context, isUpdate bool) (*fleet.OutputUnion, diag.Diagnostics) {
+	path := path.Empty()
 	var diags diag.Diagnostics
 
-	if id := d.Get("output_id").(string); id != "" {
-		d.SetId(id)
-	}
+	switch discriminator := m.Type.ValueString(); discriminator {
+	case string(fleet.OutputTypeElasticsearch):
+		output := fleet.OutputElasticsearch{
+			Id:                  lo.Ternary(!isUpdate, m.OutputId.ValueStringPointer(), nil),
+			Name:                m.Name.ValueString(),
+			Type:                fleet.OutputType(m.Type.ValueString()),
+			Hosts:               util.ListTypeToSliceBasic[string](ctx, m.Hosts, path.AtName("hosts"), diags),
+			IsDefault:           m.DefaultIntegrations.ValueBoolPointer(),
+			IsDefaultMonitoring: m.DefaultMonitoring.ValueBoolPointer(),
+			Preset:              (*fleet.OutputPreset)(m.Preset.ValueStringPointer()),
+			ConfigYaml:          m.ConfigYaml.ValueStringPointer(),
+		}
+		union, err := output.AsUnion()
+		if err != nil {
+			diags.AddError("output marshal failure", err.Error())
+			return nil, diags
+		}
+		return union, diags
 
-	switch outputType {
-	case "elasticsearch":
-		diags = resourceOutputCreateElasticsearch(ctx, d, meta)
-	case "logstash":
-		diags = resourceOutputCreateLogstash(ctx, d, meta)
-	}
-	if diags.HasError() {
-		return diags
-	}
+	case string(fleet.OutputTypeRemoteElasticsearch):
+		output := fleet.OutputRemoteElasticsearch{
+			Id:                  lo.Ternary(!isUpdate, m.OutputId.ValueStringPointer(), nil),
+			Name:                m.Name.ValueString(),
+			Type:                fleet.OutputType(m.Type.ValueString()),
+			Hosts:               util.ListTypeToSliceBasic[string](ctx, m.Hosts, path.AtName("hosts"), diags),
+			IsDefault:           m.DefaultIntegrations.ValueBoolPointer(),
+			IsDefaultMonitoring: m.DefaultMonitoring.ValueBoolPointer(),
+			Preset:              (*fleet.OutputPreset)(m.Preset.ValueStringPointer()),
+			ConfigYaml:          m.ConfigYaml.ValueStringPointer(),
+			Secrets:             &fleet.OutputRemoteElasticsearchSecrets{},
+		}
+		serviceToken, err := fleet.OutputRemoteElasticsearchSecretString(m.ServiceToken.ValueString()).AsUnion()
+		if err != nil {
+			diags.AddError("service_token marshal failure", err.Error())
+			return nil, diags
+		}
+		output.Secrets.ServiceToken = *serviceToken
 
-	return resourceOutputRead(ctx, d, meta)
+		union, err := output.AsUnion()
+		if err != nil {
+			diags.AddError("output marshal failure", err.Error())
+			return nil, diags
+		}
+		return union, diags
+
+	default:
+		diags.AddError("unsupported output type", fmt.Sprintf("type: %s", discriminator))
+		return nil, diags
+	}
 }
 
-func resourceOutputUpdateElasticsearch(ctx context.Context, d *schema.ResourceData, meta interface{}) diag.Diagnostics {
-	fleetClient, diags := getFleetClient(d, meta)
-	if diags.HasError() {
-		return diags
-	}
-
-	reqData := fleetapi.OutputUpdateRequestElasticsearch{
-		Name: d.Get("name").(string),
-		Type: fleetapi.OutputUpdateRequestElasticsearchTypeElasticsearch,
-	}
-
-	var hosts []string
-	if value := d.Get("hosts").([]interface{}); len(value) > 0 {
-		for _, v := range value {
-			if vStr, ok := v.(string); ok && vStr != "" {
-				hosts = append(hosts, vStr)
-			}
-		}
-	}
-	reqData.Hosts = hosts
-	if value := d.Get("default_integrations").(bool); value {
-		reqData.IsDefault = &value
-	}
-	if value := d.Get("default_monitoring").(bool); value {
-		reqData.IsDefaultMonitoring = &value
-	}
-	if value, ok := d.Get("ca_sha256").(string); ok && value != "" {
-		reqData.CaSha256 = &value
-	}
-	if value, ok := d.Get("config_yaml").(string); ok && value != "" {
-		reqData.ConfigYaml = &value
-	}
-
-	req := fleetapi.UpdateOutputJSONRequestBody{}
-	if err := req.FromOutputUpdateRequestElasticsearch(reqData); err != nil {
-		return diag.FromErr(err)
-	}
-
-	_, diags = fleet.UpdateOutput(ctx, fleetClient, d.Id(), req)
-	if diags.HasError() {
-		return diags
-	}
-
-	return nil
-}
-
-func resourceOutputUpdateLogstash(ctx context.Context, d *schema.ResourceData, meta interface{}) diag.Diagnostics {
-	fleetClient, diags := getFleetClient(d, meta)
-	if diags.HasError() {
-		return diags
-	}
-
-	reqData := fleetapi.OutputUpdateRequestLogstash{
-		Name: d.Get("name").(string),
-		Type: fleetapi.OutputUpdateRequestLogstashTypeLogstash,
-	}
-
-	var hosts []string
-	if value := d.Get("hosts").([]interface{}); len(value) > 0 {
-		for _, v := range value {
-			if vStr, ok := v.(string); ok && vStr != "" {
-				hosts = append(hosts, vStr)
-			}
-		}
-	}
-	if hosts != nil {
-		reqData.Hosts = &hosts
-	}
-	if value := d.Get("default_integrations").(bool); value {
-		reqData.IsDefault = &value
-	}
-	if value := d.Get("default_monitoring").(bool); value {
-		reqData.IsDefaultMonitoring = &value
-	}
-	if value, ok := d.Get("ca_sha256").(string); ok && value != "" {
-		reqData.CaSha256 = &value
-	}
-	if value, ok := d.GetOk("ssl"); ok {
-		ssl := value.([]interface{})[0].(map[string]interface{})
-		reqData.Ssl = &struct {
-			Certificate            *string   `json:"certificate,omitempty"`
-			CertificateAuthorities *[]string `json:"certificate_authorities,omitempty"`
-			Key                    *string   `json:"key,omitempty"`
-		}{}
-		if value, ok := ssl["certificate_authorities"].([]interface{}); ok {
-			certs := make([]string, len(value))
-			for i, v := range value {
-				certs[i] = v.(string)
-			}
-			reqData.Ssl.CertificateAuthorities = &certs
-		}
-		if value, ok := ssl["certificate"].(string); ok {
-			reqData.Ssl.Certificate = &value
-		}
-		if value, ok := ssl["key"].(string); ok {
-			reqData.Ssl.Key = &value
-		}
-	}
-	if value, ok := d.Get("config_yaml").(string); ok && value != "" {
-		reqData.ConfigYaml = &value
-	}
-
-	req := fleetapi.UpdateOutputJSONRequestBody{}
-	if err := req.FromOutputUpdateRequestLogstash(reqData); err != nil {
-		return diag.FromErr(err)
-	}
-
-	_, diags = fleet.UpdateOutput(ctx, fleetClient, d.Id(), req)
-	if diags.HasError() {
-		return diags
-	}
-
-	return nil
-}
-
-func resourceOutputUpdate(ctx context.Context, d *schema.ResourceData, meta interface{}) diag.Diagnostics {
-	var diags diag.Diagnostics
-
-	outputType := d.Get("type").(string)
-	switch outputType {
-	case "elasticsearch":
-		diags = resourceOutputUpdateElasticsearch(ctx, d, meta)
-	case "logstash":
-		diags = resourceOutputUpdateLogstash(ctx, d, meta)
-	}
-	if diags.HasError() {
-		return diags
-	}
-
-	return resourceOutputRead(ctx, d, meta)
-}
-
-func resourceOutputReadElasticsearch(d *schema.ResourceData, data fleetapi.OutputCreateRequestElasticsearch) diag.Diagnostics {
-	if err := d.Set("type", "elasticsearch"); err != nil {
-		return diag.FromErr(err)
-	}
-	if err := d.Set("name", data.Name); err != nil {
-		return diag.FromErr(err)
-	}
-	if data.Hosts != nil {
-		if err := d.Set("hosts", *data.Hosts); err != nil {
-			return diag.FromErr(err)
-		}
-	}
-	if err := d.Set("default_integrations", data.IsDefault); err != nil {
-		return diag.FromErr(err)
-	}
-	if data.IsDefaultMonitoring != nil {
-		if err := d.Set("default_monitoring", *data.IsDefaultMonitoring); err != nil {
-			return diag.FromErr(err)
-		}
-	}
-	if data.CaSha256 != nil {
-		if err := d.Set("ca_sha256", *data.CaSha256); err != nil {
-			return diag.FromErr(err)
-		}
-	}
-	if data.CaTrustedFingerprint != nil {
-		if err := d.Set("ca_trusted_fingerprint", *data.CaTrustedFingerprint); err != nil {
-			return diag.FromErr(err)
-		}
-	}
-	if data.ConfigYaml != nil {
-		if err := d.Set("config_yaml", *data.ConfigYaml); err != nil {
-			return diag.FromErr(err)
-		}
-	}
-
-	return nil
-}
-
-func resourceOutputReadLogstash(d *schema.ResourceData, data fleetapi.OutputCreateRequestLogstash) diag.Diagnostics {
-	if err := d.Set("type", "logstash"); err != nil {
-		return diag.FromErr(err)
-	}
-	if err := d.Set("name", data.Name); err != nil {
-		return diag.FromErr(err)
-	}
-	if err := d.Set("hosts", data.Hosts); err != nil {
-		return diag.FromErr(err)
-	}
-	if err := d.Set("default_integrations", data.IsDefault); err != nil {
-		return diag.FromErr(err)
-	}
-	if data.IsDefaultMonitoring != nil {
-		if err := d.Set("default_monitoring", *data.IsDefaultMonitoring); err != nil {
-			return diag.FromErr(err)
-		}
-	}
-	if data.CaSha256 != nil {
-		if err := d.Set("ca_sha256", *data.CaSha256); err != nil {
-			return diag.FromErr(err)
-		}
-	}
-	if data.CaTrustedFingerprint != nil {
-		if err := d.Set("ca_trusted_fingerprint", *data.CaTrustedFingerprint); err != nil {
-			return diag.FromErr(err)
-		}
-	}
-	if err := d.Set("ssl", flattenSslConfig(data)); err != nil {
-		return diag.FromErr(err)
-	}
-	if data.ConfigYaml != nil {
-		if err := d.Set("config_yaml", *data.ConfigYaml); err != nil {
-			return diag.FromErr(err)
-		}
-	}
-
-	return nil
-}
-
-func resourceOutputRead(ctx context.Context, d *schema.ResourceData, meta interface{}) diag.Diagnostics {
-	fleetClient, diags := getFleetClient(d, meta)
-	if diags.HasError() {
-		return diags
-	}
-
-	rawOutput, diags := fleet.ReadOutput(ctx, fleetClient, d.Id())
-	if diags.HasError() {
-		return diags
-	}
-	// Not found.
-	if rawOutput == nil {
-		d.SetId("")
+func (m *outputModel) fromApi(resp *fleet.OutputUnion) diag.Diagnostics {
+	if resp == nil {
 		return nil
 	}
 
-	output, err := rawOutput.ValueByDiscriminator()
+	path := path.Empty()
+	var diags diag.Diagnostics
+
+	discriminator, err := resp.Discriminator()
 	if err != nil {
-		return diag.FromErr(err)
-	}
-	switch outputType := output.(type) {
-	case fleetapi.OutputCreateRequestElasticsearch:
-		diags = resourceOutputReadElasticsearch(d, outputType)
-	case fleetapi.OutputCreateRequestLogstash:
-		diags = resourceOutputReadLogstash(d, outputType)
-	}
-	if err := d.Set("output_id", d.Id()); err != nil {
-		return diag.FromErr(err)
-	}
-	if diags.HasError() {
+		diags.AddError("discriminator unmarshal failure", err.Error())
 		return diags
 	}
 
-	return nil
-}
+	switch discriminator {
+	case string(fleet.OutputTypeElasticsearch):
+		output, err := resp.AsOutputElasticsearch()
+		if err != nil {
+			diags.AddError("elasticsearch unmarshal failure", err.Error())
+			return diags
+		}
 
-func resourceOutputDelete(ctx context.Context, d *schema.ResourceData, meta interface{}) diag.Diagnostics {
-	fleetClient, diags := getFleetClient(d, meta)
-	if diags.HasError() {
-		return diags
-	}
+		m.Id = types.StringPointerValue(output.Id)
+		m.OutputId = types.StringPointerValue(output.Id)
+		m.Name = types.StringValue(output.Name)
+		m.Type = types.StringValue(string(output.Type))
+		m.Hosts = util.SliceToListType_String(output.Hosts, path.AtName("hosts"), diags)
+		m.DefaultIntegrations = types.BoolPointerValue(output.IsDefault)
+		m.DefaultMonitoring = types.BoolPointerValue(output.IsDefaultMonitoring)
+		m.Preset = types.StringPointerValue((*string)(output.Preset))
+		m.ConfigYaml = types.StringPointerValue(output.ConfigYaml)
+		m.ServiceToken = types.StringNull()
+		m.ServiceTokenSecretId = types.StringNull()
 
-	if diags = fleet.DeleteOutput(ctx, fleetClient, d.Id()); diags.HasError() {
-		return diags
+	case string(fleet.OutputTypeRemoteElasticsearch):
+		output, err := resp.AsOutputRemoteElasticsearch()
+		if err != nil {
+			diags.AddError("remote_elasticsearch unmarshal failure", err.Error())
+			return diags
+		}
+
+		m.Id = types.StringPointerValue(output.Id)
+		m.OutputId = types.StringPointerValue(output.Id)
+		m.Name = types.StringValue(output.Name)
+		m.Type = types.StringValue(string(output.Type))
+		m.Hosts = util.SliceToListType_String(output.Hosts, path.AtName("hosts"), diags)
+		m.DefaultIntegrations = types.BoolPointerValue(output.IsDefault)
+		m.DefaultMonitoring = types.BoolPointerValue(output.IsDefaultMonitoring)
+		m.Preset = types.StringPointerValue((*string)(output.Preset))
+		m.ConfigYaml = types.StringPointerValue(output.ConfigYaml)
+
+		if output.ServiceToken != nil {
+			m.ServiceToken = types.StringPointerValue(output.ServiceToken)
+			m.ServiceTokenSecretId = types.StringNull()
+		} else {
+			if output.Secrets == nil {
+				diags.AddError("expected value was null", "path: output.secrets")
+			} else {
+				token := output.Secrets.ServiceToken
+				secret, err := token.AsSecret()
+				if err != nil {
+					m.ServiceTokenSecretId = types.StringValue(secret.Id)
+				} else {
+					value, err := token.AsString()
+					if err != nil {
+						diags.AddError("service_token unmarshal failure", err.Error())
+					} else {
+						m.ServiceTokenSecretId = types.StringValue(string(value))
+					}
+
+				}
+			}
+		}
+
+	default:
+		diags.AddError("unsupported output type", fmt.Sprintf("type: %s", discriminator))
 	}
-	d.SetId("")
 
 	return diags
-}
-
-func flattenSslConfig(data fleetapi.OutputCreateRequestLogstash) []interface{} {
-	if data.Ssl == nil {
-		return []interface{}{}
-	}
-
-	ssl := make(map[string]interface{})
-	if data.Ssl.CertificateAuthorities != nil {
-		ssl["certificate_authorities"] = *data.Ssl.CertificateAuthorities
-	}
-	if data.Ssl.Certificate != nil {
-		ssl["certificate"] = *data.Ssl.Certificate
-	}
-	if data.Ssl.Key != nil {
-		ssl["key"] = *data.Ssl.Key
-	}
-
-	return []interface{}{ssl}
 }

@@ -8,7 +8,7 @@ description: |-
 
 # Resource: elasticstack_elasticsearch_security_role
 
-Adds and updates roles in the native realm. See, https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-put-role.html
+Adds and updates roles in the native realm. See https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-put-role.html
 
 ## Example Usage
 

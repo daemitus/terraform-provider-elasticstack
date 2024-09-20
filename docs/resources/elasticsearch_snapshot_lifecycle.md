@@ -8,7 +8,7 @@ description: |-
 
 # Resource: elasticstack_elasticsearch_snapshot_lifecycle
 
-Creates or updates a snapshot lifecycle policy. See, https://www.elastic.co/guide/en/elasticsearch/reference/current/slm-api-put-policy.html
+Creates or updates a snapshot lifecycle policy. See https://www.elastic.co/guide/en/elasticsearch/reference/current/slm-api-put-policy.html
 
 ## Example Usage
 

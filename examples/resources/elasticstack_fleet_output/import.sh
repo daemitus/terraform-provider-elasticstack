@@ -1,1 +1,0 @@
-terraform import elasticstack_fleet_output.my_output <fleet_output_id>

@@ -3,54 +3,92 @@ package provider_test
 import (
 	"fmt"
 	"os"
-	"strings"
 	"testing"
 
-	"github.com/elastic/terraform-provider-elasticstack/internal/acctest"
-	"github.com/elastic/terraform-provider-elasticstack/internal/clients/config"
-	"github.com/elastic/terraform-provider-elasticstack/internal/elasticsearch/security"
-	"github.com/elastic/terraform-provider-elasticstack/internal/versionutils"
-	"github.com/elastic/terraform-provider-elasticstack/provider"
-	"github.com/hashicorp/go-version"
-	sdkacctest "github.com/hashicorp/terraform-plugin-sdk/v2/helper/acctest"
-	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
+	"github.com/daemitus/terraform-provider-elasticstack/internal/acctest"
+	"github.com/daemitus/terraform-provider-elasticstack/internal/config"
+	"github.com/daemitus/terraform-provider-elasticstack/provider"
+	"github.com/hashicorp/terraform-plugin-testing/helper/resource"
+	"github.com/samber/lo"
 )
 
-var minVersionForFleet = version.Must(version.NewVersion("8.6.0"))
-
 func TestProvider(t *testing.T) {
-	if err := provider.New("dev").InternalValidate(); err != nil {
-		t.Fatalf("Failed to validate provider: %s", err)
-	}
+	provider.NewProvider("test")
 }
 
-func TestElasticsearchAPIKeyConnection(t *testing.T) {
-	apiKeyName := sdkacctest.RandStringFromCharSet(10, sdkacctest.CharSetAlphaNum)
+func TestProviderElasticsearchConfiguration(t *testing.T) {
+	cfg := lo.Must(config.New().WithEnv())
+	os.Unsetenv("ELASTICSEARCH_ENDPOINT")
+	os.Unsetenv("ELASTICSEARCH_USERNAME")
+	os.Unsetenv("ELASTICSEARCH_PASSWORD")
+	os.Unsetenv("ELASTICSEARCH_API_KEY")
+	os.Unsetenv("ELASTICSEARCH_INSECURE")
+
 	resource.Test(t, resource.TestCase{
-		PreCheck:                 func() { acctest.PreCheck(t) },
-		ProtoV6ProviderFactories: acctest.Providers,
+		ProtoV6ProviderFactories: acctest.ProviderFactories,
 		Steps: []resource.TestStep{
 			{
-				SkipFunc: versionutils.CheckIfVersionIsUnsupported(security.APIKeyMinVersion),
-				Config:   testElasticsearchConnection(apiKeyName),
+				Config: testProviderElasticsearchBasicConfiguration(cfg.Elasticsearch),
 				Check: resource.ComposeTestCheckFunc(
-					resource.TestCheckResourceAttr("data.elasticstack_elasticsearch_security_user.test", "username", "elastic"),
+					resource.TestCheckResourceAttr("data.elasticstack_elasticsearch_cluster_health.test", "status", "green"),
+				),
+			},
+			{
+				Config: testProviderElasticsearchApiKeyConfiguration(cfg.Elasticsearch),
+				Check: resource.ComposeTestCheckFunc(
+					resource.TestCheckResourceAttr("data.elasticstack_elasticsearch_cluster_health.test", "status", "green"),
 				),
 			},
 		},
 	})
 }
 
-func TestFleetConfiguration(t *testing.T) {
-	envConfig := config.NewFromEnv("acceptance-testing")
+func TestProviderKibanaConfiguration(t *testing.T) {
+	cfg := lo.Must(config.New().WithEnv())
+	os.Unsetenv("KIBANA_ENDPOINT")
+	os.Unsetenv("KIBANA_USERNAME")
+	os.Unsetenv("KIBANA_PASSWORD")
+	os.Unsetenv("KIBANA_API_KEY")
+	os.Unsetenv("KIBANA_INSECURE")
 
 	resource.Test(t, resource.TestCase{
-		PreCheck:                 func() { acctest.PreCheck(t) },
-		ProtoV6ProviderFactories: acctest.Providers,
+		ProtoV6ProviderFactories: acctest.ProviderFactories,
 		Steps: []resource.TestStep{
 			{
-				SkipFunc: versionutils.CheckIfVersionIsUnsupported(minVersionForFleet),
-				Config:   testFleetConfiguration(envConfig),
+				Config: testProviderKibanaBasicConfiguration(cfg.Kibana),
+				Check: resource.ComposeTestCheckFunc(
+					resource.TestCheckResourceAttrSet("elasticstack_kibana_space.acc_test", "name"),
+				),
+			},
+			{
+				Config: testProviderKibanaApiKeyConfiguration(cfg.Kibana),
+				Check: resource.ComposeTestCheckFunc(
+					resource.TestCheckResourceAttrSet("elasticstack_kibana_space.acc_test", "name"),
+				),
+			},
+		},
+	})
+}
+
+func TestProviderFleetConfiguration(t *testing.T) {
+	cfg := lo.Must(config.New().WithEnv())
+	os.Unsetenv("FLEET_ENDPOINT")
+	os.Unsetenv("FLEET_USERNAME")
+	os.Unsetenv("FLEET_PASSWORD")
+	os.Unsetenv("FLEET_API_KEY")
+	os.Unsetenv("FLEET_INSECURE")
+
+	resource.Test(t, resource.TestCase{
+		ProtoV6ProviderFactories: acctest.ProviderFactories,
+		Steps: []resource.TestStep{
+			{
+				Config: testProviderFleetBasicConfiguration(cfg.Fleet),
+				Check: resource.ComposeTestCheckFunc(
+					resource.TestCheckResourceAttrSet("data.elasticstack_fleet_enrollment_tokens.test", "tokens.#"),
+				),
+			},
+			{
+				Config: testProviderFleetApiKeyConfiguration(cfg.Fleet),
 				Check: resource.ComposeTestCheckFunc(
 					resource.TestCheckResourceAttrSet("data.elasticstack_fleet_enrollment_tokens.test", "tokens.#"),
 				),
@@ -59,166 +97,89 @@ func TestFleetConfiguration(t *testing.T) {
 	})
 }
 
-func TestKibanaConfiguration(t *testing.T) {
-	var envConfig config.Client
-
-	testCases := []struct {
-		name string
-		tc   func() resource.TestCase
-		pre  func(t *testing.T)
-		post func(t *testing.T)
-	}{
-		{
-			name: "with username and password",
-			pre: func(t *testing.T) {
-				envConfig = config.NewFromEnv("acceptance-testing")
-			},
-			post: func(t *testing.T) {},
-			tc: func() resource.TestCase {
-				return resource.TestCase{
-					PreCheck:                 func() { acctest.PreCheck(t) },
-					ProtoV6ProviderFactories: acctest.Providers,
-					Steps: []resource.TestStep{
-						{
-							SkipFunc: func() (bool, error) {
-								return envConfig.Kibana.Username == "", nil
-							},
-							Config: testKibanaConfiguration(envConfig),
-							Check: resource.ComposeTestCheckFunc(
-								resource.TestCheckResourceAttrSet("elasticstack_kibana_space.acc_test", "name"),
-							),
-						},
-					},
-				}
-			},
-		},
-		{
-			name: "with api key",
-			pre: func(t *testing.T) {
-				apiKey := os.Getenv("KIBANA_API_KEY")
-				t.Setenv("KIBANA_USERNAME", "")
-				t.Setenv("KIBANA_PASSWORD", "")
-				t.Setenv("KIBANA_API_KEY", apiKey)
-				envConfig = config.NewFromEnv("acceptance-testing")
-			},
-			post: func(t *testing.T) {},
-			tc: func() resource.TestCase {
-				return resource.TestCase{
-					PreCheck:                 func() { acctest.PreCheck(t) },
-					ProtoV6ProviderFactories: acctest.Providers,
-					Steps: []resource.TestStep{
-						{
-							SkipFunc: func() (bool, error) {
-								return os.Getenv("KIBANA_API_KEY") == "", nil
-							},
-							Config: testKibanaApiKeyConfiguration(envConfig),
-							Check: resource.ComposeTestCheckFunc(
-								resource.TestCheckResourceAttrSet("elasticstack_kibana_space.acc_test", "name"),
-							),
-						},
-					},
-				}
-			},
-		},
-	}
-	for _, tc := range testCases {
-		t.Run(tc.name, func(t *testing.T) {
-			tc.pre(t)
-			resource.Test(t, tc.tc())
-			tc.post(t)
-		})
-
+func testProviderElasticsearchBasicConfiguration(cfg config.ServiceConfig) string {
+	return fmt.Sprintf(`
+provider "elasticstack" {
+	elasticsearch {
+		endpoint = "%s"
+		username = "%s"
+		password = "%s"
 	}
 }
 
-func testKibanaConfiguration(cfg config.Client) string {
+data "elasticstack_elasticsearch_cluster_health" "test" {}
+`, cfg.Endpoint, cfg.Username, cfg.Password)
+}
+
+func testProviderElasticsearchApiKeyConfiguration(cfg config.ServiceConfig) string {
 	return fmt.Sprintf(`
 provider "elasticstack" {
-	elasticsearch {}
+	elasticsearch {
+		endpoint = "%s"
+		api_key	= "%s"
+	}
+}
+
+data "elasticstack_elasticsearch_cluster_health" "acc_test" {}
+`, cfg.Endpoint, cfg.ApiKey)
+}
+
+func testProviderKibanaBasicConfiguration(cfg config.ServiceConfig) string {
+	return fmt.Sprintf(`
+provider "elasticstack" {
 	kibana {
-		endpoints = ["%s"]
-		username  = "%s"
-		password  = "%s"
+		endpoint = "%s"
+		username = "%s"
+		password = "%s"
 	}
 }
 
 resource "elasticstack_kibana_space" "acc_test" {
-	space_id          = "acc_test_space"
-	name              = "Acceptance Test Space"
-}`, cfg.Kibana.Address, cfg.Kibana.Username, cfg.Kibana.Password)
+	space_id = "acc_test_space"
+	name = "Acceptance Test Space"
+}
+`, cfg.Endpoint, cfg.Username, cfg.Password)
 }
 
-func testKibanaApiKeyConfiguration(cfg config.Client) string {
+func testProviderKibanaApiKeyConfiguration(cfg config.ServiceConfig) string {
 	return fmt.Sprintf(`
 provider "elasticstack" {
-	elasticsearch {}
 	kibana {
-		endpoints = ["%s"]
-		api_key   = "%s"
+		endpoint = "%s"
+		api_key	= "%s"
 	}
 }
 
 resource "elasticstack_kibana_space" "acc_test" {
-	space_id          = "acc_test_space"
-	name              = "Acceptance Test Space"
-}`, cfg.Kibana.Address, cfg.Kibana.ApiKey)
+	space_id = "acc_test_space"
+	name = "Acceptance Test Space"
+}
+`, cfg.Endpoint, cfg.ApiKey)
 }
 
-func testFleetConfiguration(cfg config.Client) string {
-	caCerts := ""
-	if len(cfg.Fleet.CACerts) > 0 {
-		quotedCas := []string{}
-		for _, ca := range cfg.Fleet.CACerts {
-			quotedCas = append(quotedCas, fmt.Sprintf(`"%s"`, ca))
-		}
-
-		caCerts = fmt.Sprintf("ca_certs = [%s]", strings.Join(quotedCas, ","))
-	}
-
+func testProviderFleetBasicConfiguration(cfg config.ServiceConfig) string {
 	return fmt.Sprintf(`
 provider "elasticstack" {
 	fleet {
 		endpoint = "%s"
 		username = "%s"
 		password = "%s"
-		%s
 	}
 }
 
-data "elasticstack_fleet_enrollment_tokens" "test" {}`, cfg.Fleet.URL, cfg.Fleet.Username, cfg.Fleet.Password, caCerts)
+data "elasticstack_fleet_enrollment_tokens" "test" {}
+`, cfg.Endpoint, cfg.Username, cfg.Password)
 }
 
-func testElasticsearchConnection(apiKeyName string) string {
+func testProviderFleetApiKeyConfiguration(cfg config.ServiceConfig) string {
 	return fmt.Sprintf(`
 provider "elasticstack" {
-  elasticsearch {}
+	fleet {
+		endpoint = "%s"
+		api_key	= "%s"
+	}
 }
 
-resource "elasticstack_elasticsearch_security_api_key" "test_connection" {
-  name = "%s"
-
-  role_descriptors = jsonencode({
-    role-a = {
-      cluster = ["all"]
-      indices = [{
-        names = ["*"]
-        privileges = ["all"]
-        allow_restricted_indices = false
-      }]
-    }
-  })
-
-  expiration = "1d"
-}
-
-
-data "elasticstack_elasticsearch_security_user" "test" {
-  username = "elastic"
-
-  elasticsearch_connection {
-    endpoints = ["%s"]
-    api_key   = elasticstack_elasticsearch_security_api_key.test_connection.encoded
-  }
-}
-`, apiKeyName, os.Getenv("ELASTICSEARCH_ENDPOINTS"))
+data "elasticstack_fleet_enrollment_tokens" "test" {}
+`, cfg.Endpoint, cfg.ApiKey)
 }

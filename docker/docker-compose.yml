@@ -1,0 +1,134 @@
+services:
+  testacc:
+    container_name: test-acc
+    image: golang:${GOVERSION}
+    command: ${TEST_ARGS}
+    environment:
+      - TF_ACC=1
+      - TF_LOG=${TF_LOG}
+      - ELASTICSEARCH_ENDPOINT=https://elasticsearch:9200
+      - ELASTICSEARCH_USERNAME=elastic
+      - ELASTICSEARCH_PASSWORD=password
+      - ELASTICSEARCH_INSECURE=true
+      - KIBANA_ENDPOINT=https://kibana:5601
+      - KIBANA_USERNAME=kibana_system
+      - KIBANA_PASSWORD=password
+      - KIBANA_INSECURE=true
+      - FLEET_ENDPOINT=https://kibana:5601
+      - FLEET_USERNAME=kibana_system
+      - FLEET_PASSWORD=password
+      - FLEET_INSECURE=true
+    # env_file:
+    #   - test.env
+    volumes:
+      - ../:/provider
+    entrypoint:
+      - /provider/docker/testacc.sh
+    networks:
+      - elasticstack
+
+  ssl_setup:
+    container_name: ssl_setup
+    image: docker.elastic.co/elasticsearch/elasticsearch:${STACK_VERSION}
+    environment:
+      - ELASTIC_PASSWORD=password
+      - KIBANA_PASSWORD=password
+    networks:
+      - elasticstack
+    volumes:
+      - ./:/opt/docker
+      - ./certs:/usr/share/elasticsearch/config/certs
+    user: "0"
+    entrypoint: /opt/docker/mkcerts.sh
+    healthcheck:
+      test: "[ -f config/certs/elasticsearch/elasticsearch.crt ]"
+      interval: 1s
+      timeout: 5s
+      retries: 120
+
+  elasticsearch:
+    container_name: elasticsearch
+    image: docker.elastic.co/elasticsearch/elasticsearch:${STACK_VERSION}
+    ports:
+      - "9200:9200"
+    environment:
+      - discovery.type=single-node
+      - node.name=elasticsearch
+      - cluster.name=elasticstack
+      - xpack.security.authc.api_key.enabled=true
+      - xpack.security.authc.token.enabled=true
+      - xpack.security.enabled=true
+      - xpack.security.http.ssl.enabled=true
+      - xpack.security.http.ssl.key=certs/elasticsearch/elasticsearch.key
+      - xpack.security.http.ssl.certificate=certs/elasticsearch/elasticsearch.crt
+      - xpack.security.http.ssl.certificate_authorities=certs/ca/ca.crt
+      - xpack.security.http.ssl.verification_mode=certificate
+      - xpack.security.transport.ssl.enabled=true
+      - xpack.security.transport.ssl.key=certs/elasticsearch/elasticsearch.key
+      - xpack.security.transport.ssl.certificate=certs/elasticsearch/elasticsearch.crt
+      - xpack.security.transport.ssl.certificate_authorities=certs/ca/ca.crt
+      - xpack.security.transport.ssl.verification_mode=certificate
+      - xpack.watcher.enabled=true
+      - xpack.license.self_generated.type=trial
+      - ELASTIC_PASSWORD=password
+      - ES_JAVA_OPTS=-Xms1g -Xmx1g
+    networks:
+      - elasticstack
+    volumes:
+      - ./certs:/usr/share/elasticsearch/config/certs
+      - ./healthcheck:/opt/docker/healthcheck
+    healthcheck:
+      test: /opt/docker/healthcheck/elasticsearch.sh
+      start_period: 300s
+      interval: 5s
+
+  elasticsearch_is_ready:
+    container_name: elasticsearch_is_ready
+    image: tianon/true:multiarch
+    networks:
+      - elasticstack
+    depends_on:
+      elasticsearch:
+        condition: service_healthy
+
+  kibana:
+    container_name: kibana
+    image: docker.elastic.co/kibana/kibana:${STACK_VERSION}
+    ports:
+      - "5601:5601"
+    environment:
+      - SERVER_NAME=kibana
+      - ELASTICSEARCH_HOSTS=https://elasticsearch:9200
+      - ELASTICSEARCH_USERNAME=kibana_system
+      - ELASTICSEARCH_PASSWORD=password
+      - ELASTICSEARCH_SSL_CERTIFICATEAUTHORITIES=config/certs/ca/ca.crt
+      - XPACK_ENCRYPTEDSAVEDOBJECTS_ENCRYPTIONKEY=a7a6311933d3503b89bc2dbc36572c33a6c10925682e591bffcab6911c06786d
+      - SERVER_SSL_ENABLED=true
+      - SERVER_SSL_CERTIFICATE=config/certs/kibana/kibana.crt
+      - SERVER_SSL_KEY=config/certs/kibana/kibana.key
+      - SERVER_SSL_CERTIFICATEAUTHORITIES=config/certs/ca/ca.crt
+      - logging.root.level=debug
+    networks:
+      - elasticstack
+    volumes:
+      - ./certs:/usr/share/kibana/config/certs
+      - ./healthcheck:/opt/docker/healthcheck
+    healthcheck:
+      test: /opt/docker/healthcheck/kibana.sh
+      start_period: 600s
+      interval: 5s
+    depends_on:
+      elasticsearch:
+        condition: service_healthy
+
+  kibana_is_ready:
+    container_name: kibana_is_ready
+    image: tianon/true:multiarch
+    networks:
+      - elasticstack
+    depends_on:
+      kibana:
+        condition: service_healthy
+
+networks:
+  elasticstack:

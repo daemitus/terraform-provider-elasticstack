@@ -1,30 +1,28 @@
 package fleet_test
 
 import (
-	"fmt"
+	"errors"
 	"testing"
 
-	"github.com/hashicorp/go-version"
-	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
-	"github.com/hashicorp/terraform-plugin-sdk/v2/terraform"
-
-	"github.com/elastic/terraform-provider-elasticstack/internal/acctest"
-	"github.com/elastic/terraform-provider-elasticstack/internal/versionutils"
+	"github.com/daemitus/terraform-provider-elasticstack/internal/acctest"
+	"github.com/hashicorp/terraform-plugin-testing/helper/resource"
 )
-
-var minVersionIntegrationDataSource = version.Must(version.NewVersion("8.6.0"))
 
 func TestAccDataSourceIntegration(t *testing.T) {
 	resource.Test(t, resource.TestCase{
-		PreCheck:                 func() { acctest.PreCheck(t) },
-		ProtoV6ProviderFactories: acctest.Providers,
+		PreCheck:                 acctest.PreCheck(t),
+		ProtoV6ProviderFactories: acctest.ProviderFactories,
 		Steps: []resource.TestStep{
 			{
-				SkipFunc: versionutils.CheckIfVersionIsUnsupported(minVersionIntegrationDataSource),
-				Config:   testAccDataSourceIntegration,
+				Config: testAccDataSourceIntegration,
 				Check: resource.ComposeTestCheckFunc(
 					resource.TestCheckResourceAttr("data.elasticstack_fleet_integration.test", "name", "tcp"),
-					checkResourceAttrStringNotEmpty("data.elasticstack_fleet_integration.test", "version"),
+					resource.TestCheckResourceAttrWith("data.elasticstack_fleet_integration.test", "version", func(value string) error {
+						if value == "" {
+							return errors.New("attribute was empty when expected")
+						}
+						return nil
+					}),
 				),
 			},
 		},
@@ -32,38 +30,9 @@ func TestAccDataSourceIntegration(t *testing.T) {
 }
 
 const testAccDataSourceIntegration = `
-provider "elasticstack" {
-  elasticsearch {}
-  kibana {}
-}
+provider "elasticstack" {}
 
 data "elasticstack_fleet_integration" "test" {
-    name = "tcp"
+	name = "tcp"
 }
 `
-
-// checkResourceAttrStringNotEmpty verifies that the string value at key
-// is not empty.
-func checkResourceAttrStringNotEmpty(name, key string) resource.TestCheckFunc {
-	return func(s *terraform.State) error {
-		ms := s.RootModule()
-		rs, ok := ms.Resources[name]
-		if !ok {
-			return fmt.Errorf("not found: %s in %s", name, ms.Path)
-		}
-		is := rs.Primary
-		if is == nil {
-			return fmt.Errorf("no primary instance: %s in %s", name, ms.Path)
-		}
-
-		v, ok := is.Attributes[key]
-		if !ok {
-			return fmt.Errorf("%s: Attribute '%s' not found", name, key)
-		}
-		if v == "" {
-			return fmt.Errorf("%s: Attribute '%s' expected non-empty string", name, key)
-		}
-
-		return nil
-	}
-}

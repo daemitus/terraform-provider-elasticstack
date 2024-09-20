@@ -5,29 +5,22 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/elastic/terraform-provider-elasticstack/internal/acctest"
-	"github.com/elastic/terraform-provider-elasticstack/internal/clients"
-	"github.com/elastic/terraform-provider-elasticstack/internal/clients/fleet"
-	"github.com/elastic/terraform-provider-elasticstack/internal/versionutils"
-	"github.com/hashicorp/go-version"
-	sdkacctest "github.com/hashicorp/terraform-plugin-sdk/v2/helper/acctest"
-	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
-	"github.com/hashicorp/terraform-plugin-sdk/v2/terraform"
+	"github.com/daemitus/terraform-provider-elasticstack/internal/acctest"
+	"github.com/daemitus/terraform-provider-elasticstack/internal/clients"
+	"github.com/hashicorp/terraform-plugin-testing/helper/resource"
+	"github.com/hashicorp/terraform-plugin-testing/terraform"
 )
 
-var minVersionOutput = version.Must(version.NewVersion("8.6.0"))
-
 func TestAccResourceOutputElasticsearch(t *testing.T) {
-	policyName := sdkacctest.RandStringFromCharSet(22, sdkacctest.CharSetAlphaNum)
+	policyName := acctest.RandString(22)
 
 	resource.Test(t, resource.TestCase{
-		PreCheck:                 func() { acctest.PreCheck(t) },
+		PreCheck:                 acctest.PreCheck(t),
 		CheckDestroy:             checkResourceOutputDestroy,
-		ProtoV6ProviderFactories: acctest.Providers,
+		ProtoV6ProviderFactories: acctest.ProviderFactories,
 		Steps: []resource.TestStep{
 			{
-				SkipFunc: versionutils.CheckIfVersionIsUnsupported(minVersionOutput),
-				Config:   testAccResourceOutputCreateElasticsearch(policyName),
+				Config: testAccResourceOutputCreateElasticsearch(policyName),
 				Check: resource.ComposeTestCheckFunc(
 					resource.TestCheckResourceAttr("elasticstack_fleet_output.test_output", "name", fmt.Sprintf("Elasticsearch Output %s", policyName)),
 					resource.TestCheckResourceAttr("elasticstack_fleet_output.test_output", "id", "elasticsearch-output"),
@@ -35,12 +28,11 @@ func TestAccResourceOutputElasticsearch(t *testing.T) {
 					resource.TestCheckResourceAttr("elasticstack_fleet_output.test_output", "config_yaml", "\"ssl.verification_mode\": \"none\"\n"),
 					resource.TestCheckResourceAttr("elasticstack_fleet_output.test_output", "default_integrations", "false"),
 					resource.TestCheckResourceAttr("elasticstack_fleet_output.test_output", "default_monitoring", "false"),
-					resource.TestCheckResourceAttr("elasticstack_fleet_output.test_output", "hosts.0", "https://elasticsearch:9200"),
+					resource.TestCheckResourceAttr("elasticstack_fleet_output.test_output", "hosts.0", "http://elasticsearch:9200"),
 				),
 			},
 			{
-				SkipFunc: versionutils.CheckIfVersionIsUnsupported(minVersionOutput),
-				Config:   testAccResourceOutputUpdateElasticsearch(policyName),
+				Config: testAccResourceOutputUpdateElasticsearch(policyName),
 				Check: resource.ComposeTestCheckFunc(
 					resource.TestCheckResourceAttr("elasticstack_fleet_output.test_output", "name", fmt.Sprintf("Updated Elasticsearch Output %s", policyName)),
 					resource.TestCheckResourceAttr("elasticstack_fleet_output.test_output", "id", "elasticsearch-output"),
@@ -48,57 +40,45 @@ func TestAccResourceOutputElasticsearch(t *testing.T) {
 					resource.TestCheckResourceAttr("elasticstack_fleet_output.test_output", "config_yaml", "\"ssl.verification_mode\": \"none\"\n"),
 					resource.TestCheckResourceAttr("elasticstack_fleet_output.test_output", "default_integrations", "false"),
 					resource.TestCheckResourceAttr("elasticstack_fleet_output.test_output", "default_monitoring", "false"),
-					resource.TestCheckResourceAttr("elasticstack_fleet_output.test_output", "hosts.0", "https://elasticsearch:9200"),
+					resource.TestCheckResourceAttr("elasticstack_fleet_output.test_output", "hosts.0", "http://elasticsearch:9200"),
 				),
-			},
-			{
-				SkipFunc:          versionutils.CheckIfVersionIsUnsupported(minVersionOutput),
-				ResourceName:      "elasticstack_fleet_output.test_output",
-				ImportState:       true,
-				ImportStateVerify: true,
 			},
 		},
 	})
 }
 
-func TestAccResourceOutputLogstash(t *testing.T) {
-	policyName := sdkacctest.RandStringFromCharSet(22, sdkacctest.CharSetAlphaNum)
+func TestAccResourceOutputRemoteElasticsearch(t *testing.T) {
+	policyName := acctest.RandString(22)
 
 	resource.Test(t, resource.TestCase{
-		PreCheck:                 func() { acctest.PreCheck(t) },
+		PreCheck:                 acctest.PreCheck(t),
 		CheckDestroy:             checkResourceOutputDestroy,
-		ProtoV6ProviderFactories: acctest.Providers,
+		ProtoV6ProviderFactories: acctest.ProviderFactories,
 		Steps: []resource.TestStep{
 			{
-				SkipFunc: versionutils.CheckIfVersionIsUnsupported(minVersionOutput),
-				Config:   testAccResourceOutputCreateLogstash(policyName),
+				Config: testAccResourceOutputCreateRemoteElasticsearch(policyName),
 				Check: resource.ComposeTestCheckFunc(
-					resource.TestCheckResourceAttr("elasticstack_fleet_output.test_output", "name", fmt.Sprintf("Logstash Output %s", policyName)),
-					resource.TestCheckResourceAttr("elasticstack_fleet_output.test_output", "id", "logstash-output"),
-					resource.TestCheckResourceAttr("elasticstack_fleet_output.test_output", "type", "logstash"),
+					resource.TestCheckResourceAttr("elasticstack_fleet_output.test_output", "name", fmt.Sprintf("Remote Elasticsearch Output %s", policyName)),
+					resource.TestCheckResourceAttr("elasticstack_fleet_output.test_output", "id", "remote-elasticsearch-output"),
+					resource.TestCheckResourceAttr("elasticstack_fleet_output.test_output", "type", "remote_elasticsearch"),
 					resource.TestCheckResourceAttr("elasticstack_fleet_output.test_output", "config_yaml", "\"ssl.verification_mode\": \"none\"\n"),
 					resource.TestCheckResourceAttr("elasticstack_fleet_output.test_output", "default_integrations", "false"),
 					resource.TestCheckResourceAttr("elasticstack_fleet_output.test_output", "default_monitoring", "false"),
-					resource.TestCheckResourceAttr("elasticstack_fleet_output.test_output", "hosts.0", "logstash:5044"),
-					resource.TestCheckResourceAttr("elasticstack_fleet_output.test_output", "ssl.0.certificate_authorities.0", "placeholder"),
-					resource.TestCheckResourceAttr("elasticstack_fleet_output.test_output", "ssl.0.certificate", "placeholder"),
-					resource.TestCheckResourceAttr("elasticstack_fleet_output.test_output", "ssl.0.key", "placeholder"),
+					resource.TestCheckResourceAttr("elasticstack_fleet_output.test_output", "hosts.0", "http://elasticsearch:9200"),
+					resource.TestCheckResourceAttr("elasticstack_fleet_output.test_output", "service_token", "2682f20b-f3bb-4d60-9a45-e3b13809fbf5"),
 				),
 			},
 			{
-				SkipFunc: versionutils.CheckIfVersionIsUnsupported(minVersionOutput),
-				Config:   testAccResourceOutputLogstashUpdate(policyName),
+				Config: testAccResourceOutputUpdateRemoteElasticsearch(policyName),
 				Check: resource.ComposeTestCheckFunc(
-					resource.TestCheckResourceAttr("elasticstack_fleet_output.test_output", "name", fmt.Sprintf("Updated Logstash Output %s", policyName)),
-					resource.TestCheckResourceAttr("elasticstack_fleet_output.test_output", "id", "logstash-output"),
-					resource.TestCheckResourceAttr("elasticstack_fleet_output.test_output", "type", "logstash"),
+					resource.TestCheckResourceAttr("elasticstack_fleet_output.test_output", "name", fmt.Sprintf("Updated Remote Elasticsearch Output %s", policyName)),
+					resource.TestCheckResourceAttr("elasticstack_fleet_output.test_output", "id", "remote-elasticsearch-output"),
+					resource.TestCheckResourceAttr("elasticstack_fleet_output.test_output", "type", "remote_elasticsearch"),
 					resource.TestCheckResourceAttr("elasticstack_fleet_output.test_output", "config_yaml", "\"ssl.verification_mode\": \"none\"\n"),
 					resource.TestCheckResourceAttr("elasticstack_fleet_output.test_output", "default_integrations", "false"),
 					resource.TestCheckResourceAttr("elasticstack_fleet_output.test_output", "default_monitoring", "false"),
-					resource.TestCheckResourceAttr("elasticstack_fleet_output.test_output", "hosts.0", "logstash:5044"),
-					resource.TestCheckResourceAttr("elasticstack_fleet_output.test_output", "ssl.0.certificate_authorities.0", "placeholder"),
-					resource.TestCheckResourceAttr("elasticstack_fleet_output.test_output", "ssl.0.certificate", "placeholder"),
-					resource.TestCheckResourceAttr("elasticstack_fleet_output.test_output", "ssl.0.key", "placeholder"),
+					resource.TestCheckResourceAttr("elasticstack_fleet_output.test_output", "hosts.0", "http://elasticsearch:9200"),
+					resource.TestCheckResourceAttr("elasticstack_fleet_output.test_output", "service_token", "2682f20b-f3bb-4d60-9a45-e3b13809fbf5"),
 				),
 			},
 		},
@@ -107,128 +87,80 @@ func TestAccResourceOutputLogstash(t *testing.T) {
 
 func testAccResourceOutputCreateElasticsearch(id string) string {
 	return fmt.Sprintf(`
-provider "elasticstack" {
-  elasticsearch {}
-  kibana {}
-}
+provider "elasticstack" {}
 
 resource "elasticstack_fleet_output" "test_output" {
-  name                 = "%s"
-  output_id            = "elasticsearch-output"
-  type                 = "elasticsearch"
-  config_yaml = yamlencode({
-    "ssl.verification_mode" : "none"
-  })
-  default_integrations = false
-  default_monitoring   = false
-  hosts = [
-    "https://elasticsearch:9200"
-  ]
-}
-`, fmt.Sprintf("Elasticsearch Output %s", id))
+	name = "Elasticsearch Output %s"
+	output_id = "elasticsearch-output"
+	type = "elasticsearch"
+	config_yaml = yamlencode({"ssl.verification_mode" : "none"})
+	default_integrations = false
+	default_monitoring = false
+	hosts = ["http://elasticsearch:9200"]
+}`, id)
 }
 
 func testAccResourceOutputUpdateElasticsearch(id string) string {
 	return fmt.Sprintf(`
-provider "elasticstack" {
-  elasticsearch {}
-  kibana {}
-}
+provider "elasticstack" {}
 
 resource "elasticstack_fleet_output" "test_output" {
-  name                 = "%s"
-  output_id            = "elasticsearch-output"
-  type                 = "elasticsearch"
-  config_yaml = yamlencode({
-    "ssl.verification_mode" : "none"
-  })
-  default_integrations = false
-  default_monitoring   = false
-  hosts = [
-    "https://elasticsearch:9200"
-  ]
+	name = "Updated Elasticsearch Output %s"
+	output_id = "elasticsearch-output"
+	type = "elasticsearch"
+	config_yaml = yamlencode({"ssl.verification_mode" : "none"})
+	default_integrations = false
+	default_monitoring = false
+	hosts = ["http://elasticsearch:9200"]
+}`, id)
 }
 
-`, fmt.Sprintf("Updated Elasticsearch Output %s", id))
-}
-
-func testAccResourceOutputCreateLogstash(id string) string {
+func testAccResourceOutputCreateRemoteElasticsearch(id string) string {
 	return fmt.Sprintf(`
-provider "elasticstack" {
-  elasticsearch {}
-  kibana {}
-}
+provider "elasticstack" {}
 
 resource "elasticstack_fleet_output" "test_output" {
-  name                 = "%s"
-  type                 = "logstash"
-  output_id            = "logstash-output"
-  config_yaml = yamlencode({
-    "ssl.verification_mode" : "none"
-  })
-  default_integrations = false
-  default_monitoring   = false
-  hosts = [
-    "logstash:5044"
-  ]
-  ssl {
-	certificate_authorities = ["placeholder"]
-	certificate             = "placeholder"
-	key                     = "placeholder"
-  }
-}
-`, fmt.Sprintf("Logstash Output %s", id))
+	name = "Remote Elasticsearch Output %s"
+	output_id = "remote-elasticsearch-output"
+	type = "remote_elasticsearch"
+	config_yaml = yamlencode({"ssl.verification_mode" : "none"})
+	default_integrations = false
+	default_monitoring = false
+	hosts = ["http://elasticsearch:9200"]
+	service_token = "2682f20b-f3bb-4d60-9a45-e3b13809fbf5"
+}`, id)
 }
 
-func testAccResourceOutputLogstashUpdate(id string) string {
+func testAccResourceOutputUpdateRemoteElasticsearch(id string) string {
 	return fmt.Sprintf(`
-provider "elasticstack" {
-  elasticsearch {}
-  kibana {}
-}
+provider "elasticstack" {}
 
 resource "elasticstack_fleet_output" "test_output" {
-  name                 = "%s"
-  type                 = "logstash"
-  output_id            = "logstash-output"
-  config_yaml = yamlencode({
-    "ssl.verification_mode" : "none"
-  })
-  default_integrations = false
-  default_monitoring   = false
-  hosts = [
-    "logstash:5044"
-  ]
-  ssl {
-	certificate_authorities = ["placeholder"]
-	certificate             = "placeholder"
-	key                     = "placeholder"
-  }
-}
-
-`, fmt.Sprintf("Updated Logstash Output %s", id))
+	name = "Updated Remote Elasticsearch Output %s"
+	output_id = "remote-elasticsearch-output"
+	type = "remote_elasticsearch"
+	config_yaml = yamlencode({"ssl.verification_mode" : "none"})
+	default_integrations = false
+	default_monitoring = false
+	hosts = ["http://elasticsearch:9200"]
+	service_token = "2682f20b-f3bb-4d60-9a45-e3b13809fbf5"
+}`, id)
 }
 
 func checkResourceOutputDestroy(s *terraform.State) error {
-	client, err := clients.NewAcceptanceTestingClient()
-	if err != nil {
-		return err
-	}
+	ctx := context.Background()
+	client := clients.NewAccFleetClient()
 
 	for _, rs := range s.RootModule().Resources {
 		if rs.Type != "elasticstack_fleet_output" {
 			continue
 		}
 
-		fleetClient, err := client.GetFleetClient()
-		if err != nil {
-			return err
+		output, diags := client.ReadOutput(ctx, rs.Primary.ID)
+		if diags.HasError() {
+			return fmt.Errorf(diags.Errors()[0].Summary())
 		}
-		packagePolicy, diag := fleet.ReadOutput(context.Background(), fleetClient, rs.Primary.ID)
-		if diag.HasError() {
-			return fmt.Errorf(diag[0].Summary)
-		}
-		if packagePolicy != nil {
+		if output != nil {
 			return fmt.Errorf("output id=%v still exists, but it should have been removed", rs.Primary.ID)
 		}
 	}

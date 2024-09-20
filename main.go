@@ -5,20 +5,11 @@ import (
 	"flag"
 	"log"
 
-	"github.com/elastic/terraform-provider-elasticstack/provider"
+	"github.com/daemitus/terraform-provider-elasticstack/provider"
 	"github.com/hashicorp/terraform-plugin-go/tfprotov6/tf6server"
 )
 
-//go:generate terraform fmt -recursive ./examples/
-
-var (
-	// these will be set by the goreleaser configuration
-	// to appropriate values for the compiled binary
-	version string = "dev"
-
-	// goreleaser can also pass the specific commit if you want
-	// commit  string = ""
-)
+var version string = "dev"
 
 func main() {
 	var debugMode bool
@@ -37,11 +28,10 @@ func main() {
 	}
 
 	err = tf6server.Serve(
-		"registry.terraform.io/elastic/elasticstack",
+		"registry.terraform.io/daemitus/elasticstack",
 		serverFactory,
 		serveOpts...,
 	)
-
 	if err != nil {
 		log.Fatal(err)
 	}
