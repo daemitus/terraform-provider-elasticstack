@@ -80,10 +80,25 @@ jobs:
           ELASTICSEARCH_USERNAME: ${{ env.KIBANA_SYSTEM_USERNAME }}
           ELASTICSEARCH_PASSWORD: ${{ env.KIBANA_SYSTEM_PASSWORD }}
           XPACK_ENCRYPTEDSAVEDOBJECTS_ENCRYPTIONKEY: a7a6311933d3503b89bc2dbc36572c33a6c10925682e591bffcab6911c06786d
-#          LOGGING_ROOT_LEVEL: debug
+          # LOGGING_ROOT_LEVEL: debug
         ports:
           - 5601:5601
         options: --health-cmd="curl http://localhost:5601/api/status" --health-interval=10s --health-timeout=5s --health-retries=10
+      fleet:
+        image: docker.elastic.co/beats/elastic-agent:${{ matrix.version }}
+        env:
+          SERVER_NAME: fleet
+          FLEET_ENROLL: 1
+          FLEET_URL: http://fleet:8220
+          FLEET_INSECURE: "true"
+          FLEET_SERVER_ENABLE: "1"
+          FLEET_SERVER_POLICY_ID: fleet-server-policy
+          FLEET_SERVER_ELASTICSEARCH_HOST: http://elasticsearch:9200
+          FLEET_SERVER_ELASTICSEARCH_INSECURE: "true"
+          FLEET_SERVER_INSECURE_HTTP: "true"
+          KIBANA_HOST: http://kibana:5601
+          KIBANA_FLEET_SETUP: "1"
+          KIBANA_FLEET_PASSWORD: ${{ env.ELASTIC_PASSWORD }}
 
     timeout-minutes: 15
     strategy:
@@ -137,6 +152,16 @@ jobs:
           ELASTICSEARCH_ENDPOINTS: "http://localhost:9200"
           ELASTICSEARCH_USERNAME: "elastic"
           ELASTICSEARCH_PASSWORD: ${{ env.ELASTIC_PASSWORD }}
+
+      - id: setup-fleet
+        name: Setup Fleet
+        run: |-
+          make setup-kibana-fleet
+        env:
+          ELASTICSEARCH_ENDPOINTS: "http://elasticsearch:9200"
+          ELASTICSEARCH_USERNAME: "elastic"
+          ELASTICSEARCH_PASSWORD: ${{ env.ELASTIC_PASSWORD }}
+          FLEET_ENDPOINT: "https://fleet:8220"
 
       - id: force-install-synthetics
         name: Force install synthetics

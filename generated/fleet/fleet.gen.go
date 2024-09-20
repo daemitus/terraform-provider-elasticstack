@@ -299,10 +299,13 @@ type NewPackagePolicy struct {
 	Name        string                        `json:"name"`
 	Namespace   *string                       `json:"namespace,omitempty"`
 	// Deprecated:
-	OutputId *string                   `json:"output_id,omitempty"`
-	Package  *PackagePolicyPackageInfo `json:"package,omitempty"`
-	PolicyId *string                   `json:"policy_id,omitempty"`
-	Vars     map[string]interface{}    `json:"vars,omitempty"`
+	OutputId         *string                   `json:"output_id,omitempty"`
+	Package          *PackagePolicyPackageInfo `json:"package,omitempty"`
+	PolicyId         *string                   `json:"policy_id,omitempty"`
+	SecretReferences []struct {
+		Id *string `json:"id,omitempty"`
+	} `json:"secret_references,omitempty"`
+	Vars map[string]interface{} `json:"vars,omitempty"`
 }
 
 // OutputCreateRequest defines model for output_create_request.
@@ -669,11 +672,14 @@ type PackagePolicy struct {
 	Name        string                        `json:"name"`
 	Namespace   *string                       `json:"namespace,omitempty"`
 	// Deprecated:
-	OutputId *string                   `json:"output_id,omitempty"`
-	Package  *PackagePolicyPackageInfo `json:"package,omitempty"`
-	PolicyId *string                   `json:"policy_id,omitempty"`
-	Revision float32                   `json:"revision"`
-	Vars     map[string]interface{}    `json:"vars,omitempty"`
+	OutputId         *string                   `json:"output_id,omitempty"`
+	Package          *PackagePolicyPackageInfo `json:"package,omitempty"`
+	PolicyId         *string                   `json:"policy_id,omitempty"`
+	Revision         float32                   `json:"revision"`
+	SecretReferences []struct {
+		Id *string `json:"id,omitempty"`
+	} `json:"secret_references,omitempty"`
+	Vars map[string]interface{} `json:"vars,omitempty"`
 }
 
 // PackagePolicyInput defines model for package_policy_input.

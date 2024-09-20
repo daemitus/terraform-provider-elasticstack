@@ -1,6 +1,7 @@
 ## [Unreleased]
 
 - Migrate `elasticstack_fleet_agent_policy`, `elasticstack_fleet_integration` (both), and `elasticstack_fleet_server_host` to terraform-plugin-framework ([#785](https://github.com/elastic/terraform-provider-elasticstack/pull/785))
+- Migrate `elasticstack_fleet_output` and `elasticstack_fleet_integration_policy` to terraform-plugin-framework. Fix drift in integration policy secrets. ([#TODO](https://github.com/elastic/terraform-provider-elasticstack/pull/TODO))
 
 ## [0.11.7] - 2024-09-20
 
