@@ -1,5 +1,7 @@
 ## [Unreleased]
 
+- Migrate `elasticstack_fleet_agent_policy`, `elasticstack_fleet_integration` (both), and `elasticstack_fleet_server_host` to terraform-plugin-framework ([#785](https://github.com/elastic/terraform-provider-elasticstack/pull/785))
+
 ## [0.11.7] - 2024-09-20
 
 - Add the `alerts_filter` field to the `actions` in the Create Rule API ([#774](https://github.com/elastic/terraform-provider-elasticstack/pull/774))
