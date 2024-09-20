@@ -345,7 +345,7 @@ func transformFixPackageSearchResult(schema *Schema) {
 	properties.Delete("installationInfo")
 }
 
-// transformRemoveUnnecessaryGoPointers removes unneeded pointers from
+// transformRemoveUnnecessaryGoPointers removes pointers from
 // map and slice objects.
 func transformRemoveUnnecessaryGoPointers(schema *Schema) {
 	var schemaMap map[string]any
