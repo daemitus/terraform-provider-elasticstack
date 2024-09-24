@@ -144,17 +144,17 @@ func newKibanaLogstashPipelineCreateOrUpdateFunc(c *resty.Client) KibanaLogstash
 		}
 
 		// Retrive the object to return it
-		logstashPipeline, err = newKibanaLogstashPipelineGetFunc(c)(logstashPipeline.ID)
+		newLogstashPipeline, err := newKibanaLogstashPipelineGetFunc(c)(logstashPipeline.ID)
 		if err != nil {
 			return nil, err
 		}
-		if logstashPipeline == nil {
+		if newLogstashPipeline == nil {
 			return nil, NewAPIError(404, "Logstash pipeline %s not found", logstashPipeline.ID)
 		}
 
 		log.Debug("logstashPipeline: ", logstashPipeline)
 
-		return logstashPipeline, nil
+		return newLogstashPipeline, nil
 	}
 }
 

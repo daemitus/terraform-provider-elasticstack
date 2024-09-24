@@ -456,7 +456,7 @@ func resourceRuleRead(ctx context.Context, d *schema.ResourceData, meta interfac
 	id := compId.ResourceId
 	spaceId := compId.ClusterId
 
-	rule, diags := kibana.GetAlertingRule(ctx, client, id, spaceId)
+	rule, diags := kibana.ReadAlertingRule(ctx, client, id, spaceId)
 	if rule == nil && diags == nil {
 		d.SetId("")
 		return diags

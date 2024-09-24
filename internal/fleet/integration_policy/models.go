@@ -5,7 +5,7 @@ import (
 	"encoding/json"
 	"sort"
 
-	fleetapi "github.com/elastic/terraform-provider-elasticstack/generated/fleet"
+	fleetapi "github.com/elastic/terraform-provider-elasticstack/generated/kibana"
 	"github.com/elastic/terraform-provider-elasticstack/internal/utils"
 	"github.com/hashicorp/terraform-plugin-framework-jsontypes/jsontypes"
 	"github.com/hashicorp/terraform-plugin-framework/diag"
@@ -35,7 +35,7 @@ type integrationPolicyInputModel struct {
 	VarsJson    jsontypes.Normalized `tfsdk:"vars_json"`
 }
 
-func (model *integrationPolicyModel) populateFromAPI(ctx context.Context, data *fleetapi.PackagePolicy) diag.Diagnostics {
+func (model *integrationPolicyModel) populateFromAPI(ctx context.Context, data *fleetapi.FleetPackagePolicy) diag.Diagnostics {
 	if data == nil {
 		return nil
 	}
@@ -55,7 +55,7 @@ func (model *integrationPolicyModel) populateFromAPI(ctx context.Context, data *
 
 	{
 		newInputs := utils.TransformMapToSlice(data.Inputs, path.Root("input"), diags,
-			func(inputData fleetapi.PackagePolicyInput, meta utils.MapMeta) integrationPolicyInputModel {
+			func(inputData fleetapi.FleetNewPackagePolicyInput, meta utils.MapMeta) integrationPolicyInputModel {
 				return integrationPolicyInputModel{
 					InputID:     types.StringValue(meta.Key),
 					Enabled:     types.BoolValue(inputData.Enabled),
@@ -79,10 +79,10 @@ func (model *integrationPolicyModel) populateFromAPI(ctx context.Context, data *
 	return diags
 }
 
-func (model integrationPolicyModel) toAPIModel(ctx context.Context, isUpdate bool) (fleetapi.PackagePolicyRequest, diag.Diagnostics) {
+func (model integrationPolicyModel) toAPIModel(ctx context.Context, isUpdate bool) (fleetapi.FleetPackagePolicyRequest, diag.Diagnostics) {
 	var diags diag.Diagnostics
 
-	body := fleetapi.PackagePolicyRequest{
+	body := fleetapi.FleetPackagePolicyRequest{
 		Description: model.Description.ValueStringPointer(),
 		Force:       model.Force.ValueBoolPointer(),
 		Name:        model.Name.ValueString(),
@@ -94,7 +94,7 @@ func (model integrationPolicyModel) toAPIModel(ctx context.Context, isUpdate boo
 			Name:    model.IntegrationName.ValueString(),
 			Version: model.IntegrationVersion.ValueString(),
 		},
-		PolicyId: model.AgentPolicyID.ValueString(),
+		PolicyId: model.AgentPolicyID.ValueStringPointer(),
 		Vars:     utils.NormalizedTypeToMap[any](model.VarsJson, path.Root("vars_json"), diags),
 	}
 
@@ -103,10 +103,10 @@ func (model integrationPolicyModel) toAPIModel(ctx context.Context, isUpdate boo
 	}
 
 	body.Inputs = utils.ListTypeToMap(ctx, model.Input, path.Root("input"), diags,
-		func(inputModel integrationPolicyInputModel, meta utils.ListMeta) (string, fleetapi.PackagePolicyRequestInput) {
-			return inputModel.InputID.ValueString(), fleetapi.PackagePolicyRequestInput{
+		func(inputModel integrationPolicyInputModel, meta utils.ListMeta) (string, fleetapi.FleetPackagePolicyRequestInput) {
+			return inputModel.InputID.ValueString(), fleetapi.FleetPackagePolicyRequestInput{
 				Enabled: inputModel.Enabled.ValueBoolPointer(),
-				Streams: utils.NormalizedTypeToMap[fleetapi.PackagePolicyRequestInputStream](inputModel.StreamsJson, meta.Path.AtName("streams_json"), diags),
+				Streams: utils.NormalizedTypeToMap[fleetapi.FleetPackagePolicyRequestInputStream](inputModel.StreamsJson, meta.Path.AtName("streams_json"), diags),
 				Vars:    utils.NormalizedTypeToMap[any](inputModel.VarsJson, meta.Path.AtName("vars_json"), diags),
 			}
 		})
@@ -181,7 +181,7 @@ func (s secretStore) Save(ctx context.Context, private privateData) (diags diag.
 // extractVars first extracts each wrapped var from the response,
 // then replaces any secretRefs with the original value from the
 // secret store if it exists.
-func extractVars(resp *fleetapi.PackagePolicy, secrets secretStore) {
+func extractVars(resp *fleetapi.FleetPackagePolicy, secrets secretStore) {
 	// First unwrap the response from the {"value": ...} struct. Then for
 	// any values that have `isSecretRef` set, replace with the original
 	// value from reqVars. If req is empty, fetch from the store instead.
@@ -217,10 +217,8 @@ func extractVars(resp *fleetapi.PackagePolicy, secrets secretStore) {
 	handleVars(resp.Vars)
 	for _, input := range resp.Inputs {
 		handleVars(input.Vars)
-		for _, streamAny := range input.Streams {
-			stream := streamAny.(map[string]any)
-			streamVars := stream["vars"].(map[string]any)
-			handleVars(streamVars)
+		for _, stream := range input.Streams {
+			handleVars(stream.Vars)
 		}
 	}
 }
@@ -228,7 +226,7 @@ func extractVars(resp *fleetapi.PackagePolicy, secrets secretStore) {
 // saveVars first extracts each wrapped var from the response,
 // then replaces/saves the original value from the request with the ref from
 // the response.
-func saveVars(req fleetapi.PackagePolicyRequest, resp *fleetapi.PackagePolicy, secrets secretStore) {
+func saveVars(req fleetapi.FleetPackagePolicyRequest, resp *fleetapi.FleetPackagePolicy, secrets secretStore) {
 	// Prune the store and only keep the currently used refs.
 	if resp.SecretReferences != nil {
 		for _, ref := range resp.SecretReferences {
@@ -275,9 +273,8 @@ func saveVars(req fleetapi.PackagePolicyRequest, resp *fleetapi.PackagePolicy, s
 		inputResp := resp.Inputs[inputID]
 		handleVars(inputReq.Vars, inputResp.Vars)
 		for streamID, streamReq := range inputReq.Streams {
-			streamResp := inputResp.Streams[streamID].(map[string]any)
-			streamRespVars := streamResp["vars"].(map[string]any)
-			handleVars(streamReq.Vars, streamRespVars)
+			streamResp := inputResp.Streams[streamID]
+			handleVars(streamReq.Vars, streamResp.Vars)
 		}
 	}
 }

@@ -3,8 +3,8 @@ package config
 import (
 	"context"
 
-	"github.com/disaster37/go-kibana-rest/v8"
 	"github.com/elastic/terraform-provider-elasticstack/internal/clients/fleet"
+	kbapi "github.com/elastic/terraform-provider-elasticstack/internal/clients/kibana"
 	"github.com/elastic/terraform-provider-elasticstack/internal/utils"
 	"github.com/hashicorp/terraform-plugin-framework/diag"
 )
@@ -29,7 +29,7 @@ func NewFromFramework(ctx context.Context, cfg ProviderConfiguration, version st
 		return Client{}, diags
 	}
 
-	client.Kibana = (*kibana.Config)(&kibanaCfg)
+	client.Kibana = (*kbapi.Config)(&kibanaCfg)
 
 	fleetCfg, diags := newFleetConfigFromFramework(ctx, cfg, kibanaCfg)
 	if diags.HasError() {

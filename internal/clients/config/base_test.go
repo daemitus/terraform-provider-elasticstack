@@ -16,16 +16,19 @@ func TestNewBaseConfigFromSDK(t *testing.T) {
 	os.Unsetenv("ELASTICSEARCH_PASSWORD")
 	os.Unsetenv("ELASTICSEARCH_API_KEY")
 
-	rd := schema.TestResourceDataRaw(t, map[string]*schema.Schema{
-		"elasticsearch": providerSchema.GetEsConnectionSchema("elasticsearch", true),
-	}, map[string]interface{}{
-		"elasticsearch": []interface{}{
-			map[string]interface{}{
-				"username": "elastic",
-				"password": "changeme",
+	rd := schema.TestResourceDataRaw(t,
+		map[string]*schema.Schema{
+			"elasticsearch": providerSchema.GetEsConnectionSchema("elasticsearch", true),
+		},
+		map[string]any{
+			"elasticsearch": []any{
+				map[string]any{
+					"username": "elastic",
+					"password": "changeme",
+				},
 			},
 		},
-	})
+	)
 
 	baseCfg := newBaseConfigFromSDK(rd, "unit-testing", "elasticsearch")
 	ua := "elasticstack-terraform-provider/unit-testing"

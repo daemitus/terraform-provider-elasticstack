@@ -1,4 +1,4 @@
-package fleet
+package kibana
 
 import (
 	"crypto/tls"
@@ -8,8 +8,10 @@ import (
 	"os"
 	"strings"
 
-	fleetapi "github.com/elastic/terraform-provider-elasticstack/generated/kibana"
+	kbapi "github.com/elastic/terraform-provider-elasticstack/generated/kibana"
 	"github.com/elastic/terraform-provider-elasticstack/internal/utils"
+	fwdiag "github.com/hashicorp/terraform-plugin-framework/diag"
+	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/logging"
 )
 
@@ -27,7 +29,7 @@ type Config struct {
 type Client struct {
 	URL  string
 	HTTP *http.Client
-	API  *fleetapi.ClientWithResponses
+	API  *kbapi.ClientWithResponses
 }
 
 // NewClient creates a new Elastic Fleet API client.
@@ -53,7 +55,7 @@ func NewClient(cfg Config) (*Client, error) {
 	}
 
 	if logging.IsDebugOrHigher() {
-		roundTripper = utils.NewDebugTransport("Fleet", roundTripper)
+		roundTripper = utils.NewDebugTransport("Kibana", roundTripper)
 	}
 
 	httpClient := &http.Client{
@@ -69,9 +71,9 @@ func NewClient(cfg Config) (*Client, error) {
 	}
 	endpoint += "api/fleet/"
 
-	client, err := fleetapi.NewClientWithResponses(endpoint, fleetapi.WithHTTPClient(httpClient))
+	client, err := kbapi.NewClientWithResponses(endpoint, kbapi.WithHTTPClient(httpClient))
 	if err != nil {
-		return nil, fmt.Errorf("unable to create Fleet API client: %w", err)
+		return nil, fmt.Errorf("unable to create Kibana API client: %w", err)
 	}
 
 	return &Client{
@@ -102,4 +104,33 @@ func (t *transport) RoundTrip(req *http.Request) (*http.Response, error) {
 	}
 
 	return t.next.RoundTrip(req)
+}
+
+// fromErr recreates the sdkdiag.FromErr functionality.
+func fromErr(err error) fwdiag.Diagnostics {
+	if err == nil {
+		return nil
+	}
+	return fwdiag.Diagnostics{
+		fwdiag.NewErrorDiagnostic(err.Error(), ""),
+	}
+}
+
+func reportUnknownError(statusCode int, body []byte) diag.Diagnostics {
+	return diag.Diagnostics{
+		diag.Diagnostic{
+			Severity: diag.Error,
+			Summary:  fmt.Sprintf("Unexpected status code from server: got HTTP %d", statusCode),
+			Detail:   string(body),
+		},
+	}
+}
+
+func reportUnknownErrorFw(statusCode int, body []byte) fwdiag.Diagnostics {
+	return fwdiag.Diagnostics{
+		fwdiag.NewErrorDiagnostic(
+			fmt.Sprintf("Unexpected status code from server: got HTTP %d", statusCode),
+			string(body),
+		),
+	}
 }

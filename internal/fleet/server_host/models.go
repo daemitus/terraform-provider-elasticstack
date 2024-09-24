@@ -3,7 +3,7 @@ package server_host
 import (
 	"context"
 
-	fleetapi "github.com/elastic/terraform-provider-elasticstack/generated/fleet"
+	fleetapi "github.com/elastic/terraform-provider-elasticstack/generated/kibana"
 	"github.com/elastic/terraform-provider-elasticstack/internal/utils"
 	"github.com/hashicorp/terraform-plugin-framework/diag"
 	"github.com/hashicorp/terraform-plugin-framework/path"
@@ -18,7 +18,7 @@ type serverHostModel struct {
 	Default types.Bool   `tfsdk:"default"`
 }
 
-func (model *serverHostModel) populateFromAPI(ctx context.Context, data *fleetapi.FleetServerHost) (diags diag.Diagnostics) {
+func (model *serverHostModel) populateFromAPI(ctx context.Context, data *fleetapi.FleetFleetServerHost) (diags diag.Diagnostics) {
 	if data == nil {
 		return nil
 	}

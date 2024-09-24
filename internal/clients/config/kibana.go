@@ -6,13 +6,13 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/disaster37/go-kibana-rest/v8"
+	kbapi "github.com/elastic/terraform-provider-elasticstack/internal/clients/kibana"
 	fwdiags "github.com/hashicorp/terraform-plugin-framework/diag"
 	sdkdiags "github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 )
 
-type kibanaConfig kibana.Config
+type kibanaConfig kbapi.Config
 
 func newKibanaConfigFromSDK(d *schema.ResourceData, base baseConfig) (kibanaConfig, sdkdiags.Diagnostics) {
 	var diags sdkdiags.Diagnostics
@@ -25,8 +25,8 @@ func newKibanaConfigFromSDK(d *schema.ResourceData, base baseConfig) (kibanaConf
 	}
 
 	// if defined, then we only have a single entry
-	if kib := kibConn.([]interface{})[0]; kib != nil {
-		kibConfig := kib.(map[string]interface{})
+	if kib := kibConn.([]any)[0]; kib != nil {
+		kibConfig := kib.(map[string]any)
 
 		if username, ok := kibConfig["username"]; ok && username != "" {
 			config.Username = username.(string)
@@ -36,26 +36,26 @@ func newKibanaConfigFromSDK(d *schema.ResourceData, base baseConfig) (kibanaConf
 		}
 
 		if apiKey, ok := kibConfig["api_key"]; ok && apiKey != "" {
-			config.ApiKey = apiKey.(string)
+			config.APIKey = apiKey.(string)
 		}
 
-		if endpoints, ok := kibConfig["endpoints"]; ok && len(endpoints.([]interface{})) > 0 {
+		if endpoints, ok := kibConfig["endpoints"]; ok && len(endpoints.([]any)) > 0 {
 			// We're curently limited by the API to a single endpoint
-			if endpoint := endpoints.([]interface{})[0]; endpoint != nil {
-				config.Address = endpoint.(string)
+			if endpoint := endpoints.([]any)[0]; endpoint != nil {
+				config.URL = endpoint.(string)
 			}
 		}
 
-		if caCerts, ok := kibConfig["ca_certs"].([]interface{}); ok && len(caCerts) > 0 {
+		if caCerts, ok := kibConfig["ca_certs"].([]any); ok && len(caCerts) > 0 {
 			for _, elem := range caCerts {
 				if vStr, elemOk := elem.(string); elemOk {
-					config.CAs = append(config.CAs, vStr)
+					config.CACerts = append(config.CACerts, vStr)
 				}
 			}
 		}
 
 		if insecure, ok := kibConfig["insecure"]; ok && insecure.(bool) {
-			config.DisableVerifySSL = true
+			config.Insecure = true
 		}
 	}
 
@@ -73,8 +73,8 @@ func newKibanaConfigFromFramework(ctx context.Context, cfg ProviderConfiguration
 		if kibConfig.Password.ValueString() != "" {
 			config.Password = kibConfig.Password.ValueString()
 		}
-		if kibConfig.ApiKey.ValueString() != "" {
-			config.ApiKey = kibConfig.ApiKey.ValueString()
+		if kibConfig.APIKey.ValueString() != "" {
+			config.APIKey = kibConfig.APIKey.ValueString()
 		}
 		var endpoints []string
 		diags := kibConfig.Endpoints.ElementsAs(ctx, &endpoints, true)
@@ -86,14 +86,14 @@ func newKibanaConfigFromFramework(ctx context.Context, cfg ProviderConfiguration
 		}
 
 		if len(endpoints) > 0 {
-			config.Address = endpoints[0]
+			config.URL = endpoints[0]
 		}
 
 		if len(cas) > 0 {
-			config.CAs = cas
+			config.CACerts = cas
 		}
 
-		config.DisableVerifySSL = kibConfig.Insecure.ValueBool()
+		config.Insecure = kibConfig.Insecure.ValueBool()
 	}
 
 	return config.withEnvironmentOverrides(), nil
@@ -102,15 +102,15 @@ func newKibanaConfigFromFramework(ctx context.Context, cfg ProviderConfiguration
 func (k kibanaConfig) withEnvironmentOverrides() kibanaConfig {
 	k.Username = withEnvironmentOverride(k.Username, "KIBANA_USERNAME")
 	k.Password = withEnvironmentOverride(k.Password, "KIBANA_PASSWORD")
-	k.ApiKey = withEnvironmentOverride(k.ApiKey, "KIBANA_API_KEY")
-	k.Address = withEnvironmentOverride(k.Address, "KIBANA_ENDPOINT")
+	k.APIKey = withEnvironmentOverride(k.APIKey, "KIBANA_API_KEY")
+	k.URL = withEnvironmentOverride(k.URL, "KIBANA_ENDPOINT")
 	if caCerts, ok := os.LookupEnv("KIBANA_CA_CERTS"); ok {
-		k.CAs = strings.Split(caCerts, ",")
+		k.CACerts = strings.Split(caCerts, ",")
 	}
 
 	if insecure, ok := os.LookupEnv("KIBANA_INSECURE"); ok {
 		if insecureValue, err := strconv.ParseBool(insecure); err == nil {
-			k.DisableVerifySSL = insecureValue
+			k.Insecure = insecureValue
 		}
 	}
 
@@ -119,11 +119,11 @@ func (k kibanaConfig) withEnvironmentOverrides() kibanaConfig {
 
 func (k kibanaConfig) toFleetConfig() fleetConfig {
 	return fleetConfig{
-		URL:      k.Address,
+		URL:      k.URL,
 		Username: k.Username,
 		Password: k.Password,
-		APIKey:   k.ApiKey,
-		CACerts:  k.CAs,
-		Insecure: k.DisableVerifySSL,
+		APIKey:   k.APIKey,
+		CACerts:  k.CACerts,
+		Insecure: k.Insecure,
 	}
 }

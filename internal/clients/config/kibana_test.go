@@ -17,7 +17,7 @@ import (
 func Test_newKibanaConfigFromSDK(t *testing.T) {
 	type args struct {
 		baseCfg        baseConfig
-		resourceData   map[string]interface{}
+		resourceData   map[string]any
 		expectedConfig kibanaConfig
 		expectedDiags  sdkdiags.Diagnostics
 		env            map[string]string
@@ -36,7 +36,7 @@ func Test_newKibanaConfigFromSDK(t *testing.T) {
 
 				return args{
 					baseCfg:        baseCfg,
-					resourceData:   map[string]interface{}{},
+					resourceData:   map[string]any{},
 					expectedConfig: baseCfg.toKibanaConfig(),
 				}
 			},
@@ -51,23 +51,23 @@ func Test_newKibanaConfigFromSDK(t *testing.T) {
 
 				return args{
 					baseCfg: baseCfg,
-					resourceData: map[string]interface{}{
-						"kibana": []interface{}{
-							map[string]interface{}{
-								"endpoints": []interface{}{"example.com/kibana"},
+					resourceData: map[string]any{
+						"kibana": []any{
+							map[string]any{
+								"endpoints": []any{"example.com/kibana"},
 								"username":  "kibana",
 								"password":  "baltic",
-								"ca_certs":  []interface{}{"internal", "lets_decrypt"},
+								"ca_certs":  []any{"internal", "lets_decrypt"},
 								"insecure":  false,
 							},
 						},
 					},
 					expectedConfig: kibanaConfig{
-						Address:          "example.com/kibana",
-						Username:         "kibana",
-						Password:         "baltic",
-						CAs:              []string{"internal", "lets_decrypt"},
-						DisableVerifySSL: false,
+						URL:      "example.com/kibana",
+						Username: "kibana",
+						Password: "baltic",
+						CACerts:  []string{"internal", "lets_decrypt"},
+						Insecure: false,
 					},
 				}
 			},
@@ -82,13 +82,13 @@ func Test_newKibanaConfigFromSDK(t *testing.T) {
 
 				return args{
 					baseCfg: baseCfg,
-					resourceData: map[string]interface{}{
-						"kibana": []interface{}{
-							map[string]interface{}{
-								"endpoints": []interface{}{"example.com/kibana"},
+					resourceData: map[string]any{
+						"kibana": []any{
+							map[string]any{
+								"endpoints": []any{"example.com/kibana"},
 								"username":  "kibana",
 								"password":  "baltic",
-								"ca_certs":  []interface{}{"internal", "lets_decrypt"},
+								"ca_certs":  []any{"internal", "lets_decrypt"},
 								"insecure":  true,
 							},
 						},
@@ -101,11 +101,11 @@ func Test_newKibanaConfigFromSDK(t *testing.T) {
 						"KIBANA_CA_CERTS": "black,sea",
 					},
 					expectedConfig: kibanaConfig{
-						Address:          "example.com/cabana",
-						Username:         "elastic",
-						Password:         "thin-lines",
-						DisableVerifySSL: false,
-						CAs:              []string{"black", "sea"},
+						URL:      "example.com/cabana",
+						Username: "elastic",
+						Password: "thin-lines",
+						Insecure: false,
+						CACerts:  []string{"black", "sea"},
 					},
 				}
 			},
@@ -192,11 +192,11 @@ func Test_newKibanaConfigFromFramework(t *testing.T) {
 						},
 					},
 					expectedConfig: kibanaConfig{
-						Address:          "example.com/kibana",
-						Username:         "kibana",
-						Password:         "baltic",
-						CAs:              []string{"internal", "lets_decrypt"},
-						DisableVerifySSL: false,
+						URL:      "example.com/kibana",
+						Username: "kibana",
+						Password: "baltic",
+						CACerts:  []string{"internal", "lets_decrypt"},
+						Insecure: false,
 					},
 				}
 			},
@@ -213,7 +213,7 @@ func Test_newKibanaConfigFromFramework(t *testing.T) {
 					providerConfig: ProviderConfiguration{
 						Kibana: []KibanaConnection{
 							{
-								ApiKey: types.StringValue("test"),
+								APIKey: types.StringValue("test"),
 								Endpoints: types.ListValueMust(types.StringType, []attr.Value{
 									types.StringValue("example.com/kibana"),
 								}),
@@ -223,9 +223,9 @@ func Test_newKibanaConfigFromFramework(t *testing.T) {
 						},
 					},
 					expectedConfig: kibanaConfig{
-						Address:          "example.com/kibana",
-						ApiKey:           "test",
-						DisableVerifySSL: true,
+						URL:      "example.com/kibana",
+						APIKey:   "test",
+						Insecure: true,
 					},
 				}
 			},
@@ -264,11 +264,11 @@ func Test_newKibanaConfigFromFramework(t *testing.T) {
 						"KIBANA_CA_CERTS": "black,sea",
 					},
 					expectedConfig: kibanaConfig{
-						Address:          "example.com/cabana",
-						Username:         "elastic",
-						Password:         "thin-lines",
-						CAs:              []string{"black", "sea"},
-						DisableVerifySSL: false,
+						URL:      "example.com/cabana",
+						Username: "elastic",
+						Password: "thin-lines",
+						CACerts:  []string{"black", "sea"},
+						Insecure: false,
 					},
 				}
 			},

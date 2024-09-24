@@ -656,7 +656,7 @@ func checkResourceAlertingRuleDestroy(s *terraform.State) error {
 		}
 		compId, _ := clients.CompositeIdFromStr(rs.Primary.ID)
 
-		rule, diags := kibana.GetAlertingRule(context.Background(), client, compId.ResourceId, compId.ClusterId)
+		rule, diags := kibana.ReadAlertingRule(context.Background(), client, compId.ResourceId, compId.ClusterId)
 		if diags.HasError() {
 			return fmt.Errorf("Failed to get alerting rule: %v", diags)
 		}

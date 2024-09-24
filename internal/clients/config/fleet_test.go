@@ -17,7 +17,7 @@ import (
 func Test_newFleetConfigFromSDK(t *testing.T) {
 	type args struct {
 		kibanaCfg      kibanaConfig
-		resourceData   map[string]interface{}
+		resourceData   map[string]any
 		expectedConfig fleetConfig
 		expectedDiags  sdkdiags.Diagnostics
 		env            map[string]string
@@ -30,15 +30,15 @@ func Test_newFleetConfigFromSDK(t *testing.T) {
 			name: "should return kibana config if no fleet config defined",
 			args: func() args {
 				kibanaCfg := kibanaConfig{
-					Address:          "example.com/kibana",
-					Username:         "elastic",
-					Password:         "changeme",
-					DisableVerifySSL: true,
+					URL:      "example.com/kibana",
+					Username: "elastic",
+					Password: "changeme",
+					Insecure: true,
 				}
 
 				return args{
 					kibanaCfg:      kibanaCfg,
-					resourceData:   map[string]interface{}{},
+					resourceData:   map[string]any{},
 					expectedConfig: kibanaCfg.toFleetConfig(),
 				}
 			},
@@ -47,22 +47,22 @@ func Test_newFleetConfigFromSDK(t *testing.T) {
 			name: "should use the provided config optios",
 			args: func() args {
 				kibanaCfg := kibanaConfig{
-					Address:          "example.com/kibana",
-					Username:         "elastic",
-					Password:         "changeme",
-					DisableVerifySSL: true,
+					URL:      "example.com/kibana",
+					Username: "elastic",
+					Password: "changeme",
+					Insecure: true,
 				}
 
 				return args{
 					kibanaCfg: kibanaCfg,
-					resourceData: map[string]interface{}{
-						"fleet": []interface{}{
-							map[string]interface{}{
+					resourceData: map[string]any{
+						"fleet": []any{
+							map[string]any{
 								"endpoint": "example.com/fleet",
 								"username": "fleet",
 								"password": "baltic",
 								"api_key":  "leviosa",
-								"ca_certs": []interface{}{"internal", "lets_decrypt"},
+								"ca_certs": []any{"internal", "lets_decrypt"},
 								"insecure": false,
 							},
 						},
@@ -82,22 +82,22 @@ func Test_newFleetConfigFromSDK(t *testing.T) {
 			name: "should prefer environment variables",
 			args: func() args {
 				kibanaCfg := kibanaConfig{
-					Address:          "example.com/kibana",
-					Username:         "elastic",
-					Password:         "changeme",
-					DisableVerifySSL: true,
+					URL:      "example.com/kibana",
+					Username: "elastic",
+					Password: "changeme",
+					Insecure: true,
 				}
 
 				return args{
 					kibanaCfg: kibanaCfg,
-					resourceData: map[string]interface{}{
-						"fleet": []interface{}{
-							map[string]interface{}{
+					resourceData: map[string]any{
+						"fleet": []any{
+							map[string]any{
 								"endpoint": "example.com/fleet",
 								"username": "fleet",
 								"password": "baltic",
 								"api_key":  "leviosa",
-								"ca_certs": []interface{}{"internal", "lets_decrypt"},
+								"ca_certs": []any{"internal", "lets_decrypt"},
 								"insecure": false,
 							},
 						},
@@ -163,10 +163,10 @@ func Test_newFleetConfigFromFramework(t *testing.T) {
 			name: "should return kibana config if no fleet config defined",
 			args: func() args {
 				kibanaCfg := kibanaConfig{
-					Address:          "example.com/kibana",
-					Username:         "elastic",
-					Password:         "changeme",
-					DisableVerifySSL: true,
+					URL:      "example.com/kibana",
+					Username: "elastic",
+					Password: "changeme",
+					Insecure: true,
 				}
 
 				return args{
@@ -180,10 +180,10 @@ func Test_newFleetConfigFromFramework(t *testing.T) {
 			name: "should use the provided config options",
 			args: func() args {
 				kibanaCfg := kibanaConfig{
-					Address:          "example.com/kibana",
-					Username:         "elastic",
-					Password:         "changeme",
-					DisableVerifySSL: true,
+					URL:      "example.com/kibana",
+					Username: "elastic",
+					Password: "changeme",
+					Insecure: true,
 				}
 
 				return args{
@@ -218,10 +218,10 @@ func Test_newFleetConfigFromFramework(t *testing.T) {
 			name: "should prefer environment variables",
 			args: func() args {
 				kibanaCfg := kibanaConfig{
-					Address:          "example.com/kibana",
-					Username:         "elastic",
-					Password:         "changeme",
-					DisableVerifySSL: true,
+					URL:      "example.com/kibana",
+					Username: "elastic",
+					Password: "changeme",
+					Insecure: true,
 				}
 
 				return args{

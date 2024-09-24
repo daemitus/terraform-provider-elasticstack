@@ -5,20 +5,20 @@ import (
 	"os"
 	"strings"
 
-	"github.com/elastic/terraform-provider-elasticstack/internal/clients/fleet"
+	kbapi "github.com/elastic/terraform-provider-elasticstack/internal/clients/kibana"
 	fwdiags "github.com/hashicorp/terraform-plugin-framework/diag"
 	sdkdiags "github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 )
 
-type fleetConfig fleet.Config
+type fleetConfig kbapi.Config
 
 func newFleetConfigFromSDK(d *schema.ResourceData, kibanaCfg kibanaConfig) (fleetConfig, sdkdiags.Diagnostics) {
 	config := kibanaCfg.toFleetConfig()
 
 	// Set variables from resource config.
 	if fleetDataRaw, ok := d.GetOk("fleet"); ok {
-		fleetData, ok := fleetDataRaw.([]interface{})[0].(map[string]any)
+		fleetData, ok := fleetDataRaw.([]any)[0].(map[string]any)
 		if !ok {
 			diags := sdkdiags.Diagnostics{
 				sdkdiags.Diagnostic{
@@ -41,7 +41,7 @@ func newFleetConfigFromSDK(d *schema.ResourceData, kibanaCfg kibanaConfig) (flee
 		if v, ok := fleetData["api_key"].(string); ok && v != "" {
 			config.APIKey = v
 		}
-		if v, ok := fleetData["ca_certs"].([]interface{}); ok && len(v) > 0 {
+		if v, ok := fleetData["ca_certs"].([]any); ok && len(v) > 0 {
 			for _, elem := range v {
 				if vStr, elemOk := elem.(string); elemOk {
 					config.CACerts = append(config.CACerts, vStr)

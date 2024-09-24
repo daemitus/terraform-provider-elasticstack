@@ -145,7 +145,7 @@ provider "elasticstack" {
 resource "elasticstack_kibana_space" "acc_test" {
 	space_id          = "acc_test_space"
 	name              = "Acceptance Test Space"
-}`, cfg.Kibana.Address, cfg.Kibana.Username, cfg.Kibana.Password)
+}`, cfg.Kibana.URL, cfg.Kibana.Username, cfg.Kibana.Password)
 }
 
 func testKibanaApiKeyConfiguration(cfg config.Client) string {
@@ -161,7 +161,7 @@ provider "elasticstack" {
 resource "elasticstack_kibana_space" "acc_test" {
 	space_id          = "acc_test_space"
 	name              = "Acceptance Test Space"
-}`, cfg.Kibana.Address, cfg.Kibana.ApiKey)
+}`, cfg.Kibana.URL, cfg.Kibana.APIKey)
 }
 
 func testFleetConfiguration(cfg config.Client) string {

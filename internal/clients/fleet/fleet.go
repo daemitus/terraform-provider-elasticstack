@@ -7,7 +7,7 @@ import (
 	"io"
 	"net/http"
 
-	fleetapi "github.com/elastic/terraform-provider-elasticstack/generated/fleet"
+	fleetapi "github.com/elastic/terraform-provider-elasticstack/generated/kibana"
 	"github.com/hashicorp/terraform-plugin-framework/diag"
 )
 
@@ -16,7 +16,7 @@ var (
 )
 
 // AllEnrollmentTokens reads all enrollment tokens from the API.
-func AllEnrollmentTokens(ctx context.Context, client *Client) ([]fleetapi.EnrollmentApiKey, diag.Diagnostics) {
+func AllEnrollmentTokens(ctx context.Context, client *Client) ([]fleetapi.FleetEnrollmentApiKey, diag.Diagnostics) {
 	resp, err := client.API.GetEnrollmentApiKeysWithResponse(ctx)
 	if err != nil {
 		return nil, fromErr(err)
@@ -29,7 +29,7 @@ func AllEnrollmentTokens(ctx context.Context, client *Client) ([]fleetapi.Enroll
 }
 
 // GetEnrollmentTokensByPolicy Get enrollment tokens by given policy ID
-func GetEnrollmentTokensByPolicy(ctx context.Context, client *Client, policyID string) ([]fleetapi.EnrollmentApiKey, diag.Diagnostics) {
+func GetEnrollmentTokensByPolicy(ctx context.Context, client *Client, policyID string) ([]fleetapi.FleetEnrollmentApiKey, diag.Diagnostics) {
 	resp, err := client.API.GetEnrollmentApiKeysWithResponse(ctx, func(ctx context.Context, req *http.Request) error {
 		q := req.URL.Query()
 		q.Set("kuery", "policy_id:"+policyID)
@@ -65,7 +65,7 @@ func ReadAgentPolicy(ctx context.Context, client *Client, id string) (*fleetapi.
 }
 
 // CreateAgentPolicy creates a new agent policy.
-func CreateAgentPolicy(ctx context.Context, client *Client, req fleetapi.AgentPolicyCreateRequest) (*fleetapi.AgentPolicy, diag.Diagnostics) {
+func CreateAgentPolicy(ctx context.Context, client *Client, req fleetapi.FleetAgentPolicyCreateRequest) (*fleetapi.FleetAgentPolicy, diag.Diagnostics) {
 	resp, err := client.API.CreateAgentPolicyWithResponse(ctx, req)
 	if err != nil {
 		return nil, fromErr(err)
@@ -80,7 +80,7 @@ func CreateAgentPolicy(ctx context.Context, client *Client, req fleetapi.AgentPo
 }
 
 // UpdateAgentPolicy updates an existing agent policy.
-func UpdateAgentPolicy(ctx context.Context, client *Client, id string, req fleetapi.AgentPolicyUpdateRequest) (*fleetapi.AgentPolicy, diag.Diagnostics) {
+func UpdateAgentPolicy(ctx context.Context, client *Client, id string, req fleetapi.FleetAgentPolicyUpdateRequest) (*fleetapi.FleetAgentPolicy, diag.Diagnostics) {
 	resp, err := client.API.UpdateAgentPolicyWithResponse(ctx, id, req)
 	if err != nil {
 		return nil, fromErr(err)
@@ -116,7 +116,7 @@ func DeleteAgentPolicy(ctx context.Context, client *Client, id string) diag.Diag
 }
 
 // ReadOutput reads a specific output from the API.
-func ReadOutput(ctx context.Context, client *Client, id string) (*fleetapi.OutputCreateRequest, diag.Diagnostics) {
+func ReadOutput(ctx context.Context, client *Client, id string) (*fleetapi.FleetOutputCreateRequest, diag.Diagnostics) {
 	resp, err := client.API.GetOutputWithResponse(ctx, id)
 	if err != nil {
 		return nil, fromErr(err)
@@ -133,7 +133,7 @@ func ReadOutput(ctx context.Context, client *Client, id string) (*fleetapi.Outpu
 }
 
 // CreateOutput creates a new output.
-func CreateOutput(ctx context.Context, client *Client, req fleetapi.PostOutputsJSONRequestBody) (*fleetapi.OutputCreateRequest, diag.Diagnostics) {
+func CreateOutput(ctx context.Context, client *Client, req fleetapi.PostOutputsJSONRequestBody) (*fleetapi.FleetOutputCreateRequest, diag.Diagnostics) {
 	resp, err := client.API.PostOutputsWithResponse(ctx, req)
 	if err != nil {
 		return nil, fromErr(err)
@@ -148,7 +148,7 @@ func CreateOutput(ctx context.Context, client *Client, req fleetapi.PostOutputsJ
 }
 
 // UpdateOutput updates an existing output.
-func UpdateOutput(ctx context.Context, client *Client, id string, req fleetapi.UpdateOutputJSONRequestBody) (*fleetapi.OutputUpdateRequest, diag.Diagnostics) {
+func UpdateOutput(ctx context.Context, client *Client, id string, req fleetapi.UpdateOutputJSONRequestBody) (*fleetapi.FleetOutputUpdateRequest, diag.Diagnostics) {
 	resp, err := client.API.UpdateOutputWithResponse(ctx, id, req)
 	if err != nil {
 		return nil, fromErr(err)
@@ -180,7 +180,7 @@ func DeleteOutput(ctx context.Context, client *Client, id string) diag.Diagnosti
 }
 
 // ReadFleetServerHost reads a specific fleet server host from the API.
-func ReadFleetServerHost(ctx context.Context, client *Client, id string) (*fleetapi.FleetServerHost, diag.Diagnostics) {
+func ReadFleetServerHost(ctx context.Context, client *Client, id string) (*fleetapi.FleetFleetServerHost, diag.Diagnostics) {
 	resp, err := client.API.GetOneFleetServerHostsWithResponse(ctx, id)
 	if err != nil {
 		return nil, fromErr(err)
@@ -197,7 +197,7 @@ func ReadFleetServerHost(ctx context.Context, client *Client, id string) (*fleet
 }
 
 // CreateFleetServerHost creates a new fleet server host.
-func CreateFleetServerHost(ctx context.Context, client *Client, req fleetapi.PostFleetServerHostsJSONRequestBody) (*fleetapi.FleetServerHost, diag.Diagnostics) {
+func CreateFleetServerHost(ctx context.Context, client *Client, req fleetapi.PostFleetServerHostsJSONRequestBody) (*fleetapi.FleetFleetServerHost, diag.Diagnostics) {
 	resp, err := client.API.PostFleetServerHostsWithResponse(ctx, req)
 	if err != nil {
 		return nil, fromErr(err)
@@ -212,7 +212,7 @@ func CreateFleetServerHost(ctx context.Context, client *Client, req fleetapi.Pos
 }
 
 // UpdateFleetServerHost updates an existing fleet server host.
-func UpdateFleetServerHost(ctx context.Context, client *Client, id string, req fleetapi.UpdateFleetServerHostsJSONRequestBody) (*fleetapi.FleetServerHost, diag.Diagnostics) {
+func UpdateFleetServerHost(ctx context.Context, client *Client, id string, req fleetapi.UpdateFleetServerHostsJSONRequestBody) (*fleetapi.FleetFleetServerHost, diag.Diagnostics) {
 	resp, err := client.API.UpdateFleetServerHostsWithResponse(ctx, id, req)
 	if err != nil {
 		return nil, fromErr(err)
@@ -244,11 +244,9 @@ func DeleteFleetServerHost(ctx context.Context, client *Client, id string) diag.
 }
 
 // ReadPackagePolicy reads a specific package policy from the API.
-func ReadPackagePolicy(ctx context.Context, client *Client, id string) (*fleetapi.PackagePolicy, diag.Diagnostics) {
+func ReadPackagePolicy(ctx context.Context, client *Client, id string) (*fleetapi.FleetPackagePolicy, diag.Diagnostics) {
 	format := fleetapi.GetPackagePolicyParamsFormatSimplified
-	params := fleetapi.GetPackagePolicyParams{
-		Format: &format,
-	}
+	params := fleetapi.GetPackagePolicyParams{Format: &format}
 
 	resp, err := client.API.GetPackagePolicyWithResponse(ctx, id, &params)
 	if err != nil {
@@ -266,11 +264,9 @@ func ReadPackagePolicy(ctx context.Context, client *Client, id string) (*fleetap
 }
 
 // CreatePackagePolicy creates a new package policy.
-func CreatePackagePolicy(ctx context.Context, client *Client, req fleetapi.CreatePackagePolicyJSONRequestBody) (*fleetapi.PackagePolicy, diag.Diagnostics) {
+func CreatePackagePolicy(ctx context.Context, client *Client, req fleetapi.CreatePackagePolicyJSONRequestBody) (*fleetapi.FleetPackagePolicy, diag.Diagnostics) {
 	format := fleetapi.CreatePackagePolicyParamsFormatSimplified
-	params := fleetapi.CreatePackagePolicyParams{
-		Format: &format,
-	}
+	params := fleetapi.CreatePackagePolicyParams{Format: &format}
 
 	resp, err := client.API.CreatePackagePolicyWithResponse(ctx, &params, req)
 	if err != nil {
@@ -287,10 +283,8 @@ func CreatePackagePolicy(ctx context.Context, client *Client, req fleetapi.Creat
 
 // UpdatePackagePolicy updates an existing package policy.
 func UpdatePackagePolicy(ctx context.Context, client *Client, id string, req fleetapi.UpdatePackagePolicyJSONRequestBody) (*fleetapi.PackagePolicy, diag.Diagnostics) {
-	format := fleetapi.UpdatePackagePolicyParamsFormatSimplified
-	params := fleetapi.UpdatePackagePolicyParams{
-		Format: &format,
-	}
+	format := fleetapi.Simplified
+	params := fleetapi.UpdatePackagePolicyParams{Format: &format}
 
 	resp, err := client.API.UpdatePackagePolicyWithResponse(ctx, id, &params, req)
 	if err != nil {
@@ -308,6 +302,7 @@ func UpdatePackagePolicy(ctx context.Context, client *Client, id string, req fle
 // DeletePackagePolicy deletes an existing package policy.
 func DeletePackagePolicy(ctx context.Context, client *Client, id string, force bool) diag.Diagnostics {
 	params := fleetapi.DeletePackagePolicyParams{Force: &force}
+
 	resp, err := client.API.DeletePackagePolicyWithResponse(ctx, id, &params)
 	if err != nil {
 		return fromErr(err)
@@ -351,10 +346,7 @@ func ReadPackage(ctx context.Context, client *Client, name, version string) diag
 // InstallPackage installs a package.
 func InstallPackage(ctx context.Context, client *Client, name, version string, force bool) diag.Diagnostics {
 	params := fleetapi.InstallPackageParams{}
-	body := fleetapi.InstallPackageJSONRequestBody{
-		Force:             &force,
-		IgnoreConstraints: nil,
-	}
+	body := fleetapi.InstallPackageJSONRequestBody{Force: &force}
 
 	resp, err := client.API.InstallPackage(ctx, name, version, &params, body)
 	if err != nil {
@@ -378,9 +370,7 @@ func InstallPackage(ctx context.Context, client *Client, name, version string, f
 // Uninstall uninstalls a package.
 func Uninstall(ctx context.Context, client *Client, name, version string, force bool) diag.Diagnostics {
 	params := fleetapi.DeletePackageParams{}
-	body := fleetapi.DeletePackageJSONRequestBody{
-		Force: &force,
-	}
+	body := fleetapi.DeletePackageJSONRequestBody{Force: &force}
 
 	resp, err := client.API.DeletePackageWithResponse(ctx, name, version, &params, body)
 	if err != nil {
@@ -398,10 +388,8 @@ func Uninstall(ctx context.Context, client *Client, name, version string, force 
 }
 
 // AllPackages returns information about the latest packages known to Fleet.
-func AllPackages(ctx context.Context, client *Client, prerelease bool) ([]fleetapi.SearchResult, diag.Diagnostics) {
-	params := fleetapi.ListAllPackagesParams{
-		Prerelease: &prerelease,
-	}
+func AllPackages(ctx context.Context, client *Client, prerelease bool) ([]fleetapi.FleetSearchResult, diag.Diagnostics) {
+	params := fleetapi.ListAllPackagesParams{Prerelease: &prerelease}
 
 	resp, err := client.API.ListAllPackagesWithResponse(ctx, &params)
 	if err != nil {

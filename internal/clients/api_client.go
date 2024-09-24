@@ -5,17 +5,12 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"net/http"
 	"strings"
 
-	"github.com/disaster37/go-kibana-rest/v8"
 	"github.com/elastic/go-elasticsearch/v7"
-	"github.com/elastic/terraform-provider-elasticstack/generated/alerting"
-	"github.com/elastic/terraform-provider-elasticstack/generated/connectors"
-	"github.com/elastic/terraform-provider-elasticstack/generated/data_views"
-	"github.com/elastic/terraform-provider-elasticstack/generated/slo"
 	"github.com/elastic/terraform-provider-elasticstack/internal/clients/config"
 	"github.com/elastic/terraform-provider-elasticstack/internal/clients/fleet"
+	"github.com/elastic/terraform-provider-elasticstack/internal/clients/kibana"
 	"github.com/elastic/terraform-provider-elasticstack/internal/models"
 	"github.com/elastic/terraform-provider-elasticstack/internal/utils"
 	"github.com/hashicorp/go-version"
@@ -23,9 +18,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
-	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/logging"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
-	"github.com/oapi-codegen/oapi-codegen/v2/pkg/securityprovider"
 )
 
 type CompositeId struct {
@@ -67,11 +60,6 @@ type ApiClient struct {
 	elasticsearch            *elasticsearch.Client
 	elasticsearchClusterInfo *models.ClusterInfo
 	kibana                   *kibana.Client
-	alerting                 alerting.AlertingAPI
-	dataViews                data_views.DataViewsAPI
-	connectors               *connectors.Client
-	slo                      slo.SloAPI
-	kibanaConfig             kibana.Config
 	fleet                    *fleet.Client
 	version                  string
 }
@@ -91,16 +79,9 @@ func NewAcceptanceTestingClient() (*ApiClient, error) {
 		return nil, err
 	}
 
-	kib, err := kibana.NewClient(*cfg.Kibana)
+	kibanaClient, err := kibana.NewClient(*cfg.Kibana)
 	if err != nil {
 		return nil, err
-	}
-
-	kibanaHttpClient := kib.Client.GetClient()
-
-	actionConnectors, err := buildConnectorsClient(cfg, kibanaHttpClient)
-	if err != nil {
-		return nil, fmt.Errorf("cannot create Kibana action connectors client: [%w]", err)
 	}
 
 	fleetClient, err := fleet.NewClient(*cfg.Fleet)
@@ -110,12 +91,7 @@ func NewAcceptanceTestingClient() (*ApiClient, error) {
 
 	return &ApiClient{
 			elasticsearch: es,
-			kibana:        kib,
-			alerting:      buildAlertingClient(cfg, kibanaHttpClient).AlertingAPI,
-			dataViews:     buildDataViewsClient(cfg, kibanaHttpClient).DataViewsAPI,
-			slo:           buildSloClient(cfg, kibanaHttpClient).SloAPI,
-			connectors:    actionConnectors,
-			kibanaConfig:  *cfg.Kibana,
+			kibana:        kibanaClient,
 			fleet:         fleetClient,
 			version:       version,
 		},
@@ -234,89 +210,12 @@ func (a *ApiClient) GetKibanaClient() (*kibana.Client, error) {
 	return a.kibana, nil
 }
 
-func (a *ApiClient) GetAlertingClient() (alerting.AlertingAPI, error) {
-	if a.alerting == nil {
-		return nil, errors.New("alerting client not found")
-	}
-
-	return a.alerting, nil
-}
-
-func (a *ApiClient) GetDataViewsClient() (data_views.DataViewsAPI, error) {
-	if a.dataViews == nil {
-		return nil, errors.New("data views client not found")
-	}
-
-	return a.dataViews, nil
-}
-
-func (a *ApiClient) GetKibanaConnectorsClient(ctx context.Context) (*connectors.Client, error) {
-	if a.connectors == nil {
-		return nil, errors.New("kibana action connector client not found")
-	}
-
-	return a.connectors, nil
-}
-
-func (a *ApiClient) GetSloClient() (slo.SloAPI, error) {
-	if a.slo == nil {
-		return nil, errors.New("slo client not found")
-	}
-
-	return a.slo, nil
-}
-
 func (a *ApiClient) GetFleetClient() (*fleet.Client, error) {
 	if a.fleet == nil {
 		return nil, errors.New("fleet client not found")
 	}
 
 	return a.fleet, nil
-}
-
-func (a *ApiClient) SetSloAuthContext(ctx context.Context) context.Context {
-	if a.kibanaConfig.ApiKey != "" {
-		return context.WithValue(ctx, slo.ContextAPIKeys, map[string]slo.APIKey{
-			"apiKeyAuth": {
-				Prefix: "ApiKey",
-				Key:    a.kibanaConfig.ApiKey,
-			}})
-	} else {
-		return context.WithValue(ctx, slo.ContextBasicAuth, slo.BasicAuth{
-			UserName: a.kibanaConfig.Username,
-			Password: a.kibanaConfig.Password,
-		})
-	}
-}
-
-func (a *ApiClient) SetAlertingAuthContext(ctx context.Context) context.Context {
-	if a.kibanaConfig.ApiKey != "" {
-		return context.WithValue(ctx, alerting.ContextAPIKeys, map[string]alerting.APIKey{
-			"apiKeyAuth": {
-				Prefix: "ApiKey",
-				Key:    a.kibanaConfig.ApiKey,
-			}})
-	} else {
-		return context.WithValue(ctx, alerting.ContextBasicAuth, alerting.BasicAuth{
-			UserName: a.kibanaConfig.Username,
-			Password: a.kibanaConfig.Password,
-		})
-	}
-}
-
-func (a *ApiClient) SetDataviewAuthContext(ctx context.Context) context.Context {
-	if a.kibanaConfig.ApiKey != "" {
-		return context.WithValue(ctx, data_views.ContextAPIKeys, map[string]data_views.APIKey{
-			"apiKeyAuth": {
-				Prefix: "ApiKey",
-				Key:    a.kibanaConfig.ApiKey,
-			}})
-	} else {
-		return context.WithValue(ctx, data_views.ContextBasicAuth, data_views.BasicAuth{
-			UserName: a.kibanaConfig.Username,
-			Password: a.kibanaConfig.Password,
-		})
-	}
 }
 
 func (a *ApiClient) ID(ctx context.Context, resourceId string) (*CompositeId, diag.Diagnostics) {
@@ -415,93 +314,12 @@ func buildEsClient(cfg config.Client) (*elasticsearch.Client, error) {
 }
 
 func buildKibanaClient(cfg config.Client) (*kibana.Client, error) {
-	if cfg.Kibana == nil {
-		return nil, nil
-	}
-
-	kib, err := kibana.NewClient(*cfg.Kibana)
-
+	client, err := kibana.NewClient(*cfg.Kibana)
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("Unable to create Kibana client: %w", err)
 	}
 
-	if logging.IsDebugOrHigher() {
-		// Don't use kib.Client.SetDebug() here as we re-use the http client within the OpenAPI generated clients
-		transport, err := kib.Client.Transport()
-		if err != nil {
-			return nil, err
-		}
-		var roundTripper http.RoundTripper = utils.NewDebugTransport("Kibana", transport)
-		kib.Client.SetTransport(roundTripper)
-	}
-
-	return kib, nil
-}
-
-func buildAlertingClient(cfg config.Client, httpClient *http.Client) *alerting.APIClient {
-	alertingConfig := alerting.Configuration{
-		UserAgent: cfg.UserAgent,
-		Servers: alerting.ServerConfigurations{
-			{
-				URL: cfg.Kibana.Address,
-			},
-		},
-		HTTPClient: httpClient,
-	}
-	return alerting.NewAPIClient(&alertingConfig)
-}
-
-func buildDataViewsClient(cfg config.Client, httpClient *http.Client) *data_views.APIClient {
-	dvConfig := data_views.Configuration{
-		UserAgent: cfg.UserAgent,
-		Servers: data_views.ServerConfigurations{
-			{
-				URL: cfg.Kibana.Address,
-			},
-		},
-		HTTPClient: httpClient,
-	}
-	return data_views.NewAPIClient(&dvConfig)
-}
-
-func buildConnectorsClient(cfg config.Client, httpClient *http.Client) (*connectors.Client, error) {
-	var authInterceptor connectors.ClientOption
-	if cfg.Kibana.ApiKey != "" {
-		apiKeyProvider, err := securityprovider.NewSecurityProviderApiKey(
-			"header",
-			"Authorization",
-			"ApiKey "+cfg.Kibana.ApiKey,
-		)
-		if err != nil {
-			return nil, fmt.Errorf("unable to create api key auth provider: %w", err)
-		}
-		authInterceptor = connectors.WithRequestEditorFn(apiKeyProvider.Intercept)
-	} else {
-		basicAuthProvider, err := securityprovider.NewSecurityProviderBasicAuth(cfg.Kibana.Username, cfg.Kibana.Password)
-		if err != nil {
-			return nil, fmt.Errorf("unable to create basic auth provider: %w", err)
-		}
-		authInterceptor = connectors.WithRequestEditorFn(basicAuthProvider.Intercept)
-	}
-
-	return connectors.NewClient(
-		cfg.Kibana.Address,
-		authInterceptor,
-		connectors.WithHTTPClient(httpClient),
-	)
-}
-
-func buildSloClient(cfg config.Client, httpClient *http.Client) *slo.APIClient {
-	sloConfig := slo.Configuration{
-		UserAgent: cfg.UserAgent,
-		Servers: slo.ServerConfigurations{
-			{
-				URL: cfg.Kibana.Address,
-			},
-		},
-		HTTPClient: httpClient,
-	}
-	return slo.NewAPIClient(&sloConfig)
+	return client, nil
 }
 
 func buildFleetClient(cfg config.Client) (*fleet.Client, error) {
@@ -528,10 +346,7 @@ func newApiClientFromSDK(d *schema.ResourceData, version string) (*ApiClient, di
 }
 
 func newApiClientFromConfig(cfg config.Client, version string) (*ApiClient, error) {
-	client := &ApiClient{
-		kibanaConfig: *cfg.Kibana,
-		version:      version,
-	}
+	client := &ApiClient{version: version}
 
 	if cfg.Elasticsearch != nil {
 		esClient, err := buildEsClient(cfg)
@@ -546,18 +361,7 @@ func newApiClientFromConfig(cfg config.Client, version string) (*ApiClient, erro
 		if err != nil {
 			return nil, err
 		}
-
-		kibanaHttpClient := kibanaClient.Client.GetClient()
-		connectorsClient, err := buildConnectorsClient(cfg, kibanaHttpClient)
-		if err != nil {
-			return nil, fmt.Errorf("cannot create Kibana connectors client: [%w]", err)
-		}
-
 		client.kibana = kibanaClient
-		client.alerting = buildAlertingClient(cfg, kibanaHttpClient).AlertingAPI
-		client.dataViews = buildDataViewsClient(cfg, kibanaHttpClient).DataViewsAPI
-		client.slo = buildSloClient(cfg, kibanaHttpClient).SloAPI
-		client.connectors = connectorsClient
 	}
 
 	if cfg.Fleet != nil {
@@ -565,7 +369,6 @@ func newApiClientFromConfig(cfg config.Client, version string) (*ApiClient, erro
 		if err != nil {
 			return nil, err
 		}
-
 		client.fleet = fleetClient
 	}
 
