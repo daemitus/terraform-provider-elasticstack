@@ -18,7 +18,7 @@ type serverHostModel struct {
 	Default types.Bool   `tfsdk:"default"`
 }
 
-func (model *serverHostModel) populateFromAPI(ctx context.Context, data *fleetapi.FleetFleetServerHost) (diags diag.Diagnostics) {
+func (model *serverHostModel) populateFromAPI(ctx context.Context, data *fleetapi.FleetServerHost) (diags diag.Diagnostics) {
 	if data == nil {
 		return nil
 	}

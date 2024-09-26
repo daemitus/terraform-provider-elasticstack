@@ -9,8 +9,8 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 )
 
-func SearchConnectors(ctx context.Context, client *Client, spaceID string, connectorName string, connectorTypeID string) ([]kbapi.ConnectorsConnectorResponseProperties, diag.Diagnostics) {
-	resp, err := client.API.GetConnectorsWithResponse(ctx, spaceID)
+func SearchConnectors(ctx context.Context, client *Client, spaceID string, connectorName string, connectorTypeID string) ([]kbapi.ConnectorResponseProperties, diag.Diagnostics) {
+	resp, err := client.API.GetAllConnectorsWithResponse(ctx, spaceID, nil)
 	if err != nil {
 		return nil, diag.FromErr(err)
 	}
@@ -26,8 +26,8 @@ func SearchConnectors(ctx context.Context, client *Client, spaceID string, conne
 }
 
 // ReadConnector reads a specific connector from the API.
-func ReadConnector(ctx context.Context, client Client, spaceID string, connectorID string) (*kbapi.ConnectorsConnectorResponseProperties, diag.Diagnostics) {
-	resp, err := client.API.GetConnectorWithResponse(ctx, spaceID, connectorID)
+func ReadConnector(ctx context.Context, client Client, spaceID string, connectorID string) (*kbapi.ConnectorResponseProperties, diag.Diagnostics) {
+	resp, err := client.API.GetConnectorWithResponse(ctx, spaceID, connectorID, nil)
 	if err != nil {
 		return nil, diag.FromErr(err)
 	}
@@ -43,8 +43,8 @@ func ReadConnector(ctx context.Context, client Client, spaceID string, connector
 }
 
 // CreateConnector creates a new connector.
-func CreateConnector(ctx context.Context, client *Client, spaceID string, req kbapi.ConnectorsCreateConnectorRequest) (*kbapi.ConnectorsConnectorResponseProperties, diag.Diagnostics) {
-	resp, err := client.API.CreateConnectorWithResponse(ctx, spaceID, req)
+func CreateConnector(ctx context.Context, client *Client, spaceID string, connectorID string, req kbapi.CreateConnectorJSONRequestBody) (*kbapi.ConnectorResponseProperties, diag.Diagnostics) {
+	resp, err := client.API.CreateConnectorWithResponse(ctx, spaceID, connectorID, nil, req)
 	if err != nil {
 		return nil, diag.FromErr(err)
 	}
@@ -58,8 +58,8 @@ func CreateConnector(ctx context.Context, client *Client, spaceID string, req kb
 }
 
 // UpdateConnector updates an existing connector.
-func UpdateConnector(ctx context.Context, client *Client, spaceID string, connectorID string, req kbapi.ConnectorsUpdateConnectorRequest) (*kbapi.ConnectorsConnectorResponseProperties, diag.Diagnostics) {
-	resp, err := client.API.UpdateConnectorWithResponse(ctx, spaceID, connectorID, req)
+func UpdateConnector(ctx context.Context, client *Client, spaceID string, connectorID string, req kbapi.UpdateConnectorJSONRequestBody) (*kbapi.ConnectorResponseProperties, diag.Diagnostics) {
+	resp, err := client.API.UpdateConnectorWithResponse(ctx, spaceID, connectorID, nil, req)
 	if err != nil {
 		return nil, diag.FromErr(err)
 	}
@@ -89,8 +89,8 @@ func DeleteConnector(ctx context.Context, client *Client, spaceID string, connec
 	}
 }
 
-func SearchConnectorsDefault(ctx context.Context, client *Client, connectorName string, connectorTypeID string) ([]kbapi.ConnectorsConnectorResponseProperties, diag.Diagnostics) {
-	resp, err := client.API.GetConnectorsDefaultWithResponse(ctx)
+func SearchConnectorsDefault(ctx context.Context, client *Client, connectorName string, connectorTypeID string) ([]kbapi.ConnectorResponseProperties, diag.Diagnostics) {
+	resp, err := client.API.GetAllConnectorsDefaultWithResponse(ctx, nil)
 	if err != nil {
 		return nil, diag.FromErr(err)
 	}
@@ -106,8 +106,8 @@ func SearchConnectorsDefault(ctx context.Context, client *Client, connectorName 
 }
 
 // ReadConnectorDefault reads a specific connector from the API.
-func ReadConnectorDefault(ctx context.Context, client Client, connectorID string) (*kbapi.ConnectorsConnectorResponseProperties, diag.Diagnostics) {
-	resp, err := client.API.GetConnectorDefaultWithResponse(ctx, connectorID)
+func ReadConnectorDefault(ctx context.Context, client Client, connectorID string) (*kbapi.ConnectorResponseProperties, diag.Diagnostics) {
+	resp, err := client.API.GetConnectorDefaultWithResponse(ctx, connectorID, nil)
 	if err != nil {
 		return nil, diag.FromErr(err)
 	}
@@ -123,8 +123,8 @@ func ReadConnectorDefault(ctx context.Context, client Client, connectorID string
 }
 
 // CreateConnectorDefault creates a new connector.
-func CreateConnectorDefault(ctx context.Context, client *Client, req kbapi.ConnectorsCreateConnectorRequest) (*kbapi.ConnectorsConnectorResponseProperties, diag.Diagnostics) {
-	resp, err := client.API.CreateConnectorDefaultWithResponse(ctx, req)
+func CreateConnectorDefault(ctx context.Context, client *Client, connectorID string, req kbapi.CreateConnectorDefaultJSONRequestBody) (*kbapi.ConnectorResponseProperties, diag.Diagnostics) {
+	resp, err := client.API.CreateConnectorDefaultWithResponse(ctx, connectorID, nil, req)
 	if err != nil {
 		return nil, diag.FromErr(err)
 	}
@@ -138,8 +138,8 @@ func CreateConnectorDefault(ctx context.Context, client *Client, req kbapi.Conne
 }
 
 // UpdateConnectorDefault updates an existing connector.
-func UpdateConnectorDefault(ctx context.Context, client *Client, connectorID string, req kbapi.ConnectorsUpdateConnectorRequest) (*kbapi.ConnectorsConnectorResponseProperties, diag.Diagnostics) {
-	resp, err := client.API.UpdateConnectorDefaultWithResponse(ctx, connectorID, req)
+func UpdateConnectorDefault(ctx context.Context, client *Client, connectorID string, req kbapi.UpdateConnectorDefaultJSONRequestBody) (*kbapi.ConnectorResponseProperties, diag.Diagnostics) {
+	resp, err := client.API.UpdateConnectorDefaultWithResponse(ctx, connectorID, nil, req)
 	if err != nil {
 		return nil, diag.FromErr(err)
 	}
@@ -169,7 +169,7 @@ func DeleteConnectorDefault(ctx context.Context, client *Client, connectorID str
 	}
 }
 
-func filterSearchResults(results *[]kbapi.ConnectorsConnectorResponseProperties, connectorTypeID string, connectorName string) ([]kbapi.ConnectorsConnectorResponseProperties, diag.Diagnostics) {
+func filterSearchResults(results *[]kbapi.ConnectorResponseProperties, connectorTypeID string, connectorName string) ([]kbapi.ConnectorResponseProperties, diag.Diagnostics) {
 	if results == nil {
 		return nil, nil
 	}
@@ -179,7 +179,7 @@ func filterSearchResults(results *[]kbapi.ConnectorsConnectorResponseProperties,
 		ConnectorTypeID string `json:"connector_type_id"`
 	}
 
-	matches := make([]kbapi.ConnectorsConnectorResponseProperties, 0)
+	matches := make([]kbapi.ConnectorResponseProperties, 0)
 
 	for _, union := range *results {
 		bytes, err := union.MarshalJSON()

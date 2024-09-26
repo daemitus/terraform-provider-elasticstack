@@ -9,10 +9,8 @@ import (
 )
 
 // GetSlo reads a specific SLO from the API.
-func GetSlo(ctx context.Context, client *Client, spaceID string, sloID string) (*kbapi.SLOsSloWithSummaryResponse, diag.Diagnostics) {
-	params := kbapi.GetSloOpParams{}
-
-	resp, err := client.API.GetSloOpWithResponse(ctx, spaceID, sloID, &params)
+func GetSlo(ctx context.Context, client *Client, spaceID string, sloID string) (*kbapi.SloWithSummaryResponse, diag.Diagnostics) {
+	resp, err := client.API.GetSloOpWithResponse(ctx, spaceID, sloID, nil)
 	if err != nil {
 		return nil, diag.FromErr(err)
 	}
@@ -28,7 +26,7 @@ func GetSlo(ctx context.Context, client *Client, spaceID string, sloID string) (
 }
 
 // CreateSlo creates a new data view.
-func CreateSlo(ctx context.Context, client *Client, spaceID string, req kbapi.SLOsCreateSloRequest) (*kbapi.SLOsSloWithSummaryResponse, diag.Diagnostics) {
+func CreateSlo(ctx context.Context, client *Client, spaceID string, req kbapi.CreateSloRequest) (*kbapi.SloWithSummaryResponse, diag.Diagnostics) {
 	resp, err := client.API.CreateSloOpWithResponse(ctx, spaceID, req)
 	if err != nil {
 		return nil, diag.FromErr(err)
@@ -45,7 +43,7 @@ func CreateSlo(ctx context.Context, client *Client, spaceID string, req kbapi.SL
 }
 
 // UpdateSlo updates an existing data view.
-func UpdateSlo(ctx context.Context, client *Client, spaceID string, sloID string, req kbapi.SLOsUpdateSloRequest) (*kbapi.SLOsSloWithSummaryResponse, diag.Diagnostics) {
+func UpdateSlo(ctx context.Context, client *Client, spaceID string, sloID string, req kbapi.UpdateSloRequest) (*kbapi.SloWithSummaryResponse, diag.Diagnostics) {
 	resp, err := client.API.UpdateSloOpWithResponse(ctx, spaceID, sloID, req)
 	if err != nil {
 		return nil, diag.FromErr(err)

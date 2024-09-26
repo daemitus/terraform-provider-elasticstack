@@ -22,1029 +22,24 @@ const (
 	BasicAuthScopes = "basicAuth.Scopes"
 )
 
-// Defines values for AgentPolicyMonitoringEnabled.
-const (
-	AgentPolicyMonitoringEnabledLogs    AgentPolicyMonitoringEnabled = "logs"
-	AgentPolicyMonitoringEnabledMetrics AgentPolicyMonitoringEnabled = "metrics"
-)
-
-// Defines values for AgentPolicyCreateRequestMonitoringEnabled.
-const (
-	AgentPolicyCreateRequestMonitoringEnabledLogs    AgentPolicyCreateRequestMonitoringEnabled = "logs"
-	AgentPolicyCreateRequestMonitoringEnabledMetrics AgentPolicyCreateRequestMonitoringEnabled = "metrics"
-)
-
-// Defines values for AgentPolicyUpdateRequestMonitoringEnabled.
-const (
-	Logs    AgentPolicyUpdateRequestMonitoringEnabled = "logs"
-	Metrics AgentPolicyUpdateRequestMonitoringEnabled = "metrics"
-)
-
-// Defines values for Aggtype.
-const (
-	AggtypeAvg   Aggtype = "avg"
-	AggtypeCount Aggtype = "count"
-	AggtypeMax   Aggtype = "max"
-	AggtypeMin   Aggtype = "min"
-	AggtypeSum   Aggtype = "sum"
-)
-
-// Defines values for BudgetingMethod.
-const (
-	Occurrences BudgetingMethod = "occurrences"
-	Timeslices  BudgetingMethod = "timeslices"
-)
-
-// Defines values for CreateAnomalyDetectionAlertRuleRequestRuleTypeId.
-const (
-	XpackMlAnomalyDetectionAlert CreateAnomalyDetectionAlertRuleRequestRuleTypeId = "xpack.ml.anomaly_detection_alert"
-)
-
-// Defines values for CreateAnomalyDetectionJobsHealthRuleRequestRuleTypeId.
-const (
-	XpackMlAnomalyDetectionJobsHealth CreateAnomalyDetectionJobsHealthRuleRequestRuleTypeId = "xpack.ml.anomaly_detection_jobs_health"
-)
-
-// Defines values for CreateApmAnomalyRuleRequestRuleTypeId.
-const (
-	ApmAnomaly CreateApmAnomalyRuleRequestRuleTypeId = "apm.anomaly"
-)
-
-// Defines values for CreateApmErrorCountRuleRequestRuleTypeId.
-const (
-	ApmErrorRate CreateApmErrorCountRuleRequestRuleTypeId = "apm.error_rate"
-)
-
-// Defines values for CreateApmTransactionDurationRuleRequestRuleTypeId.
-const (
-	ApmTransactionDuration CreateApmTransactionDurationRuleRequestRuleTypeId = "apm.transaction_duration"
-)
-
-// Defines values for CreateApmTransactionErrorRateRuleRequestRuleTypeId.
-const (
-	ApmTransactionErrorRate CreateApmTransactionErrorRateRuleRequestRuleTypeId = "apm.transaction_error_rate"
-)
-
-// Defines values for CreateEsQueryRuleRequestRuleTypeId.
-const (
-	DotEsQuery CreateEsQueryRuleRequestRuleTypeId = ".es-query"
-)
-
-// Defines values for CreateGeoContainmentRuleRequestRuleTypeId.
-const (
-	DotGeoContainment CreateGeoContainmentRuleRequestRuleTypeId = ".geo-containment"
-)
-
-// Defines values for CreateIndexThresholdRuleRequestRuleTypeId.
-const (
-	DotIndexThreshold CreateIndexThresholdRuleRequestRuleTypeId = ".index-threshold"
-)
-
-// Defines values for CreateInfraInventoryRuleRequestRuleTypeId.
-const (
-	MetricsAlertInventoryThreshold CreateInfraInventoryRuleRequestRuleTypeId = "metrics.alert.inventory.threshold"
-)
-
-// Defines values for CreateInfraMetricAnomalyRuleRequestRuleTypeId.
-const (
-	MetricsAlertAnomaly CreateInfraMetricAnomalyRuleRequestRuleTypeId = "metrics.alert.anomaly"
-)
-
-// Defines values for CreateInfraMetricThresholdRuleRequestRuleTypeId.
-const (
-	MetricsAlertThreshold CreateInfraMetricThresholdRuleRequestRuleTypeId = "metrics.alert.threshold"
-)
-
-// Defines values for CreateLogThresholdRuleRequestRuleTypeId.
-const (
-	LogsAlertDocumentCount CreateLogThresholdRuleRequestRuleTypeId = "logs.alert.document.count"
-)
-
-// Defines values for CreateMonitoringCcrExceptionsRuleRequestRuleTypeId.
-const (
-	MonitoringCcrReadExceptions CreateMonitoringCcrExceptionsRuleRequestRuleTypeId = "monitoring_ccr_read_exceptions"
-)
-
-// Defines values for CreateMonitoringClusterHealthRuleRequestRuleTypeId.
-const (
-	MonitoringAlertClusterHealth CreateMonitoringClusterHealthRuleRequestRuleTypeId = "monitoring_alert_cluster_health"
-)
-
-// Defines values for CreateMonitoringCpuUsageRuleRequestRuleTypeId.
-const (
-	MonitoringAlertCpuUsage CreateMonitoringCpuUsageRuleRequestRuleTypeId = "monitoring_alert_cpu_usage"
-)
-
-// Defines values for CreateMonitoringDiskUsageRuleRequestRuleTypeId.
-const (
-	MonitoringAlertDiskUsage CreateMonitoringDiskUsageRuleRequestRuleTypeId = "monitoring_alert_disk_usage"
-)
-
-// Defines values for CreateMonitoringElasticsearchVersionMismatchRuleRequestRuleTypeId.
-const (
-	MonitoringAlertElasticsearchVersionMismatch CreateMonitoringElasticsearchVersionMismatchRuleRequestRuleTypeId = "monitoring_alert_elasticsearch_version_mismatch"
-)
-
-// Defines values for CreateMonitoringJvmMemoryUsageRuleRequestRuleTypeId.
-const (
-	MonitoringAlertJvmMemoryUsage CreateMonitoringJvmMemoryUsageRuleRequestRuleTypeId = "monitoring_alert_jvm_memory_usage"
-)
-
-// Defines values for CreateMonitoringKibanaVersionMismatchRuleRequestRuleTypeId.
-const (
-	MonitoringAlertKibanaVersionMismatch CreateMonitoringKibanaVersionMismatchRuleRequestRuleTypeId = "monitoring_alert_kibana_version_mismatch"
-)
-
-// Defines values for CreateMonitoringLicenseExpirationRuleRequestRuleTypeId.
-const (
-	MonitoringAlertLicenseExpiration CreateMonitoringLicenseExpirationRuleRequestRuleTypeId = "monitoring_alert_license_expiration"
-)
-
-// Defines values for CreateMonitoringLogstashVersionMismatchRuleRequestRuleTypeId.
-const (
-	MonitoringAlertLogstashVersionMismatch CreateMonitoringLogstashVersionMismatchRuleRequestRuleTypeId = "monitoring_alert_logstash_version_mismatch"
-)
-
-// Defines values for CreateMonitoringMissingDataRuleRequestRuleTypeId.
-const (
-	MonitoringAlertMissingMonitoringData CreateMonitoringMissingDataRuleRequestRuleTypeId = "monitoring_alert_missing_monitoring_data"
-)
-
-// Defines values for CreateMonitoringNodesChangedRuleRequestRuleTypeId.
-const (
-	MonitoringAlertNodesChanged CreateMonitoringNodesChangedRuleRequestRuleTypeId = "monitoring_alert_nodes_changed"
-)
-
-// Defines values for CreateMonitoringShardSizeRuleRequestRuleTypeId.
-const (
-	MonitoringShardSize CreateMonitoringShardSizeRuleRequestRuleTypeId = "monitoring_shard_size"
-)
-
-// Defines values for CreateMonitoringThreadPoolSearchRejectionsRuleRequestRuleTypeId.
-const (
-	MonitoringAlertThreadPoolSearchRejections CreateMonitoringThreadPoolSearchRejectionsRuleRequestRuleTypeId = "monitoring_alert_thread_pool_search_rejections"
-)
-
-// Defines values for CreateMonitoringThreadPoolWriteRejectionsRuleRequestRuleTypeId.
-const (
-	MonitoringAlertThreadPoolWriteRejections CreateMonitoringThreadPoolWriteRejectionsRuleRequestRuleTypeId = "monitoring_alert_thread_pool_write_rejections"
-)
-
-// Defines values for CreateSiemEqlRuleRequestRuleTypeId.
-const (
-	SiemEqlRule CreateSiemEqlRuleRequestRuleTypeId = "siem.eqlRule"
-)
-
-// Defines values for CreateSiemIndicatorRuleRequestRuleTypeId.
-const (
-	SiemIndicatorRule CreateSiemIndicatorRuleRequestRuleTypeId = "siem.indicatorRule"
-)
-
-// Defines values for CreateSiemMlRuleRequestRuleTypeId.
-const (
-	SiemMlRule CreateSiemMlRuleRequestRuleTypeId = "siem.mlRule"
-)
-
-// Defines values for CreateSiemNewTermsRuleRequestRuleTypeId.
-const (
-	SiemNewTermsRule CreateSiemNewTermsRuleRequestRuleTypeId = "siem.newTermsRule"
-)
-
-// Defines values for CreateSiemNotificationsRuleRequestRuleTypeId.
-const (
-	SiemNotifications CreateSiemNotificationsRuleRequestRuleTypeId = "siem.notifications"
-)
-
-// Defines values for CreateSiemQueryRuleRequestRuleTypeId.
-const (
-	SiemQueryRule CreateSiemQueryRuleRequestRuleTypeId = "siem.queryRule"
-)
-
-// Defines values for CreateSiemSavedQueryRuleRequestRuleTypeId.
-const (
-	SiemSavedQueryRule CreateSiemSavedQueryRuleRequestRuleTypeId = "siem.savedQueryRule"
-)
-
-// Defines values for CreateSiemThresholdRuleRequestRuleTypeId.
-const (
-	SiemThresholdRule CreateSiemThresholdRuleRequestRuleTypeId = "siem.thresholdRule"
-)
-
-// Defines values for CreateSloBurnRateRuleRequestRuleTypeId.
-const (
-	SloRulesBurnRate CreateSloBurnRateRuleRequestRuleTypeId = "slo.rules.burnRate"
-)
-
-// Defines values for CreateSyntheticsMonitorStatusRuleRequestRuleTypeId.
-const (
-	XpackSyntheticsAlertsMonitorStatus CreateSyntheticsMonitorStatusRuleRequestRuleTypeId = "xpack.synthetics.alerts.monitorStatus"
-)
-
-// Defines values for CreateSyntheticsUptimeDurationAnomalyRuleRequestRuleTypeId.
-const (
-	XpackUptimeAlertsDurationAnomaly CreateSyntheticsUptimeDurationAnomalyRuleRequestRuleTypeId = "xpack.uptime.alerts.durationAnomaly"
-)
-
-// Defines values for CreateSyntheticsUptimeTlsCertificateRuleRequestRuleTypeId.
-const (
-	XpackUptimeAlertsTlsCertificate CreateSyntheticsUptimeTlsCertificateRuleRequestRuleTypeId = "xpack.uptime.alerts.tlsCertificate"
-)
-
-// Defines values for CreateSyntheticsUptimeTlsRuleRequestRuleTypeId.
-const (
-	XpackUptimeAlertsTls CreateSyntheticsUptimeTlsRuleRequestRuleTypeId = "xpack.uptime.alerts.tls"
-)
-
-// Defines values for CreateTransformHealthRuleRequestRuleTypeId.
-const (
-	TransformHealth CreateTransformHealthRuleRequestRuleTypeId = "transform_health"
-)
-
-// Defines values for CreateUptimeMonitorStatusRuleRequestRuleTypeId.
-const (
-	XpackUptimeAlertsMonitorStatus CreateUptimeMonitorStatusRuleRequestRuleTypeId = "xpack.uptime.alerts.monitorStatus"
-)
-
-// Defines values for ElasticsearchAssetType.
-const (
-	ComponentTemplate   ElasticsearchAssetType = "component_template"
-	DataStreamIlmPolicy ElasticsearchAssetType = "data_stream_ilm_policy"
-	IlmPolicy           ElasticsearchAssetType = "ilm_policy"
-	IndexTemplate       ElasticsearchAssetType = "index_template"
-	IngestPipeline      ElasticsearchAssetType = "ingest_pipeline"
-	Transform           ElasticsearchAssetType = "transform"
-)
-
-// Defines values for Groupby.
-const (
-	All Groupby = "all"
-	Top Groupby = "top"
-)
-
-// Defines values for IndicatorPropertiesCustomMetricParamsGoodMetricsAggregation.
-const (
-	IndicatorPropertiesCustomMetricParamsGoodMetricsAggregationSum IndicatorPropertiesCustomMetricParamsGoodMetricsAggregation = "sum"
-)
-
-// Defines values for IndicatorPropertiesCustomMetricParamsTotalMetricsAggregation.
-const (
-	IndicatorPropertiesCustomMetricParamsTotalMetricsAggregationSum IndicatorPropertiesCustomMetricParamsTotalMetricsAggregation = "sum"
-)
-
-// Defines values for IndicatorPropertiesHistogramParamsGoodAggregation.
-const (
-	IndicatorPropertiesHistogramParamsGoodAggregationRange      IndicatorPropertiesHistogramParamsGoodAggregation = "range"
-	IndicatorPropertiesHistogramParamsGoodAggregationValueCount IndicatorPropertiesHistogramParamsGoodAggregation = "value_count"
-)
-
-// Defines values for IndicatorPropertiesHistogramParamsTotalAggregation.
-const (
-	IndicatorPropertiesHistogramParamsTotalAggregationRange      IndicatorPropertiesHistogramParamsTotalAggregation = "range"
-	IndicatorPropertiesHistogramParamsTotalAggregationValueCount IndicatorPropertiesHistogramParamsTotalAggregation = "value_count"
-)
-
-// Defines values for IndicatorPropertiesTimesliceMetricParamsMetricComparator.
-const (
-	GT  IndicatorPropertiesTimesliceMetricParamsMetricComparator = "GT"
-	GTE IndicatorPropertiesTimesliceMetricParamsMetricComparator = "GTE"
-	LT  IndicatorPropertiesTimesliceMetricParamsMetricComparator = "LT"
-	LTE IndicatorPropertiesTimesliceMetricParamsMetricComparator = "LTE"
-)
-
-// Defines values for InstallationInfoInstallSource.
-const (
-	InstallationInfoInstallSourceBundled  InstallationInfoInstallSource = "bundled"
-	InstallationInfoInstallSourceRegistry InstallationInfoInstallSource = "registry"
-	InstallationInfoInstallSourceUpload   InstallationInfoInstallSource = "upload"
-)
-
-// Defines values for InstallationInfoInstallStatus.
-const (
-	InstallationInfoInstallStatusInstallFailed InstallationInfoInstallStatus = "install_failed"
-	InstallationInfoInstallStatusInstalled     InstallationInfoInstallStatus = "installed"
-	InstallationInfoInstallStatusInstalling    InstallationInfoInstallStatus = "installing"
-)
-
-// Defines values for InstallationInfoLatestExecutedStateName.
-const (
-	CreateRestartInstallation       InstallationInfoLatestExecutedStateName = "create_restart_installation"
-	DeletePreviousPipelines         InstallationInfoLatestExecutedStateName = "delete_previous_pipelines"
-	InstallIlmPolicies              InstallationInfoLatestExecutedStateName = "install_ilm_policies"
-	InstallIndexTemplatePipelines   InstallationInfoLatestExecutedStateName = "install_index_template_pipelines"
-	InstallKibanaAssets             InstallationInfoLatestExecutedStateName = "install_kibana_assets"
-	InstallMlModel                  InstallationInfoLatestExecutedStateName = "install_ml_model"
-	InstallTransforms               InstallationInfoLatestExecutedStateName = "install_transforms"
-	RemoveLegacyTemplates           InstallationInfoLatestExecutedStateName = "remove_legacy_templates"
-	SaveArchiveEntriesFromAssetsMap InstallationInfoLatestExecutedStateName = "save_archive_entries_from_assets_map"
-	UpdateCurrentWriteIndices       InstallationInfoLatestExecutedStateName = "update_current_write_indices"
-	UpdateSo                        InstallationInfoLatestExecutedStateName = "update_so"
-)
-
-// Defines values for InstallationInfoVerificationStatus.
-const (
-	Unknown    InstallationInfoVerificationStatus = "unknown"
-	Unverified InstallationInfoVerificationStatus = "unverified"
-	Verified   InstallationInfoVerificationStatus = "verified"
-)
-
-// Defines values for KibanaSavedObjectType.
-const (
-	CspRuleTemplate KibanaSavedObjectType = "csp_rule_template"
-	Dashboard       KibanaSavedObjectType = "dashboard"
-	IndexPattern    KibanaSavedObjectType = "index-pattern"
-	Lens            KibanaSavedObjectType = "lens"
-	Map             KibanaSavedObjectType = "map"
-	MlModule        KibanaSavedObjectType = "ml-module"
-	Search          KibanaSavedObjectType = "search"
-	SecurityRule    KibanaSavedObjectType = "security-rule"
-	Visualization   KibanaSavedObjectType = "visualization"
-)
-
-// Defines values for NotifyWhen.
-const (
-	NotifyWhenOnActionGroupChange NotifyWhen = "onActionGroupChange"
-	NotifyWhenOnActiveAlert       NotifyWhen = "onActiveAlert"
-	NotifyWhenOnThrottleInterval  NotifyWhen = "onThrottleInterval"
-)
-
-// Defines values for NotifyWhenAction.
-const (
-	NotifyWhenActionOnActionGroupChange NotifyWhenAction = "onActionGroupChange"
-	NotifyWhenActionOnActiveAlert       NotifyWhenAction = "onActiveAlert"
-	NotifyWhenActionOnThrottleInterval  NotifyWhenAction = "onThrottleInterval"
-)
-
-// Defines values for OutputCreateRequestElasticsearchPreset.
-const (
-	OutputCreateRequestElasticsearchPresetBalanced   OutputCreateRequestElasticsearchPreset = "balanced"
-	OutputCreateRequestElasticsearchPresetCustom     OutputCreateRequestElasticsearchPreset = "custom"
-	OutputCreateRequestElasticsearchPresetLatency    OutputCreateRequestElasticsearchPreset = "latency"
-	OutputCreateRequestElasticsearchPresetScale      OutputCreateRequestElasticsearchPreset = "scale"
-	OutputCreateRequestElasticsearchPresetThroughput OutputCreateRequestElasticsearchPreset = "throughput"
-)
-
-// Defines values for OutputCreateRequestElasticsearchType.
-const (
-	OutputCreateRequestElasticsearchTypeElasticsearch OutputCreateRequestElasticsearchType = "elasticsearch"
-)
-
-// Defines values for OutputCreateRequestKafkaConnectionType.
-const (
-	OutputCreateRequestKafkaConnectionTypeEncryption OutputCreateRequestKafkaConnectionType = "encryption"
-	OutputCreateRequestKafkaConnectionTypePlaintext  OutputCreateRequestKafkaConnectionType = "plaintext"
-)
-
-// Defines values for OutputCreateRequestKafkaSslVerificationMode.
-const (
-	OutputCreateRequestKafkaSslVerificationModeCertificate OutputCreateRequestKafkaSslVerificationMode = "certificate"
-	OutputCreateRequestKafkaSslVerificationModeFull        OutputCreateRequestKafkaSslVerificationMode = "full"
-	OutputCreateRequestKafkaSslVerificationModeNone        OutputCreateRequestKafkaSslVerificationMode = "none"
-	OutputCreateRequestKafkaSslVerificationModeStrict      OutputCreateRequestKafkaSslVerificationMode = "strict"
-)
-
-// Defines values for OutputCreateRequestKafkaType.
-const (
-	OutputCreateRequestKafkaTypeKafka OutputCreateRequestKafkaType = "kafka"
-)
-
-// Defines values for OutputCreateRequestLogstashType.
-const (
-	OutputCreateRequestLogstashTypeLogstash OutputCreateRequestLogstashType = "logstash"
-)
-
-// Defines values for OutputCreateRequestRemoteElasticsearchType.
-const (
-	RemoteElasticsearch OutputCreateRequestRemoteElasticsearchType = "remote_elasticsearch"
-)
-
-// Defines values for OutputUpdateRequestElasticsearchPreset.
-const (
-	OutputUpdateRequestElasticsearchPresetBalanced   OutputUpdateRequestElasticsearchPreset = "balanced"
-	OutputUpdateRequestElasticsearchPresetCustom     OutputUpdateRequestElasticsearchPreset = "custom"
-	OutputUpdateRequestElasticsearchPresetLatency    OutputUpdateRequestElasticsearchPreset = "latency"
-	OutputUpdateRequestElasticsearchPresetScale      OutputUpdateRequestElasticsearchPreset = "scale"
-	OutputUpdateRequestElasticsearchPresetThroughput OutputUpdateRequestElasticsearchPreset = "throughput"
-)
-
-// Defines values for OutputUpdateRequestElasticsearchType.
-const (
-	OutputUpdateRequestElasticsearchTypeElasticsearch OutputUpdateRequestElasticsearchType = "elasticsearch"
-)
-
-// Defines values for OutputUpdateRequestKafkaConnectionType.
-const (
-	OutputUpdateRequestKafkaConnectionTypeEncryption OutputUpdateRequestKafkaConnectionType = "encryption"
-	OutputUpdateRequestKafkaConnectionTypePlaintext  OutputUpdateRequestKafkaConnectionType = "plaintext"
-)
-
-// Defines values for OutputUpdateRequestKafkaSslVerificationMode.
-const (
-	OutputUpdateRequestKafkaSslVerificationModeCertificate OutputUpdateRequestKafkaSslVerificationMode = "certificate"
-	OutputUpdateRequestKafkaSslVerificationModeFull        OutputUpdateRequestKafkaSslVerificationMode = "full"
-	OutputUpdateRequestKafkaSslVerificationModeNone        OutputUpdateRequestKafkaSslVerificationMode = "none"
-	OutputUpdateRequestKafkaSslVerificationModeStrict      OutputUpdateRequestKafkaSslVerificationMode = "strict"
-)
-
-// Defines values for OutputUpdateRequestKafkaType.
-const (
-	OutputUpdateRequestKafkaTypeKafka OutputUpdateRequestKafkaType = "kafka"
-)
-
-// Defines values for OutputUpdateRequestLogstashType.
-const (
-	OutputUpdateRequestLogstashTypeLogstash OutputUpdateRequestLogstashType = "logstash"
-)
-
-// Defines values for PackageInfoConditionsElasticsearchSubscription.
-const (
-	Basic      PackageInfoConditionsElasticsearchSubscription = "basic"
-	Enterprise PackageInfoConditionsElasticsearchSubscription = "enterprise"
-	Gold       PackageInfoConditionsElasticsearchSubscription = "gold"
-	Platinum   PackageInfoConditionsElasticsearchSubscription = "platinum"
-)
-
-// Defines values for PackageInfoRelease.
-const (
-	Beta         PackageInfoRelease = "beta"
-	Experimental PackageInfoRelease = "experimental"
-	Ga           PackageInfoRelease = "ga"
-)
-
-// Defines values for PackageInfoSourceLicense.
-const (
-	Apache20  PackageInfoSourceLicense = "Apache-2.0"
-	Elastic20 PackageInfoSourceLicense = "Elastic-2.0"
-)
-
-// Defines values for PackageInstallSource.
-const (
-	PackageInstallSourceBundled  PackageInstallSource = "bundled"
-	PackageInstallSourceRegistry PackageInstallSource = "registry"
-	PackageInstallSourceUpload   PackageInstallSource = "upload"
-)
-
-// Defines values for PackageStatus.
-const (
-	PackageStatusInstallFailed PackageStatus = "install_failed"
-	PackageStatusInstalled     PackageStatus = "installed"
-	PackageStatusInstalling    PackageStatus = "installing"
-	PackageStatusNotInstalled  PackageStatus = "not_installed"
-)
-
-// Defines values for ParamsEsQueryRule0SearchType.
-const (
-	EsqlQuery ParamsEsQueryRule0SearchType = "esqlQuery"
-)
-
-// Defines values for ParamsEsQueryRule0ThresholdComparator.
-const (
-	ParamsEsQueryRule0ThresholdComparatorEmpty ParamsEsQueryRule0ThresholdComparator = ">"
-)
-
-// Defines values for ParamsEsQueryRule1SearchType.
-const (
-	SearchSource ParamsEsQueryRule1SearchType = "searchSource"
-)
-
-// Defines values for ParamsEsQueryRule2SearchType.
-const (
-	EsQuery ParamsEsQueryRule2SearchType = "esQuery"
-)
-
-// Defines values for ParamsPropertyApmAnomalyAnomalySeverityType.
-const (
-	Critical ParamsPropertyApmAnomalyAnomalySeverityType = "critical"
-	Major    ParamsPropertyApmAnomalyAnomalySeverityType = "major"
-	Minor    ParamsPropertyApmAnomalyAnomalySeverityType = "minor"
-	Warning  ParamsPropertyApmAnomalyAnomalySeverityType = "warning"
-)
-
-// Defines values for ParamsPropertyApmAnomalyWindowUnit.
-const (
-	ParamsPropertyApmAnomalyWindowUnitD ParamsPropertyApmAnomalyWindowUnit = "d"
-	ParamsPropertyApmAnomalyWindowUnitH ParamsPropertyApmAnomalyWindowUnit = "h"
-	ParamsPropertyApmAnomalyWindowUnitM ParamsPropertyApmAnomalyWindowUnit = "m"
-)
-
-// Defines values for ParamsPropertyApmErrorCountGroupBy.
-const (
-	ParamsPropertyApmErrorCountGroupByErrorGroupingKey   ParamsPropertyApmErrorCountGroupBy = "error.grouping_key"
-	ParamsPropertyApmErrorCountGroupByServiceEnvironment ParamsPropertyApmErrorCountGroupBy = "service.environment"
-	ParamsPropertyApmErrorCountGroupByServiceName        ParamsPropertyApmErrorCountGroupBy = "service.name"
-	ParamsPropertyApmErrorCountGroupByTransactionName    ParamsPropertyApmErrorCountGroupBy = "transaction.name"
-)
-
-// Defines values for ParamsPropertyApmErrorCountWindowUnit.
-const (
-	ParamsPropertyApmErrorCountWindowUnitD ParamsPropertyApmErrorCountWindowUnit = "d"
-	ParamsPropertyApmErrorCountWindowUnitH ParamsPropertyApmErrorCountWindowUnit = "h"
-	ParamsPropertyApmErrorCountWindowUnitM ParamsPropertyApmErrorCountWindowUnit = "m"
-)
-
-// Defines values for ParamsPropertyApmTransactionDurationAggregationType.
-const (
-	ParamsPropertyApmTransactionDurationAggregationTypeAvg   ParamsPropertyApmTransactionDurationAggregationType = "avg"
-	ParamsPropertyApmTransactionDurationAggregationTypeN95th ParamsPropertyApmTransactionDurationAggregationType = "95th"
-	ParamsPropertyApmTransactionDurationAggregationTypeN99th ParamsPropertyApmTransactionDurationAggregationType = "99th"
-)
-
-// Defines values for ParamsPropertyApmTransactionDurationGroupBy.
-const (
-	ParamsPropertyApmTransactionDurationGroupByServiceEnvironment ParamsPropertyApmTransactionDurationGroupBy = "service.environment"
-	ParamsPropertyApmTransactionDurationGroupByServiceName        ParamsPropertyApmTransactionDurationGroupBy = "service.name"
-	ParamsPropertyApmTransactionDurationGroupByTransactionName    ParamsPropertyApmTransactionDurationGroupBy = "transaction.name"
-	ParamsPropertyApmTransactionDurationGroupByTransactionType    ParamsPropertyApmTransactionDurationGroupBy = "transaction.type"
-)
-
-// Defines values for ParamsPropertyApmTransactionDurationWindowUnit.
-const (
-	ParamsPropertyApmTransactionDurationWindowUnitD ParamsPropertyApmTransactionDurationWindowUnit = "d"
-	ParamsPropertyApmTransactionDurationWindowUnitH ParamsPropertyApmTransactionDurationWindowUnit = "h"
-	ParamsPropertyApmTransactionDurationWindowUnitM ParamsPropertyApmTransactionDurationWindowUnit = "m"
-)
-
-// Defines values for ParamsPropertyApmTransactionErrorRateGroupBy.
-const (
-	ServiceEnvironment ParamsPropertyApmTransactionErrorRateGroupBy = "service.environment"
-	ServiceName        ParamsPropertyApmTransactionErrorRateGroupBy = "service.name"
-	TransactionName    ParamsPropertyApmTransactionErrorRateGroupBy = "transaction.name"
-	TransactionType    ParamsPropertyApmTransactionErrorRateGroupBy = "transaction.type"
-)
-
-// Defines values for ParamsPropertyApmTransactionErrorRateWindowUnit.
-const (
-	ParamsPropertyApmTransactionErrorRateWindowUnitD ParamsPropertyApmTransactionErrorRateWindowUnit = "d"
-	ParamsPropertyApmTransactionErrorRateWindowUnitH ParamsPropertyApmTransactionErrorRateWindowUnit = "h"
-	ParamsPropertyApmTransactionErrorRateWindowUnitM ParamsPropertyApmTransactionErrorRateWindowUnit = "m"
-)
-
-// Defines values for ParamsPropertyInfraInventoryCriteriaComparator.
-const (
-	ParamsPropertyInfraInventoryCriteriaComparatorBetween ParamsPropertyInfraInventoryCriteriaComparator = "between"
-	ParamsPropertyInfraInventoryCriteriaComparatorEmpty   ParamsPropertyInfraInventoryCriteriaComparator = "<"
-	ParamsPropertyInfraInventoryCriteriaComparatorN1      ParamsPropertyInfraInventoryCriteriaComparator = "<="
-	ParamsPropertyInfraInventoryCriteriaComparatorN2      ParamsPropertyInfraInventoryCriteriaComparator = ">"
-	ParamsPropertyInfraInventoryCriteriaComparatorN3      ParamsPropertyInfraInventoryCriteriaComparator = ">="
-	ParamsPropertyInfraInventoryCriteriaComparatorOutside ParamsPropertyInfraInventoryCriteriaComparator = "outside"
-)
-
-// Defines values for ParamsPropertyInfraInventoryCriteriaCustomMetricAggregation.
-const (
-	ParamsPropertyInfraInventoryCriteriaCustomMetricAggregationAvg  ParamsPropertyInfraInventoryCriteriaCustomMetricAggregation = "avg"
-	ParamsPropertyInfraInventoryCriteriaCustomMetricAggregationMax  ParamsPropertyInfraInventoryCriteriaCustomMetricAggregation = "max"
-	ParamsPropertyInfraInventoryCriteriaCustomMetricAggregationMin  ParamsPropertyInfraInventoryCriteriaCustomMetricAggregation = "min"
-	ParamsPropertyInfraInventoryCriteriaCustomMetricAggregationRate ParamsPropertyInfraInventoryCriteriaCustomMetricAggregation = "rate"
-)
-
-// Defines values for ParamsPropertyInfraInventoryCriteriaCustomMetricType.
-const (
-	ParamsPropertyInfraInventoryCriteriaCustomMetricTypeCustom ParamsPropertyInfraInventoryCriteriaCustomMetricType = "custom"
-)
-
-// Defines values for ParamsPropertyInfraInventoryCriteriaMetric.
-const (
-	ParamsPropertyInfraInventoryCriteriaMetricCount                 ParamsPropertyInfraInventoryCriteriaMetric = "count"
-	ParamsPropertyInfraInventoryCriteriaMetricCpu                   ParamsPropertyInfraInventoryCriteriaMetric = "cpu"
-	ParamsPropertyInfraInventoryCriteriaMetricCustom                ParamsPropertyInfraInventoryCriteriaMetric = "custom"
-	ParamsPropertyInfraInventoryCriteriaMetricDiskIOReadBytes       ParamsPropertyInfraInventoryCriteriaMetric = "diskIOReadBytes"
-	ParamsPropertyInfraInventoryCriteriaMetricDiskIOWriteBytes      ParamsPropertyInfraInventoryCriteriaMetric = "diskIOWriteBytes"
-	ParamsPropertyInfraInventoryCriteriaMetricDiskLatency           ParamsPropertyInfraInventoryCriteriaMetric = "diskLatency"
-	ParamsPropertyInfraInventoryCriteriaMetricLoad                  ParamsPropertyInfraInventoryCriteriaMetric = "load"
-	ParamsPropertyInfraInventoryCriteriaMetricLogRate               ParamsPropertyInfraInventoryCriteriaMetric = "logRate"
-	ParamsPropertyInfraInventoryCriteriaMetricMemory                ParamsPropertyInfraInventoryCriteriaMetric = "memory"
-	ParamsPropertyInfraInventoryCriteriaMetricMemoryTotal           ParamsPropertyInfraInventoryCriteriaMetric = "memoryTotal"
-	ParamsPropertyInfraInventoryCriteriaMetricRdsActiveTransactions ParamsPropertyInfraInventoryCriteriaMetric = "rdsActiveTransactions"
-	ParamsPropertyInfraInventoryCriteriaMetricRdsConnections        ParamsPropertyInfraInventoryCriteriaMetric = "rdsConnections"
-	ParamsPropertyInfraInventoryCriteriaMetricRdsLatency            ParamsPropertyInfraInventoryCriteriaMetric = "rdsLatency"
-	ParamsPropertyInfraInventoryCriteriaMetricRdsQueriesExecuted    ParamsPropertyInfraInventoryCriteriaMetric = "rdsQueriesExecuted"
-	ParamsPropertyInfraInventoryCriteriaMetricRx                    ParamsPropertyInfraInventoryCriteriaMetric = "rx"
-	ParamsPropertyInfraInventoryCriteriaMetricS3BucketSize          ParamsPropertyInfraInventoryCriteriaMetric = "s3BucketSize"
-	ParamsPropertyInfraInventoryCriteriaMetricS3DownloadBytes       ParamsPropertyInfraInventoryCriteriaMetric = "s3DownloadBytes"
-	ParamsPropertyInfraInventoryCriteriaMetricS3NumberOfObjects     ParamsPropertyInfraInventoryCriteriaMetric = "s3NumberOfObjects"
-	ParamsPropertyInfraInventoryCriteriaMetricS3TotalRequests       ParamsPropertyInfraInventoryCriteriaMetric = "s3TotalRequests"
-	ParamsPropertyInfraInventoryCriteriaMetricS3UploadBytes         ParamsPropertyInfraInventoryCriteriaMetric = "s3UploadBytes"
-	ParamsPropertyInfraInventoryCriteriaMetricSqsMessagesDelayed    ParamsPropertyInfraInventoryCriteriaMetric = "sqsMessagesDelayed"
-	ParamsPropertyInfraInventoryCriteriaMetricSqsMessagesEmpty      ParamsPropertyInfraInventoryCriteriaMetric = "sqsMessagesEmpty"
-	ParamsPropertyInfraInventoryCriteriaMetricSqsMessagesSent       ParamsPropertyInfraInventoryCriteriaMetric = "sqsMessagesSent"
-	ParamsPropertyInfraInventoryCriteriaMetricSqsMessagesVisible    ParamsPropertyInfraInventoryCriteriaMetric = "sqsMessagesVisible"
-	ParamsPropertyInfraInventoryCriteriaMetricSqsOldestMessage      ParamsPropertyInfraInventoryCriteriaMetric = "sqsOldestMessage"
-	ParamsPropertyInfraInventoryCriteriaMetricTx                    ParamsPropertyInfraInventoryCriteriaMetric = "tx"
-)
-
-// Defines values for ParamsPropertyInfraInventoryCriteriaTimeUnit.
-const (
-	ParamsPropertyInfraInventoryCriteriaTimeUnitD ParamsPropertyInfraInventoryCriteriaTimeUnit = "d"
-	ParamsPropertyInfraInventoryCriteriaTimeUnitH ParamsPropertyInfraInventoryCriteriaTimeUnit = "h"
-	ParamsPropertyInfraInventoryCriteriaTimeUnitM ParamsPropertyInfraInventoryCriteriaTimeUnit = "m"
-	ParamsPropertyInfraInventoryCriteriaTimeUnitS ParamsPropertyInfraInventoryCriteriaTimeUnit = "s"
-)
-
-// Defines values for ParamsPropertyInfraInventoryCriteriaWarningComparator.
-const (
-	ParamsPropertyInfraInventoryCriteriaWarningComparatorBetween ParamsPropertyInfraInventoryCriteriaWarningComparator = "between"
-	ParamsPropertyInfraInventoryCriteriaWarningComparatorEmpty   ParamsPropertyInfraInventoryCriteriaWarningComparator = "<"
-	ParamsPropertyInfraInventoryCriteriaWarningComparatorN1      ParamsPropertyInfraInventoryCriteriaWarningComparator = "<="
-	ParamsPropertyInfraInventoryCriteriaWarningComparatorN2      ParamsPropertyInfraInventoryCriteriaWarningComparator = ">"
-	ParamsPropertyInfraInventoryCriteriaWarningComparatorN3      ParamsPropertyInfraInventoryCriteriaWarningComparator = ">="
-	ParamsPropertyInfraInventoryCriteriaWarningComparatorOutside ParamsPropertyInfraInventoryCriteriaWarningComparator = "outside"
-)
-
-// Defines values for ParamsPropertyInfraInventoryNodeType.
-const (
-	AwsEC2    ParamsPropertyInfraInventoryNodeType = "awsEC2"
-	AwsRDS    ParamsPropertyInfraInventoryNodeType = "awsRDS"
-	AwsS3     ParamsPropertyInfraInventoryNodeType = "awsS3"
-	AwsSQS    ParamsPropertyInfraInventoryNodeType = "awsSQS"
-	Container ParamsPropertyInfraInventoryNodeType = "container"
-	Host      ParamsPropertyInfraInventoryNodeType = "host"
-	Pod       ParamsPropertyInfraInventoryNodeType = "pod"
-)
-
-// Defines values for ParamsPropertyInfraMetricThresholdCriteria0AggType.
-const (
-	ParamsPropertyInfraMetricThresholdCriteria0AggTypeAvg         ParamsPropertyInfraMetricThresholdCriteria0AggType = "avg"
-	ParamsPropertyInfraMetricThresholdCriteria0AggTypeCardinality ParamsPropertyInfraMetricThresholdCriteria0AggType = "cardinality"
-	ParamsPropertyInfraMetricThresholdCriteria0AggTypeCount       ParamsPropertyInfraMetricThresholdCriteria0AggType = "count"
-	ParamsPropertyInfraMetricThresholdCriteria0AggTypeCustom      ParamsPropertyInfraMetricThresholdCriteria0AggType = "custom"
-	ParamsPropertyInfraMetricThresholdCriteria0AggTypeMax         ParamsPropertyInfraMetricThresholdCriteria0AggType = "max"
-	ParamsPropertyInfraMetricThresholdCriteria0AggTypeMin         ParamsPropertyInfraMetricThresholdCriteria0AggType = "min"
-	ParamsPropertyInfraMetricThresholdCriteria0AggTypeP95         ParamsPropertyInfraMetricThresholdCriteria0AggType = "p95"
-	ParamsPropertyInfraMetricThresholdCriteria0AggTypeP99         ParamsPropertyInfraMetricThresholdCriteria0AggType = "p99"
-	ParamsPropertyInfraMetricThresholdCriteria0AggTypeRate        ParamsPropertyInfraMetricThresholdCriteria0AggType = "rate"
-	ParamsPropertyInfraMetricThresholdCriteria0AggTypeSum         ParamsPropertyInfraMetricThresholdCriteria0AggType = "sum"
-)
-
-// Defines values for ParamsPropertyInfraMetricThresholdCriteria0Comparator.
-const (
-	ParamsPropertyInfraMetricThresholdCriteria0ComparatorBetween ParamsPropertyInfraMetricThresholdCriteria0Comparator = "between"
-	ParamsPropertyInfraMetricThresholdCriteria0ComparatorEmpty   ParamsPropertyInfraMetricThresholdCriteria0Comparator = "<"
-	ParamsPropertyInfraMetricThresholdCriteria0ComparatorN1      ParamsPropertyInfraMetricThresholdCriteria0Comparator = "<="
-	ParamsPropertyInfraMetricThresholdCriteria0ComparatorN2      ParamsPropertyInfraMetricThresholdCriteria0Comparator = ">"
-	ParamsPropertyInfraMetricThresholdCriteria0ComparatorN3      ParamsPropertyInfraMetricThresholdCriteria0Comparator = ">="
-	ParamsPropertyInfraMetricThresholdCriteria0ComparatorOutside ParamsPropertyInfraMetricThresholdCriteria0Comparator = "outside"
-)
-
-// Defines values for ParamsPropertyInfraMetricThresholdCriteria0WarningComparator.
-const (
-	ParamsPropertyInfraMetricThresholdCriteria0WarningComparatorBetween ParamsPropertyInfraMetricThresholdCriteria0WarningComparator = "between"
-	ParamsPropertyInfraMetricThresholdCriteria0WarningComparatorEmpty   ParamsPropertyInfraMetricThresholdCriteria0WarningComparator = "<"
-	ParamsPropertyInfraMetricThresholdCriteria0WarningComparatorN1      ParamsPropertyInfraMetricThresholdCriteria0WarningComparator = "<="
-	ParamsPropertyInfraMetricThresholdCriteria0WarningComparatorN2      ParamsPropertyInfraMetricThresholdCriteria0WarningComparator = ">"
-	ParamsPropertyInfraMetricThresholdCriteria0WarningComparatorN3      ParamsPropertyInfraMetricThresholdCriteria0WarningComparator = ">="
-	ParamsPropertyInfraMetricThresholdCriteria0WarningComparatorOutside ParamsPropertyInfraMetricThresholdCriteria0WarningComparator = "outside"
-)
-
-// Defines values for ParamsPropertyInfraMetricThresholdCriteria1AggType.
-const (
-	ParamsPropertyInfraMetricThresholdCriteria1AggTypeCount ParamsPropertyInfraMetricThresholdCriteria1AggType = "count"
-)
-
-// Defines values for ParamsPropertyInfraMetricThresholdCriteria1Comparator.
-const (
-	ParamsPropertyInfraMetricThresholdCriteria1ComparatorBetween ParamsPropertyInfraMetricThresholdCriteria1Comparator = "between"
-	ParamsPropertyInfraMetricThresholdCriteria1ComparatorEmpty   ParamsPropertyInfraMetricThresholdCriteria1Comparator = "<"
-	ParamsPropertyInfraMetricThresholdCriteria1ComparatorN1      ParamsPropertyInfraMetricThresholdCriteria1Comparator = "<="
-	ParamsPropertyInfraMetricThresholdCriteria1ComparatorN2      ParamsPropertyInfraMetricThresholdCriteria1Comparator = ">"
-	ParamsPropertyInfraMetricThresholdCriteria1ComparatorN3      ParamsPropertyInfraMetricThresholdCriteria1Comparator = ">="
-	ParamsPropertyInfraMetricThresholdCriteria1ComparatorOutside ParamsPropertyInfraMetricThresholdCriteria1Comparator = "outside"
-)
-
-// Defines values for ParamsPropertyInfraMetricThresholdCriteria1WarningComparator.
-const (
-	ParamsPropertyInfraMetricThresholdCriteria1WarningComparatorBetween ParamsPropertyInfraMetricThresholdCriteria1WarningComparator = "between"
-	ParamsPropertyInfraMetricThresholdCriteria1WarningComparatorEmpty   ParamsPropertyInfraMetricThresholdCriteria1WarningComparator = "<"
-	ParamsPropertyInfraMetricThresholdCriteria1WarningComparatorN1      ParamsPropertyInfraMetricThresholdCriteria1WarningComparator = "<="
-	ParamsPropertyInfraMetricThresholdCriteria1WarningComparatorN2      ParamsPropertyInfraMetricThresholdCriteria1WarningComparator = ">"
-	ParamsPropertyInfraMetricThresholdCriteria1WarningComparatorN3      ParamsPropertyInfraMetricThresholdCriteria1WarningComparator = ">="
-	ParamsPropertyInfraMetricThresholdCriteria1WarningComparatorOutside ParamsPropertyInfraMetricThresholdCriteria1WarningComparator = "outside"
-)
-
-// Defines values for ParamsPropertyInfraMetricThresholdCriteria2AggType.
-const (
-	Custom ParamsPropertyInfraMetricThresholdCriteria2AggType = "custom"
-)
-
-// Defines values for ParamsPropertyInfraMetricThresholdCriteria2Comparator.
-const (
-	ParamsPropertyInfraMetricThresholdCriteria2ComparatorBetween ParamsPropertyInfraMetricThresholdCriteria2Comparator = "between"
-	ParamsPropertyInfraMetricThresholdCriteria2ComparatorEmpty   ParamsPropertyInfraMetricThresholdCriteria2Comparator = "<"
-	ParamsPropertyInfraMetricThresholdCriteria2ComparatorN1      ParamsPropertyInfraMetricThresholdCriteria2Comparator = "<="
-	ParamsPropertyInfraMetricThresholdCriteria2ComparatorN2      ParamsPropertyInfraMetricThresholdCriteria2Comparator = ">"
-	ParamsPropertyInfraMetricThresholdCriteria2ComparatorN3      ParamsPropertyInfraMetricThresholdCriteria2Comparator = ">="
-	ParamsPropertyInfraMetricThresholdCriteria2ComparatorOutside ParamsPropertyInfraMetricThresholdCriteria2Comparator = "outside"
-)
-
-// Defines values for ParamsPropertyInfraMetricThresholdCriteria2CustomMetric0AggType.
-const (
-	ParamsPropertyInfraMetricThresholdCriteria2CustomMetric0AggTypeAvg         ParamsPropertyInfraMetricThresholdCriteria2CustomMetric0AggType = "avg"
-	ParamsPropertyInfraMetricThresholdCriteria2CustomMetric0AggTypeCardinality ParamsPropertyInfraMetricThresholdCriteria2CustomMetric0AggType = "cardinality"
-	ParamsPropertyInfraMetricThresholdCriteria2CustomMetric0AggTypeMax         ParamsPropertyInfraMetricThresholdCriteria2CustomMetric0AggType = "max"
-	ParamsPropertyInfraMetricThresholdCriteria2CustomMetric0AggTypeMin         ParamsPropertyInfraMetricThresholdCriteria2CustomMetric0AggType = "min"
-	ParamsPropertyInfraMetricThresholdCriteria2CustomMetric0AggTypeSum         ParamsPropertyInfraMetricThresholdCriteria2CustomMetric0AggType = "sum"
-)
-
-// Defines values for ParamsPropertyInfraMetricThresholdCriteria2CustomMetric1AggType.
-const (
-	ParamsPropertyInfraMetricThresholdCriteria2CustomMetric1AggTypeCount ParamsPropertyInfraMetricThresholdCriteria2CustomMetric1AggType = "count"
-)
-
-// Defines values for ParamsPropertyInfraMetricThresholdCriteria2WarningComparator.
-const (
-	ParamsPropertyInfraMetricThresholdCriteria2WarningComparatorBetween ParamsPropertyInfraMetricThresholdCriteria2WarningComparator = "between"
-	ParamsPropertyInfraMetricThresholdCriteria2WarningComparatorEmpty   ParamsPropertyInfraMetricThresholdCriteria2WarningComparator = "<"
-	ParamsPropertyInfraMetricThresholdCriteria2WarningComparatorN1      ParamsPropertyInfraMetricThresholdCriteria2WarningComparator = "<="
-	ParamsPropertyInfraMetricThresholdCriteria2WarningComparatorN2      ParamsPropertyInfraMetricThresholdCriteria2WarningComparator = ">"
-	ParamsPropertyInfraMetricThresholdCriteria2WarningComparatorN3      ParamsPropertyInfraMetricThresholdCriteria2WarningComparator = ">="
-	ParamsPropertyInfraMetricThresholdCriteria2WarningComparatorOutside ParamsPropertyInfraMetricThresholdCriteria2WarningComparator = "outside"
-)
-
-// Defines values for ParamsPropertyLogThreshold0CountComparator.
-const (
-	ParamsPropertyLogThreshold0CountComparatorDoesNotEqual       ParamsPropertyLogThreshold0CountComparator = "does not equal"
-	ParamsPropertyLogThreshold0CountComparatorDoesNotMatch       ParamsPropertyLogThreshold0CountComparator = "does not match"
-	ParamsPropertyLogThreshold0CountComparatorDoesNotMatchPhrase ParamsPropertyLogThreshold0CountComparator = "does not match phrase"
-	ParamsPropertyLogThreshold0CountComparatorEquals             ParamsPropertyLogThreshold0CountComparator = "equals"
-	ParamsPropertyLogThreshold0CountComparatorLessThan           ParamsPropertyLogThreshold0CountComparator = "less than"
-	ParamsPropertyLogThreshold0CountComparatorLessThanOrEquals   ParamsPropertyLogThreshold0CountComparator = "less than or equals"
-	ParamsPropertyLogThreshold0CountComparatorMatches            ParamsPropertyLogThreshold0CountComparator = "matches"
-	ParamsPropertyLogThreshold0CountComparatorMatchesPhrase      ParamsPropertyLogThreshold0CountComparator = "matches phrase"
-	ParamsPropertyLogThreshold0CountComparatorMoreThan           ParamsPropertyLogThreshold0CountComparator = "more than"
-	ParamsPropertyLogThreshold0CountComparatorMoreThanOrEquals   ParamsPropertyLogThreshold0CountComparator = "more than or equals"
-)
-
-// Defines values for ParamsPropertyLogThreshold0CriteriaComparator.
-const (
-	ParamsPropertyLogThreshold0CriteriaComparatorDoesNotEqual       ParamsPropertyLogThreshold0CriteriaComparator = "does not equal"
-	ParamsPropertyLogThreshold0CriteriaComparatorDoesNotMatch       ParamsPropertyLogThreshold0CriteriaComparator = "does not match"
-	ParamsPropertyLogThreshold0CriteriaComparatorDoesNotMatchPhrase ParamsPropertyLogThreshold0CriteriaComparator = "does not match phrase"
-	ParamsPropertyLogThreshold0CriteriaComparatorEquals             ParamsPropertyLogThreshold0CriteriaComparator = "equals"
-	ParamsPropertyLogThreshold0CriteriaComparatorLessThan           ParamsPropertyLogThreshold0CriteriaComparator = "less than"
-	ParamsPropertyLogThreshold0CriteriaComparatorLessThanOrEquals   ParamsPropertyLogThreshold0CriteriaComparator = "less than or equals"
-	ParamsPropertyLogThreshold0CriteriaComparatorMatches            ParamsPropertyLogThreshold0CriteriaComparator = "matches"
-	ParamsPropertyLogThreshold0CriteriaComparatorMatchesPhrase      ParamsPropertyLogThreshold0CriteriaComparator = "matches phrase"
-	ParamsPropertyLogThreshold0CriteriaComparatorMoreThan           ParamsPropertyLogThreshold0CriteriaComparator = "more than"
-	ParamsPropertyLogThreshold0CriteriaComparatorMoreThanOrEquals   ParamsPropertyLogThreshold0CriteriaComparator = "more than or equals"
-)
-
-// Defines values for ParamsPropertyLogThreshold0LogViewType.
-const (
-	ParamsPropertyLogThreshold0LogViewTypeLogViewReference ParamsPropertyLogThreshold0LogViewType = "log-view-reference"
-)
-
-// Defines values for ParamsPropertyLogThreshold0TimeUnit.
-const (
-	ParamsPropertyLogThreshold0TimeUnitD ParamsPropertyLogThreshold0TimeUnit = "d"
-	ParamsPropertyLogThreshold0TimeUnitH ParamsPropertyLogThreshold0TimeUnit = "h"
-	ParamsPropertyLogThreshold0TimeUnitM ParamsPropertyLogThreshold0TimeUnit = "m"
-	ParamsPropertyLogThreshold0TimeUnitS ParamsPropertyLogThreshold0TimeUnit = "s"
-)
-
-// Defines values for ParamsPropertyLogThreshold1CountComparator.
-const (
-	ParamsPropertyLogThreshold1CountComparatorDoesNotEqual       ParamsPropertyLogThreshold1CountComparator = "does not equal"
-	ParamsPropertyLogThreshold1CountComparatorDoesNotMatch       ParamsPropertyLogThreshold1CountComparator = "does not match"
-	ParamsPropertyLogThreshold1CountComparatorDoesNotMatchPhrase ParamsPropertyLogThreshold1CountComparator = "does not match phrase"
-	ParamsPropertyLogThreshold1CountComparatorEquals             ParamsPropertyLogThreshold1CountComparator = "equals"
-	ParamsPropertyLogThreshold1CountComparatorLessThan           ParamsPropertyLogThreshold1CountComparator = "less than"
-	ParamsPropertyLogThreshold1CountComparatorLessThanOrEquals   ParamsPropertyLogThreshold1CountComparator = "less than or equals"
-	ParamsPropertyLogThreshold1CountComparatorMatches            ParamsPropertyLogThreshold1CountComparator = "matches"
-	ParamsPropertyLogThreshold1CountComparatorMatchesPhrase      ParamsPropertyLogThreshold1CountComparator = "matches phrase"
-	ParamsPropertyLogThreshold1CountComparatorMoreThan           ParamsPropertyLogThreshold1CountComparator = "more than"
-	ParamsPropertyLogThreshold1CountComparatorMoreThanOrEquals   ParamsPropertyLogThreshold1CountComparator = "more than or equals"
-)
-
-// Defines values for ParamsPropertyLogThreshold1CriteriaComparator.
-const (
-	ParamsPropertyLogThreshold1CriteriaComparatorDoesNotEqual       ParamsPropertyLogThreshold1CriteriaComparator = "does not equal"
-	ParamsPropertyLogThreshold1CriteriaComparatorDoesNotMatch       ParamsPropertyLogThreshold1CriteriaComparator = "does not match"
-	ParamsPropertyLogThreshold1CriteriaComparatorDoesNotMatchPhrase ParamsPropertyLogThreshold1CriteriaComparator = "does not match phrase"
-	ParamsPropertyLogThreshold1CriteriaComparatorEquals             ParamsPropertyLogThreshold1CriteriaComparator = "equals"
-	ParamsPropertyLogThreshold1CriteriaComparatorLessThan           ParamsPropertyLogThreshold1CriteriaComparator = "less than"
-	ParamsPropertyLogThreshold1CriteriaComparatorLessThanOrEquals   ParamsPropertyLogThreshold1CriteriaComparator = "less than or equals"
-	ParamsPropertyLogThreshold1CriteriaComparatorMatches            ParamsPropertyLogThreshold1CriteriaComparator = "matches"
-	ParamsPropertyLogThreshold1CriteriaComparatorMatchesPhrase      ParamsPropertyLogThreshold1CriteriaComparator = "matches phrase"
-	ParamsPropertyLogThreshold1CriteriaComparatorMoreThan           ParamsPropertyLogThreshold1CriteriaComparator = "more than"
-	ParamsPropertyLogThreshold1CriteriaComparatorMoreThanOrEquals   ParamsPropertyLogThreshold1CriteriaComparator = "more than or equals"
-)
-
-// Defines values for ParamsPropertyLogThreshold1LogViewType.
-const (
-	ParamsPropertyLogThreshold1LogViewTypeLogViewReference ParamsPropertyLogThreshold1LogViewType = "log-view-reference"
-)
-
-// Defines values for ParamsPropertyLogThreshold1TimeUnit.
-const (
-	ParamsPropertyLogThreshold1TimeUnitD ParamsPropertyLogThreshold1TimeUnit = "d"
-	ParamsPropertyLogThreshold1TimeUnitH ParamsPropertyLogThreshold1TimeUnit = "h"
-	ParamsPropertyLogThreshold1TimeUnitM ParamsPropertyLogThreshold1TimeUnit = "m"
-	ParamsPropertyLogThreshold1TimeUnitS ParamsPropertyLogThreshold1TimeUnit = "s"
-)
-
-// Defines values for SummaryStatus.
-const (
-	DEGRADING SummaryStatus = "DEGRADING"
-	HEALTHY   SummaryStatus = "HEALTHY"
-	NODATA    SummaryStatus = "NO_DATA"
-	VIOLATED  SummaryStatus = "VIOLATED"
-)
-
-// Defines values for Thresholdcomparator.
-const (
-	ThresholdcomparatorBetween    Thresholdcomparator = "between"
-	ThresholdcomparatorEmpty      Thresholdcomparator = ">"
-	ThresholdcomparatorN1         Thresholdcomparator = ">="
-	ThresholdcomparatorN2         Thresholdcomparator = "<"
-	ThresholdcomparatorN3         Thresholdcomparator = "<="
-	ThresholdcomparatorNotBetween Thresholdcomparator = "notBetween"
-)
-
-// Defines values for TimeWindowType.
-const (
-	CalendarAligned TimeWindowType = "calendarAligned"
-	Rolling         TimeWindowType = "rolling"
-)
-
-// Defines values for TimesliceMetricBasicMetricWithFieldAggregation.
-const (
-	TimesliceMetricBasicMetricWithFieldAggregationAvg          TimesliceMetricBasicMetricWithFieldAggregation = "avg"
-	TimesliceMetricBasicMetricWithFieldAggregationCardinality  TimesliceMetricBasicMetricWithFieldAggregation = "cardinality"
-	TimesliceMetricBasicMetricWithFieldAggregationLastValue    TimesliceMetricBasicMetricWithFieldAggregation = "last_value"
-	TimesliceMetricBasicMetricWithFieldAggregationMax          TimesliceMetricBasicMetricWithFieldAggregation = "max"
-	TimesliceMetricBasicMetricWithFieldAggregationMin          TimesliceMetricBasicMetricWithFieldAggregation = "min"
-	TimesliceMetricBasicMetricWithFieldAggregationStdDeviation TimesliceMetricBasicMetricWithFieldAggregation = "std_deviation"
-	TimesliceMetricBasicMetricWithFieldAggregationSum          TimesliceMetricBasicMetricWithFieldAggregation = "sum"
-)
-
-// Defines values for TimesliceMetricDocCountMetricAggregation.
-const (
-	DocCount TimesliceMetricDocCountMetricAggregation = "doc_count"
-)
-
-// Defines values for TimesliceMetricPercentileMetricAggregation.
-const (
-	Percentile TimesliceMetricPercentileMetricAggregation = "percentile"
-)
-
-// Defines values for Timewindowunit.
-const (
-	TimewindowunitD Timewindowunit = "d"
-	TimewindowunitH Timewindowunit = "h"
-	TimewindowunitM Timewindowunit = "m"
-	TimewindowunitS Timewindowunit = "s"
-)
-
-// Defines values for Format.
-const (
-	FormatLegacy     Format = "legacy"
-	FormatSimplified Format = "simplified"
-)
-
-// Defines values for FindRulesParamsSortOrder.
-const (
-	FindRulesParamsSortOrderAsc  FindRulesParamsSortOrder = "asc"
-	FindRulesParamsSortOrderDesc FindRulesParamsSortOrder = "desc"
-)
-
-// Defines values for GetPackagePoliciesParamsFormat.
-const (
-	GetPackagePoliciesParamsFormatLegacy     GetPackagePoliciesParamsFormat = "legacy"
-	GetPackagePoliciesParamsFormatSimplified GetPackagePoliciesParamsFormat = "simplified"
-)
-
-// Defines values for CreatePackagePolicyParamsFormat.
-const (
-	CreatePackagePolicyParamsFormatLegacy     CreatePackagePolicyParamsFormat = "legacy"
-	CreatePackagePolicyParamsFormatSimplified CreatePackagePolicyParamsFormat = "simplified"
-)
-
-// Defines values for GetPackagePolicyParamsFormat.
-const (
-	GetPackagePolicyParamsFormatLegacy     GetPackagePolicyParamsFormat = "legacy"
-	GetPackagePolicyParamsFormatSimplified GetPackagePolicyParamsFormat = "simplified"
-)
-
-// Defines values for UpdatePackagePolicyParamsFormat.
-const (
-	Legacy     UpdatePackagePolicyParamsFormat = "legacy"
-	Simplified UpdatePackagePolicyParamsFormat = "simplified"
-)
-
-// Defines values for FindSlosOpParamsSortBy.
-const (
-	ErrorBudgetConsumed  FindSlosOpParamsSortBy = "error_budget_consumed"
-	ErrorBudgetRemaining FindSlosOpParamsSortBy = "error_budget_remaining"
-	SliValue             FindSlosOpParamsSortBy = "sli_value"
-	Status               FindSlosOpParamsSortBy = "status"
-)
-
-// Defines values for FindSlosOpParamsSortDirection.
-const (
-	FindSlosOpParamsSortDirectionAsc  FindSlosOpParamsSortDirection = "asc"
-	FindSlosOpParamsSortDirectionDesc FindSlosOpParamsSortDirection = "desc"
-)
-
-// N400Response defines model for 400_response.
-type N400Response struct {
-	Error      string  `json:"error"`
-	Message    string  `json:"message"`
-	StatusCode float32 `json:"statusCode"`
+// AgentPolicyInfoResponseObject defines model for agent-policy-info_response_object.
+type AgentPolicyInfoResponseObject struct {
+	Item AgentPolicy `json:"item"`
 }
 
-// N401Response defines model for 401_response.
-type N401Response struct {
-	Error      string  `json:"error"`
-	Message    string  `json:"message"`
-	StatusCode float32 `json:"statusCode"`
-}
-
-// N403Response defines model for 403_response.
-type N403Response struct {
-	Error      string  `json:"error"`
-	Message    string  `json:"message"`
-	StatusCode float32 `json:"statusCode"`
-}
-
-// N404Response defines model for 404_response.
-type N404Response struct {
-	Error      string  `json:"error"`
-	Message    string  `json:"message"`
-	StatusCode float32 `json:"statusCode"`
-}
-
-// N409Response defines model for 409_response.
-type N409Response struct {
-	Error      string  `json:"error"`
-	Message    string  `json:"message"`
-	StatusCode float32 `json:"statusCode"`
-}
-
-// Actions defines model for actions.
-type Actions = []struct {
-	// AlertsFilter Conditions that affect whether the action runs. If you specify multiple conditions, all conditions must be met for the action to run. For example, if an alert occurs within the specified time frame and matches the query, the action runs.
-	AlertsFilter *struct {
-		// Query Defines a query filter that determines whether the action runs.
-		Query *struct {
-			Filters []Filter `json:"filters,omitempty"`
-
-			// Kql A filter written in Kibana Query Language (KQL).
-			Kql *string `json:"kql,omitempty"`
-		} `json:"query,omitempty"`
-
-		// Timeframe Defines a period that limits whether the action runs.
-		Timeframe *struct {
-			// Days Defines the days of the week that the action can run, represented as an array of numbers. For example, `1` represents Monday. An empty array is equivalent to specifying all the days of the week.
-			Days []int `json:"days,omitempty"`
-
-			// Hours Defines the range of time in a day that the action can run. If the `start` value is `00:00` and the `end` value is `24:00`, actions be generated all day.
-			Hours *struct {
-				// End The end of the time frame in 24-hour notation (`hh:mm`).
-				End *string `json:"end,omitempty"`
-
-				// Start The start of the time frame in 24-hour notation (`hh:mm`).
-				Start *string `json:"start,omitempty"`
-			} `json:"hours,omitempty"`
-
-			// Timezone The ISO time zone for the `hours` values. Values such as `UTC` and `UTC+1` also work but lack built-in daylight savings time support and are not recommended.
-			Timezone *string `json:"timezone,omitempty"`
-		} `json:"timeframe,omitempty"`
-	} `json:"alerts_filter,omitempty"`
-
-	// ConnectorTypeId The type of connector. This property appears in responses but cannot be set in requests.
-	ConnectorTypeId *string `json:"connector_type_id,omitempty"`
-
-	// Frequency The properties that affect how often actions are generated. If the rule type supports setting `summary` to `true`, the action can be a summary of alerts at the specified notification interval. Otherwise, an action runs for each alert at the specified notification interval. NOTE: You cannot specify these parameters when `notify_when` or `throttle` are defined at the rule level.
-	Frequency *struct {
-		// NotifyWhen Indicates how often alerts generate actions. Valid values include: `onActionGroupChange`: Actions run when the alert status changes; `onActiveAlert`: Actions run when the alert becomes active and at each check interval while the rule conditions are met; `onThrottleInterval`: Actions run when the alert becomes active and at the interval specified in the throttle property while the rule conditions are met. NOTE: You cannot specify `notify_when` at both the rule and action level. The recommended method is to set it for each action. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
-		NotifyWhen NotifyWhenAction `json:"notify_when"`
-
-		// Summary Indicates whether the action is a summary.
-		Summary bool `json:"summary"`
-
-		// Throttle The throttle interval, which defines how often an alert generates repeated actions. It is specified in seconds, minutes, hours, or days and is applicable only if `notify_when` is set to `onThrottleInterval`. NOTE: You cannot specify the throttle interval at both the rule and action level. The recommended method is to set it for each action. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
-		Throttle *ThrottleAction `json:"throttle"`
-	} `json:"frequency,omitempty"`
-
-	// Group The group name, which affects when the action runs (for example, when the threshold is met or when the alert is recovered). Each rule type has a list of valid action group names. If you don't need to group actions, set to `default`.
-	Group string `json:"group"`
-
-	// Id The identifier for the connector saved object.
-	Id string `json:"id"`
-
-	// Params The parameters for the action, which are sent to the connector. The `params` are handled as Mustache templates and passed a default set of context.
-	Params map[string]interface{} `json:"params"`
-
-	// Uuid A universally unique identifier (UUID) for the action.
-	Uuid *string `json:"uuid,omitempty"`
+// AgentPolicyListResponseObject defines model for agent-policy-list_response_object.
+type AgentPolicyListResponseObject struct {
+	Items   []AgentPolicy `json:"items"`
+	Page    float32       `json:"page"`
+	PerPage float32       `json:"perPage"`
+	Total   float32       `json:"total"`
 }
 
 // AgentPolicy defines model for agent_policy.
 type AgentPolicy struct {
 	// AdvancedSettings Advanced settings stored in the agent policy, e.g. agent_limits_go_max_procs
-	AdvancedSettings map[string]interface{} `json:"advanced_settings"`
-	AgentFeatures    []struct {
-		Enabled bool   `json:"enabled"`
-		Name    string `json:"name"`
-	} `json:"agent_features,omitempty"`
+	AdvancedSettings  map[string]interface{}                                       `json:"advanced_settings"`
+	AgentFeatures     []AgentPolicyAgentFeaturesItem                               `json:"agent_features,omitempty"`
 	Agents            *float32                                                     `json:"agents,omitempty"`
 	DataOutputId      *string                                                      `json:"data_output_id"`
 	Description       *string                                                      `json:"description,omitempty"`
@@ -1058,11 +53,14 @@ type AgentPolicy struct {
 	IsProtected *bool `json:"is_protected,omitempty"`
 
 	// KeepMonitoringAlive When set to true, monitoring will be enabled but logs/metrics collection will be disabled
-	KeepMonitoringAlive *bool                          `json:"keep_monitoring_alive"`
-	MonitoringEnabled   []AgentPolicyMonitoringEnabled `json:"monitoring_enabled,omitempty"`
-	MonitoringOutputId  *string                        `json:"monitoring_output_id"`
-	Name                string                         `json:"name"`
-	Namespace           string                         `json:"namespace"`
+	KeepMonitoringAlive    *bool                             `json:"keep_monitoring_alive"`
+	MonitoringDiagnostics  *AgentPolicyMonitoringDiagnostics `json:"monitoring_diagnostics,omitempty"`
+	MonitoringEnabled      []string                          `json:"monitoring_enabled,omitempty"`
+	MonitoringHttp         *AgentPolicyMonitoringHttp        `json:"monitoring_http,omitempty"`
+	MonitoringOutputId     *string                           `json:"monitoring_output_id"`
+	MonitoringPprofEnabled *bool                             `json:"monitoring_pprof_enabled,omitempty"`
+	Name                   string                            `json:"name"`
+	Namespace              string                            `json:"namespace"`
 
 	// Overrides Override settings that are defined in the agent policy. Input settings cannot be overridden. The override option should be used only in unusual circumstances and not as a routine procedure.
 	Overrides map[string]interface{} `json:"overrides"`
@@ -1090,19 +88,19 @@ type AgentPolicy_GlobalDataTags_AdditionalProperties struct {
 	union json.RawMessage
 }
 
-// AgentPolicyMonitoringEnabled defines model for AgentPolicy.MonitoringEnabled.
-type AgentPolicyMonitoringEnabled string
+// AgentPolicyAgentFeaturesItem defines model for agent_policy_agent_features_item.
+type AgentPolicyAgentFeaturesItem struct {
+	Enabled bool   `json:"enabled"`
+	Name    string `json:"name"`
+}
 
 // AgentPolicyCreateRequest defines model for agent_policy_create_request.
 type AgentPolicyCreateRequest struct {
-	AgentFeatures []struct {
-		Enabled bool   `json:"enabled"`
-		Name    string `json:"name"`
-	} `json:"agent_features,omitempty"`
-	DataOutputId      *string `json:"data_output_id"`
-	Description       *string `json:"description,omitempty"`
-	DownloadSourceId  *string `json:"download_source_id"`
-	FleetServerHostId *string `json:"fleet_server_host_id"`
+	AgentFeatures     []AgentPolicyCreateRequestAgentFeaturesItem `json:"agent_features,omitempty"`
+	DataOutputId      *string                                     `json:"data_output_id"`
+	Description       *string                                     `json:"description,omitempty"`
+	DownloadSourceId  *string                                     `json:"download_source_id"`
+	FleetServerHostId *string                                     `json:"fleet_server_host_id"`
 
 	// Force Force agent policy creation even if packages are not verified.
 	Force              *bool                                                                     `json:"force,omitempty"`
@@ -1110,7 +108,7 @@ type AgentPolicyCreateRequest struct {
 	Id                 *string                                                                   `json:"id,omitempty"`
 	InactivityTimeout  *int                                                                      `json:"inactivity_timeout,omitempty"`
 	IsProtected        *bool                                                                     `json:"is_protected,omitempty"`
-	MonitoringEnabled  []AgentPolicyCreateRequestMonitoringEnabled                               `json:"monitoring_enabled,omitempty"`
+	MonitoringEnabled  []string                                                                  `json:"monitoring_enabled,omitempty"`
 	MonitoringOutputId *string                                                                   `json:"monitoring_output_id"`
 	Name               string                                                                    `json:"name"`
 	Namespace          string                                                                    `json:"namespace"`
@@ -1128,1456 +126,692 @@ type AgentPolicyCreateRequest_GlobalDataTags_AdditionalProperties struct {
 	union json.RawMessage
 }
 
-// AgentPolicyCreateRequestMonitoringEnabled defines model for AgentPolicyCreateRequest.MonitoringEnabled.
-type AgentPolicyCreateRequestMonitoringEnabled string
+// AgentPolicyCreateRequestAgentFeaturesItem defines model for agent_policy_create_request_agent_features_item.
+type AgentPolicyCreateRequestAgentFeaturesItem struct {
+	Enabled bool   `json:"enabled"`
+	Name    string `json:"name"`
+}
+
+// AgentPolicyMonitoringDiagnostics defines model for agent_policy_monitoring_diagnostics.
+type AgentPolicyMonitoringDiagnostics struct {
+	Limit    *AgentPolicyMonitoringDiagnosticsLimit    `json:"limit,omitempty"`
+	Uploader *AgentPolicyMonitoringDiagnosticsUploader `json:"uploader,omitempty"`
+}
+
+// AgentPolicyMonitoringDiagnosticsLimit defines model for agent_policy_monitoring_diagnostics_limit.
+type AgentPolicyMonitoringDiagnosticsLimit struct {
+	Burst    *float32 `json:"burst,omitempty"`
+	Interval *string  `json:"interval,omitempty"`
+}
+
+// AgentPolicyMonitoringDiagnosticsUploader defines model for agent_policy_monitoring_diagnostics_uploader.
+type AgentPolicyMonitoringDiagnosticsUploader struct {
+	InitDur    *string  `json:"init_dur,omitempty"`
+	MaxDur     *string  `json:"max_dur,omitempty"`
+	MaxRetries *float32 `json:"max_retries,omitempty"`
+}
+
+// AgentPolicyMonitoringHttp defines model for agent_policy_monitoring_http.
+type AgentPolicyMonitoringHttp struct {
+	Enabled bool     `json:"enabled"`
+	Host    *string  `json:"host,omitempty"`
+	Port    *float32 `json:"port,omitempty"`
+}
 
 // AgentPolicyUpdateRequest defines model for agent_policy_update_request.
 type AgentPolicyUpdateRequest struct {
-	AgentFeatures []struct {
-		Enabled bool   `json:"enabled"`
-		Name    string `json:"name"`
-	} `json:"agent_features,omitempty"`
-	DataOutputId      *string `json:"data_output_id"`
-	Description       *string `json:"description,omitempty"`
-	DownloadSourceId  *string `json:"download_source_id"`
-	FleetServerHostId *string `json:"fleet_server_host_id"`
+	AgentFeatures     []AgentPolicyUpdateRequestAgentFeaturesItem `json:"agent_features,omitempty"`
+	DataOutputId      *string                                     `json:"data_output_id"`
+	Description       *string                                     `json:"description,omitempty"`
+	DownloadSourceId  *string                                     `json:"download_source_id"`
+	FleetServerHostId *string                                     `json:"fleet_server_host_id"`
 
 	// Force Force agent policy creation even if packages are not verified.
-	Force              *bool                                       `json:"force,omitempty"`
-	InactivityTimeout  *int                                        `json:"inactivity_timeout,omitempty"`
-	IsProtected        *bool                                       `json:"is_protected,omitempty"`
-	MonitoringEnabled  []AgentPolicyUpdateRequestMonitoringEnabled `json:"monitoring_enabled,omitempty"`
-	MonitoringOutputId *string                                     `json:"monitoring_output_id"`
-	Name               string                                      `json:"name"`
-	Namespace          string                                      `json:"namespace"`
-	UnenrollTimeout    *int                                        `json:"unenroll_timeout,omitempty"`
+	Force              *bool    `json:"force,omitempty"`
+	InactivityTimeout  *int     `json:"inactivity_timeout,omitempty"`
+	IsProtected        *bool    `json:"is_protected,omitempty"`
+	MonitoringEnabled  []string `json:"monitoring_enabled,omitempty"`
+	MonitoringOutputId *string  `json:"monitoring_output_id"`
+	Name               string   `json:"name"`
+	Namespace          string   `json:"namespace"`
+	UnenrollTimeout    *int     `json:"unenroll_timeout,omitempty"`
 }
 
-// AgentPolicyUpdateRequestMonitoringEnabled defines model for AgentPolicyUpdateRequest.MonitoringEnabled.
-type AgentPolicyUpdateRequestMonitoringEnabled string
-
-// Aggfield The name of the numeric field that is used in the aggregation. This property is required when `aggType` is `avg`, `max`, `min` or `sum`.
-type Aggfield = string
-
-// Aggtype The type of aggregation to perform.
-type Aggtype string
-
-// AlertDelay Indicates that an alert occurs only when the specified number of consecutive runs met the rule conditions.
-type AlertDelay struct {
-	// Active The number of consecutive runs that must meet the rule conditions.
-	Active float32 `json:"active"`
+// AgentPolicyUpdateRequestAgentFeaturesItem defines model for agent_policy_update_request_agent_features_item.
+type AgentPolicyUpdateRequestAgentFeaturesItem struct {
+	Enabled bool   `json:"enabled"`
+	Name    string `json:"name"`
 }
 
 // Allownoindex Allows the data view saved object to exist before the data is available.
 type Allownoindex = bool
 
 // BudgetingMethod The budgeting method to use when computing the rollup data.
-type BudgetingMethod string
+type BudgetingMethod = string
 
-// Consumer The name of the application or feature that owns the rule. For example: `alerts`, `apm`, `discover`, `infrastructure`, `logs`, `metrics`, `ml`, `monitoring`, `securitySolution`, `siem`, `stackAlerts`, or `uptime`.
-type Consumer = string
-
-// CreateAnomalyDetectionAlertRuleRequest A rule that checks if the anomaly detection job results contain anomalies that match the rule conditions.
-type CreateAnomalyDetectionAlertRuleRequest struct {
-	Actions Actions `json:"actions"`
-
-	// AlertDelay Indicates that an alert occurs only when the specified number of consecutive runs met the rule conditions.
-	AlertDelay *AlertDelay `json:"alert_delay,omitempty"`
-
-	// Consumer The name of the application or feature that owns the rule. For example: `alerts`, `apm`, `discover`, `infrastructure`, `logs`, `metrics`, `ml`, `monitoring`, `securitySolution`, `siem`, `stackAlerts`, or `uptime`.
-	Consumer Consumer `json:"consumer"`
-
-	// Enabled Indicates whether you want to run the rule on an interval basis after it is created.
-	Enabled *EnabledRule `json:"enabled,omitempty"`
-
-	// Name The name of the rule. While this name does not have to be unique, a distinctive name can help you identify a rule.
-	Name NameRule `json:"name"`
-
-	// NotifyWhen Deprecated in 8.13.0. Use the `notify_when` property in the action `frequency` object instead. Indicates how often alerts generate actions. NOTE: You cannot specify `notify_when` at both the rule and action level. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
-	// Deprecated:
-	NotifyWhen *NotifyWhen `json:"notify_when,omitempty"`
-
-	// Params The parameters for an anomaly detection rule.
-	Params map[string]interface{} `json:"params"`
-
-	// RuleTypeId The ID of the rule type that you want to call when the rule is scheduled to run.
-	RuleTypeId CreateAnomalyDetectionAlertRuleRequestRuleTypeId `json:"rule_type_id"`
-
-	// Schedule The check interval, which specifies how frequently the rule conditions are checked. The interval is specified in seconds, minutes, hours, or days.
-	Schedule Schedule `json:"schedule"`
-
-	// Tags The tags for the rule.
-	Tags Tags `json:"tags,omitempty"`
-
-	// Throttle Deprecated in 8.13.0. Use the `throttle` property in the action `frequency` object instead. The throttle interval, which defines how often an alert generates repeated actions. NOTE: You cannot specify the throttle interval at both the rule and action level. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
-	// Deprecated:
-	Throttle *Throttle `json:"throttle"`
+// CreateAgentPolicyResponseObject defines model for create-agent-policy_response_object.
+type CreateAgentPolicyResponseObject struct {
+	Item *AgentPolicy `json:"item,omitempty"`
 }
 
-// CreateAnomalyDetectionAlertRuleRequestRuleTypeId The ID of the rule type that you want to call when the rule is scheduled to run.
-type CreateAnomalyDetectionAlertRuleRequestRuleTypeId string
-
-// CreateAnomalyDetectionJobsHealthRuleRequest An rule that monitors job health and alerts if an operational issue occurred that may prevent the job from detecting anomalies.
-type CreateAnomalyDetectionJobsHealthRuleRequest struct {
-	Actions Actions `json:"actions"`
-
-	// AlertDelay Indicates that an alert occurs only when the specified number of consecutive runs met the rule conditions.
-	AlertDelay *AlertDelay `json:"alert_delay,omitempty"`
-
-	// Consumer The name of the application or feature that owns the rule. For example: `alerts`, `apm`, `discover`, `infrastructure`, `logs`, `metrics`, `ml`, `monitoring`, `securitySolution`, `siem`, `stackAlerts`, or `uptime`.
-	Consumer Consumer `json:"consumer"`
-
-	// Enabled Indicates whether you want to run the rule on an interval basis after it is created.
-	Enabled *EnabledRule `json:"enabled,omitempty"`
-
-	// Name The name of the rule. While this name does not have to be unique, a distinctive name can help you identify a rule.
-	Name NameRule `json:"name"`
-
-	// NotifyWhen Deprecated in 8.13.0. Use the `notify_when` property in the action `frequency` object instead. Indicates how often alerts generate actions. NOTE: You cannot specify `notify_when` at both the rule and action level. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
-	// Deprecated:
-	NotifyWhen *NotifyWhen `json:"notify_when,omitempty"`
-
-	// Params The parameters for an anomaly detection jobs health rule.
-	Params map[string]interface{} `json:"params"`
-
-	// RuleTypeId The ID of the rule type that you want to call when the rule is scheduled to run.
-	RuleTypeId CreateAnomalyDetectionJobsHealthRuleRequestRuleTypeId `json:"rule_type_id"`
-
-	// Schedule The check interval, which specifies how frequently the rule conditions are checked. The interval is specified in seconds, minutes, hours, or days.
-	Schedule Schedule `json:"schedule"`
-
-	// Tags The tags for the rule.
-	Tags Tags `json:"tags,omitempty"`
-
-	// Throttle Deprecated in 8.13.0. Use the `throttle` property in the action `frequency` object instead. The throttle interval, which defines how often an alert generates repeated actions. NOTE: You cannot specify the throttle interval at both the rule and action level. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
-	// Deprecated:
-	Throttle *Throttle `json:"throttle"`
+// CreatePackagePolicyResponseObject defines model for create-package-policy_response_object.
+type CreatePackagePolicyResponseObject struct {
+	Item PackagePolicy `json:"item"`
 }
 
-// CreateAnomalyDetectionJobsHealthRuleRequestRuleTypeId The ID of the rule type that you want to call when the rule is scheduled to run.
-type CreateAnomalyDetectionJobsHealthRuleRequestRuleTypeId string
+// CreateConnectorRequest defines model for create_connector_request.
+type CreateConnectorRequest struct {
+	Config map[string]interface{} `json:"config,omitempty"`
 
-// CreateApmAnomalyRuleRequest A rule that detects when either the latency, throughput, or failed transaction rate of a service is anomalous.
-type CreateApmAnomalyRuleRequest struct {
-	Actions Actions `json:"actions"`
+	// ConnectorTypeId The type of connector.
+	ConnectorTypeId string `json:"connector_type_id"`
 
-	// AlertDelay Indicates that an alert occurs only when the specified number of consecutive runs met the rule conditions.
-	AlertDelay *AlertDelay `json:"alert_delay,omitempty"`
-
-	// Consumer The name of the application or feature that owns the rule. For example: `alerts`, `apm`, `discover`, `infrastructure`, `logs`, `metrics`, `ml`, `monitoring`, `securitySolution`, `siem`, `stackAlerts`, or `uptime`.
-	Consumer Consumer `json:"consumer"`
-
-	// Enabled Indicates whether you want to run the rule on an interval basis after it is created.
-	Enabled *EnabledRule `json:"enabled,omitempty"`
-
-	// Name The name of the rule. While this name does not have to be unique, a distinctive name can help you identify a rule.
-	Name NameRule `json:"name"`
-
-	// NotifyWhen Deprecated in 8.13.0. Use the `notify_when` property in the action `frequency` object instead. Indicates how often alerts generate actions. NOTE: You cannot specify `notify_when` at both the rule and action level. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
-	// Deprecated:
-	NotifyWhen *NotifyWhen              `json:"notify_when,omitempty"`
-	Params     ParamsPropertyApmAnomaly `json:"params"`
-
-	// RuleTypeId The ID of the rule type that you want to call when the rule is scheduled to run.
-	RuleTypeId CreateApmAnomalyRuleRequestRuleTypeId `json:"rule_type_id"`
-
-	// Schedule The check interval, which specifies how frequently the rule conditions are checked. The interval is specified in seconds, minutes, hours, or days.
-	Schedule Schedule `json:"schedule"`
-
-	// Tags The tags for the rule.
-	Tags Tags `json:"tags,omitempty"`
-
-	// Throttle Deprecated in 8.13.0. Use the `throttle` property in the action `frequency` object instead. The throttle interval, which defines how often an alert generates repeated actions. NOTE: You cannot specify the throttle interval at both the rule and action level. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
-	// Deprecated:
-	Throttle *Throttle `json:"throttle"`
+	// Name The display name for the connector.
+	Name    string                 `json:"name"`
+	Secrets map[string]interface{} `json:"secrets,omitempty"`
 }
 
-// CreateApmAnomalyRuleRequestRuleTypeId The ID of the rule type that you want to call when the rule is scheduled to run.
-type CreateApmAnomalyRuleRequestRuleTypeId string
+// CreateConnectorResponseObject defines model for create_connector_response_object.
+type CreateConnectorResponseObject struct {
+	Config map[string]interface{} `json:"config,omitempty"`
 
-// CreateApmErrorCountRuleRequest A rule that detects when the number of errors in a service exceeds a defined threshold.
-type CreateApmErrorCountRuleRequest struct {
-	Actions Actions `json:"actions"`
+	// ConnectorTypeId The connector type identifier.
+	ConnectorTypeId string `json:"connector_type_id"`
 
-	// AlertDelay Indicates that an alert occurs only when the specified number of consecutive runs met the rule conditions.
-	AlertDelay *AlertDelay `json:"alert_delay,omitempty"`
+	// Id The identifier for the connector.
+	Id string `json:"id"`
 
-	// Consumer The name of the application or feature that owns the rule. For example: `alerts`, `apm`, `discover`, `infrastructure`, `logs`, `metrics`, `ml`, `monitoring`, `securitySolution`, `siem`, `stackAlerts`, or `uptime`.
-	Consumer Consumer `json:"consumer"`
+	// IsDeprecated Indicates whether the connector is deprecated.
+	IsDeprecated bool `json:"is_deprecated"`
 
-	// Enabled Indicates whether you want to run the rule on an interval basis after it is created.
-	Enabled *EnabledRule `json:"enabled,omitempty"`
+	// IsMissingSecrets Indicates whether the connector is missing secrets.
+	IsMissingSecrets *bool `json:"is_missing_secrets,omitempty"`
 
-	// Name The name of the rule. While this name does not have to be unique, a distinctive name can help you identify a rule.
-	Name NameRule `json:"name"`
+	// IsPreconfigured Indicates whether the connector is preconfigured. If true, the `config` and `is_missing_secrets` properties are omitted from the response.
+	IsPreconfigured bool `json:"is_preconfigured"`
 
-	// NotifyWhen Deprecated in 8.13.0. Use the `notify_when` property in the action `frequency` object instead. Indicates how often alerts generate actions. NOTE: You cannot specify `notify_when` at both the rule and action level. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
-	// Deprecated:
-	NotifyWhen *NotifyWhen                 `json:"notify_when,omitempty"`
-	Params     ParamsPropertyApmErrorCount `json:"params"`
+	// IsSystemAction Indicates whether the connector is used for system actions.
+	IsSystemAction bool `json:"is_system_action"`
 
-	// RuleTypeId The ID of the rule type that you want to call when the rule is scheduled to run.
-	RuleTypeId CreateApmErrorCountRuleRequestRuleTypeId `json:"rule_type_id"`
-
-	// Schedule The check interval, which specifies how frequently the rule conditions are checked. The interval is specified in seconds, minutes, hours, or days.
-	Schedule Schedule `json:"schedule"`
-
-	// Tags The tags for the rule.
-	Tags Tags `json:"tags,omitempty"`
-
-	// Throttle Deprecated in 8.13.0. Use the `throttle` property in the action `frequency` object instead. The throttle interval, which defines how often an alert generates repeated actions. NOTE: You cannot specify the throttle interval at both the rule and action level. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
-	// Deprecated:
-	Throttle *Throttle `json:"throttle"`
+	// Name  The name of the rule.
+	Name string `json:"name"`
 }
-
-// CreateApmErrorCountRuleRequestRuleTypeId The ID of the rule type that you want to call when the rule is scheduled to run.
-type CreateApmErrorCountRuleRequestRuleTypeId string
-
-// CreateApmTransactionDurationRuleRequest A rule that detects when the latency of a specific transaction type in a service exceeds a threshold.
-type CreateApmTransactionDurationRuleRequest struct {
-	Actions Actions `json:"actions"`
-
-	// AlertDelay Indicates that an alert occurs only when the specified number of consecutive runs met the rule conditions.
-	AlertDelay *AlertDelay `json:"alert_delay,omitempty"`
-
-	// Consumer The name of the application or feature that owns the rule. For example: `alerts`, `apm`, `discover`, `infrastructure`, `logs`, `metrics`, `ml`, `monitoring`, `securitySolution`, `siem`, `stackAlerts`, or `uptime`.
-	Consumer Consumer `json:"consumer"`
-
-	// Enabled Indicates whether you want to run the rule on an interval basis after it is created.
-	Enabled *EnabledRule `json:"enabled,omitempty"`
-
-	// Name The name of the rule. While this name does not have to be unique, a distinctive name can help you identify a rule.
-	Name NameRule `json:"name"`
-
-	// NotifyWhen Deprecated in 8.13.0. Use the `notify_when` property in the action `frequency` object instead. Indicates how often alerts generate actions. NOTE: You cannot specify `notify_when` at both the rule and action level. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
-	// Deprecated:
-	NotifyWhen *NotifyWhen                          `json:"notify_when,omitempty"`
-	Params     ParamsPropertyApmTransactionDuration `json:"params"`
-
-	// RuleTypeId The ID of the rule type that you want to call when the rule is scheduled to run.
-	RuleTypeId CreateApmTransactionDurationRuleRequestRuleTypeId `json:"rule_type_id"`
-
-	// Schedule The check interval, which specifies how frequently the rule conditions are checked. The interval is specified in seconds, minutes, hours, or days.
-	Schedule Schedule `json:"schedule"`
-
-	// Tags The tags for the rule.
-	Tags Tags `json:"tags,omitempty"`
-
-	// Throttle Deprecated in 8.13.0. Use the `throttle` property in the action `frequency` object instead. The throttle interval, which defines how often an alert generates repeated actions. NOTE: You cannot specify the throttle interval at both the rule and action level. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
-	// Deprecated:
-	Throttle *Throttle `json:"throttle"`
-}
-
-// CreateApmTransactionDurationRuleRequestRuleTypeId The ID of the rule type that you want to call when the rule is scheduled to run.
-type CreateApmTransactionDurationRuleRequestRuleTypeId string
-
-// CreateApmTransactionErrorRateRuleRequest A rule that sends notifications when the rate of transaction errors in a service exceeds a threshold.
-type CreateApmTransactionErrorRateRuleRequest struct {
-	Actions Actions `json:"actions"`
-
-	// AlertDelay Indicates that an alert occurs only when the specified number of consecutive runs met the rule conditions.
-	AlertDelay *AlertDelay `json:"alert_delay,omitempty"`
-
-	// Consumer The name of the application or feature that owns the rule. For example: `alerts`, `apm`, `discover`, `infrastructure`, `logs`, `metrics`, `ml`, `monitoring`, `securitySolution`, `siem`, `stackAlerts`, or `uptime`.
-	Consumer Consumer `json:"consumer"`
-
-	// Enabled Indicates whether you want to run the rule on an interval basis after it is created.
-	Enabled *EnabledRule `json:"enabled,omitempty"`
-
-	// Name The name of the rule. While this name does not have to be unique, a distinctive name can help you identify a rule.
-	Name NameRule `json:"name"`
-
-	// NotifyWhen Deprecated in 8.13.0. Use the `notify_when` property in the action `frequency` object instead. Indicates how often alerts generate actions. NOTE: You cannot specify `notify_when` at both the rule and action level. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
-	// Deprecated:
-	NotifyWhen *NotifyWhen                           `json:"notify_when,omitempty"`
-	Params     ParamsPropertyApmTransactionErrorRate `json:"params"`
-
-	// RuleTypeId The ID of the rule type that you want to call when the rule is scheduled to run.
-	RuleTypeId CreateApmTransactionErrorRateRuleRequestRuleTypeId `json:"rule_type_id"`
-
-	// Schedule The check interval, which specifies how frequently the rule conditions are checked. The interval is specified in seconds, minutes, hours, or days.
-	Schedule Schedule `json:"schedule"`
-
-	// Tags The tags for the rule.
-	Tags Tags `json:"tags,omitempty"`
-
-	// Throttle Deprecated in 8.13.0. Use the `throttle` property in the action `frequency` object instead. The throttle interval, which defines how often an alert generates repeated actions. NOTE: You cannot specify the throttle interval at both the rule and action level. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
-	// Deprecated:
-	Throttle *Throttle `json:"throttle"`
-}
-
-// CreateApmTransactionErrorRateRuleRequestRuleTypeId The ID of the rule type that you want to call when the rule is scheduled to run.
-type CreateApmTransactionErrorRateRuleRequestRuleTypeId string
 
 // CreateDataViewRequestObject defines model for create_data_view_request_object.
 type CreateDataViewRequestObject struct {
 	// DataView The data view object.
-	DataView struct {
-		// AllowNoIndex Allows the data view saved object to exist before the data is available.
-		AllowNoIndex *Allownoindex         `json:"allowNoIndex,omitempty"`
-		FieldAttrs   map[string]Fieldattrs `json:"fieldAttrs,omitempty"`
-
-		// FieldFormats A map of field formats by field name.
-		FieldFormats Fieldformats           `json:"fieldFormats,omitempty"`
-		Fields       map[string]interface{} `json:"fields,omitempty"`
-		Id           *string                `json:"id,omitempty"`
-
-		// Name The data view name.
-		Name *string `json:"name,omitempty"`
-
-		// Namespaces An array of space identifiers for sharing the data view between multiple spaces.
-		Namespaces      Namespaces                 `json:"namespaces,omitempty"`
-		RuntimeFieldMap map[string]Runtimefieldmap `json:"runtimeFieldMap,omitempty"`
-
-		// SourceFilters The array of field names you want to filter out in Discover.
-		SourceFilters Sourcefilters `json:"sourceFilters,omitempty"`
-
-		// TimeFieldName The timestamp field name, which you use for time-based data views.
-		TimeFieldName *Timefieldname `json:"timeFieldName,omitempty"`
-
-		// Title Comma-separated list of data streams, indices, and aliases that you want to search. Supports wildcards (`*`).
-		Title Title `json:"title"`
-
-		// Type When set to `rollup`, identifies the rollup data views.
-		Type *Type `json:"type,omitempty"`
-
-		// TypeMeta When you use rollup indices, contains the field list for the rollup data view API endpoints.
-		TypeMeta *Typemeta `json:"typeMeta,omitempty"`
-		Version  *string   `json:"version,omitempty"`
-	} `json:"data_view"`
+	DataView CreateDataViewRequestObjectDataView `json:"data_view"`
 
 	// Override Override an existing data view if a data view with the provided title already exists.
 	Override *bool `json:"override,omitempty"`
 }
 
-// CreateEsQueryRuleRequest A rule that runs a user-configured query, compares the number of matches to a configured threshold, and schedules actions to run when the threshold condition is met.
-type CreateEsQueryRuleRequest struct {
-	Actions Actions `json:"actions"`
+// CreateDataViewRequestObjectDataView The data view object.
+type CreateDataViewRequestObjectDataView struct {
+	// AllowNoIndex Allows the data view saved object to exist before the data is available.
+	AllowNoIndex *Allownoindex         `json:"allowNoIndex,omitempty"`
+	FieldAttrs   map[string]Fieldattrs `json:"fieldAttrs,omitempty"`
 
-	// AlertDelay Indicates that an alert occurs only when the specified number of consecutive runs met the rule conditions.
-	AlertDelay *AlertDelay `json:"alert_delay,omitempty"`
+	// FieldFormats A map of field formats by field name.
+	FieldFormats Fieldformats           `json:"fieldFormats,omitempty"`
+	Fields       map[string]interface{} `json:"fields,omitempty"`
+	Id           *string                `json:"id,omitempty"`
 
-	// Consumer The name of the application or feature that owns the rule. For example: `alerts`, `apm`, `discover`, `infrastructure`, `logs`, `metrics`, `ml`, `monitoring`, `securitySolution`, `siem`, `stackAlerts`, or `uptime`.
-	Consumer Consumer `json:"consumer"`
+	// Name The data view name.
+	Name *string `json:"name,omitempty"`
 
-	// Enabled Indicates whether you want to run the rule on an interval basis after it is created.
-	Enabled *EnabledRule `json:"enabled,omitempty"`
+	// Namespaces An array of space identifiers for sharing the data view between multiple spaces.
+	Namespaces      Namespaces                 `json:"namespaces,omitempty"`
+	RuntimeFieldMap map[string]Runtimefieldmap `json:"runtimeFieldMap,omitempty"`
 
-	// Name The name of the rule. While this name does not have to be unique, a distinctive name can help you identify a rule.
-	Name NameRule `json:"name"`
+	// SourceFilters The array of field names you want to filter out in Discover.
+	SourceFilters Sourcefilters `json:"sourceFilters,omitempty"`
 
-	// NotifyWhen Deprecated in 8.13.0. Use the `notify_when` property in the action `frequency` object instead. Indicates how often alerts generate actions. NOTE: You cannot specify `notify_when` at both the rule and action level. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
-	// Deprecated:
-	NotifyWhen *NotifyWhen       `json:"notify_when,omitempty"`
-	Params     ParamsEsQueryRule `json:"params"`
+	// TimeFieldName The timestamp field name, which you use for time-based data views.
+	TimeFieldName *Timefieldname `json:"timeFieldName,omitempty"`
 
-	// RuleTypeId The ID of the rule type that you want to call when the rule is scheduled to run.
-	RuleTypeId CreateEsQueryRuleRequestRuleTypeId `json:"rule_type_id"`
+	// Title Comma-separated list of data streams, indices, and aliases that you want to search. Supports wildcards (`*`).
+	Title Title `json:"title"`
 
-	// Schedule The check interval, which specifies how frequently the rule conditions are checked. The interval is specified in seconds, minutes, hours, or days.
-	Schedule Schedule `json:"schedule"`
+	// Type When set to `rollup`, identifies the rollup data views.
+	Type *Type `json:"type,omitempty"`
 
-	// Tags The tags for the rule.
-	Tags Tags `json:"tags,omitempty"`
-
-	// Throttle Deprecated in 8.13.0. Use the `throttle` property in the action `frequency` object instead. The throttle interval, which defines how often an alert generates repeated actions. NOTE: You cannot specify the throttle interval at both the rule and action level. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
-	// Deprecated:
-	Throttle *Throttle `json:"throttle"`
+	// TypeMeta When you use rollup indices, contains the field list for the rollup data view API endpoints.
+	TypeMeta *Typemeta `json:"typeMeta,omitempty"`
+	Version  *string   `json:"version,omitempty"`
 }
 
-// CreateEsQueryRuleRequestRuleTypeId The ID of the rule type that you want to call when the rule is scheduled to run.
-type CreateEsQueryRuleRequestRuleTypeId string
-
-// CreateGeoContainmentRuleRequest A rule that runs an Elasticsearch query over indices to determine whether any documents are currently contained within any boundaries from the specified boundary index. In the event that an entity is contained within a boundary, an alert may be generated.
-type CreateGeoContainmentRuleRequest struct {
-	Actions Actions `json:"actions"`
-
-	// AlertDelay Indicates that an alert occurs only when the specified number of consecutive runs met the rule conditions.
-	AlertDelay *AlertDelay `json:"alert_delay,omitempty"`
-
-	// Consumer The name of the application or feature that owns the rule. For example: `alerts`, `apm`, `discover`, `infrastructure`, `logs`, `metrics`, `ml`, `monitoring`, `securitySolution`, `siem`, `stackAlerts`, or `uptime`.
-	Consumer Consumer `json:"consumer"`
-
-	// Enabled Indicates whether you want to run the rule on an interval basis after it is created.
-	Enabled *EnabledRule `json:"enabled,omitempty"`
-
-	// Name The name of the rule. While this name does not have to be unique, a distinctive name can help you identify a rule.
-	Name NameRule `json:"name"`
-
-	// NotifyWhen Deprecated in 8.13.0. Use the `notify_when` property in the action `frequency` object instead. Indicates how often alerts generate actions. NOTE: You cannot specify `notify_when` at both the rule and action level. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
-	// Deprecated:
-	NotifyWhen *NotifyWhen `json:"notify_when,omitempty"`
-
-	// Params The parameters for an tracking containment rule.
-	Params map[string]interface{} `json:"params"`
-
-	// RuleTypeId The ID of the rule type that you want to call when the rule is scheduled to run.
-	RuleTypeId CreateGeoContainmentRuleRequestRuleTypeId `json:"rule_type_id"`
-
-	// Schedule The check interval, which specifies how frequently the rule conditions are checked. The interval is specified in seconds, minutes, hours, or days.
-	Schedule Schedule `json:"schedule"`
-
-	// Tags The tags for the rule.
-	Tags Tags `json:"tags,omitempty"`
-
-	// Throttle Deprecated in 8.13.0. Use the `throttle` property in the action `frequency` object instead. The throttle interval, which defines how often an alert generates repeated actions. NOTE: You cannot specify the throttle interval at both the rule and action level. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
-	// Deprecated:
-	Throttle *Throttle `json:"throttle"`
-}
-
-// CreateGeoContainmentRuleRequestRuleTypeId The ID of the rule type that you want to call when the rule is scheduled to run.
-type CreateGeoContainmentRuleRequestRuleTypeId string
-
-// CreateIndexThresholdRuleRequest A rule that runs an Elasticsearch query, aggregates field values from documents, compares them to threshold values, and schedules actions to run when the thresholds are met.
-type CreateIndexThresholdRuleRequest struct {
-	Actions Actions `json:"actions"`
-
-	// AlertDelay Indicates that an alert occurs only when the specified number of consecutive runs met the rule conditions.
-	AlertDelay *AlertDelay `json:"alert_delay,omitempty"`
-
-	// Consumer The name of the application or feature that owns the rule. For example: `alerts`, `apm`, `discover`, `infrastructure`, `logs`, `metrics`, `ml`, `monitoring`, `securitySolution`, `siem`, `stackAlerts`, or `uptime`.
-	Consumer Consumer `json:"consumer"`
-
-	// Enabled Indicates whether you want to run the rule on an interval basis after it is created.
-	Enabled *EnabledRule `json:"enabled,omitempty"`
-
-	// Name The name of the rule. While this name does not have to be unique, a distinctive name can help you identify a rule.
-	Name NameRule `json:"name"`
-
-	// NotifyWhen Deprecated in 8.13.0. Use the `notify_when` property in the action `frequency` object instead. Indicates how often alerts generate actions. NOTE: You cannot specify `notify_when` at both the rule and action level. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
-	// Deprecated:
-	NotifyWhen *NotifyWhen `json:"notify_when,omitempty"`
-
-	// Params The parameters for an index threshold rule.
-	Params ParamsIndexThresholdRule `json:"params"`
-
-	// RuleTypeId The ID of the rule type that you want to call when the rule is scheduled to run.
-	RuleTypeId CreateIndexThresholdRuleRequestRuleTypeId `json:"rule_type_id"`
-
-	// Schedule The check interval, which specifies how frequently the rule conditions are checked. The interval is specified in seconds, minutes, hours, or days.
-	Schedule Schedule `json:"schedule"`
-
-	// Tags The tags for the rule.
-	Tags Tags `json:"tags,omitempty"`
-
-	// Throttle Deprecated in 8.13.0. Use the `throttle` property in the action `frequency` object instead. The throttle interval, which defines how often an alert generates repeated actions. NOTE: You cannot specify the throttle interval at both the rule and action level. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
-	// Deprecated:
-	Throttle *Throttle `json:"throttle"`
-}
-
-// CreateIndexThresholdRuleRequestRuleTypeId The ID of the rule type that you want to call when the rule is scheduled to run.
-type CreateIndexThresholdRuleRequestRuleTypeId string
-
-// CreateInfraInventoryRuleRequest A rule that sends notifications when a metric has reached or exceeded a value for a specific resource or a group of resources within your infrastructure.
-type CreateInfraInventoryRuleRequest struct {
-	Actions Actions `json:"actions"`
-
-	// AlertDelay Indicates that an alert occurs only when the specified number of consecutive runs met the rule conditions.
-	AlertDelay *AlertDelay `json:"alert_delay,omitempty"`
-
-	// Consumer The name of the application or feature that owns the rule. For example: `alerts`, `apm`, `discover`, `infrastructure`, `logs`, `metrics`, `ml`, `monitoring`, `securitySolution`, `siem`, `stackAlerts`, or `uptime`.
-	Consumer Consumer `json:"consumer"`
-
-	// Enabled Indicates whether you want to run the rule on an interval basis after it is created.
-	Enabled *EnabledRule `json:"enabled,omitempty"`
-
-	// Name The name of the rule. While this name does not have to be unique, a distinctive name can help you identify a rule.
-	Name NameRule `json:"name"`
-
-	// NotifyWhen Deprecated in 8.13.0. Use the `notify_when` property in the action `frequency` object instead. Indicates how often alerts generate actions. NOTE: You cannot specify `notify_when` at both the rule and action level. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
-	// Deprecated:
-	NotifyWhen *NotifyWhen                  `json:"notify_when,omitempty"`
-	Params     ParamsPropertyInfraInventory `json:"params"`
-
-	// RuleTypeId The ID of the rule type that you want to call when the rule is scheduled to run.
-	RuleTypeId CreateInfraInventoryRuleRequestRuleTypeId `json:"rule_type_id"`
-
-	// Schedule The check interval, which specifies how frequently the rule conditions are checked. The interval is specified in seconds, minutes, hours, or days.
-	Schedule Schedule `json:"schedule"`
-
-	// Tags The tags for the rule.
-	Tags Tags `json:"tags,omitempty"`
-
-	// Throttle Deprecated in 8.13.0. Use the `throttle` property in the action `frequency` object instead. The throttle interval, which defines how often an alert generates repeated actions. NOTE: You cannot specify the throttle interval at both the rule and action level. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
-	// Deprecated:
-	Throttle *Throttle `json:"throttle"`
-}
-
-// CreateInfraInventoryRuleRequestRuleTypeId The ID of the rule type that you want to call when the rule is scheduled to run.
-type CreateInfraInventoryRuleRequestRuleTypeId string
-
-// CreateInfraMetricAnomalyRuleRequest defines model for create_infra_metric_anomaly_rule_request.
-type CreateInfraMetricAnomalyRuleRequest struct {
-	Actions Actions `json:"actions"`
-
-	// AlertDelay Indicates that an alert occurs only when the specified number of consecutive runs met the rule conditions.
-	AlertDelay *AlertDelay `json:"alert_delay,omitempty"`
-
-	// Consumer The name of the application or feature that owns the rule. For example: `alerts`, `apm`, `discover`, `infrastructure`, `logs`, `metrics`, `ml`, `monitoring`, `securitySolution`, `siem`, `stackAlerts`, or `uptime`.
-	Consumer Consumer `json:"consumer"`
-
-	// Enabled Indicates whether you want to run the rule on an interval basis after it is created.
-	Enabled *EnabledRule `json:"enabled,omitempty"`
-
-	// Name The name of the rule. While this name does not have to be unique, a distinctive name can help you identify a rule.
-	Name NameRule `json:"name"`
-
-	// NotifyWhen Deprecated in 8.13.0. Use the `notify_when` property in the action `frequency` object instead. Indicates how often alerts generate actions. NOTE: You cannot specify `notify_when` at both the rule and action level. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
-	// Deprecated:
-	NotifyWhen *NotifyWhen `json:"notify_when,omitempty"`
-
-	// Params The parameters for an infrastructure anomaly rule.
-	Params map[string]interface{} `json:"params"`
-
-	// RuleTypeId The ID of the rule type that you want to call when the rule is scheduled to run.
-	RuleTypeId CreateInfraMetricAnomalyRuleRequestRuleTypeId `json:"rule_type_id"`
-
-	// Schedule The check interval, which specifies how frequently the rule conditions are checked. The interval is specified in seconds, minutes, hours, or days.
-	Schedule Schedule `json:"schedule"`
-
-	// Tags The tags for the rule.
-	Tags Tags `json:"tags,omitempty"`
-
-	// Throttle Deprecated in 8.13.0. Use the `throttle` property in the action `frequency` object instead. The throttle interval, which defines how often an alert generates repeated actions. NOTE: You cannot specify the throttle interval at both the rule and action level. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
-	// Deprecated:
-	Throttle *Throttle `json:"throttle"`
-}
-
-// CreateInfraMetricAnomalyRuleRequestRuleTypeId The ID of the rule type that you want to call when the rule is scheduled to run.
-type CreateInfraMetricAnomalyRuleRequestRuleTypeId string
-
-// CreateInfraMetricThresholdRuleRequest A rule that sends notifications when a metric has reached or exceeded a value for a specific time period.
-type CreateInfraMetricThresholdRuleRequest struct {
-	Actions Actions `json:"actions"`
-
-	// AlertDelay Indicates that an alert occurs only when the specified number of consecutive runs met the rule conditions.
-	AlertDelay *AlertDelay `json:"alert_delay,omitempty"`
-
-	// Consumer The name of the application or feature that owns the rule. For example: `alerts`, `apm`, `discover`, `infrastructure`, `logs`, `metrics`, `ml`, `monitoring`, `securitySolution`, `siem`, `stackAlerts`, or `uptime`.
-	Consumer Consumer `json:"consumer"`
-
-	// Enabled Indicates whether you want to run the rule on an interval basis after it is created.
-	Enabled *EnabledRule `json:"enabled,omitempty"`
-
-	// Name The name of the rule. While this name does not have to be unique, a distinctive name can help you identify a rule.
-	Name NameRule `json:"name"`
-
-	// NotifyWhen Deprecated in 8.13.0. Use the `notify_when` property in the action `frequency` object instead. Indicates how often alerts generate actions. NOTE: You cannot specify `notify_when` at both the rule and action level. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
-	// Deprecated:
-	NotifyWhen *NotifyWhen                        `json:"notify_when,omitempty"`
-	Params     ParamsPropertyInfraMetricThreshold `json:"params"`
-
-	// RuleTypeId The ID of the rule type that you want to call when the rule is scheduled to run.
-	RuleTypeId CreateInfraMetricThresholdRuleRequestRuleTypeId `json:"rule_type_id"`
-
-	// Schedule The check interval, which specifies how frequently the rule conditions are checked. The interval is specified in seconds, minutes, hours, or days.
-	Schedule Schedule `json:"schedule"`
-
-	// Tags The tags for the rule.
-	Tags Tags `json:"tags,omitempty"`
-
-	// Throttle Deprecated in 8.13.0. Use the `throttle` property in the action `frequency` object instead. The throttle interval, which defines how often an alert generates repeated actions. NOTE: You cannot specify the throttle interval at both the rule and action level. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
-	// Deprecated:
-	Throttle *Throttle `json:"throttle"`
-}
-
-// CreateInfraMetricThresholdRuleRequestRuleTypeId The ID of the rule type that you want to call when the rule is scheduled to run.
-type CreateInfraMetricThresholdRuleRequestRuleTypeId string
-
-// CreateLogThresholdRuleRequest A rule that detects when a log aggregation exceeds a threshold.
-type CreateLogThresholdRuleRequest struct {
-	Actions Actions `json:"actions"`
-
-	// AlertDelay Indicates that an alert occurs only when the specified number of consecutive runs met the rule conditions.
-	AlertDelay *AlertDelay `json:"alert_delay,omitempty"`
-
-	// Consumer The name of the application or feature that owns the rule. For example: `alerts`, `apm`, `discover`, `infrastructure`, `logs`, `metrics`, `ml`, `monitoring`, `securitySolution`, `siem`, `stackAlerts`, or `uptime`.
-	Consumer Consumer `json:"consumer"`
-
-	// Enabled Indicates whether you want to run the rule on an interval basis after it is created.
-	Enabled *EnabledRule `json:"enabled,omitempty"`
-
-	// Name The name of the rule. While this name does not have to be unique, a distinctive name can help you identify a rule.
-	Name NameRule `json:"name"`
-
-	// NotifyWhen Deprecated in 8.13.0. Use the `notify_when` property in the action `frequency` object instead. Indicates how often alerts generate actions. NOTE: You cannot specify `notify_when` at both the rule and action level. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
-	// Deprecated:
-	NotifyWhen *NotifyWhen                `json:"notify_when,omitempty"`
-	Params     ParamsPropertyLogThreshold `json:"params"`
-
-	// RuleTypeId The ID of the rule type that you want to call when the rule is scheduled to run.
-	RuleTypeId CreateLogThresholdRuleRequestRuleTypeId `json:"rule_type_id"`
-
-	// Schedule The check interval, which specifies how frequently the rule conditions are checked. The interval is specified in seconds, minutes, hours, or days.
-	Schedule Schedule `json:"schedule"`
-
-	// Tags The tags for the rule.
-	Tags Tags `json:"tags,omitempty"`
-
-	// Throttle Deprecated in 8.13.0. Use the `throttle` property in the action `frequency` object instead. The throttle interval, which defines how often an alert generates repeated actions. NOTE: You cannot specify the throttle interval at both the rule and action level. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
-	// Deprecated:
-	Throttle *Throttle `json:"throttle"`
-}
-
-// CreateLogThresholdRuleRequestRuleTypeId The ID of the rule type that you want to call when the rule is scheduled to run.
-type CreateLogThresholdRuleRequestRuleTypeId string
-
-// CreateMonitoringCcrExceptionsRuleRequest A rule that detects cross-cluster replication (CCR) read exceptions.
-type CreateMonitoringCcrExceptionsRuleRequest struct {
-	Actions Actions `json:"actions"`
-
-	// Consumer The name of the application or feature that owns the rule. For example: `alerts`, `apm`, `discover`, `infrastructure`, `logs`, `metrics`, `ml`, `monitoring`, `securitySolution`, `siem`, `stackAlerts`, or `uptime`.
-	Consumer Consumer `json:"consumer"`
-
-	// Enabled Indicates whether you want to run the rule on an interval basis after it is created.
-	Enabled *EnabledRule `json:"enabled,omitempty"`
-
-	// Name The name of the rule. While this name does not have to be unique, a distinctive name can help you identify a rule.
-	Name NameRule `json:"name"`
-
-	// NotifyWhen Deprecated in 8.13.0. Use the `notify_when` property in the action `frequency` object instead. Indicates how often alerts generate actions. NOTE: You cannot specify `notify_when` at both the rule and action level. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
-	// Deprecated:
-	NotifyWhen *NotifyWhen `json:"notify_when,omitempty"`
-
-	// Params The parameters for a CCR read exceptions rule.
-	Params map[string]interface{} `json:"params"`
-
-	// RuleTypeId The ID of the rule type that you want to call when the rule is scheduled to run.
-	RuleTypeId CreateMonitoringCcrExceptionsRuleRequestRuleTypeId `json:"rule_type_id"`
-
-	// Schedule The check interval, which specifies how frequently the rule conditions are checked. The interval is specified in seconds, minutes, hours, or days.
-	Schedule Schedule `json:"schedule"`
-
-	// Tags The tags for the rule.
-	Tags Tags `json:"tags,omitempty"`
-
-	// Throttle Deprecated in 8.13.0. Use the `throttle` property in the action `frequency` object instead. The throttle interval, which defines how often an alert generates repeated actions. NOTE: You cannot specify the throttle interval at both the rule and action level. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
-	// Deprecated:
-	Throttle *Throttle `json:"throttle"`
-}
-
-// CreateMonitoringCcrExceptionsRuleRequestRuleTypeId The ID of the rule type that you want to call when the rule is scheduled to run.
-type CreateMonitoringCcrExceptionsRuleRequestRuleTypeId string
-
-// CreateMonitoringClusterHealthRuleRequest A rule that detects when the health of the cluster changes.
-type CreateMonitoringClusterHealthRuleRequest struct {
-	Actions Actions `json:"actions"`
-
-	// Consumer The name of the application or feature that owns the rule. For example: `alerts`, `apm`, `discover`, `infrastructure`, `logs`, `metrics`, `ml`, `monitoring`, `securitySolution`, `siem`, `stackAlerts`, or `uptime`.
-	Consumer Consumer `json:"consumer"`
-
-	// Enabled Indicates whether you want to run the rule on an interval basis after it is created.
-	Enabled *EnabledRule `json:"enabled,omitempty"`
-
-	// Name The name of the rule. While this name does not have to be unique, a distinctive name can help you identify a rule.
-	Name NameRule `json:"name"`
-
-	// NotifyWhen Deprecated in 8.13.0. Use the `notify_when` property in the action `frequency` object instead. Indicates how often alerts generate actions. NOTE: You cannot specify `notify_when` at both the rule and action level. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
-	// Deprecated:
-	NotifyWhen *NotifyWhen `json:"notify_when,omitempty"`
-
-	// Params The parameters for a cluster health rule.
-	Params map[string]interface{} `json:"params"`
-
-	// RuleTypeId The ID of the rule type that you want to call when the rule is scheduled to run.
-	RuleTypeId CreateMonitoringClusterHealthRuleRequestRuleTypeId `json:"rule_type_id"`
-
-	// Schedule The check interval, which specifies how frequently the rule conditions are checked. The interval is specified in seconds, minutes, hours, or days.
-	Schedule Schedule `json:"schedule"`
-
-	// Tags The tags for the rule.
-	Tags Tags `json:"tags,omitempty"`
-
-	// Throttle Deprecated in 8.13.0. Use the `throttle` property in the action `frequency` object instead. The throttle interval, which defines how often an alert generates repeated actions. NOTE: You cannot specify the throttle interval at both the rule and action level. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
-	// Deprecated:
-	Throttle *Throttle `json:"throttle"`
-}
-
-// CreateMonitoringClusterHealthRuleRequestRuleTypeId The ID of the rule type that you want to call when the rule is scheduled to run.
-type CreateMonitoringClusterHealthRuleRequestRuleTypeId string
-
-// CreateMonitoringCpuUsageRuleRequest A rule that detects when the CPU load for a node is consistently high.
-type CreateMonitoringCpuUsageRuleRequest struct {
-	Actions Actions `json:"actions"`
-
-	// Consumer The name of the application or feature that owns the rule. For example: `alerts`, `apm`, `discover`, `infrastructure`, `logs`, `metrics`, `ml`, `monitoring`, `securitySolution`, `siem`, `stackAlerts`, or `uptime`.
-	Consumer Consumer `json:"consumer"`
-
-	// Enabled Indicates whether you want to run the rule on an interval basis after it is created.
-	Enabled *EnabledRule `json:"enabled,omitempty"`
-
-	// Name The name of the rule. While this name does not have to be unique, a distinctive name can help you identify a rule.
-	Name NameRule `json:"name"`
-
-	// NotifyWhen Deprecated in 8.13.0. Use the `notify_when` property in the action `frequency` object instead. Indicates how often alerts generate actions. NOTE: You cannot specify `notify_when` at both the rule and action level. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
-	// Deprecated:
-	NotifyWhen *NotifyWhen `json:"notify_when,omitempty"`
-
-	// Params The parameters for a CPU usage rule.
-	Params map[string]interface{} `json:"params"`
-
-	// RuleTypeId The ID of the rule type that you want to call when the rule is scheduled to run.
-	RuleTypeId CreateMonitoringCpuUsageRuleRequestRuleTypeId `json:"rule_type_id"`
-
-	// Schedule The check interval, which specifies how frequently the rule conditions are checked. The interval is specified in seconds, minutes, hours, or days.
-	Schedule Schedule `json:"schedule"`
-
-	// Tags The tags for the rule.
-	Tags Tags `json:"tags,omitempty"`
-
-	// Throttle Deprecated in 8.13.0. Use the `throttle` property in the action `frequency` object instead. The throttle interval, which defines how often an alert generates repeated actions. NOTE: You cannot specify the throttle interval at both the rule and action level. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
-	// Deprecated:
-	Throttle *Throttle `json:"throttle"`
-}
-
-// CreateMonitoringCpuUsageRuleRequestRuleTypeId The ID of the rule type that you want to call when the rule is scheduled to run.
-type CreateMonitoringCpuUsageRuleRequestRuleTypeId string
-
-// CreateMonitoringDiskUsageRuleRequest A rule that detects when the disk usage for a node is consistently high.
-type CreateMonitoringDiskUsageRuleRequest struct {
-	Actions Actions `json:"actions"`
-
-	// Consumer The name of the application or feature that owns the rule. For example: `alerts`, `apm`, `discover`, `infrastructure`, `logs`, `metrics`, `ml`, `monitoring`, `securitySolution`, `siem`, `stackAlerts`, or `uptime`.
-	Consumer Consumer `json:"consumer"`
-
-	// Enabled Indicates whether you want to run the rule on an interval basis after it is created.
-	Enabled *EnabledRule `json:"enabled,omitempty"`
-
-	// Name The name of the rule. While this name does not have to be unique, a distinctive name can help you identify a rule.
-	Name NameRule `json:"name"`
-
-	// NotifyWhen Deprecated in 8.13.0. Use the `notify_when` property in the action `frequency` object instead. Indicates how often alerts generate actions. NOTE: You cannot specify `notify_when` at both the rule and action level. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
-	// Deprecated:
-	NotifyWhen *NotifyWhen `json:"notify_when,omitempty"`
-
-	// Params The parameters for a disk usage rule.
-	Params map[string]interface{} `json:"params"`
-
-	// RuleTypeId The ID of the rule type that you want to call when the rule is scheduled to run.
-	RuleTypeId CreateMonitoringDiskUsageRuleRequestRuleTypeId `json:"rule_type_id"`
-
-	// Schedule The check interval, which specifies how frequently the rule conditions are checked. The interval is specified in seconds, minutes, hours, or days.
-	Schedule Schedule `json:"schedule"`
-
-	// Tags The tags for the rule.
-	Tags Tags `json:"tags,omitempty"`
-
-	// Throttle Deprecated in 8.13.0. Use the `throttle` property in the action `frequency` object instead. The throttle interval, which defines how often an alert generates repeated actions. NOTE: You cannot specify the throttle interval at both the rule and action level. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
-	// Deprecated:
-	Throttle *Throttle `json:"throttle"`
-}
-
-// CreateMonitoringDiskUsageRuleRequestRuleTypeId The ID of the rule type that you want to call when the rule is scheduled to run.
-type CreateMonitoringDiskUsageRuleRequestRuleTypeId string
-
-// CreateMonitoringElasticsearchVersionMismatchRuleRequest A rule that detects when the cluster has multipe versions of Elasticsearch.
-type CreateMonitoringElasticsearchVersionMismatchRuleRequest struct {
-	Actions Actions `json:"actions"`
-
-	// Consumer The name of the application or feature that owns the rule. For example: `alerts`, `apm`, `discover`, `infrastructure`, `logs`, `metrics`, `ml`, `monitoring`, `securitySolution`, `siem`, `stackAlerts`, or `uptime`.
-	Consumer Consumer `json:"consumer"`
-
-	// Enabled Indicates whether you want to run the rule on an interval basis after it is created.
-	Enabled *EnabledRule `json:"enabled,omitempty"`
-
-	// Name The name of the rule. While this name does not have to be unique, a distinctive name can help you identify a rule.
-	Name NameRule `json:"name"`
-
-	// NotifyWhen Deprecated in 8.13.0. Use the `notify_when` property in the action `frequency` object instead. Indicates how often alerts generate actions. NOTE: You cannot specify `notify_when` at both the rule and action level. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
-	// Deprecated:
-	NotifyWhen *NotifyWhen `json:"notify_when,omitempty"`
-
-	// Params The parameters for a Elasticsearch version mismatch rule.
-	Params map[string]interface{} `json:"params"`
-
-	// RuleTypeId The ID of the rule type that you want to call when the rule is scheduled to run.
-	RuleTypeId CreateMonitoringElasticsearchVersionMismatchRuleRequestRuleTypeId `json:"rule_type_id"`
-
-	// Schedule The check interval, which specifies how frequently the rule conditions are checked. The interval is specified in seconds, minutes, hours, or days.
-	Schedule Schedule `json:"schedule"`
-
-	// Tags The tags for the rule.
-	Tags Tags `json:"tags,omitempty"`
-
-	// Throttle Deprecated in 8.13.0. Use the `throttle` property in the action `frequency` object instead. The throttle interval, which defines how often an alert generates repeated actions. NOTE: You cannot specify the throttle interval at both the rule and action level. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
-	// Deprecated:
-	Throttle *Throttle `json:"throttle"`
-}
-
-// CreateMonitoringElasticsearchVersionMismatchRuleRequestRuleTypeId The ID of the rule type that you want to call when the rule is scheduled to run.
-type CreateMonitoringElasticsearchVersionMismatchRuleRequestRuleTypeId string
-
-// CreateMonitoringJvmMemoryUsageRuleRequest A rule that detects when a node reports high memory usage.
-type CreateMonitoringJvmMemoryUsageRuleRequest struct {
-	Actions Actions `json:"actions"`
-
-	// Consumer The name of the application or feature that owns the rule. For example: `alerts`, `apm`, `discover`, `infrastructure`, `logs`, `metrics`, `ml`, `monitoring`, `securitySolution`, `siem`, `stackAlerts`, or `uptime`.
-	Consumer Consumer `json:"consumer"`
-
-	// Enabled Indicates whether you want to run the rule on an interval basis after it is created.
-	Enabled *EnabledRule `json:"enabled,omitempty"`
-
-	// Name The name of the rule. While this name does not have to be unique, a distinctive name can help you identify a rule.
-	Name NameRule `json:"name"`
-
-	// NotifyWhen Deprecated in 8.13.0. Use the `notify_when` property in the action `frequency` object instead. Indicates how often alerts generate actions. NOTE: You cannot specify `notify_when` at both the rule and action level. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
-	// Deprecated:
-	NotifyWhen *NotifyWhen `json:"notify_when,omitempty"`
-
-	// Params The parameters for a JVM memory usage rule.
-	Params map[string]interface{} `json:"params"`
-
-	// RuleTypeId The ID of the rule type that you want to call when the rule is scheduled to run.
-	RuleTypeId CreateMonitoringJvmMemoryUsageRuleRequestRuleTypeId `json:"rule_type_id"`
-
-	// Schedule The check interval, which specifies how frequently the rule conditions are checked. The interval is specified in seconds, minutes, hours, or days.
-	Schedule Schedule `json:"schedule"`
-
-	// Tags The tags for the rule.
-	Tags Tags `json:"tags,omitempty"`
-
-	// Throttle Deprecated in 8.13.0. Use the `throttle` property in the action `frequency` object instead. The throttle interval, which defines how often an alert generates repeated actions. NOTE: You cannot specify the throttle interval at both the rule and action level. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
-	// Deprecated:
-	Throttle *Throttle `json:"throttle"`
-}
-
-// CreateMonitoringJvmMemoryUsageRuleRequestRuleTypeId The ID of the rule type that you want to call when the rule is scheduled to run.
-type CreateMonitoringJvmMemoryUsageRuleRequestRuleTypeId string
-
-// CreateMonitoringKibanaVersionMismatchRuleRequest A rule that detects when the cluster has multiple versions of Kibana.
-type CreateMonitoringKibanaVersionMismatchRuleRequest struct {
-	Actions Actions `json:"actions"`
-
-	// Consumer The name of the application or feature that owns the rule. For example: `alerts`, `apm`, `discover`, `infrastructure`, `logs`, `metrics`, `ml`, `monitoring`, `securitySolution`, `siem`, `stackAlerts`, or `uptime`.
-	Consumer Consumer `json:"consumer"`
-
-	// Enabled Indicates whether you want to run the rule on an interval basis after it is created.
-	Enabled *EnabledRule `json:"enabled,omitempty"`
-
-	// Name The name of the rule. While this name does not have to be unique, a distinctive name can help you identify a rule.
-	Name NameRule `json:"name"`
-
-	// NotifyWhen Deprecated in 8.13.0. Use the `notify_when` property in the action `frequency` object instead. Indicates how often alerts generate actions. NOTE: You cannot specify `notify_when` at both the rule and action level. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
-	// Deprecated:
-	NotifyWhen *NotifyWhen `json:"notify_when,omitempty"`
-
-	// Params The parameters for a Kibana version mismatch rule.
-	Params map[string]interface{} `json:"params"`
-
-	// RuleTypeId The ID of the rule type that you want to call when the rule is scheduled to run.
-	RuleTypeId CreateMonitoringKibanaVersionMismatchRuleRequestRuleTypeId `json:"rule_type_id"`
-
-	// Schedule The check interval, which specifies how frequently the rule conditions are checked. The interval is specified in seconds, minutes, hours, or days.
-	Schedule Schedule `json:"schedule"`
-
-	// Tags The tags for the rule.
-	Tags Tags `json:"tags,omitempty"`
-
-	// Throttle Deprecated in 8.13.0. Use the `throttle` property in the action `frequency` object instead. The throttle interval, which defines how often an alert generates repeated actions. NOTE: You cannot specify the throttle interval at both the rule and action level. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
-	// Deprecated:
-	Throttle *Throttle `json:"throttle"`
-}
-
-// CreateMonitoringKibanaVersionMismatchRuleRequestRuleTypeId The ID of the rule type that you want to call when the rule is scheduled to run.
-type CreateMonitoringKibanaVersionMismatchRuleRequestRuleTypeId string
-
-// CreateMonitoringLicenseExpirationRuleRequest A rule that detects when the cluster license is about to expire.
-type CreateMonitoringLicenseExpirationRuleRequest struct {
-	Actions Actions `json:"actions"`
-
-	// Consumer The name of the application or feature that owns the rule. For example: `alerts`, `apm`, `discover`, `infrastructure`, `logs`, `metrics`, `ml`, `monitoring`, `securitySolution`, `siem`, `stackAlerts`, or `uptime`.
-	Consumer Consumer `json:"consumer"`
-
-	// Enabled Indicates whether you want to run the rule on an interval basis after it is created.
-	Enabled *EnabledRule `json:"enabled,omitempty"`
-
-	// Name The name of the rule. While this name does not have to be unique, a distinctive name can help you identify a rule.
-	Name NameRule `json:"name"`
-
-	// NotifyWhen Deprecated in 8.13.0. Use the `notify_when` property in the action `frequency` object instead. Indicates how often alerts generate actions. NOTE: You cannot specify `notify_when` at both the rule and action level. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
-	// Deprecated:
-	NotifyWhen *NotifyWhen `json:"notify_when,omitempty"`
-
-	// Params The parameters for a license expiration rule.
-	Params map[string]interface{} `json:"params"`
-
-	// RuleTypeId The ID of the rule type that you want to call when the rule is scheduled to run.
-	RuleTypeId CreateMonitoringLicenseExpirationRuleRequestRuleTypeId `json:"rule_type_id"`
-
-	// Schedule The check interval, which specifies how frequently the rule conditions are checked. The interval is specified in seconds, minutes, hours, or days.
-	Schedule Schedule `json:"schedule"`
-
-	// Tags The tags for the rule.
-	Tags Tags `json:"tags,omitempty"`
-
-	// Throttle Deprecated in 8.13.0. Use the `throttle` property in the action `frequency` object instead. The throttle interval, which defines how often an alert generates repeated actions. NOTE: You cannot specify the throttle interval at both the rule and action level. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
-	// Deprecated:
-	Throttle *Throttle `json:"throttle"`
-}
-
-// CreateMonitoringLicenseExpirationRuleRequestRuleTypeId The ID of the rule type that you want to call when the rule is scheduled to run.
-type CreateMonitoringLicenseExpirationRuleRequestRuleTypeId string
-
-// CreateMonitoringLogstashVersionMismatchRuleRequest A rule that detects when the cluster has multiple versions of Logstash.
-type CreateMonitoringLogstashVersionMismatchRuleRequest struct {
-	Actions Actions `json:"actions"`
-
-	// Consumer The name of the application or feature that owns the rule. For example: `alerts`, `apm`, `discover`, `infrastructure`, `logs`, `metrics`, `ml`, `monitoring`, `securitySolution`, `siem`, `stackAlerts`, or `uptime`.
-	Consumer Consumer `json:"consumer"`
-
-	// Enabled Indicates whether you want to run the rule on an interval basis after it is created.
-	Enabled *EnabledRule `json:"enabled,omitempty"`
-
-	// Name The name of the rule. While this name does not have to be unique, a distinctive name can help you identify a rule.
-	Name NameRule `json:"name"`
-
-	// NotifyWhen Deprecated in 8.13.0. Use the `notify_when` property in the action `frequency` object instead. Indicates how often alerts generate actions. NOTE: You cannot specify `notify_when` at both the rule and action level. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
-	// Deprecated:
-	NotifyWhen *NotifyWhen `json:"notify_when,omitempty"`
-
-	// Params The parameters for a Logstash version mismatch rule.
-	Params map[string]interface{} `json:"params"`
-
-	// RuleTypeId The ID of the rule type that you want to call when the rule is scheduled to run.
-	RuleTypeId CreateMonitoringLogstashVersionMismatchRuleRequestRuleTypeId `json:"rule_type_id"`
-
-	// Schedule The check interval, which specifies how frequently the rule conditions are checked. The interval is specified in seconds, minutes, hours, or days.
-	Schedule Schedule `json:"schedule"`
-
-	// Tags The tags for the rule.
-	Tags Tags `json:"tags,omitempty"`
-
-	// Throttle Deprecated in 8.13.0. Use the `throttle` property in the action `frequency` object instead. The throttle interval, which defines how often an alert generates repeated actions. NOTE: You cannot specify the throttle interval at both the rule and action level. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
-	// Deprecated:
-	Throttle *Throttle `json:"throttle"`
-}
-
-// CreateMonitoringLogstashVersionMismatchRuleRequestRuleTypeId The ID of the rule type that you want to call when the rule is scheduled to run.
-type CreateMonitoringLogstashVersionMismatchRuleRequestRuleTypeId string
-
-// CreateMonitoringMissingDataRuleRequest A rule that detects when monitoring data is missing.
-type CreateMonitoringMissingDataRuleRequest struct {
-	Actions Actions `json:"actions"`
-
-	// Consumer The name of the application or feature that owns the rule. For example: `alerts`, `apm`, `discover`, `infrastructure`, `logs`, `metrics`, `ml`, `monitoring`, `securitySolution`, `siem`, `stackAlerts`, or `uptime`.
-	Consumer Consumer `json:"consumer"`
-
-	// Enabled Indicates whether you want to run the rule on an interval basis after it is created.
-	Enabled *EnabledRule `json:"enabled,omitempty"`
-
-	// Name The name of the rule. While this name does not have to be unique, a distinctive name can help you identify a rule.
-	Name NameRule `json:"name"`
-
-	// NotifyWhen Deprecated in 8.13.0. Use the `notify_when` property in the action `frequency` object instead. Indicates how often alerts generate actions. NOTE: You cannot specify `notify_when` at both the rule and action level. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
-	// Deprecated:
-	NotifyWhen *NotifyWhen `json:"notify_when,omitempty"`
-
-	// Params The parameters for a missing monitoring data rule.
-	Params map[string]interface{} `json:"params"`
-
-	// RuleTypeId The ID of the rule type that you want to call when the rule is scheduled to run.
-	RuleTypeId CreateMonitoringMissingDataRuleRequestRuleTypeId `json:"rule_type_id"`
-
-	// Schedule The check interval, which specifies how frequently the rule conditions are checked. The interval is specified in seconds, minutes, hours, or days.
-	Schedule Schedule `json:"schedule"`
-
-	// Tags The tags for the rule.
-	Tags Tags `json:"tags,omitempty"`
-
-	// Throttle Deprecated in 8.13.0. Use the `throttle` property in the action `frequency` object instead. The throttle interval, which defines how often an alert generates repeated actions. NOTE: You cannot specify the throttle interval at both the rule and action level. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
-	// Deprecated:
-	Throttle *Throttle `json:"throttle"`
-}
-
-// CreateMonitoringMissingDataRuleRequestRuleTypeId The ID of the rule type that you want to call when the rule is scheduled to run.
-type CreateMonitoringMissingDataRuleRequestRuleTypeId string
-
-// CreateMonitoringNodesChangedRuleRequest A rule that detects when nodes are added, removed, or restarted.
-type CreateMonitoringNodesChangedRuleRequest struct {
-	Actions Actions `json:"actions"`
-
-	// Consumer The name of the application or feature that owns the rule. For example: `alerts`, `apm`, `discover`, `infrastructure`, `logs`, `metrics`, `ml`, `monitoring`, `securitySolution`, `siem`, `stackAlerts`, or `uptime`.
-	Consumer Consumer `json:"consumer"`
-
-	// Enabled Indicates whether you want to run the rule on an interval basis after it is created.
-	Enabled *EnabledRule `json:"enabled,omitempty"`
-
-	// Name The name of the rule. While this name does not have to be unique, a distinctive name can help you identify a rule.
-	Name NameRule `json:"name"`
-
-	// NotifyWhen Deprecated in 8.13.0. Use the `notify_when` property in the action `frequency` object instead. Indicates how often alerts generate actions. NOTE: You cannot specify `notify_when` at both the rule and action level. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
-	// Deprecated:
-	NotifyWhen *NotifyWhen `json:"notify_when,omitempty"`
-
-	// Params The parameters for a nodes changed rule.
-	Params map[string]interface{} `json:"params"`
-
-	// RuleTypeId The ID of the rule type that you want to call when the rule is scheduled to run.
-	RuleTypeId CreateMonitoringNodesChangedRuleRequestRuleTypeId `json:"rule_type_id"`
-
-	// Schedule The check interval, which specifies how frequently the rule conditions are checked. The interval is specified in seconds, minutes, hours, or days.
-	Schedule Schedule `json:"schedule"`
-
-	// Tags The tags for the rule.
-	Tags Tags `json:"tags,omitempty"`
-
-	// Throttle Deprecated in 8.13.0. Use the `throttle` property in the action `frequency` object instead. The throttle interval, which defines how often an alert generates repeated actions. NOTE: You cannot specify the throttle interval at both the rule and action level. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
-	// Deprecated:
-	Throttle *Throttle `json:"throttle"`
-}
-
-// CreateMonitoringNodesChangedRuleRequestRuleTypeId The ID of the rule type that you want to call when the rule is scheduled to run.
-type CreateMonitoringNodesChangedRuleRequestRuleTypeId string
-
-// CreateMonitoringShardSizeRuleRequest A rule that detects when the average shard size is larger than a threshold.
-type CreateMonitoringShardSizeRuleRequest struct {
-	Actions Actions `json:"actions"`
-
-	// Consumer The name of the application or feature that owns the rule. For example: `alerts`, `apm`, `discover`, `infrastructure`, `logs`, `metrics`, `ml`, `monitoring`, `securitySolution`, `siem`, `stackAlerts`, or `uptime`.
-	Consumer Consumer `json:"consumer"`
-
-	// Enabled Indicates whether you want to run the rule on an interval basis after it is created.
-	Enabled *EnabledRule `json:"enabled,omitempty"`
-
-	// Name The name of the rule. While this name does not have to be unique, a distinctive name can help you identify a rule.
-	Name NameRule `json:"name"`
-
-	// NotifyWhen Deprecated in 8.13.0. Use the `notify_when` property in the action `frequency` object instead. Indicates how often alerts generate actions. NOTE: You cannot specify `notify_when` at both the rule and action level. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
-	// Deprecated:
-	NotifyWhen *NotifyWhen `json:"notify_when,omitempty"`
-
-	// Params The parameters for a shard size rule.
-	Params map[string]interface{} `json:"params"`
-
-	// RuleTypeId The ID of the rule type that you want to call when the rule is scheduled to run.
-	RuleTypeId CreateMonitoringShardSizeRuleRequestRuleTypeId `json:"rule_type_id"`
-
-	// Schedule The check interval, which specifies how frequently the rule conditions are checked. The interval is specified in seconds, minutes, hours, or days.
-	Schedule Schedule `json:"schedule"`
-
-	// Tags The tags for the rule.
-	Tags Tags `json:"tags,omitempty"`
-
-	// Throttle Deprecated in 8.13.0. Use the `throttle` property in the action `frequency` object instead. The throttle interval, which defines how often an alert generates repeated actions. NOTE: You cannot specify the throttle interval at both the rule and action level. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
-	// Deprecated:
-	Throttle *Throttle `json:"throttle"`
-}
-
-// CreateMonitoringShardSizeRuleRequestRuleTypeId The ID of the rule type that you want to call when the rule is scheduled to run.
-type CreateMonitoringShardSizeRuleRequestRuleTypeId string
-
-// CreateMonitoringThreadPoolSearchRejectionsRuleRequest A rule that detects when the number of rejections in the thread pool exceeds a threshold.
-type CreateMonitoringThreadPoolSearchRejectionsRuleRequest struct {
-	Actions Actions `json:"actions"`
-
-	// Consumer The name of the application or feature that owns the rule. For example: `alerts`, `apm`, `discover`, `infrastructure`, `logs`, `metrics`, `ml`, `monitoring`, `securitySolution`, `siem`, `stackAlerts`, or `uptime`.
-	Consumer Consumer `json:"consumer"`
-
-	// Enabled Indicates whether you want to run the rule on an interval basis after it is created.
-	Enabled *EnabledRule `json:"enabled,omitempty"`
-
-	// Name The name of the rule. While this name does not have to be unique, a distinctive name can help you identify a rule.
-	Name NameRule `json:"name"`
-
-	// NotifyWhen Deprecated in 8.13.0. Use the `notify_when` property in the action `frequency` object instead. Indicates how often alerts generate actions. NOTE: You cannot specify `notify_when` at both the rule and action level. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
-	// Deprecated:
-	NotifyWhen *NotifyWhen `json:"notify_when,omitempty"`
-
-	// Params The parameters for a thread pool search rejections rule.
-	Params map[string]interface{} `json:"params"`
-
-	// RuleTypeId The ID of the rule type that you want to call when the rule is scheduled to run.
-	RuleTypeId CreateMonitoringThreadPoolSearchRejectionsRuleRequestRuleTypeId `json:"rule_type_id"`
-
-	// Schedule The check interval, which specifies how frequently the rule conditions are checked. The interval is specified in seconds, minutes, hours, or days.
-	Schedule Schedule `json:"schedule"`
-
-	// Tags The tags for the rule.
-	Tags Tags `json:"tags,omitempty"`
-
-	// Throttle Deprecated in 8.13.0. Use the `throttle` property in the action `frequency` object instead. The throttle interval, which defines how often an alert generates repeated actions. NOTE: You cannot specify the throttle interval at both the rule and action level. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
-	// Deprecated:
-	Throttle *Throttle `json:"throttle"`
-}
-
-// CreateMonitoringThreadPoolSearchRejectionsRuleRequestRuleTypeId The ID of the rule type that you want to call when the rule is scheduled to run.
-type CreateMonitoringThreadPoolSearchRejectionsRuleRequestRuleTypeId string
-
-// CreateMonitoringThreadPoolWriteRejectionsRuleRequest A rule that detects when the number of rejections in the write thread pool exceeds a threshold.
-type CreateMonitoringThreadPoolWriteRejectionsRuleRequest struct {
-	Actions Actions `json:"actions"`
-
-	// Consumer The name of the application or feature that owns the rule. For example: `alerts`, `apm`, `discover`, `infrastructure`, `logs`, `metrics`, `ml`, `monitoring`, `securitySolution`, `siem`, `stackAlerts`, or `uptime`.
-	Consumer Consumer `json:"consumer"`
-
-	// Enabled Indicates whether you want to run the rule on an interval basis after it is created.
-	Enabled *EnabledRule `json:"enabled,omitempty"`
-
-	// Name The name of the rule. While this name does not have to be unique, a distinctive name can help you identify a rule.
-	Name NameRule `json:"name"`
-
-	// NotifyWhen Deprecated in 8.13.0. Use the `notify_when` property in the action `frequency` object instead. Indicates how often alerts generate actions. NOTE: You cannot specify `notify_when` at both the rule and action level. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
-	// Deprecated:
-	NotifyWhen *NotifyWhen `json:"notify_when,omitempty"`
-
-	// Params The parameters for a thread pool write rejections rule.
-	Params map[string]interface{} `json:"params"`
-
-	// RuleTypeId The ID of the rule type that you want to call when the rule is scheduled to run.
-	RuleTypeId CreateMonitoringThreadPoolWriteRejectionsRuleRequestRuleTypeId `json:"rule_type_id"`
-
-	// Schedule The check interval, which specifies how frequently the rule conditions are checked. The interval is specified in seconds, minutes, hours, or days.
-	Schedule Schedule `json:"schedule"`
-
-	// Tags The tags for the rule.
-	Tags Tags `json:"tags,omitempty"`
-
-	// Throttle Deprecated in 8.13.0. Use the `throttle` property in the action `frequency` object instead. The throttle interval, which defines how often an alert generates repeated actions. NOTE: You cannot specify the throttle interval at both the rule and action level. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
-	// Deprecated:
-	Throttle *Throttle `json:"throttle"`
-}
-
-// CreateMonitoringThreadPoolWriteRejectionsRuleRequestRuleTypeId The ID of the rule type that you want to call when the rule is scheduled to run.
-type CreateMonitoringThreadPoolWriteRejectionsRuleRequestRuleTypeId string
-
-// CreateRuleRequest The properties vary depending on the rule type.
+// CreateRuleRequest defines model for create_rule_request.
 type CreateRuleRequest struct {
+	Actions []CreateRuleRequestActionsItem `json:"actions,omitempty"`
+
+	// AlertDelay Indicates that an alert occurs only when the specified number of consecutive runs met the rule conditions.
+	AlertDelay *CreateRuleRequestAlertDelay `json:"alert_delay,omitempty"`
+
+	// Consumer The name of the application or feature that owns the rule. For example: `alerts`, `apm`, `discover`, `infrastructure`, `logs`, `metrics`, `ml`, `monitoring`, `securitySolution`, `siem`, `stackAlerts`, or `uptime`.
+	Consumer string `json:"consumer"`
+
+	// Enabled Indicates whether you want to run the rule on an interval basis after it is created.
+	Enabled *bool `json:"enabled,omitempty"`
+
+	// Name The name of the rule. While this name does not have to be unique, a distinctive name can help you identify a rule.
+	Name string `json:"name"`
+
+	// NotifyWhen Indicates how often alerts generate actions. Valid values include: `onActionGroupChange`: Actions run when the alert status changes; `onActiveAlert`: Actions run when the alert becomes active and at each check interval while the rule conditions are met; `onThrottleInterval`: Actions run when the alert becomes active and at the interval specified in the throttle property while the rule conditions are met. NOTE: You cannot specify `notify_when` at both the rule and action level. The recommended method is to set it for each action. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
+	NotifyWhen *string `json:"notify_when"`
+
+	// Params The parameters for the rule.
+	Params map[string]interface{} `json:"params,omitempty"`
+
+	// RuleTypeId The rule type identifier.
+	RuleTypeId string `json:"rule_type_id"`
+
+	// Schedule The check interval, which specifies how frequently the rule conditions are checked.
+	Schedule CreateRuleRequestSchedule `json:"schedule"`
+
+	// Tags The tags for the rule.
+	Tags []string `json:"tags,omitempty"`
+
+	// Throttle Use the `throttle` property in the action `frequency` object instead. The throttle interval, which defines how often an alert generates repeated actions. NOTE: You cannot specify the throttle interval at both the rule and action level. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
+	Throttle *string `json:"throttle"`
+}
+
+// CreateRuleRequestActionsItem An action that runs under defined conditions.
+type CreateRuleRequestActionsItem struct {
+	// AlertsFilter Conditions that affect whether the action runs. If you specify multiple conditions, all conditions must be met for the action to run. For example, if an alert occurs within the specified time frame and matches the query, the action runs.
+	AlertsFilter *CreateRuleRequestActionsItemAlertsFilter `json:"alerts_filter,omitempty"`
+	Frequency    *CreateRuleRequestActionsItemFrequency    `json:"frequency,omitempty"`
+
+	// Group The group name, which affects when the action runs (for example, when the threshold is met or when the alert is recovered). Each rule type has a list of valid action group names. If you don't need to group actions, set to `default`.
+	Group *string `json:"group,omitempty"`
+
+	// Id The identifier for the connector saved object.
+	Id string `json:"id"`
+
+	// Params The parameters for the action, which are sent to the connector. The `params` are handled as Mustache templates and passed a default set of context.
+	Params map[string]interface{} `json:"params,omitempty"`
+
+	// UseAlertDataForTemplate Indicates whether to use alert data as a template.
+	UseAlertDataForTemplate *bool `json:"use_alert_data_for_template,omitempty"`
+
+	// Uuid A universally unique identifier (UUID) for the action.
+	Uuid *string `json:"uuid,omitempty"`
+}
+
+// CreateRuleRequestActionsItemAlertsFilter Conditions that affect whether the action runs. If you specify multiple conditions, all conditions must be met for the action to run. For example, if an alert occurs within the specified time frame and matches the query, the action runs.
+type CreateRuleRequestActionsItemAlertsFilter struct {
+	Query *CreateRuleRequestActionsItemAlertsFilterQuery `json:"query,omitempty"`
+
+	// Timeframe Defines a period that limits whether the action runs.
+	Timeframe *CreateRuleRequestActionsItemAlertsFilterTimeframe `json:"timeframe,omitempty"`
+}
+
+// CreateRuleRequestActionsItemAlertsFilterQuery defines model for create_rule_request_actions_item_alerts_filter_query.
+type CreateRuleRequestActionsItemAlertsFilterQuery struct {
+	// Dsl A filter written in Elasticsearch Query Domain Specific Language (DSL).
+	Dsl *string `json:"dsl,omitempty"`
+
+	// Filters A filter written in Elasticsearch Query Domain Specific Language (DSL) as defined in the `kbn-es-query` package.
+	Filters []CreateRuleRequestActionsItemAlertsFilterQueryFiltersItem `json:"filters"`
+
+	// Kql A filter written in Kibana Query Language (KQL).
+	Kql string `json:"kql"`
+}
+
+// CreateRuleRequestActionsItemAlertsFilterQueryFiltersItem defines model for create_rule_request_actions_item_alerts_filter_query_filters_item.
+type CreateRuleRequestActionsItemAlertsFilterQueryFiltersItem struct {
+	State *CreateRuleRequestActionsItemAlertsFilterQueryFiltersItemState `json:"$state,omitempty"`
+	Meta  map[string]interface{}                                         `json:"meta"`
+	Query map[string]interface{}                                         `json:"query,omitempty"`
+}
+
+// CreateRuleRequestActionsItemAlertsFilterQueryFiltersItemState defines model for create_rule_request_actions_item_alerts_filter_query_filters_item_$state.
+type CreateRuleRequestActionsItemAlertsFilterQueryFiltersItemState struct {
+	// Store A filter can be either specific to an application context or applied globally.
+	Store string `json:"store"`
+}
+
+// CreateRuleRequestActionsItemAlertsFilterTimeframe Defines a period that limits whether the action runs.
+type CreateRuleRequestActionsItemAlertsFilterTimeframe struct {
+	// Days Defines the days of the week that the action can run, represented as an array of numbers. For example, `1` represents Monday. An empty array is equivalent to specifying all the days of the week.
+	Days []int `json:"days"`
+
+	// Hours Defines the range of time in a day that the action can run. If the `start` value is `00:00` and the `end` value is `24:00`, actions be generated all day.
+	Hours CreateRuleRequestActionsItemAlertsFilterTimeframeHours `json:"hours"`
+
+	// Timezone The ISO time zone for the `hours` values. Values such as `UTC` and `UTC+1` also work but lack built-in daylight savings time support and are not recommended.
+	Timezone string `json:"timezone"`
+}
+
+// CreateRuleRequestActionsItemAlertsFilterTimeframeHours Defines the range of time in a day that the action can run. If the `start` value is `00:00` and the `end` value is `24:00`, actions be generated all day.
+type CreateRuleRequestActionsItemAlertsFilterTimeframeHours struct {
+	// End The end of the time frame in 24-hour notation (`hh:mm`).
+	End string `json:"end"`
+
+	// Start The start of the time frame in 24-hour notation (`hh:mm`).
+	Start string `json:"start"`
+}
+
+// CreateRuleRequestActionsItemFrequency defines model for create_rule_request_actions_item_frequency.
+type CreateRuleRequestActionsItemFrequency struct {
+	// NotifyWhen Indicates how often alerts generate actions. Valid values include: `onActionGroupChange`: Actions run when the alert status changes; `onActiveAlert`: Actions run when the alert becomes active and at each check interval while the rule conditions are met; `onThrottleInterval`: Actions run when the alert becomes active and at the interval specified in the throttle property while the rule conditions are met. NOTE: You cannot specify `notify_when` at both the rule and action level. The recommended method is to set it for each action. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
+	NotifyWhen string `json:"notify_when"`
+
+	// Summary Indicates whether the action is a summary.
+	Summary bool `json:"summary"`
+
+	// Throttle The throttle interval, which defines how often an alert generates repeated actions. It is specified in seconds, minutes, hours, or days and is applicable only if `notify_when` is set to `onThrottleInterval`. NOTE: You cannot specify the throttle interval at both the rule and action level. The recommended method is to set it for each action. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
+	Throttle *string `json:"throttle"`
+}
+
+// CreateRuleRequestAlertDelay Indicates that an alert occurs only when the specified number of consecutive runs met the rule conditions.
+type CreateRuleRequestAlertDelay struct {
+	// Active The number of consecutive runs that must meet the rule conditions.
+	Active float32 `json:"active"`
+}
+
+// CreateRuleRequestSchedule The check interval, which specifies how frequently the rule conditions are checked.
+type CreateRuleRequestSchedule struct {
+	// Interval The interval is specified in seconds, minutes, hours, or days.
+	Interval string `json:"interval"`
+}
+
+// CreateRuleResponseObject defines model for create_rule_response_object.
+type CreateRuleResponseObject struct {
+	Actions       []CreateRuleResponseObjectActionsItem `json:"actions"`
+	ActiveSnoozes []string                              `json:"active_snoozes,omitempty"`
+
+	// AlertDelay Indicates that an alert occurs only when the specified number of consecutive runs met the rule conditions.
+	AlertDelay *CreateRuleResponseObjectAlertDelay `json:"alert_delay,omitempty"`
+
+	// ApiKeyCreatedByUser Indicates whether the API key that is associated with the rule was created by the user.
+	ApiKeyCreatedByUser *bool `json:"api_key_created_by_user"`
+
+	// ApiKeyOwner The owner of the API key that is associated with the rule and used to run background tasks.
+	ApiKeyOwner *string `json:"api_key_owner"`
+
+	// Consumer The name of the application or feature that owns the rule. For example: `alerts`, `apm`, `discover`, `infrastructure`, `logs`, `metrics`, `ml`, `monitoring`, `securitySolution`, `siem`, `stackAlerts`, or `uptime`.
+	Consumer string `json:"consumer"`
+
+	// CreatedAt The date and time that the rule was created.
+	CreatedAt string `json:"created_at"`
+
+	// CreatedBy The identifier for the user that created the rule.
+	CreatedBy *string `json:"created_by"`
+
+	// Enabled Indicates whether you want to run the rule on an interval basis after it is created.
+	Enabled         bool                                    `json:"enabled"`
+	ExecutionStatus CreateRuleResponseObjectExecutionStatus `json:"execution_status"`
+
+	// Id The identifier for the rule.
+	Id string `json:"id"`
+
+	// IsSnoozedUntil The date when the rule will no longer be snoozed.
+	IsSnoozedUntil *string                          `json:"is_snoozed_until"`
+	LastRun        *CreateRuleResponseObjectLastRun `json:"last_run"`
+	MappedParams   map[string]interface{}           `json:"mapped_params,omitempty"`
+
+	// Monitoring Monitoring details of the rule.
+	Monitoring *CreateRuleResponseObjectMonitoring `json:"monitoring,omitempty"`
+
+	// MuteAll Indicates whether all alerts are muted.
+	MuteAll       bool     `json:"mute_all"`
+	MutedAlertIds []string `json:"muted_alert_ids"`
+
+	// Name  The name of the rule.
+	Name string `json:"name"`
+
+	// NextRun Date and time of the next run of the rule.
+	NextRun *string `json:"next_run"`
+
+	// NotifyWhen Indicates how often alerts generate actions. Valid values include: `onActionGroupChange`: Actions run when the alert status changes; `onActiveAlert`: Actions run when the alert becomes active and at each check interval while the rule conditions are met; `onThrottleInterval`: Actions run when the alert becomes active and at the interval specified in the throttle property while the rule conditions are met. NOTE: You cannot specify `notify_when` at both the rule and action level. The recommended method is to set it for each action. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
+	NotifyWhen *string `json:"notify_when"`
+
+	// Params The parameters for the rule.
+	Params map[string]interface{} `json:"params"`
+
+	// Revision The rule revision number.
+	Revision float32 `json:"revision"`
+
+	// RuleTypeId The rule type identifier.
+	RuleTypeId string `json:"rule_type_id"`
+
+	// Running Indicates whether the rule is running.
+	Running  *bool                            `json:"running"`
+	Schedule CreateRuleResponseObjectSchedule `json:"schedule"`
+
+	// ScheduledTaskId Identifier of the scheduled task.
+	ScheduledTaskId *string                                      `json:"scheduled_task_id,omitempty"`
+	SnoozeSchedule  []CreateRuleResponseObjectSnoozeScheduleItem `json:"snooze_schedule,omitempty"`
+	Tags            []string                                     `json:"tags"`
+
+	// Throttle Deprecated in 8.13.0. Use the `throttle` property in the action `frequency` object instead. The throttle interval, which defines how often an alert generates repeated actions. NOTE: You cannot specify the throttle interval at both the rule and action level. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
+	// Deprecated:
+	Throttle *string `json:"throttle"`
+
+	// UpdatedAt The date and time that the rule was updated most recently.
+	UpdatedAt string `json:"updated_at"`
+
+	// UpdatedBy The identifier for the user that updated this rule most recently.
+	UpdatedBy *string `json:"updated_by"`
+
+	// ViewInAppRelativeUrl Relative URL to view rule in the app.
+	ViewInAppRelativeUrl *string `json:"view_in_app_relative_url"`
+}
+
+// CreateRuleResponseObjectActionsItem defines model for create_rule_response_object_actions_item.
+type CreateRuleResponseObjectActionsItem struct {
+	// AlertsFilter Defines a period that limits whether the action runs.
+	AlertsFilter *CreateRuleResponseObjectActionsItemAlertsFilter `json:"alerts_filter,omitempty"`
+
+	// ConnectorTypeId The type of connector. This property appears in responses but cannot be set in requests.
+	ConnectorTypeId string                                        `json:"connector_type_id"`
+	Frequency       *CreateRuleResponseObjectActionsItemFrequency `json:"frequency,omitempty"`
+
+	// Group The group name, which affects when the action runs (for example, when the threshold is met or when the alert is recovered). Each rule type has a list of valid action group names. If you don't need to group actions, set to `default`.
+	Group *string `json:"group,omitempty"`
+
+	// Id The identifier for the connector saved object.
+	Id string `json:"id"`
+
+	// Params The parameters for the action, which are sent to the connector. The `params` are handled as Mustache templates and passed a default set of context.
+	Params map[string]interface{} `json:"params"`
+
+	// UseAlertDataForTemplate Indicates whether to use alert data as a template.
+	UseAlertDataForTemplate *bool `json:"use_alert_data_for_template,omitempty"`
+
+	// Uuid A universally unique identifier (UUID) for the action.
+	Uuid *string `json:"uuid,omitempty"`
+}
+
+// CreateRuleResponseObjectActionsItemAlertsFilter Defines a period that limits whether the action runs.
+type CreateRuleResponseObjectActionsItemAlertsFilter struct {
+	Query     *CreateRuleResponseObjectActionsItemAlertsFilterQuery     `json:"query,omitempty"`
+	Timeframe *CreateRuleResponseObjectActionsItemAlertsFilterTimeframe `json:"timeframe,omitempty"`
+}
+
+// CreateRuleResponseObjectActionsItemAlertsFilterQuery defines model for create_rule_response_object_actions_item_alerts_filter_query.
+type CreateRuleResponseObjectActionsItemAlertsFilterQuery struct {
+	// Dsl A filter written in Elasticsearch Query Domain Specific Language (DSL).
+	Dsl *string `json:"dsl,omitempty"`
+
+	// Filters A filter written in Elasticsearch Query Domain Specific Language (DSL) as defined in the `kbn-es-query` package.
+	Filters []CreateRuleResponseObjectActionsItemAlertsFilterQueryFiltersItem `json:"filters"`
+
+	// Kql A filter written in Kibana Query Language (KQL).
+	Kql string `json:"kql"`
+}
+
+// CreateRuleResponseObjectActionsItemAlertsFilterQueryFiltersItem defines model for create_rule_response_object_actions_item_alerts_filter_query_filters_item.
+type CreateRuleResponseObjectActionsItemAlertsFilterQueryFiltersItem struct {
+	State *CreateRuleResponseObjectActionsItemAlertsFilterQueryFiltersItemState `json:"$state,omitempty"`
+	Meta  map[string]interface{}                                                `json:"meta"`
+	Query map[string]interface{}                                                `json:"query,omitempty"`
+}
+
+// CreateRuleResponseObjectActionsItemAlertsFilterQueryFiltersItemState defines model for create_rule_response_object_actions_item_alerts_filter_query_filters_item_$state.
+type CreateRuleResponseObjectActionsItemAlertsFilterQueryFiltersItemState struct {
+	// Store A filter can be either specific to an application context or applied globally.
+	Store string `json:"store"`
+}
+
+// CreateRuleResponseObjectActionsItemAlertsFilterTimeframe defines model for create_rule_response_object_actions_item_alerts_filter_timeframe.
+type CreateRuleResponseObjectActionsItemAlertsFilterTimeframe struct {
+	// Days Defines the days of the week that the action can run, represented as an array of numbers. For example, `1` represents Monday. An empty array is equivalent to specifying all the days of the week.
+	Days  []int                                                         `json:"days"`
+	Hours CreateRuleResponseObjectActionsItemAlertsFilterTimeframeHours `json:"hours"`
+
+	// Timezone The ISO time zone for the `hours` values. Values such as `UTC` and `UTC+1` also work but lack built-in daylight savings time support and are not recommended.
+	Timezone string `json:"timezone"`
+}
+
+// CreateRuleResponseObjectActionsItemAlertsFilterTimeframeHours defines model for create_rule_response_object_actions_item_alerts_filter_timeframe_hours.
+type CreateRuleResponseObjectActionsItemAlertsFilterTimeframeHours struct {
+	// End The end of the time frame in 24-hour notation (`hh:mm`).
+	End string `json:"end"`
+
+	// Start The start of the time frame in 24-hour notation (`hh:mm`).
+	Start string `json:"start"`
+}
+
+// CreateRuleResponseObjectActionsItemFrequency defines model for create_rule_response_object_actions_item_frequency.
+type CreateRuleResponseObjectActionsItemFrequency struct {
+	// NotifyWhen Indicates how often alerts generate actions. Valid values include: `onActionGroupChange`: Actions run when the alert status changes; `onActiveAlert`: Actions run when the alert becomes active and at each check interval while the rule conditions are met; `onThrottleInterval`: Actions run when the alert becomes active and at the interval specified in the throttle property while the rule conditions are met. NOTE: You cannot specify `notify_when` at both the rule and action level. The recommended method is to set it for each action. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
+	NotifyWhen string `json:"notify_when"`
+
+	// Summary Indicates whether the action is a summary.
+	Summary bool `json:"summary"`
+
+	// Throttle The throttle interval, which defines how often an alert generates repeated actions. It is specified in seconds, minutes, hours, or days and is applicable only if 'notify_when' is set to 'onThrottleInterval'. NOTE: You cannot specify the throttle interval at both the rule and action level. The recommended method is to set it for each action. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
+	Throttle *string `json:"throttle"`
+}
+
+// CreateRuleResponseObjectAlertDelay Indicates that an alert occurs only when the specified number of consecutive runs met the rule conditions.
+type CreateRuleResponseObjectAlertDelay struct {
+	// Active The number of consecutive runs that must meet the rule conditions.
+	Active float32 `json:"active"`
+}
+
+// CreateRuleResponseObjectExecutionStatus defines model for create_rule_response_object_execution_status.
+type CreateRuleResponseObjectExecutionStatus struct {
+	Error *CreateRuleResponseObjectExecutionStatusError `json:"error,omitempty"`
+
+	// LastDuration Duration of last execution of the rule.
+	LastDuration *float32 `json:"last_duration,omitempty"`
+
+	// LastExecutionDate The date and time when rule was executed last.
+	LastExecutionDate string `json:"last_execution_date"`
+
+	// Status Status of rule execution.
+	Status  string                                          `json:"status"`
+	Warning *CreateRuleResponseObjectExecutionStatusWarning `json:"warning,omitempty"`
+}
+
+// CreateRuleResponseObjectExecutionStatusError defines model for create_rule_response_object_execution_status_error.
+type CreateRuleResponseObjectExecutionStatusError struct {
+	// Message Error message.
+	Message string `json:"message"`
+
+	// Reason Reason for error.
+	Reason string `json:"reason"`
+}
+
+// CreateRuleResponseObjectExecutionStatusWarning defines model for create_rule_response_object_execution_status_warning.
+type CreateRuleResponseObjectExecutionStatusWarning struct {
+	// Message Warning message.
+	Message string `json:"message"`
+
+	// Reason Reason for warning.
+	Reason string `json:"reason"`
+}
+
+// CreateRuleResponseObjectLastRun defines model for create_rule_response_object_last_run.
+type CreateRuleResponseObjectLastRun struct {
+	AlertsCount CreateRuleResponseObjectLastRunAlertsCount `json:"alerts_count"`
+
+	// Outcome Outcome of last run of the rule. Value could be succeeded, warning or failed.
+	Outcome    string   `json:"outcome"`
+	OutcomeMsg []string `json:"outcome_msg"`
+
+	// OutcomeOrder Order of the outcome.
+	OutcomeOrder *float32 `json:"outcome_order,omitempty"`
+
+	// Warning Warning of last rule execution.
+	Warning *string `json:"warning"`
+}
+
+// CreateRuleResponseObjectLastRunAlertsCount defines model for create_rule_response_object_last_run_alerts_count.
+type CreateRuleResponseObjectLastRunAlertsCount struct {
+	// Active Number of active alerts during last run.
+	Active *float32 `json:"active"`
+
+	// Ignored Number of ignored alerts during last run.
+	Ignored *float32 `json:"ignored"`
+
+	// New Number of new alerts during last run.
+	New *float32 `json:"new"`
+
+	// Recovered Number of recovered alerts during last run.
+	Recovered *float32 `json:"recovered"`
+}
+
+// CreateRuleResponseObjectMonitoring Monitoring details of the rule.
+type CreateRuleResponseObjectMonitoring struct {
+	// Run Rule run details.
+	Run CreateRuleResponseObjectMonitoringRun `json:"run"`
+}
+
+// CreateRuleResponseObjectMonitoringRun Rule run details.
+type CreateRuleResponseObjectMonitoringRun struct {
+	// CalculatedMetrics Calculation of different percentiles and success ratio.
+	CalculatedMetrics CreateRuleResponseObjectMonitoringRunCalculatedMetrics `json:"calculated_metrics"`
+
+	// History History of the rule run.
+	History []CreateRuleResponseObjectMonitoringRunHistoryItem `json:"history"`
+	LastRun CreateRuleResponseObjectMonitoringRunLastRun       `json:"last_run"`
+}
+
+// CreateRuleResponseObjectMonitoringRunCalculatedMetrics Calculation of different percentiles and success ratio.
+type CreateRuleResponseObjectMonitoringRunCalculatedMetrics struct {
+	P50          *float32 `json:"p50,omitempty"`
+	P95          *float32 `json:"p95,omitempty"`
+	P99          *float32 `json:"p99,omitempty"`
+	SuccessRatio float32  `json:"success_ratio"`
+}
+
+// CreateRuleResponseObjectMonitoringRunHistoryItem defines model for create_rule_response_object_monitoring_run_history_item.
+type CreateRuleResponseObjectMonitoringRunHistoryItem struct {
+	// Duration Duration of the rule run.
+	Duration *float32                                                 `json:"duration,omitempty"`
+	Outcome  *CreateRuleResponseObjectMonitoringRunHistoryItemOutcome `json:"outcome,omitempty"`
+
+	// Success Indicates whether the rule run was successful.
+	Success bool `json:"success"`
+
+	// Timestamp Time of rule run.
+	Timestamp float32 `json:"timestamp"`
+}
+
+// CreateRuleResponseObjectMonitoringRunHistoryItemOutcome defines model for create_rule_response_object_monitoring_run_history_item_outcome.
+type CreateRuleResponseObjectMonitoringRunHistoryItemOutcome struct {
+	AlertsCount CreateRuleResponseObjectMonitoringRunHistoryItemOutcomeAlertsCount `json:"alerts_count"`
+
+	// Outcome Outcome of last run of the rule. Value could be succeeded, warning or failed.
+	Outcome    string   `json:"outcome"`
+	OutcomeMsg []string `json:"outcome_msg"`
+
+	// OutcomeOrder Order of the outcome.
+	OutcomeOrder *float32 `json:"outcome_order,omitempty"`
+
+	// Warning Warning of last rule execution.
+	Warning *string `json:"warning"`
+}
+
+// CreateRuleResponseObjectMonitoringRunHistoryItemOutcomeAlertsCount defines model for create_rule_response_object_monitoring_run_history_item_outcome_alerts_count.
+type CreateRuleResponseObjectMonitoringRunHistoryItemOutcomeAlertsCount struct {
+	// Active Number of active alerts during last run.
+	Active *float32 `json:"active"`
+
+	// Ignored Number of ignored alerts during last run.
+	Ignored *float32 `json:"ignored"`
+
+	// New Number of new alerts during last run.
+	New *float32 `json:"new"`
+
+	// Recovered Number of recovered alerts during last run.
+	Recovered *float32 `json:"recovered"`
+}
+
+// CreateRuleResponseObjectMonitoringRunLastRun defines model for create_rule_response_object_monitoring_run_last_run.
+type CreateRuleResponseObjectMonitoringRunLastRun struct {
+	Metrics CreateRuleResponseObjectMonitoringRunLastRunMetrics `json:"metrics"`
+
+	// Timestamp Time of the most recent rule run.
+	Timestamp string `json:"timestamp"`
+}
+
+// CreateRuleResponseObjectMonitoringRunLastRunMetrics defines model for create_rule_response_object_monitoring_run_last_run_metrics.
+type CreateRuleResponseObjectMonitoringRunLastRunMetrics struct {
+	// Duration Duration of most recent rule run.
+	Duration *float32 `json:"duration,omitempty"`
+
+	// GapDurationS Duration in seconds of rule run gap.
+	GapDurationS *float32 `json:"gap_duration_s"`
+
+	// TotalAlertsCreated Total number of alerts created during last rule run.
+	TotalAlertsCreated *float32 `json:"total_alerts_created"`
+
+	// TotalAlertsDetected Total number of alerts detected during last rule run.
+	TotalAlertsDetected *float32 `json:"total_alerts_detected"`
+
+	// TotalIndexingDurationMs Total time spent indexing documents during last rule run in milliseconds.
+	TotalIndexingDurationMs *float32 `json:"total_indexing_duration_ms"`
+
+	// TotalSearchDurationMs Total time spent performing Elasticsearch searches as measured by Kibana; includes network latency and time spent serializing or deserializing the request and response.
+	TotalSearchDurationMs *float32 `json:"total_search_duration_ms"`
+}
+
+// CreateRuleResponseObjectSchedule defines model for create_rule_response_object_schedule.
+type CreateRuleResponseObjectSchedule struct {
+	// Interval The interval is specified in seconds, minutes, hours, or days.
+	Interval string `json:"interval"`
+}
+
+// CreateRuleResponseObjectSnoozeScheduleItem defines model for create_rule_response_object_snooze_schedule_item.
+type CreateRuleResponseObjectSnoozeScheduleItem struct {
+	// Duration Duration of the rule snooze schedule.
+	Duration float32 `json:"duration"`
+
+	// Id Identifier of the rule snooze schedule.
+	Id              *string                                         `json:"id,omitempty"`
+	RRule           CreateRuleResponseObjectSnoozeScheduleItemRRule `json:"rRule"`
+	SkipRecurrences []string                                        `json:"skipRecurrences,omitempty"`
+}
+
+// CreateRuleResponseObjectSnoozeScheduleItemRRule defines model for create_rule_response_object_snooze_schedule_item_rRule.
+type CreateRuleResponseObjectSnoozeScheduleItemRRule struct {
+	Byhour     []float32                                                        `json:"byhour,omitempty"`
+	Byminute   []float32                                                        `json:"byminute,omitempty"`
+	Bymonth    []float32                                                        `json:"bymonth,omitempty"`
+	Bymonthday []float32                                                        `json:"bymonthday,omitempty"`
+	Bysecond   []float32                                                        `json:"bysecond,omitempty"`
+	Bysetpos   []float32                                                        `json:"bysetpos,omitempty"`
+	Byweekday  []CreateRuleResponseObjectSnoozeScheduleItemRRule_Byweekday_Item `json:"byweekday,omitempty"`
+	Byweekno   []float32                                                        `json:"byweekno,omitempty"`
+	Byyearday  []float32                                                        `json:"byyearday,omitempty"`
+
+	// Count Number of times the rule should recur until it stops.
+	Count *float32 `json:"count,omitempty"`
+
+	// Dtstart Rule start date in Coordinated Universal Time (UTC).
+	Dtstart string `json:"dtstart"`
+
+	// Freq Indicates frequency of the rule. Options are YEARLY, MONTHLY, WEEKLY, DAILY.
+	Freq *int `json:"freq,omitempty"`
+
+	// Interval Indicates the interval of frequency. For example, 1 and YEARLY is every 1 year, 2 and WEEKLY is every 2 weeks.
+	Interval *float32 `json:"interval,omitempty"`
+
+	// Tzid Indicates timezone abbreviation.
+	Tzid string `json:"tzid"`
+
+	// Until Recur the rule until this date.
+	Until *string `json:"until,omitempty"`
+
+	// Wkst Indicates the start of week, defaults to Monday.
+	Wkst *string `json:"wkst,omitempty"`
+}
+
+// CreateRuleResponseObjectSnoozeScheduleItemRRuleByweekday0 defines model for .
+type CreateRuleResponseObjectSnoozeScheduleItemRRuleByweekday0 = string
+
+// CreateRuleResponseObjectSnoozeScheduleItemRRuleByweekday1 defines model for .
+type CreateRuleResponseObjectSnoozeScheduleItemRRuleByweekday1 = float32
+
+// CreateRuleResponseObjectSnoozeScheduleItemRRule_Byweekday_Item Indicates the days of the week to recur or else nth-day-of-month strings. For example, "+2TU" second Tuesday of month, "-1FR" last Friday of the month, which are internally converted to a `byweekday/bysetpos` combination.
+type CreateRuleResponseObjectSnoozeScheduleItemRRule_Byweekday_Item struct {
 	union json.RawMessage
 }
-
-// CreateSiemEqlRuleRequest A rule that uses Event Query Language (EQL) to match events, generate sequences, and stack data.
-type CreateSiemEqlRuleRequest struct {
-	Actions Actions `json:"actions"`
-
-	// Consumer The name of the application or feature that owns the rule. For example: `alerts`, `apm`, `discover`, `infrastructure`, `logs`, `metrics`, `ml`, `monitoring`, `securitySolution`, `siem`, `stackAlerts`, or `uptime`.
-	Consumer Consumer `json:"consumer"`
-
-	// Enabled Indicates whether you want to run the rule on an interval basis after it is created.
-	Enabled *EnabledRule `json:"enabled,omitempty"`
-
-	// Name The name of the rule. While this name does not have to be unique, a distinctive name can help you identify a rule.
-	Name NameRule `json:"name"`
-
-	// NotifyWhen Deprecated in 8.13.0. Use the `notify_when` property in the action `frequency` object instead. Indicates how often alerts generate actions. NOTE: You cannot specify `notify_when` at both the rule and action level. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
-	// Deprecated:
-	NotifyWhen *NotifyWhen `json:"notify_when,omitempty"`
-
-	// Params The parameters for an event correlation rule.
-	Params map[string]interface{} `json:"params"`
-
-	// RuleTypeId The ID of the rule type that you want to call when the rule is scheduled to run.
-	RuleTypeId CreateSiemEqlRuleRequestRuleTypeId `json:"rule_type_id"`
-
-	// Schedule The check interval, which specifies how frequently the rule conditions are checked. The interval is specified in seconds, minutes, hours, or days.
-	Schedule Schedule `json:"schedule"`
-
-	// Tags The tags for the rule.
-	Tags Tags `json:"tags,omitempty"`
-
-	// Throttle Deprecated in 8.13.0. Use the `throttle` property in the action `frequency` object instead. The throttle interval, which defines how often an alert generates repeated actions. NOTE: You cannot specify the throttle interval at both the rule and action level. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
-	// Deprecated:
-	Throttle *Throttle `json:"throttle"`
-}
-
-// CreateSiemEqlRuleRequestRuleTypeId The ID of the rule type that you want to call when the rule is scheduled to run.
-type CreateSiemEqlRuleRequestRuleTypeId string
-
-// CreateSiemIndicatorRuleRequest A rule that uses indicators from intelligence sources to detect matching events and alerts.
-type CreateSiemIndicatorRuleRequest struct {
-	Actions Actions `json:"actions"`
-
-	// Consumer The name of the application or feature that owns the rule. For example: `alerts`, `apm`, `discover`, `infrastructure`, `logs`, `metrics`, `ml`, `monitoring`, `securitySolution`, `siem`, `stackAlerts`, or `uptime`.
-	Consumer Consumer `json:"consumer"`
-
-	// Enabled Indicates whether you want to run the rule on an interval basis after it is created.
-	Enabled *EnabledRule `json:"enabled,omitempty"`
-
-	// Name The name of the rule. While this name does not have to be unique, a distinctive name can help you identify a rule.
-	Name NameRule `json:"name"`
-
-	// NotifyWhen Deprecated in 8.13.0. Use the `notify_when` property in the action `frequency` object instead. Indicates how often alerts generate actions. NOTE: You cannot specify `notify_when` at both the rule and action level. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
-	// Deprecated:
-	NotifyWhen *NotifyWhen `json:"notify_when,omitempty"`
-
-	// Params The parameters for an indicator match rule.
-	Params map[string]interface{} `json:"params"`
-
-	// RuleTypeId The ID of the rule type that you want to call when the rule is scheduled to run.
-	RuleTypeId CreateSiemIndicatorRuleRequestRuleTypeId `json:"rule_type_id"`
-
-	// Schedule The check interval, which specifies how frequently the rule conditions are checked. The interval is specified in seconds, minutes, hours, or days.
-	Schedule Schedule `json:"schedule"`
-
-	// Tags The tags for the rule.
-	Tags Tags `json:"tags,omitempty"`
-
-	// Throttle Deprecated in 8.13.0. Use the `throttle` property in the action `frequency` object instead. The throttle interval, which defines how often an alert generates repeated actions. NOTE: You cannot specify the throttle interval at both the rule and action level. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
-	// Deprecated:
-	Throttle *Throttle `json:"throttle"`
-}
-
-// CreateSiemIndicatorRuleRequestRuleTypeId The ID of the rule type that you want to call when the rule is scheduled to run.
-type CreateSiemIndicatorRuleRequestRuleTypeId string
-
-// CreateSiemMlRuleRequest A rule that detects when a machine learning job discovers an anomaly above the defined threshold.
-type CreateSiemMlRuleRequest struct {
-	Actions Actions `json:"actions"`
-
-	// Consumer The name of the application or feature that owns the rule. For example: `alerts`, `apm`, `discover`, `infrastructure`, `logs`, `metrics`, `ml`, `monitoring`, `securitySolution`, `siem`, `stackAlerts`, or `uptime`.
-	Consumer Consumer `json:"consumer"`
-
-	// Enabled Indicates whether you want to run the rule on an interval basis after it is created.
-	Enabled *EnabledRule `json:"enabled,omitempty"`
-
-	// Name The name of the rule. While this name does not have to be unique, a distinctive name can help you identify a rule.
-	Name NameRule `json:"name"`
-
-	// NotifyWhen Deprecated in 8.13.0. Use the `notify_when` property in the action `frequency` object instead. Indicates how often alerts generate actions. NOTE: You cannot specify `notify_when` at both the rule and action level. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
-	// Deprecated:
-	NotifyWhen *NotifyWhen `json:"notify_when,omitempty"`
-
-	// Params The parameters for a machine learning rule.
-	Params map[string]interface{} `json:"params"`
-
-	// RuleTypeId The ID of the rule type that you want to call when the rule is scheduled to run.
-	RuleTypeId CreateSiemMlRuleRequestRuleTypeId `json:"rule_type_id"`
-
-	// Schedule The check interval, which specifies how frequently the rule conditions are checked. The interval is specified in seconds, minutes, hours, or days.
-	Schedule Schedule `json:"schedule"`
-
-	// Tags The tags for the rule.
-	Tags Tags `json:"tags,omitempty"`
-
-	// Throttle Deprecated in 8.13.0. Use the `throttle` property in the action `frequency` object instead. The throttle interval, which defines how often an alert generates repeated actions. NOTE: You cannot specify the throttle interval at both the rule and action level. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
-	// Deprecated:
-	Throttle *Throttle `json:"throttle"`
-}
-
-// CreateSiemMlRuleRequestRuleTypeId The ID of the rule type that you want to call when the rule is scheduled to run.
-type CreateSiemMlRuleRequestRuleTypeId string
-
-// CreateSiemNewTermsRuleRequest A rule that finds documents with values that appear for the first time.
-type CreateSiemNewTermsRuleRequest struct {
-	Actions Actions `json:"actions"`
-
-	// Consumer The name of the application or feature that owns the rule. For example: `alerts`, `apm`, `discover`, `infrastructure`, `logs`, `metrics`, `ml`, `monitoring`, `securitySolution`, `siem`, `stackAlerts`, or `uptime`.
-	Consumer Consumer `json:"consumer"`
-
-	// Enabled Indicates whether you want to run the rule on an interval basis after it is created.
-	Enabled *EnabledRule `json:"enabled,omitempty"`
-
-	// Name The name of the rule. While this name does not have to be unique, a distinctive name can help you identify a rule.
-	Name NameRule `json:"name"`
-
-	// NotifyWhen Deprecated in 8.13.0. Use the `notify_when` property in the action `frequency` object instead. Indicates how often alerts generate actions. NOTE: You cannot specify `notify_when` at both the rule and action level. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
-	// Deprecated:
-	NotifyWhen *NotifyWhen `json:"notify_when,omitempty"`
-
-	// Params The parameters for a new terms rule.
-	Params map[string]interface{} `json:"params"`
-
-	// RuleTypeId The ID of the rule type that you want to call when the rule is scheduled to run.
-	RuleTypeId CreateSiemNewTermsRuleRequestRuleTypeId `json:"rule_type_id"`
-
-	// Schedule The check interval, which specifies how frequently the rule conditions are checked. The interval is specified in seconds, minutes, hours, or days.
-	Schedule Schedule `json:"schedule"`
-
-	// Tags The tags for the rule.
-	Tags Tags `json:"tags,omitempty"`
-
-	// Throttle Deprecated in 8.13.0. Use the `throttle` property in the action `frequency` object instead. The throttle interval, which defines how often an alert generates repeated actions. NOTE: You cannot specify the throttle interval at both the rule and action level. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
-	// Deprecated:
-	Throttle *Throttle `json:"throttle"`
-}
-
-// CreateSiemNewTermsRuleRequestRuleTypeId The ID of the rule type that you want to call when the rule is scheduled to run.
-type CreateSiemNewTermsRuleRequestRuleTypeId string
-
-// CreateSiemNotificationsRuleRequest defines model for create_siem_notifications_rule_request.
-type CreateSiemNotificationsRuleRequest struct {
-	Actions Actions `json:"actions"`
-
-	// Consumer The name of the application or feature that owns the rule. For example: `alerts`, `apm`, `discover`, `infrastructure`, `logs`, `metrics`, `ml`, `monitoring`, `securitySolution`, `siem`, `stackAlerts`, or `uptime`.
-	Consumer Consumer `json:"consumer"`
-
-	// Enabled Indicates whether you want to run the rule on an interval basis after it is created.
-	Enabled *EnabledRule `json:"enabled,omitempty"`
-
-	// Name The name of the rule. While this name does not have to be unique, a distinctive name can help you identify a rule.
-	Name NameRule `json:"name"`
-
-	// NotifyWhen Deprecated in 8.13.0. Use the `notify_when` property in the action `frequency` object instead. Indicates how often alerts generate actions. NOTE: You cannot specify `notify_when` at both the rule and action level. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
-	// Deprecated:
-	NotifyWhen *NotifyWhen `json:"notify_when,omitempty"`
-
-	// Params The parameters for a notification rule.
-	Params map[string]interface{} `json:"params"`
-
-	// RuleTypeId The ID of the rule type that you want to call when the rule is scheduled to run.
-	RuleTypeId CreateSiemNotificationsRuleRequestRuleTypeId `json:"rule_type_id"`
-
-	// Schedule The check interval, which specifies how frequently the rule conditions are checked. The interval is specified in seconds, minutes, hours, or days.
-	Schedule Schedule `json:"schedule"`
-
-	// Tags The tags for the rule.
-	Tags Tags `json:"tags,omitempty"`
-
-	// Throttle Deprecated in 8.13.0. Use the `throttle` property in the action `frequency` object instead. The throttle interval, which defines how often an alert generates repeated actions. NOTE: You cannot specify the throttle interval at both the rule and action level. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
-	// Deprecated:
-	Throttle *Throttle `json:"throttle"`
-}
-
-// CreateSiemNotificationsRuleRequestRuleTypeId The ID of the rule type that you want to call when the rule is scheduled to run.
-type CreateSiemNotificationsRuleRequestRuleTypeId string
-
-// CreateSiemQueryRuleRequest A rule that uses KQL or Lucene to detect issues across indices.
-type CreateSiemQueryRuleRequest struct {
-	Actions Actions `json:"actions"`
-
-	// Consumer The name of the application or feature that owns the rule. For example: `alerts`, `apm`, `discover`, `infrastructure`, `logs`, `metrics`, `ml`, `monitoring`, `securitySolution`, `siem`, `stackAlerts`, or `uptime`.
-	Consumer Consumer `json:"consumer"`
-
-	// Enabled Indicates whether you want to run the rule on an interval basis after it is created.
-	Enabled *EnabledRule `json:"enabled,omitempty"`
-
-	// Name The name of the rule. While this name does not have to be unique, a distinctive name can help you identify a rule.
-	Name NameRule `json:"name"`
-
-	// NotifyWhen Deprecated in 8.13.0. Use the `notify_when` property in the action `frequency` object instead. Indicates how often alerts generate actions. NOTE: You cannot specify `notify_when` at both the rule and action level. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
-	// Deprecated:
-	NotifyWhen *NotifyWhen `json:"notify_when,omitempty"`
-
-	// Params The parameters for a custom query rule.
-	Params map[string]interface{} `json:"params"`
-
-	// RuleTypeId The ID of the rule type that you want to call when the rule is scheduled to run.
-	RuleTypeId CreateSiemQueryRuleRequestRuleTypeId `json:"rule_type_id"`
-
-	// Schedule The check interval, which specifies how frequently the rule conditions are checked. The interval is specified in seconds, minutes, hours, or days.
-	Schedule Schedule `json:"schedule"`
-
-	// Tags The tags for the rule.
-	Tags Tags `json:"tags,omitempty"`
-
-	// Throttle Deprecated in 8.13.0. Use the `throttle` property in the action `frequency` object instead. The throttle interval, which defines how often an alert generates repeated actions. NOTE: You cannot specify the throttle interval at both the rule and action level. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
-	// Deprecated:
-	Throttle *Throttle `json:"throttle"`
-}
-
-// CreateSiemQueryRuleRequestRuleTypeId The ID of the rule type that you want to call when the rule is scheduled to run.
-type CreateSiemQueryRuleRequestRuleTypeId string
-
-// CreateSiemSavedQueryRuleRequest A rule that searches the defined indices and creates an alert when a document matches the saved search.
-type CreateSiemSavedQueryRuleRequest struct {
-	Actions Actions `json:"actions"`
-
-	// Consumer The name of the application or feature that owns the rule. For example: `alerts`, `apm`, `discover`, `infrastructure`, `logs`, `metrics`, `ml`, `monitoring`, `securitySolution`, `siem`, `stackAlerts`, or `uptime`.
-	Consumer Consumer `json:"consumer"`
-
-	// Enabled Indicates whether you want to run the rule on an interval basis after it is created.
-	Enabled *EnabledRule `json:"enabled,omitempty"`
-
-	// Name The name of the rule. While this name does not have to be unique, a distinctive name can help you identify a rule.
-	Name NameRule `json:"name"`
-
-	// NotifyWhen Deprecated in 8.13.0. Use the `notify_when` property in the action `frequency` object instead. Indicates how often alerts generate actions. NOTE: You cannot specify `notify_when` at both the rule and action level. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
-	// Deprecated:
-	NotifyWhen *NotifyWhen `json:"notify_when,omitempty"`
-
-	// Params The parameters for a saved query rule.
-	Params map[string]interface{} `json:"params"`
-
-	// RuleTypeId The ID of the rule type that you want to call when the rule is scheduled to run.
-	RuleTypeId CreateSiemSavedQueryRuleRequestRuleTypeId `json:"rule_type_id"`
-
-	// Schedule The check interval, which specifies how frequently the rule conditions are checked. The interval is specified in seconds, minutes, hours, or days.
-	Schedule Schedule `json:"schedule"`
-
-	// Tags The tags for the rule.
-	Tags Tags `json:"tags,omitempty"`
-
-	// Throttle Deprecated in 8.13.0. Use the `throttle` property in the action `frequency` object instead. The throttle interval, which defines how often an alert generates repeated actions. NOTE: You cannot specify the throttle interval at both the rule and action level. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
-	// Deprecated:
-	Throttle *Throttle `json:"throttle"`
-}
-
-// CreateSiemSavedQueryRuleRequestRuleTypeId The ID of the rule type that you want to call when the rule is scheduled to run.
-type CreateSiemSavedQueryRuleRequestRuleTypeId string
-
-// CreateSiemThresholdRuleRequest A rule that aggregates query results to detect when the number of matches exceeds a threshold.
-type CreateSiemThresholdRuleRequest struct {
-	Actions Actions `json:"actions"`
-
-	// Consumer The name of the application or feature that owns the rule. For example: `alerts`, `apm`, `discover`, `infrastructure`, `logs`, `metrics`, `ml`, `monitoring`, `securitySolution`, `siem`, `stackAlerts`, or `uptime`.
-	Consumer Consumer `json:"consumer"`
-
-	// Enabled Indicates whether you want to run the rule on an interval basis after it is created.
-	Enabled *EnabledRule `json:"enabled,omitempty"`
-
-	// Name The name of the rule. While this name does not have to be unique, a distinctive name can help you identify a rule.
-	Name NameRule `json:"name"`
-
-	// NotifyWhen Deprecated in 8.13.0. Use the `notify_when` property in the action `frequency` object instead. Indicates how often alerts generate actions. NOTE: You cannot specify `notify_when` at both the rule and action level. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
-	// Deprecated:
-	NotifyWhen *NotifyWhen `json:"notify_when,omitempty"`
-
-	// Params The parameters for a threshold rule.
-	Params map[string]interface{} `json:"params"`
-
-	// RuleTypeId The ID of the rule type that you want to call when the rule is scheduled to run.
-	RuleTypeId CreateSiemThresholdRuleRequestRuleTypeId `json:"rule_type_id"`
-
-	// Schedule The check interval, which specifies how frequently the rule conditions are checked. The interval is specified in seconds, minutes, hours, or days.
-	Schedule Schedule `json:"schedule"`
-
-	// Tags The tags for the rule.
-	Tags Tags `json:"tags,omitempty"`
-
-	// Throttle Deprecated in 8.13.0. Use the `throttle` property in the action `frequency` object instead. The throttle interval, which defines how often an alert generates repeated actions. NOTE: You cannot specify the throttle interval at both the rule and action level. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
-	// Deprecated:
-	Throttle *Throttle `json:"throttle"`
-}
-
-// CreateSiemThresholdRuleRequestRuleTypeId The ID of the rule type that you want to call when the rule is scheduled to run.
-type CreateSiemThresholdRuleRequestRuleTypeId string
-
-// CreateSloBurnRateRuleRequest A rule that detects when the burn rate is above a defined threshold for two different lookback periods. The two periods are a long period and a short period that is 1/12th of the long period. For each lookback period, the burn rate is computed as the error rate divided by the error budget. When the burn rates for both periods surpass the threshold, an alert occurs.
-type CreateSloBurnRateRuleRequest struct {
-	Actions Actions `json:"actions"`
-
-	// AlertDelay Indicates that an alert occurs only when the specified number of consecutive runs met the rule conditions.
-	AlertDelay *AlertDelay `json:"alert_delay,omitempty"`
-
-	// Consumer The name of the application or feature that owns the rule. For example: `alerts`, `apm`, `discover`, `infrastructure`, `logs`, `metrics`, `ml`, `monitoring`, `securitySolution`, `siem`, `stackAlerts`, or `uptime`.
-	Consumer Consumer `json:"consumer"`
-
-	// Enabled Indicates whether you want to run the rule on an interval basis after it is created.
-	Enabled *EnabledRule `json:"enabled,omitempty"`
-
-	// Name The name of the rule. While this name does not have to be unique, a distinctive name can help you identify a rule.
-	Name NameRule `json:"name"`
-
-	// NotifyWhen Deprecated in 8.13.0. Use the `notify_when` property in the action `frequency` object instead. Indicates how often alerts generate actions. NOTE: You cannot specify `notify_when` at both the rule and action level. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
-	// Deprecated:
-	NotifyWhen *NotifyWhen               `json:"notify_when,omitempty"`
-	Params     ParamsPropertySloBurnRate `json:"params"`
-
-	// RuleTypeId The ID of the rule type that you want to call when the rule is scheduled to run.
-	RuleTypeId CreateSloBurnRateRuleRequestRuleTypeId `json:"rule_type_id"`
-
-	// Schedule The check interval, which specifies how frequently the rule conditions are checked. The interval is specified in seconds, minutes, hours, or days.
-	Schedule Schedule `json:"schedule"`
-
-	// Tags The tags for the rule.
-	Tags Tags `json:"tags,omitempty"`
-
-	// Throttle Deprecated in 8.13.0. Use the `throttle` property in the action `frequency` object instead. The throttle interval, which defines how often an alert generates repeated actions. NOTE: You cannot specify the throttle interval at both the rule and action level. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
-	// Deprecated:
-	Throttle *Throttle `json:"throttle"`
-}
-
-// CreateSloBurnRateRuleRequestRuleTypeId The ID of the rule type that you want to call when the rule is scheduled to run.
-type CreateSloBurnRateRuleRequestRuleTypeId string
 
 // CreateSloRequest The create SLO API request body varies depending on the type of indicator, time window and budgeting method.
 type CreateSloRequest struct {
@@ -2620,288 +854,114 @@ type CreateSloResponse struct {
 	Id string `json:"id"`
 }
 
-// CreateSyntheticsMonitorStatusRuleRequest A rule that detects when a monitor is down or an availability threshold is breached.
-type CreateSyntheticsMonitorStatusRuleRequest struct {
-	Actions Actions `json:"actions"`
-
-	// AlertDelay Indicates that an alert occurs only when the specified number of consecutive runs met the rule conditions.
-	AlertDelay *AlertDelay `json:"alert_delay,omitempty"`
-
-	// Consumer The name of the application or feature that owns the rule. For example: `alerts`, `apm`, `discover`, `infrastructure`, `logs`, `metrics`, `ml`, `monitoring`, `securitySolution`, `siem`, `stackAlerts`, or `uptime`.
-	Consumer Consumer `json:"consumer"`
-
-	// Enabled Indicates whether you want to run the rule on an interval basis after it is created.
-	Enabled *EnabledRule `json:"enabled,omitempty"`
-
-	// Name The name of the rule. While this name does not have to be unique, a distinctive name can help you identify a rule.
-	Name NameRule `json:"name"`
-
-	// NotifyWhen Deprecated in 8.13.0. Use the `notify_when` property in the action `frequency` object instead. Indicates how often alerts generate actions. NOTE: You cannot specify `notify_when` at both the rule and action level. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
-	// Deprecated:
-	NotifyWhen *NotifyWhen `json:"notify_when,omitempty"`
-
-	// Params The parameters for the synthetics monitor status rule.
-	Params map[string]interface{} `json:"params"`
-
-	// RuleTypeId The ID of the rule type that you want to call when the rule is scheduled to run.
-	RuleTypeId CreateSyntheticsMonitorStatusRuleRequestRuleTypeId `json:"rule_type_id"`
-
-	// Schedule The check interval, which specifies how frequently the rule conditions are checked. The interval is specified in seconds, minutes, hours, or days.
-	Schedule Schedule `json:"schedule"`
-
-	// Tags The tags for the rule.
-	Tags Tags `json:"tags,omitempty"`
-
-	// Throttle Deprecated in 8.13.0. Use the `throttle` property in the action `frequency` object instead. The throttle interval, which defines how often an alert generates repeated actions. NOTE: You cannot specify the throttle interval at both the rule and action level. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
-	// Deprecated:
-	Throttle *Throttle `json:"throttle"`
-}
-
-// CreateSyntheticsMonitorStatusRuleRequestRuleTypeId The ID of the rule type that you want to call when the rule is scheduled to run.
-type CreateSyntheticsMonitorStatusRuleRequestRuleTypeId string
-
-// CreateSyntheticsUptimeDurationAnomalyRuleRequest A rule that detects response durations for all of the geographic locations of each monitor. When a monitor runs for an unusual amount of time, at a particular time, an anomaly is recorded.
-type CreateSyntheticsUptimeDurationAnomalyRuleRequest struct {
-	Actions Actions `json:"actions"`
-
-	// AlertDelay Indicates that an alert occurs only when the specified number of consecutive runs met the rule conditions.
-	AlertDelay *AlertDelay `json:"alert_delay,omitempty"`
-
-	// Consumer The name of the application or feature that owns the rule. For example: `alerts`, `apm`, `discover`, `infrastructure`, `logs`, `metrics`, `ml`, `monitoring`, `securitySolution`, `siem`, `stackAlerts`, or `uptime`.
-	Consumer Consumer `json:"consumer"`
-
-	// Enabled Indicates whether you want to run the rule on an interval basis after it is created.
-	Enabled *EnabledRule `json:"enabled,omitempty"`
-
-	// Name The name of the rule. While this name does not have to be unique, a distinctive name can help you identify a rule.
-	Name NameRule `json:"name"`
-
-	// NotifyWhen Deprecated in 8.13.0. Use the `notify_when` property in the action `frequency` object instead. Indicates how often alerts generate actions. NOTE: You cannot specify `notify_when` at both the rule and action level. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
-	// Deprecated:
-	NotifyWhen *NotifyWhen `json:"notify_when,omitempty"`
-
-	// Params The parameters for the uptime duration anomaly rule.
-	Params map[string]interface{} `json:"params"`
-
-	// RuleTypeId The ID of the rule type that you want to call when the rule is scheduled to run.
-	RuleTypeId CreateSyntheticsUptimeDurationAnomalyRuleRequestRuleTypeId `json:"rule_type_id"`
-
-	// Schedule The check interval, which specifies how frequently the rule conditions are checked. The interval is specified in seconds, minutes, hours, or days.
-	Schedule Schedule `json:"schedule"`
-
-	// Tags The tags for the rule.
-	Tags Tags `json:"tags,omitempty"`
-
-	// Throttle Deprecated in 8.13.0. Use the `throttle` property in the action `frequency` object instead. The throttle interval, which defines how often an alert generates repeated actions. NOTE: You cannot specify the throttle interval at both the rule and action level. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
-	// Deprecated:
-	Throttle *Throttle `json:"throttle"`
-}
-
-// CreateSyntheticsUptimeDurationAnomalyRuleRequestRuleTypeId The ID of the rule type that you want to call when the rule is scheduled to run.
-type CreateSyntheticsUptimeDurationAnomalyRuleRequestRuleTypeId string
-
-// CreateSyntheticsUptimeTlsCertificateRuleRequest A rule that detects when a monitor has a TLS certificate expiring or when it exceeds an age limit.
-type CreateSyntheticsUptimeTlsCertificateRuleRequest struct {
-	Actions Actions `json:"actions"`
-
-	// AlertDelay Indicates that an alert occurs only when the specified number of consecutive runs met the rule conditions.
-	AlertDelay *AlertDelay `json:"alert_delay,omitempty"`
-
-	// Consumer The name of the application or feature that owns the rule. For example: `alerts`, `apm`, `discover`, `infrastructure`, `logs`, `metrics`, `ml`, `monitoring`, `securitySolution`, `siem`, `stackAlerts`, or `uptime`.
-	Consumer Consumer `json:"consumer"`
-
-	// Enabled Indicates whether you want to run the rule on an interval basis after it is created.
-	Enabled *EnabledRule `json:"enabled,omitempty"`
-
-	// Name The name of the rule. While this name does not have to be unique, a distinctive name can help you identify a rule.
-	Name NameRule `json:"name"`
-
-	// NotifyWhen Deprecated in 8.13.0. Use the `notify_when` property in the action `frequency` object instead. Indicates how often alerts generate actions. NOTE: You cannot specify `notify_when` at both the rule and action level. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
-	// Deprecated:
-	NotifyWhen *NotifyWhen `json:"notify_when,omitempty"`
-
-	// Params The parameters for a TLS certificate rule.
-	Params map[string]interface{} `json:"params"`
-
-	// RuleTypeId The ID of the rule type that you want to call when the rule is scheduled to run.
-	RuleTypeId CreateSyntheticsUptimeTlsCertificateRuleRequestRuleTypeId `json:"rule_type_id"`
-
-	// Schedule The check interval, which specifies how frequently the rule conditions are checked. The interval is specified in seconds, minutes, hours, or days.
-	Schedule Schedule `json:"schedule"`
-
-	// Tags The tags for the rule.
-	Tags Tags `json:"tags,omitempty"`
-
-	// Throttle Deprecated in 8.13.0. Use the `throttle` property in the action `frequency` object instead. The throttle interval, which defines how often an alert generates repeated actions. NOTE: You cannot specify the throttle interval at both the rule and action level. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
-	// Deprecated:
-	Throttle *Throttle `json:"throttle"`
-}
-
-// CreateSyntheticsUptimeTlsCertificateRuleRequestRuleTypeId The ID of the rule type that you want to call when the rule is scheduled to run.
-type CreateSyntheticsUptimeTlsCertificateRuleRequestRuleTypeId string
-
-// CreateSyntheticsUptimeTlsRuleRequest defines model for create_synthetics_uptime_tls_rule_request.
-type CreateSyntheticsUptimeTlsRuleRequest struct {
-	Actions Actions `json:"actions"`
-
-	// Consumer The name of the application or feature that owns the rule. For example: `alerts`, `apm`, `discover`, `infrastructure`, `logs`, `metrics`, `ml`, `monitoring`, `securitySolution`, `siem`, `stackAlerts`, or `uptime`.
-	Consumer Consumer `json:"consumer"`
-
-	// Enabled Indicates whether you want to run the rule on an interval basis after it is created.
-	Enabled *EnabledRule `json:"enabled,omitempty"`
-
-	// Name The name of the rule. While this name does not have to be unique, a distinctive name can help you identify a rule.
-	Name NameRule `json:"name"`
-
-	// NotifyWhen Deprecated in 8.13.0. Use the `notify_when` property in the action `frequency` object instead. Indicates how often alerts generate actions. NOTE: You cannot specify `notify_when` at both the rule and action level. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
-	// Deprecated:
-	NotifyWhen *NotifyWhen                       `json:"notify_when,omitempty"`
-	Params     ParamsPropertySyntheticsUptimeTls `json:"params"`
-
-	// RuleTypeId The ID of the rule type that you want to call when the rule is scheduled to run.
-	RuleTypeId CreateSyntheticsUptimeTlsRuleRequestRuleTypeId `json:"rule_type_id"`
-
-	// Schedule The check interval, which specifies how frequently the rule conditions are checked. The interval is specified in seconds, minutes, hours, or days.
-	Schedule Schedule `json:"schedule"`
-
-	// Tags The tags for the rule.
-	Tags Tags `json:"tags,omitempty"`
-
-	// Throttle Deprecated in 8.13.0. Use the `throttle` property in the action `frequency` object instead. The throttle interval, which defines how often an alert generates repeated actions. NOTE: You cannot specify the throttle interval at both the rule and action level. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
-	// Deprecated:
-	Throttle *Throttle `json:"throttle"`
-}
-
-// CreateSyntheticsUptimeTlsRuleRequestRuleTypeId The ID of the rule type that you want to call when the rule is scheduled to run.
-type CreateSyntheticsUptimeTlsRuleRequestRuleTypeId string
-
-// CreateTransformHealthRuleRequest A rule that monitors transforms health and alerts if an operational issue occurred.
-type CreateTransformHealthRuleRequest struct {
-	Actions Actions `json:"actions"`
-
-	// AlertDelay Indicates that an alert occurs only when the specified number of consecutive runs met the rule conditions.
-	AlertDelay *AlertDelay `json:"alert_delay,omitempty"`
-
-	// Consumer The name of the application or feature that owns the rule. For example: `alerts`, `apm`, `discover`, `infrastructure`, `logs`, `metrics`, `ml`, `monitoring`, `securitySolution`, `siem`, `stackAlerts`, or `uptime`.
-	Consumer Consumer `json:"consumer"`
-
-	// Enabled Indicates whether you want to run the rule on an interval basis after it is created.
-	Enabled *EnabledRule `json:"enabled,omitempty"`
-
-	// Name The name of the rule. While this name does not have to be unique, a distinctive name can help you identify a rule.
-	Name NameRule `json:"name"`
-
-	// NotifyWhen Deprecated in 8.13.0. Use the `notify_when` property in the action `frequency` object instead. Indicates how often alerts generate actions. NOTE: You cannot specify `notify_when` at both the rule and action level. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
-	// Deprecated:
-	NotifyWhen *NotifyWhen `json:"notify_when,omitempty"`
-
-	// Params The parameters for a transform health rule.
-	Params map[string]interface{} `json:"params"`
-
-	// RuleTypeId The ID of the rule type that you want to call when the rule is scheduled to run.
-	RuleTypeId CreateTransformHealthRuleRequestRuleTypeId `json:"rule_type_id"`
-
-	// Schedule The check interval, which specifies how frequently the rule conditions are checked. The interval is specified in seconds, minutes, hours, or days.
-	Schedule Schedule `json:"schedule"`
-
-	// Tags The tags for the rule.
-	Tags Tags `json:"tags,omitempty"`
-
-	// Throttle Deprecated in 8.13.0. Use the `throttle` property in the action `frequency` object instead. The throttle interval, which defines how often an alert generates repeated actions. NOTE: You cannot specify the throttle interval at both the rule and action level. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
-	// Deprecated:
-	Throttle *Throttle `json:"throttle"`
-}
-
-// CreateTransformHealthRuleRequestRuleTypeId The ID of the rule type that you want to call when the rule is scheduled to run.
-type CreateTransformHealthRuleRequestRuleTypeId string
-
-// CreateUptimeMonitorStatusRuleRequest A rule that detects monitor errors and outages.
-type CreateUptimeMonitorStatusRuleRequest struct {
-	Actions Actions `json:"actions"`
-
-	// AlertDelay Indicates that an alert occurs only when the specified number of consecutive runs met the rule conditions.
-	AlertDelay *AlertDelay `json:"alert_delay,omitempty"`
-
-	// Consumer The name of the application or feature that owns the rule. For example: `alerts`, `apm`, `discover`, `infrastructure`, `logs`, `metrics`, `ml`, `monitoring`, `securitySolution`, `siem`, `stackAlerts`, or `uptime`.
-	Consumer Consumer `json:"consumer"`
-
-	// Enabled Indicates whether you want to run the rule on an interval basis after it is created.
-	Enabled *EnabledRule `json:"enabled,omitempty"`
-
-	// Name The name of the rule. While this name does not have to be unique, a distinctive name can help you identify a rule.
-	Name NameRule `json:"name"`
-
-	// NotifyWhen Deprecated in 8.13.0. Use the `notify_when` property in the action `frequency` object instead. Indicates how often alerts generate actions. NOTE: You cannot specify `notify_when` at both the rule and action level. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
-	// Deprecated:
-	NotifyWhen *NotifyWhen                           `json:"notify_when,omitempty"`
-	Params     ParamsPropertySyntheticsMonitorStatus `json:"params"`
-
-	// RuleTypeId The ID of the rule type that you want to call when the rule is scheduled to run.
-	RuleTypeId CreateUptimeMonitorStatusRuleRequestRuleTypeId `json:"rule_type_id"`
-
-	// Schedule The check interval, which specifies how frequently the rule conditions are checked. The interval is specified in seconds, minutes, hours, or days.
-	Schedule Schedule `json:"schedule"`
-
-	// Tags The tags for the rule.
-	Tags Tags `json:"tags,omitempty"`
-
-	// Throttle Deprecated in 8.13.0. Use the `throttle` property in the action `frequency` object instead. The throttle interval, which defines how often an alert generates repeated actions. NOTE: You cannot specify the throttle interval at both the rule and action level. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
-	// Deprecated:
-	Throttle *Throttle `json:"throttle"`
-}
-
-// CreateUptimeMonitorStatusRuleRequestRuleTypeId The ID of the rule type that you want to call when the rule is scheduled to run.
-type CreateUptimeMonitorStatusRuleRequestRuleTypeId string
-
 // DataViewResponseObject defines model for data_view_response_object.
 type DataViewResponseObject struct {
-	DataView *struct {
-		// AllowNoIndex Allows the data view saved object to exist before the data is available.
-		AllowNoIndex *Allownoindex         `json:"allowNoIndex,omitempty"`
-		FieldAttrs   map[string]Fieldattrs `json:"fieldAttrs,omitempty"`
+	DataView *DataViewResponseObjectDataView `json:"data_view,omitempty"`
+}
 
-		// FieldFormats A map of field formats by field name.
-		FieldFormats Fieldformats           `json:"fieldFormats,omitempty"`
-		Fields       map[string]interface{} `json:"fields,omitempty"`
-		Id           *string                `json:"id,omitempty"`
+// DataViewResponseObjectDataView defines model for data_view_response_object_data_view.
+type DataViewResponseObjectDataView struct {
+	// AllowNoIndex Allows the data view saved object to exist before the data is available.
+	AllowNoIndex *Allownoindex         `json:"allowNoIndex,omitempty"`
+	FieldAttrs   map[string]Fieldattrs `json:"fieldAttrs,omitempty"`
 
-		// Name The data view name.
-		Name *string `json:"name,omitempty"`
+	// FieldFormats A map of field formats by field name.
+	FieldFormats Fieldformats           `json:"fieldFormats,omitempty"`
+	Fields       map[string]interface{} `json:"fields,omitempty"`
+	Id           *string                `json:"id,omitempty"`
 
-		// Namespaces An array of space identifiers for sharing the data view between multiple spaces.
-		Namespaces      Namespaces                 `json:"namespaces,omitempty"`
-		RuntimeFieldMap map[string]Runtimefieldmap `json:"runtimeFieldMap,omitempty"`
+	// Name The data view name.
+	Name *string `json:"name,omitempty"`
 
-		// SourceFilters The array of field names you want to filter out in Discover.
-		SourceFilters Sourcefilters `json:"sourceFilters,omitempty"`
+	// Namespaces An array of space identifiers for sharing the data view between multiple spaces.
+	Namespaces      Namespaces                 `json:"namespaces,omitempty"`
+	RuntimeFieldMap map[string]Runtimefieldmap `json:"runtimeFieldMap,omitempty"`
 
-		// TimeFieldName The timestamp field name, which you use for time-based data views.
-		TimeFieldName *Timefieldname `json:"timeFieldName,omitempty"`
+	// SourceFilters The array of field names you want to filter out in Discover.
+	SourceFilters Sourcefilters `json:"sourceFilters,omitempty"`
 
-		// Title Comma-separated list of data streams, indices, and aliases that you want to search. Supports wildcards (`*`).
-		Title *Title `json:"title,omitempty"`
+	// TimeFieldName The timestamp field name, which you use for time-based data views.
+	TimeFieldName *Timefieldname `json:"timeFieldName,omitempty"`
 
-		// TypeMeta When you use rollup indices, contains the field list for the rollup data view API endpoints.
-		TypeMeta *TypemetaResponse `json:"typeMeta"`
-		Version  *string           `json:"version,omitempty"`
-	} `json:"data_view,omitempty"`
+	// Title Comma-separated list of data streams, indices, and aliases that you want to search. Supports wildcards (`*`).
+	Title *Title `json:"title,omitempty"`
+
+	// TypeMeta When you use rollup indices, contains the field list for the rollup data view API endpoints.
+	TypeMeta *TypemetaResponse `json:"typeMeta"`
+	Version  *string           `json:"version,omitempty"`
+}
+
+// DeleteAgentPolicyRequest defines model for delete-agent-policy_request.
+type DeleteAgentPolicyRequest struct {
+	AgentPolicyId string `json:"agentPolicyId"`
+
+	// Force bypass validation checks that can prevent agent policy deletion
+	Force *bool `json:"force,omitempty"`
+}
+
+// DeleteAgentPolicyResponseObject defines model for delete-agent-policy_response_object.
+type DeleteAgentPolicyResponseObject struct {
+	Id      string `json:"id"`
+	Success bool   `json:"success"`
+}
+
+// DeleteFleetServerHostsResponseObject defines model for delete-fleet-server-hosts_response_object.
+type DeleteFleetServerHostsResponseObject struct {
+	Id string `json:"id"`
+}
+
+// DeleteOutputResponseObject defines model for delete-output_response_object.
+type DeleteOutputResponseObject struct {
+	Id string `json:"id"`
+}
+
+// DeletePackagePolicyResponseObject defines model for delete-package-policy_response_object.
+type DeletePackagePolicyResponseObject struct {
+	Id string `json:"id"`
+}
+
+// DeletePackageRequest defines model for delete-package_request.
+type DeletePackageRequest struct {
+	Force *bool `json:"force,omitempty"`
+}
+
+// DeletePackageResponseObject defines model for delete-package_response_object.
+type DeletePackageResponseObject struct {
+	Items []DeletePackageResponseObjectItemItem `json:"items"`
+}
+
+// DeletePackageResponseObjectItemItem defines model for delete-package_response_object_item_item.
+type DeletePackageResponseObjectItemItem struct {
+	Id   string                                   `json:"id"`
+	Type DeletePackageResponseObjectItemItem_Type `json:"type"`
+}
+
+// DeletePackageResponseObjectItemItem_Type defines model for DeletePackageResponseObjectItemItem.Type.
+type DeletePackageResponseObjectItemItem_Type struct {
+	union json.RawMessage
 }
 
 // ElasticsearchAssetType defines model for elasticsearch_asset_type.
-type ElasticsearchAssetType string
-
-// EnabledRule Indicates whether you want to run the rule on an interval basis after it is created.
-type EnabledRule = bool
+type ElasticsearchAssetType = string
 
 // EnrollmentApiKey defines model for enrollment_api_key.
 type EnrollmentApiKey struct {
-	Active    bool    `json:"active"`
-	ApiKey    string  `json:"api_key"`
-	ApiKeyId  string  `json:"api_key_id"`
-	CreatedAt string  `json:"created_at"`
-	Id        string  `json:"id"`
-	Name      *string `json:"name,omitempty"`
-	PolicyId  *string `json:"policy_id,omitempty"`
+	// Active When false, the enrollment API key is revoked and cannot be used for enrolling Elastic Agents.
+	Active bool `json:"active"`
+
+	// ApiKey The enrollment API key (token) used for enrolling Elastic Agents.
+	ApiKey string `json:"api_key"`
+
+	// ApiKeyId The ID of the API key in the Security API.
+	ApiKeyId  string `json:"api_key_id"`
+	CreatedAt string `json:"created_at"`
+	Id        string `json:"id"`
+
+	// Name The name of the enrollment API key.
+	Name *string `json:"name,omitempty"`
+
+	// PolicyId The ID of the agent policy the Elastic Agent will be enrolled in.
+	PolicyId *string `json:"policy_id,omitempty"`
 }
 
 // ErrorBudget defines model for error_budget.
@@ -2918,9 +978,6 @@ type ErrorBudget struct {
 	// Remaining The error budget remaining, as a percentage of the initial value.
 	Remaining float32 `json:"remaining"`
 }
-
-// Excludehitsfrompreviousrun Indicates whether to exclude matches from previous runs. If `true`, you can avoid alert duplication by excluding documents that have already been detected by the previous rule run. This option is not available when a grouping field is specified.
-type Excludehitsfrompreviousrun = bool
 
 // Fieldattrs A map of field attributes by field name.
 type Fieldattrs struct {
@@ -2960,6 +1017,403 @@ type FilterMeta struct {
 	Value        *string                `json:"value,omitempty"`
 }
 
+// FindRuleResponseObject defines model for find_rule_response_object.
+type FindRuleResponseObject struct {
+	Actions       []FindRuleResponseObjectActionsItem `json:"actions"`
+	ActiveSnoozes []string                            `json:"active_snoozes,omitempty"`
+
+	// AlertDelay Indicates that an alert occurs only when the specified number of consecutive runs met the rule conditions.
+	AlertDelay *FindRuleResponseObjectAlertDelay `json:"alert_delay,omitempty"`
+
+	// ApiKeyCreatedByUser Indicates whether the API key that is associated with the rule was created by the user.
+	ApiKeyCreatedByUser *bool `json:"api_key_created_by_user"`
+
+	// ApiKeyOwner The owner of the API key that is associated with the rule and used to run background tasks.
+	ApiKeyOwner *string `json:"api_key_owner"`
+
+	// Consumer The name of the application or feature that owns the rule. For example: `alerts`, `apm`, `discover`, `infrastructure`, `logs`, `metrics`, `ml`, `monitoring`, `securitySolution`, `siem`, `stackAlerts`, or `uptime`.
+	Consumer string `json:"consumer"`
+
+	// CreatedAt The date and time that the rule was created.
+	CreatedAt string `json:"created_at"`
+
+	// CreatedBy The identifier for the user that created the rule.
+	CreatedBy *string `json:"created_by"`
+
+	// Enabled Indicates whether you want to run the rule on an interval basis after it is created.
+	Enabled         bool                                  `json:"enabled"`
+	ExecutionStatus FindRuleResponseObjectExecutionStatus `json:"execution_status"`
+
+	// Id The identifier for the rule.
+	Id string `json:"id"`
+
+	// IsSnoozedUntil The date when the rule will no longer be snoozed.
+	IsSnoozedUntil *string                        `json:"is_snoozed_until"`
+	LastRun        *FindRuleResponseObjectLastRun `json:"last_run"`
+	MappedParams   map[string]interface{}         `json:"mapped_params,omitempty"`
+
+	// Monitoring Monitoring details of the rule.
+	Monitoring *FindRuleResponseObjectMonitoring `json:"monitoring,omitempty"`
+
+	// MuteAll Indicates whether all alerts are muted.
+	MuteAll       bool     `json:"mute_all"`
+	MutedAlertIds []string `json:"muted_alert_ids"`
+
+	// Name  The name of the rule.
+	Name string `json:"name"`
+
+	// NextRun Date and time of the next run of the rule.
+	NextRun *string `json:"next_run"`
+
+	// NotifyWhen Indicates how often alerts generate actions. Valid values include: `onActionGroupChange`: Actions run when the alert status changes; `onActiveAlert`: Actions run when the alert becomes active and at each check interval while the rule conditions are met; `onThrottleInterval`: Actions run when the alert becomes active and at the interval specified in the throttle property while the rule conditions are met. NOTE: You cannot specify `notify_when` at both the rule and action level. The recommended method is to set it for each action. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
+	NotifyWhen *string `json:"notify_when"`
+
+	// Params The parameters for the rule.
+	Params map[string]interface{} `json:"params"`
+
+	// Revision The rule revision number.
+	Revision float32 `json:"revision"`
+
+	// RuleTypeId The rule type identifier.
+	RuleTypeId string `json:"rule_type_id"`
+
+	// Running Indicates whether the rule is running.
+	Running  *bool                          `json:"running"`
+	Schedule FindRuleResponseObjectSchedule `json:"schedule"`
+
+	// ScheduledTaskId Identifier of the scheduled task.
+	ScheduledTaskId *string                                    `json:"scheduled_task_id,omitempty"`
+	SnoozeSchedule  []FindRuleResponseObjectSnoozeScheduleItem `json:"snooze_schedule,omitempty"`
+	Tags            []string                                   `json:"tags"`
+
+	// Throttle Deprecated in 8.13.0. Use the `throttle` property in the action `frequency` object instead. The throttle interval, which defines how often an alert generates repeated actions. NOTE: You cannot specify the throttle interval at both the rule and action level. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
+	// Deprecated:
+	Throttle *string `json:"throttle"`
+
+	// UpdatedAt The date and time that the rule was updated most recently.
+	UpdatedAt string `json:"updated_at"`
+
+	// UpdatedBy The identifier for the user that updated this rule most recently.
+	UpdatedBy *string `json:"updated_by"`
+
+	// ViewInAppRelativeUrl Relative URL to view rule in the app.
+	ViewInAppRelativeUrl *string `json:"view_in_app_relative_url"`
+}
+
+// FindRuleResponseObjectActionsItem defines model for find_rule_response_object_actions_item.
+type FindRuleResponseObjectActionsItem struct {
+	// AlertsFilter Defines a period that limits whether the action runs.
+	AlertsFilter *FindRuleResponseObjectActionsItemAlertsFilter `json:"alerts_filter,omitempty"`
+
+	// ConnectorTypeId The type of connector. This property appears in responses but cannot be set in requests.
+	ConnectorTypeId string                                      `json:"connector_type_id"`
+	Frequency       *FindRuleResponseObjectActionsItemFrequency `json:"frequency,omitempty"`
+
+	// Group The group name, which affects when the action runs (for example, when the threshold is met or when the alert is recovered). Each rule type has a list of valid action group names. If you don't need to group actions, set to `default`.
+	Group *string `json:"group,omitempty"`
+
+	// Id The identifier for the connector saved object.
+	Id string `json:"id"`
+
+	// Params The parameters for the action, which are sent to the connector. The `params` are handled as Mustache templates and passed a default set of context.
+	Params map[string]interface{} `json:"params"`
+
+	// UseAlertDataForTemplate Indicates whether to use alert data as a template.
+	UseAlertDataForTemplate *bool `json:"use_alert_data_for_template,omitempty"`
+
+	// Uuid A universally unique identifier (UUID) for the action.
+	Uuid *string `json:"uuid,omitempty"`
+}
+
+// FindRuleResponseObjectActionsItemAlertsFilter Defines a period that limits whether the action runs.
+type FindRuleResponseObjectActionsItemAlertsFilter struct {
+	Query     *FindRuleResponseObjectActionsItemAlertsFilterQuery     `json:"query,omitempty"`
+	Timeframe *FindRuleResponseObjectActionsItemAlertsFilterTimeframe `json:"timeframe,omitempty"`
+}
+
+// FindRuleResponseObjectActionsItemAlertsFilterQuery defines model for find_rule_response_object_actions_item_alerts_filter_query.
+type FindRuleResponseObjectActionsItemAlertsFilterQuery struct {
+	// Dsl A filter written in Elasticsearch Query Domain Specific Language (DSL).
+	Dsl *string `json:"dsl,omitempty"`
+
+	// Filters A filter written in Elasticsearch Query Domain Specific Language (DSL) as defined in the `kbn-es-query` package.
+	Filters []FindRuleResponseObjectActionsItemAlertsFilterQueryFiltersItem `json:"filters"`
+
+	// Kql A filter written in Kibana Query Language (KQL).
+	Kql string `json:"kql"`
+}
+
+// FindRuleResponseObjectActionsItemAlertsFilterQueryFiltersItem defines model for find_rule_response_object_actions_item_alerts_filter_query_filters_item.
+type FindRuleResponseObjectActionsItemAlertsFilterQueryFiltersItem struct {
+	State *FindRuleResponseObjectActionsItemAlertsFilterQueryFiltersItemState `json:"$state,omitempty"`
+	Meta  map[string]interface{}                                              `json:"meta"`
+	Query map[string]interface{}                                              `json:"query,omitempty"`
+}
+
+// FindRuleResponseObjectActionsItemAlertsFilterQueryFiltersItemState defines model for find_rule_response_object_actions_item_alerts_filter_query_filters_item_$state.
+type FindRuleResponseObjectActionsItemAlertsFilterQueryFiltersItemState struct {
+	// Store A filter can be either specific to an application context or applied globally.
+	Store string `json:"store"`
+}
+
+// FindRuleResponseObjectActionsItemAlertsFilterTimeframe defines model for find_rule_response_object_actions_item_alerts_filter_timeframe.
+type FindRuleResponseObjectActionsItemAlertsFilterTimeframe struct {
+	// Days Defines the days of the week that the action can run, represented as an array of numbers. For example, `1` represents Monday. An empty array is equivalent to specifying all the days of the week.
+	Days  []int                                                       `json:"days"`
+	Hours FindRuleResponseObjectActionsItemAlertsFilterTimeframeHours `json:"hours"`
+
+	// Timezone The ISO time zone for the `hours` values. Values such as `UTC` and `UTC+1` also work but lack built-in daylight savings time support and are not recommended.
+	Timezone string `json:"timezone"`
+}
+
+// FindRuleResponseObjectActionsItemAlertsFilterTimeframeHours defines model for find_rule_response_object_actions_item_alerts_filter_timeframe_hours.
+type FindRuleResponseObjectActionsItemAlertsFilterTimeframeHours struct {
+	// End The end of the time frame in 24-hour notation (`hh:mm`).
+	End string `json:"end"`
+
+	// Start The start of the time frame in 24-hour notation (`hh:mm`).
+	Start string `json:"start"`
+}
+
+// FindRuleResponseObjectActionsItemFrequency defines model for find_rule_response_object_actions_item_frequency.
+type FindRuleResponseObjectActionsItemFrequency struct {
+	// NotifyWhen Indicates how often alerts generate actions. Valid values include: `onActionGroupChange`: Actions run when the alert status changes; `onActiveAlert`: Actions run when the alert becomes active and at each check interval while the rule conditions are met; `onThrottleInterval`: Actions run when the alert becomes active and at the interval specified in the throttle property while the rule conditions are met. NOTE: You cannot specify `notify_when` at both the rule and action level. The recommended method is to set it for each action. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
+	NotifyWhen string `json:"notify_when"`
+
+	// Summary Indicates whether the action is a summary.
+	Summary bool `json:"summary"`
+
+	// Throttle The throttle interval, which defines how often an alert generates repeated actions. It is specified in seconds, minutes, hours, or days and is applicable only if 'notify_when' is set to 'onThrottleInterval'. NOTE: You cannot specify the throttle interval at both the rule and action level. The recommended method is to set it for each action. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
+	Throttle *string `json:"throttle"`
+}
+
+// FindRuleResponseObjectAlertDelay Indicates that an alert occurs only when the specified number of consecutive runs met the rule conditions.
+type FindRuleResponseObjectAlertDelay struct {
+	// Active The number of consecutive runs that must meet the rule conditions.
+	Active float32 `json:"active"`
+}
+
+// FindRuleResponseObjectExecutionStatus defines model for find_rule_response_object_execution_status.
+type FindRuleResponseObjectExecutionStatus struct {
+	Error *FindRuleResponseObjectExecutionStatusError `json:"error,omitempty"`
+
+	// LastDuration Duration of last execution of the rule.
+	LastDuration *float32 `json:"last_duration,omitempty"`
+
+	// LastExecutionDate The date and time when rule was executed last.
+	LastExecutionDate string `json:"last_execution_date"`
+
+	// Status Status of rule execution.
+	Status  string                                        `json:"status"`
+	Warning *FindRuleResponseObjectExecutionStatusWarning `json:"warning,omitempty"`
+}
+
+// FindRuleResponseObjectExecutionStatusError defines model for find_rule_response_object_execution_status_error.
+type FindRuleResponseObjectExecutionStatusError struct {
+	// Message Error message.
+	Message string `json:"message"`
+
+	// Reason Reason for error.
+	Reason string `json:"reason"`
+}
+
+// FindRuleResponseObjectExecutionStatusWarning defines model for find_rule_response_object_execution_status_warning.
+type FindRuleResponseObjectExecutionStatusWarning struct {
+	// Message Warning message.
+	Message string `json:"message"`
+
+	// Reason Reason for warning.
+	Reason string `json:"reason"`
+}
+
+// FindRuleResponseObjectLastRun defines model for find_rule_response_object_last_run.
+type FindRuleResponseObjectLastRun struct {
+	AlertsCount FindRuleResponseObjectLastRunAlertsCount `json:"alerts_count"`
+
+	// Outcome Outcome of last run of the rule. Value could be succeeded, warning or failed.
+	Outcome    string   `json:"outcome"`
+	OutcomeMsg []string `json:"outcome_msg"`
+
+	// OutcomeOrder Order of the outcome.
+	OutcomeOrder *float32 `json:"outcome_order,omitempty"`
+
+	// Warning Warning of last rule execution.
+	Warning *string `json:"warning"`
+}
+
+// FindRuleResponseObjectLastRunAlertsCount defines model for find_rule_response_object_last_run_alerts_count.
+type FindRuleResponseObjectLastRunAlertsCount struct {
+	// Active Number of active alerts during last run.
+	Active *float32 `json:"active"`
+
+	// Ignored Number of ignored alerts during last run.
+	Ignored *float32 `json:"ignored"`
+
+	// New Number of new alerts during last run.
+	New *float32 `json:"new"`
+
+	// Recovered Number of recovered alerts during last run.
+	Recovered *float32 `json:"recovered"`
+}
+
+// FindRuleResponseObjectMonitoring Monitoring details of the rule.
+type FindRuleResponseObjectMonitoring struct {
+	// Run Rule run details.
+	Run FindRuleResponseObjectMonitoringRun `json:"run"`
+}
+
+// FindRuleResponseObjectMonitoringRun Rule run details.
+type FindRuleResponseObjectMonitoringRun struct {
+	// CalculatedMetrics Calculation of different percentiles and success ratio.
+	CalculatedMetrics FindRuleResponseObjectMonitoringRunCalculatedMetrics `json:"calculated_metrics"`
+
+	// History History of the rule run.
+	History []FindRuleResponseObjectMonitoringRunHistoryItem `json:"history"`
+	LastRun FindRuleResponseObjectMonitoringRunLastRun       `json:"last_run"`
+}
+
+// FindRuleResponseObjectMonitoringRunCalculatedMetrics Calculation of different percentiles and success ratio.
+type FindRuleResponseObjectMonitoringRunCalculatedMetrics struct {
+	P50          *float32 `json:"p50,omitempty"`
+	P95          *float32 `json:"p95,omitempty"`
+	P99          *float32 `json:"p99,omitempty"`
+	SuccessRatio float32  `json:"success_ratio"`
+}
+
+// FindRuleResponseObjectMonitoringRunHistoryItem defines model for find_rule_response_object_monitoring_run_history_item.
+type FindRuleResponseObjectMonitoringRunHistoryItem struct {
+	// Duration Duration of the rule run.
+	Duration *float32                                               `json:"duration,omitempty"`
+	Outcome  *FindRuleResponseObjectMonitoringRunHistoryItemOutcome `json:"outcome,omitempty"`
+
+	// Success Indicates whether the rule run was successful.
+	Success bool `json:"success"`
+
+	// Timestamp Time of rule run.
+	Timestamp float32 `json:"timestamp"`
+}
+
+// FindRuleResponseObjectMonitoringRunHistoryItemOutcome defines model for find_rule_response_object_monitoring_run_history_item_outcome.
+type FindRuleResponseObjectMonitoringRunHistoryItemOutcome struct {
+	AlertsCount FindRuleResponseObjectMonitoringRunHistoryItemOutcomeAlertsCount `json:"alerts_count"`
+
+	// Outcome Outcome of last run of the rule. Value could be succeeded, warning or failed.
+	Outcome    string   `json:"outcome"`
+	OutcomeMsg []string `json:"outcome_msg"`
+
+	// OutcomeOrder Order of the outcome.
+	OutcomeOrder *float32 `json:"outcome_order,omitempty"`
+
+	// Warning Warning of last rule execution.
+	Warning *string `json:"warning"`
+}
+
+// FindRuleResponseObjectMonitoringRunHistoryItemOutcomeAlertsCount defines model for find_rule_response_object_monitoring_run_history_item_outcome_alerts_count.
+type FindRuleResponseObjectMonitoringRunHistoryItemOutcomeAlertsCount struct {
+	// Active Number of active alerts during last run.
+	Active *float32 `json:"active"`
+
+	// Ignored Number of ignored alerts during last run.
+	Ignored *float32 `json:"ignored"`
+
+	// New Number of new alerts during last run.
+	New *float32 `json:"new"`
+
+	// Recovered Number of recovered alerts during last run.
+	Recovered *float32 `json:"recovered"`
+}
+
+// FindRuleResponseObjectMonitoringRunLastRun defines model for find_rule_response_object_monitoring_run_last_run.
+type FindRuleResponseObjectMonitoringRunLastRun struct {
+	Metrics FindRuleResponseObjectMonitoringRunLastRunMetrics `json:"metrics"`
+
+	// Timestamp Time of the most recent rule run.
+	Timestamp string `json:"timestamp"`
+}
+
+// FindRuleResponseObjectMonitoringRunLastRunMetrics defines model for find_rule_response_object_monitoring_run_last_run_metrics.
+type FindRuleResponseObjectMonitoringRunLastRunMetrics struct {
+	// Duration Duration of most recent rule run.
+	Duration *float32 `json:"duration,omitempty"`
+
+	// GapDurationS Duration in seconds of rule run gap.
+	GapDurationS *float32 `json:"gap_duration_s"`
+
+	// TotalAlertsCreated Total number of alerts created during last rule run.
+	TotalAlertsCreated *float32 `json:"total_alerts_created"`
+
+	// TotalAlertsDetected Total number of alerts detected during last rule run.
+	TotalAlertsDetected *float32 `json:"total_alerts_detected"`
+
+	// TotalIndexingDurationMs Total time spent indexing documents during last rule run in milliseconds.
+	TotalIndexingDurationMs *float32 `json:"total_indexing_duration_ms"`
+
+	// TotalSearchDurationMs Total time spent performing Elasticsearch searches as measured by Kibana; includes network latency and time spent serializing or deserializing the request and response.
+	TotalSearchDurationMs *float32 `json:"total_search_duration_ms"`
+}
+
+// FindRuleResponseObjectSchedule defines model for find_rule_response_object_schedule.
+type FindRuleResponseObjectSchedule struct {
+	// Interval The interval is specified in seconds, minutes, hours, or days.
+	Interval string `json:"interval"`
+}
+
+// FindRuleResponseObjectSnoozeScheduleItem defines model for find_rule_response_object_snooze_schedule_item.
+type FindRuleResponseObjectSnoozeScheduleItem struct {
+	// Duration Duration of the rule snooze schedule.
+	Duration float32 `json:"duration"`
+
+	// Id Identifier of the rule snooze schedule.
+	Id              *string                                       `json:"id,omitempty"`
+	RRule           FindRuleResponseObjectSnoozeScheduleItemRRule `json:"rRule"`
+	SkipRecurrences []string                                      `json:"skipRecurrences,omitempty"`
+}
+
+// FindRuleResponseObjectSnoozeScheduleItemRRule defines model for find_rule_response_object_snooze_schedule_item_rRule.
+type FindRuleResponseObjectSnoozeScheduleItemRRule struct {
+	Byhour     []float32                                                      `json:"byhour,omitempty"`
+	Byminute   []float32                                                      `json:"byminute,omitempty"`
+	Bymonth    []float32                                                      `json:"bymonth,omitempty"`
+	Bymonthday []float32                                                      `json:"bymonthday,omitempty"`
+	Bysecond   []float32                                                      `json:"bysecond,omitempty"`
+	Bysetpos   []float32                                                      `json:"bysetpos,omitempty"`
+	Byweekday  []FindRuleResponseObjectSnoozeScheduleItemRRule_Byweekday_Item `json:"byweekday,omitempty"`
+	Byweekno   []float32                                                      `json:"byweekno,omitempty"`
+	Byyearday  []float32                                                      `json:"byyearday,omitempty"`
+
+	// Count Number of times the rule should recur until it stops.
+	Count *float32 `json:"count,omitempty"`
+
+	// Dtstart Rule start date in Coordinated Universal Time (UTC).
+	Dtstart string `json:"dtstart"`
+
+	// Freq Indicates frequency of the rule. Options are YEARLY, MONTHLY, WEEKLY, DAILY.
+	Freq *int `json:"freq,omitempty"`
+
+	// Interval Indicates the interval of frequency. For example, 1 and YEARLY is every 1 year, 2 and WEEKLY is every 2 weeks.
+	Interval *float32 `json:"interval,omitempty"`
+
+	// Tzid Indicates timezone abbreviation.
+	Tzid string `json:"tzid"`
+
+	// Until Recur the rule until this date.
+	Until *string `json:"until,omitempty"`
+
+	// Wkst Indicates the start of week, defaults to Monday.
+	Wkst *string `json:"wkst,omitempty"`
+}
+
+// FindRuleResponseObjectSnoozeScheduleItemRRuleByweekday0 defines model for .
+type FindRuleResponseObjectSnoozeScheduleItemRRuleByweekday0 = string
+
+// FindRuleResponseObjectSnoozeScheduleItemRRuleByweekday1 defines model for .
+type FindRuleResponseObjectSnoozeScheduleItemRRuleByweekday1 = float32
+
+// FindRuleResponseObjectSnoozeScheduleItemRRule_Byweekday_Item Indicates the days of the week to recur or else nth-day-of-month strings. For example, "+2TU" second Tuesday of month, "-1FR" last Friday of the month, which are internally converted to a `byweekday/bysetpos` combination.
+type FindRuleResponseObjectSnoozeScheduleItemRRule_Byweekday_Item struct {
+	union json.RawMessage
+}
+
 // FindSloResponse A paginated response of SLOs matching the query.
 type FindSloResponse struct {
 	Page    *float32                 `json:"page,omitempty"`
@@ -2979,6 +1433,129 @@ type FleetServerHost struct {
 	ProxyId         *string  `json:"proxy_id,omitempty"`
 }
 
+// GenerateServiceTokenResponseObject defines model for generate-service-token_response_object.
+type GenerateServiceTokenResponseObject struct {
+	Name  *string `json:"name,omitempty"`
+	Value *string `json:"value,omitempty"`
+}
+
+// GetEnrollmentApiKeysResponseObject defines model for get-enrollment-api-keys_response_object.
+type GetEnrollmentApiKeysResponseObject struct {
+	Items []EnrollmentApiKey `json:"items"`
+	// Deprecated:
+	List    []EnrollmentApiKey `json:"list,omitempty"`
+	Page    float32            `json:"page"`
+	PerPage float32            `json:"perPage"`
+	Total   float32            `json:"total"`
+}
+
+// GetFleetServerHostsResponseObject defines model for get-fleet-server-hosts_response_object.
+type GetFleetServerHostsResponseObject struct {
+	Items   []FleetServerHost `json:"items,omitempty"`
+	Page    *int              `json:"page,omitempty"`
+	PerPage *int              `json:"perPage,omitempty"`
+	Total   *int              `json:"total,omitempty"`
+}
+
+// GetOneFleetServerHostsResponseObject defines model for get-one-fleet-server-hosts_response_object.
+type GetOneFleetServerHostsResponseObject struct {
+	Item FleetServerHost `json:"item"`
+}
+
+// GetOutputResponseObject defines model for get-output_response_object.
+type GetOutputResponseObject struct {
+	Item *OutputCreateRequest `json:"item,omitempty"`
+}
+
+// GetOutputsResponseObject defines model for get-outputs_response_object.
+type GetOutputsResponseObject struct {
+	Items   []OutputCreateRequest `json:"items,omitempty"`
+	Page    *int                  `json:"page,omitempty"`
+	PerPage *int                  `json:"perPage,omitempty"`
+	Total   *int                  `json:"total,omitempty"`
+}
+
+// GetPackagePoliciesResponseObject defines model for get-package-policies_response_object.
+type GetPackagePoliciesResponseObject struct {
+	Items   []PackagePolicy `json:"items"`
+	Page    *float32        `json:"page,omitempty"`
+	PerPage *float32        `json:"perPage,omitempty"`
+	Total   *float32        `json:"total,omitempty"`
+}
+
+// GetPackagePolicyResponseObject defines model for get-package-policy_response_object.
+type GetPackagePolicyResponseObject struct {
+	Item PackagePolicy `json:"item"`
+}
+
+// GetPackageResponseObject defines model for get-package_response_object.
+type GetPackageResponseObject struct {
+	Item                 *PackageInfo `json:"item,omitempty"`
+	KeepPoliciesUpToDate *bool        `json:"keepPoliciesUpToDate,omitempty"`
+	LatestVersion        *string      `json:"latestVersion,omitempty"`
+	LicensePath          *string      `json:"licensePath,omitempty"`
+	Notice               *string      `json:"notice,omitempty"`
+	// Deprecated:
+	SavedObject map[string]interface{} `json:"savedObject"`
+	Status      string                 `json:"status"`
+}
+
+// GetPackageResponseObjectAllOf0 defines model for get-package_response_object_allOf_0.
+type GetPackageResponseObjectAllOf0 struct {
+	Item *PackageInfo `json:"item,omitempty"`
+}
+
+// GetPackageResponseObjectAllOf1 defines model for get-package_response_object_allOf_1.
+type GetPackageResponseObjectAllOf1 struct {
+	KeepPoliciesUpToDate *bool   `json:"keepPoliciesUpToDate,omitempty"`
+	LatestVersion        *string `json:"latestVersion,omitempty"`
+	LicensePath          *string `json:"licensePath,omitempty"`
+	Notice               *string `json:"notice,omitempty"`
+	// Deprecated:
+	SavedObject map[string]interface{} `json:"savedObject"`
+	Status      string                 `json:"status"`
+}
+
+// GetAllDataViewsResponseObject defines model for get_all_data_views_response_object.
+type GetAllDataViewsResponseObject struct {
+	DataView []GetAllDataViewsResponseObjectDataViewItem `json:"data_view,omitempty"`
+}
+
+// GetAllDataViewsResponseObjectDataViewItem defines model for get_all_data_views_response_object_data_view_item.
+type GetAllDataViewsResponseObjectDataViewItem struct {
+	Id         *string                `json:"id,omitempty"`
+	Name       *string                `json:"name,omitempty"`
+	Namespaces []string               `json:"namespaces,omitempty"`
+	Title      *string                `json:"title,omitempty"`
+	TypeMeta   map[string]interface{} `json:"typeMeta,omitempty"`
+}
+
+// GetConnectorResponseObject defines model for get_connector_response_object.
+type GetConnectorResponseObject struct {
+	Config map[string]interface{} `json:"config,omitempty"`
+
+	// ConnectorTypeId The connector type identifier.
+	ConnectorTypeId string `json:"connector_type_id"`
+
+	// Id The identifier for the connector.
+	Id string `json:"id"`
+
+	// IsDeprecated Indicates whether the connector is deprecated.
+	IsDeprecated bool `json:"is_deprecated"`
+
+	// IsMissingSecrets Indicates whether the connector is missing secrets.
+	IsMissingSecrets *bool `json:"is_missing_secrets,omitempty"`
+
+	// IsPreconfigured Indicates whether the connector is preconfigured. If true, the `config` and `is_missing_secrets` properties are omitted from the response.
+	IsPreconfigured bool `json:"is_preconfigured"`
+
+	// IsSystemAction Indicates whether the connector is used for system actions.
+	IsSystemAction bool `json:"is_system_action"`
+
+	// Name  The name of the rule.
+	Name string `json:"name"`
+}
+
 // GetPackagesResponse defines model for get_packages_response.
 type GetPackagesResponse struct {
 	Items []SearchResult `json:"items"`
@@ -2986,327 +1563,828 @@ type GetPackagesResponse struct {
 	Response []SearchResult `json:"response,omitempty"`
 }
 
-// Groupby Indicates whether the aggregation is applied over all documents (`all`) or split into groups (`top`) using a grouping field (`termField`). If grouping is used, an alert will be created for each group when it exceeds the threshold; only the top groups (up to `termSize` number of groups) are checked.
-type Groupby string
+// GetRuleResponseObject defines model for get_rule_response_object.
+type GetRuleResponseObject struct {
+	Actions       []GetRuleResponseObjectActionsItem `json:"actions"`
+	ActiveSnoozes []string                           `json:"active_snoozes,omitempty"`
+
+	// AlertDelay Indicates that an alert occurs only when the specified number of consecutive runs met the rule conditions.
+	AlertDelay *GetRuleResponseObjectAlertDelay `json:"alert_delay,omitempty"`
+
+	// ApiKeyCreatedByUser Indicates whether the API key that is associated with the rule was created by the user.
+	ApiKeyCreatedByUser *bool `json:"api_key_created_by_user"`
+
+	// ApiKeyOwner The owner of the API key that is associated with the rule and used to run background tasks.
+	ApiKeyOwner *string `json:"api_key_owner"`
+
+	// Consumer The name of the application or feature that owns the rule. For example: `alerts`, `apm`, `discover`, `infrastructure`, `logs`, `metrics`, `ml`, `monitoring`, `securitySolution`, `siem`, `stackAlerts`, or `uptime`.
+	Consumer string `json:"consumer"`
+
+	// CreatedAt The date and time that the rule was created.
+	CreatedAt string `json:"created_at"`
+
+	// CreatedBy The identifier for the user that created the rule.
+	CreatedBy *string `json:"created_by"`
+
+	// Enabled Indicates whether you want to run the rule on an interval basis after it is created.
+	Enabled         bool                                 `json:"enabled"`
+	ExecutionStatus GetRuleResponseObjectExecutionStatus `json:"execution_status"`
+
+	// Id The identifier for the rule.
+	Id string `json:"id"`
+
+	// IsSnoozedUntil The date when the rule will no longer be snoozed.
+	IsSnoozedUntil *string                       `json:"is_snoozed_until"`
+	LastRun        *GetRuleResponseObjectLastRun `json:"last_run"`
+	MappedParams   map[string]interface{}        `json:"mapped_params,omitempty"`
+
+	// Monitoring Monitoring details of the rule.
+	Monitoring *GetRuleResponseObjectMonitoring `json:"monitoring,omitempty"`
+
+	// MuteAll Indicates whether all alerts are muted.
+	MuteAll       bool     `json:"mute_all"`
+	MutedAlertIds []string `json:"muted_alert_ids"`
+
+	// Name  The name of the rule.
+	Name string `json:"name"`
+
+	// NextRun Date and time of the next run of the rule.
+	NextRun *string `json:"next_run"`
+
+	// NotifyWhen Indicates how often alerts generate actions. Valid values include: `onActionGroupChange`: Actions run when the alert status changes; `onActiveAlert`: Actions run when the alert becomes active and at each check interval while the rule conditions are met; `onThrottleInterval`: Actions run when the alert becomes active and at the interval specified in the throttle property while the rule conditions are met. NOTE: You cannot specify `notify_when` at both the rule and action level. The recommended method is to set it for each action. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
+	NotifyWhen *string `json:"notify_when"`
+
+	// Params The parameters for the rule.
+	Params map[string]interface{} `json:"params"`
+
+	// Revision The rule revision number.
+	Revision float32 `json:"revision"`
+
+	// RuleTypeId The rule type identifier.
+	RuleTypeId string `json:"rule_type_id"`
+
+	// Running Indicates whether the rule is running.
+	Running  *bool                         `json:"running"`
+	Schedule GetRuleResponseObjectSchedule `json:"schedule"`
+
+	// ScheduledTaskId Identifier of the scheduled task.
+	ScheduledTaskId *string                                   `json:"scheduled_task_id,omitempty"`
+	SnoozeSchedule  []GetRuleResponseObjectSnoozeScheduleItem `json:"snooze_schedule,omitempty"`
+	Tags            []string                                  `json:"tags"`
+
+	// Throttle Deprecated in 8.13.0. Use the `throttle` property in the action `frequency` object instead. The throttle interval, which defines how often an alert generates repeated actions. NOTE: You cannot specify the throttle interval at both the rule and action level. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
+	// Deprecated:
+	Throttle *string `json:"throttle"`
+
+	// UpdatedAt The date and time that the rule was updated most recently.
+	UpdatedAt string `json:"updated_at"`
+
+	// UpdatedBy The identifier for the user that updated this rule most recently.
+	UpdatedBy *string `json:"updated_by"`
+
+	// ViewInAppRelativeUrl Relative URL to view rule in the app.
+	ViewInAppRelativeUrl *string `json:"view_in_app_relative_url"`
+}
+
+// GetRuleResponseObjectActionsItem defines model for get_rule_response_object_actions_item.
+type GetRuleResponseObjectActionsItem struct {
+	// AlertsFilter Defines a period that limits whether the action runs.
+	AlertsFilter *GetRuleResponseObjectActionsItemAlertsFilter `json:"alerts_filter,omitempty"`
+
+	// ConnectorTypeId The type of connector. This property appears in responses but cannot be set in requests.
+	ConnectorTypeId string                                     `json:"connector_type_id"`
+	Frequency       *GetRuleResponseObjectActionsItemFrequency `json:"frequency,omitempty"`
+
+	// Group The group name, which affects when the action runs (for example, when the threshold is met or when the alert is recovered). Each rule type has a list of valid action group names. If you don't need to group actions, set to `default`.
+	Group *string `json:"group,omitempty"`
+
+	// Id The identifier for the connector saved object.
+	Id string `json:"id"`
+
+	// Params The parameters for the action, which are sent to the connector. The `params` are handled as Mustache templates and passed a default set of context.
+	Params map[string]interface{} `json:"params"`
+
+	// UseAlertDataForTemplate Indicates whether to use alert data as a template.
+	UseAlertDataForTemplate *bool `json:"use_alert_data_for_template,omitempty"`
+
+	// Uuid A universally unique identifier (UUID) for the action.
+	Uuid *string `json:"uuid,omitempty"`
+}
+
+// GetRuleResponseObjectActionsItemAlertsFilter Defines a period that limits whether the action runs.
+type GetRuleResponseObjectActionsItemAlertsFilter struct {
+	Query     *GetRuleResponseObjectActionsItemAlertsFilterQuery     `json:"query,omitempty"`
+	Timeframe *GetRuleResponseObjectActionsItemAlertsFilterTimeframe `json:"timeframe,omitempty"`
+}
+
+// GetRuleResponseObjectActionsItemAlertsFilterQuery defines model for get_rule_response_object_actions_item_alerts_filter_query.
+type GetRuleResponseObjectActionsItemAlertsFilterQuery struct {
+	// Dsl A filter written in Elasticsearch Query Domain Specific Language (DSL).
+	Dsl *string `json:"dsl,omitempty"`
+
+	// Filters A filter written in Elasticsearch Query Domain Specific Language (DSL) as defined in the `kbn-es-query` package.
+	Filters []GetRuleResponseObjectActionsItemAlertsFilterQueryFiltersItem `json:"filters"`
+
+	// Kql A filter written in Kibana Query Language (KQL).
+	Kql string `json:"kql"`
+}
+
+// GetRuleResponseObjectActionsItemAlertsFilterQueryFiltersItem defines model for get_rule_response_object_actions_item_alerts_filter_query_filters_item.
+type GetRuleResponseObjectActionsItemAlertsFilterQueryFiltersItem struct {
+	State *GetRuleResponseObjectActionsItemAlertsFilterQueryFiltersItemState `json:"$state,omitempty"`
+	Meta  map[string]interface{}                                             `json:"meta"`
+	Query map[string]interface{}                                             `json:"query,omitempty"`
+}
+
+// GetRuleResponseObjectActionsItemAlertsFilterQueryFiltersItemState defines model for get_rule_response_object_actions_item_alerts_filter_query_filters_item_$state.
+type GetRuleResponseObjectActionsItemAlertsFilterQueryFiltersItemState struct {
+	// Store A filter can be either specific to an application context or applied globally.
+	Store string `json:"store"`
+}
+
+// GetRuleResponseObjectActionsItemAlertsFilterTimeframe defines model for get_rule_response_object_actions_item_alerts_filter_timeframe.
+type GetRuleResponseObjectActionsItemAlertsFilterTimeframe struct {
+	// Days Defines the days of the week that the action can run, represented as an array of numbers. For example, `1` represents Monday. An empty array is equivalent to specifying all the days of the week.
+	Days  []int                                                      `json:"days"`
+	Hours GetRuleResponseObjectActionsItemAlertsFilterTimeframeHours `json:"hours"`
+
+	// Timezone The ISO time zone for the `hours` values. Values such as `UTC` and `UTC+1` also work but lack built-in daylight savings time support and are not recommended.
+	Timezone string `json:"timezone"`
+}
+
+// GetRuleResponseObjectActionsItemAlertsFilterTimeframeHours defines model for get_rule_response_object_actions_item_alerts_filter_timeframe_hours.
+type GetRuleResponseObjectActionsItemAlertsFilterTimeframeHours struct {
+	// End The end of the time frame in 24-hour notation (`hh:mm`).
+	End string `json:"end"`
+
+	// Start The start of the time frame in 24-hour notation (`hh:mm`).
+	Start string `json:"start"`
+}
+
+// GetRuleResponseObjectActionsItemFrequency defines model for get_rule_response_object_actions_item_frequency.
+type GetRuleResponseObjectActionsItemFrequency struct {
+	// NotifyWhen Indicates how often alerts generate actions. Valid values include: `onActionGroupChange`: Actions run when the alert status changes; `onActiveAlert`: Actions run when the alert becomes active and at each check interval while the rule conditions are met; `onThrottleInterval`: Actions run when the alert becomes active and at the interval specified in the throttle property while the rule conditions are met. NOTE: You cannot specify `notify_when` at both the rule and action level. The recommended method is to set it for each action. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
+	NotifyWhen string `json:"notify_when"`
+
+	// Summary Indicates whether the action is a summary.
+	Summary bool `json:"summary"`
+
+	// Throttle The throttle interval, which defines how often an alert generates repeated actions. It is specified in seconds, minutes, hours, or days and is applicable only if 'notify_when' is set to 'onThrottleInterval'. NOTE: You cannot specify the throttle interval at both the rule and action level. The recommended method is to set it for each action. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
+	Throttle *string `json:"throttle"`
+}
+
+// GetRuleResponseObjectAlertDelay Indicates that an alert occurs only when the specified number of consecutive runs met the rule conditions.
+type GetRuleResponseObjectAlertDelay struct {
+	// Active The number of consecutive runs that must meet the rule conditions.
+	Active float32 `json:"active"`
+}
+
+// GetRuleResponseObjectExecutionStatus defines model for get_rule_response_object_execution_status.
+type GetRuleResponseObjectExecutionStatus struct {
+	Error *GetRuleResponseObjectExecutionStatusError `json:"error,omitempty"`
+
+	// LastDuration Duration of last execution of the rule.
+	LastDuration *float32 `json:"last_duration,omitempty"`
+
+	// LastExecutionDate The date and time when rule was executed last.
+	LastExecutionDate string `json:"last_execution_date"`
+
+	// Status Status of rule execution.
+	Status  string                                       `json:"status"`
+	Warning *GetRuleResponseObjectExecutionStatusWarning `json:"warning,omitempty"`
+}
+
+// GetRuleResponseObjectExecutionStatusError defines model for get_rule_response_object_execution_status_error.
+type GetRuleResponseObjectExecutionStatusError struct {
+	// Message Error message.
+	Message string `json:"message"`
+
+	// Reason Reason for error.
+	Reason string `json:"reason"`
+}
+
+// GetRuleResponseObjectExecutionStatusWarning defines model for get_rule_response_object_execution_status_warning.
+type GetRuleResponseObjectExecutionStatusWarning struct {
+	// Message Warning message.
+	Message string `json:"message"`
+
+	// Reason Reason for warning.
+	Reason string `json:"reason"`
+}
+
+// GetRuleResponseObjectLastRun defines model for get_rule_response_object_last_run.
+type GetRuleResponseObjectLastRun struct {
+	AlertsCount GetRuleResponseObjectLastRunAlertsCount `json:"alerts_count"`
+
+	// Outcome Outcome of last run of the rule. Value could be succeeded, warning or failed.
+	Outcome    string   `json:"outcome"`
+	OutcomeMsg []string `json:"outcome_msg"`
+
+	// OutcomeOrder Order of the outcome.
+	OutcomeOrder *float32 `json:"outcome_order,omitempty"`
+
+	// Warning Warning of last rule execution.
+	Warning *string `json:"warning"`
+}
+
+// GetRuleResponseObjectLastRunAlertsCount defines model for get_rule_response_object_last_run_alerts_count.
+type GetRuleResponseObjectLastRunAlertsCount struct {
+	// Active Number of active alerts during last run.
+	Active *float32 `json:"active"`
+
+	// Ignored Number of ignored alerts during last run.
+	Ignored *float32 `json:"ignored"`
+
+	// New Number of new alerts during last run.
+	New *float32 `json:"new"`
+
+	// Recovered Number of recovered alerts during last run.
+	Recovered *float32 `json:"recovered"`
+}
+
+// GetRuleResponseObjectMonitoring Monitoring details of the rule.
+type GetRuleResponseObjectMonitoring struct {
+	// Run Rule run details.
+	Run GetRuleResponseObjectMonitoringRun `json:"run"`
+}
+
+// GetRuleResponseObjectMonitoringRun Rule run details.
+type GetRuleResponseObjectMonitoringRun struct {
+	// CalculatedMetrics Calculation of different percentiles and success ratio.
+	CalculatedMetrics GetRuleResponseObjectMonitoringRunCalculatedMetrics `json:"calculated_metrics"`
+
+	// History History of the rule run.
+	History []GetRuleResponseObjectMonitoringRunHistoryItem `json:"history"`
+	LastRun GetRuleResponseObjectMonitoringRunLastRun       `json:"last_run"`
+}
+
+// GetRuleResponseObjectMonitoringRunCalculatedMetrics Calculation of different percentiles and success ratio.
+type GetRuleResponseObjectMonitoringRunCalculatedMetrics struct {
+	P50          *float32 `json:"p50,omitempty"`
+	P95          *float32 `json:"p95,omitempty"`
+	P99          *float32 `json:"p99,omitempty"`
+	SuccessRatio float32  `json:"success_ratio"`
+}
+
+// GetRuleResponseObjectMonitoringRunHistoryItem defines model for get_rule_response_object_monitoring_run_history_item.
+type GetRuleResponseObjectMonitoringRunHistoryItem struct {
+	// Duration Duration of the rule run.
+	Duration *float32                                              `json:"duration,omitempty"`
+	Outcome  *GetRuleResponseObjectMonitoringRunHistoryItemOutcome `json:"outcome,omitempty"`
+
+	// Success Indicates whether the rule run was successful.
+	Success bool `json:"success"`
+
+	// Timestamp Time of rule run.
+	Timestamp float32 `json:"timestamp"`
+}
+
+// GetRuleResponseObjectMonitoringRunHistoryItemOutcome defines model for get_rule_response_object_monitoring_run_history_item_outcome.
+type GetRuleResponseObjectMonitoringRunHistoryItemOutcome struct {
+	AlertsCount GetRuleResponseObjectMonitoringRunHistoryItemOutcomeAlertsCount `json:"alerts_count"`
+
+	// Outcome Outcome of last run of the rule. Value could be succeeded, warning or failed.
+	Outcome    string   `json:"outcome"`
+	OutcomeMsg []string `json:"outcome_msg"`
+
+	// OutcomeOrder Order of the outcome.
+	OutcomeOrder *float32 `json:"outcome_order,omitempty"`
+
+	// Warning Warning of last rule execution.
+	Warning *string `json:"warning"`
+}
+
+// GetRuleResponseObjectMonitoringRunHistoryItemOutcomeAlertsCount defines model for get_rule_response_object_monitoring_run_history_item_outcome_alerts_count.
+type GetRuleResponseObjectMonitoringRunHistoryItemOutcomeAlertsCount struct {
+	// Active Number of active alerts during last run.
+	Active *float32 `json:"active"`
+
+	// Ignored Number of ignored alerts during last run.
+	Ignored *float32 `json:"ignored"`
+
+	// New Number of new alerts during last run.
+	New *float32 `json:"new"`
+
+	// Recovered Number of recovered alerts during last run.
+	Recovered *float32 `json:"recovered"`
+}
+
+// GetRuleResponseObjectMonitoringRunLastRun defines model for get_rule_response_object_monitoring_run_last_run.
+type GetRuleResponseObjectMonitoringRunLastRun struct {
+	Metrics GetRuleResponseObjectMonitoringRunLastRunMetrics `json:"metrics"`
+
+	// Timestamp Time of the most recent rule run.
+	Timestamp string `json:"timestamp"`
+}
+
+// GetRuleResponseObjectMonitoringRunLastRunMetrics defines model for get_rule_response_object_monitoring_run_last_run_metrics.
+type GetRuleResponseObjectMonitoringRunLastRunMetrics struct {
+	// Duration Duration of most recent rule run.
+	Duration *float32 `json:"duration,omitempty"`
+
+	// GapDurationS Duration in seconds of rule run gap.
+	GapDurationS *float32 `json:"gap_duration_s"`
+
+	// TotalAlertsCreated Total number of alerts created during last rule run.
+	TotalAlertsCreated *float32 `json:"total_alerts_created"`
+
+	// TotalAlertsDetected Total number of alerts detected during last rule run.
+	TotalAlertsDetected *float32 `json:"total_alerts_detected"`
+
+	// TotalIndexingDurationMs Total time spent indexing documents during last rule run in milliseconds.
+	TotalIndexingDurationMs *float32 `json:"total_indexing_duration_ms"`
+
+	// TotalSearchDurationMs Total time spent performing Elasticsearch searches as measured by Kibana; includes network latency and time spent serializing or deserializing the request and response.
+	TotalSearchDurationMs *float32 `json:"total_search_duration_ms"`
+}
+
+// GetRuleResponseObjectSchedule defines model for get_rule_response_object_schedule.
+type GetRuleResponseObjectSchedule struct {
+	// Interval The interval is specified in seconds, minutes, hours, or days.
+	Interval string `json:"interval"`
+}
+
+// GetRuleResponseObjectSnoozeScheduleItem defines model for get_rule_response_object_snooze_schedule_item.
+type GetRuleResponseObjectSnoozeScheduleItem struct {
+	// Duration Duration of the rule snooze schedule.
+	Duration float32 `json:"duration"`
+
+	// Id Identifier of the rule snooze schedule.
+	Id              *string                                      `json:"id,omitempty"`
+	RRule           GetRuleResponseObjectSnoozeScheduleItemRRule `json:"rRule"`
+	SkipRecurrences []string                                     `json:"skipRecurrences,omitempty"`
+}
+
+// GetRuleResponseObjectSnoozeScheduleItemRRule defines model for get_rule_response_object_snooze_schedule_item_rRule.
+type GetRuleResponseObjectSnoozeScheduleItemRRule struct {
+	Byhour     []float32                                                     `json:"byhour,omitempty"`
+	Byminute   []float32                                                     `json:"byminute,omitempty"`
+	Bymonth    []float32                                                     `json:"bymonth,omitempty"`
+	Bymonthday []float32                                                     `json:"bymonthday,omitempty"`
+	Bysecond   []float32                                                     `json:"bysecond,omitempty"`
+	Bysetpos   []float32                                                     `json:"bysetpos,omitempty"`
+	Byweekday  []GetRuleResponseObjectSnoozeScheduleItemRRule_Byweekday_Item `json:"byweekday,omitempty"`
+	Byweekno   []float32                                                     `json:"byweekno,omitempty"`
+	Byyearday  []float32                                                     `json:"byyearday,omitempty"`
+
+	// Count Number of times the rule should recur until it stops.
+	Count *float32 `json:"count,omitempty"`
+
+	// Dtstart Rule start date in Coordinated Universal Time (UTC).
+	Dtstart string `json:"dtstart"`
+
+	// Freq Indicates frequency of the rule. Options are YEARLY, MONTHLY, WEEKLY, DAILY.
+	Freq *int `json:"freq,omitempty"`
+
+	// Interval Indicates the interval of frequency. For example, 1 and YEARLY is every 1 year, 2 and WEEKLY is every 2 weeks.
+	Interval *float32 `json:"interval,omitempty"`
+
+	// Tzid Indicates timezone abbreviation.
+	Tzid string `json:"tzid"`
+
+	// Until Recur the rule until this date.
+	Until *string `json:"until,omitempty"`
+
+	// Wkst Indicates the start of week, defaults to Monday.
+	Wkst *string `json:"wkst,omitempty"`
+}
+
+// GetRuleResponseObjectSnoozeScheduleItemRRuleByweekday0 defines model for .
+type GetRuleResponseObjectSnoozeScheduleItemRRuleByweekday0 = string
+
+// GetRuleResponseObjectSnoozeScheduleItemRRuleByweekday1 defines model for .
+type GetRuleResponseObjectSnoozeScheduleItemRRuleByweekday1 = float32
+
+// GetRuleResponseObjectSnoozeScheduleItemRRule_Byweekday_Item Indicates the days of the week to recur or else nth-day-of-month strings. For example, "+2TU" second Tuesday of month, "-1FR" last Friday of the month, which are internally converted to a `byweekday/bysetpos` combination.
+type GetRuleResponseObjectSnoozeScheduleItemRRule_Byweekday_Item struct {
+	union json.RawMessage
+}
+
+// ImportSavedObjectsResponseObject defines model for import_saved_objects_response_object.
+type ImportSavedObjectsResponseObject struct {
+	// Errors Indicates the import was unsuccessful and specifies the objects that failed to import.
+	//
+	// NOTE: One object may result in multiple errors, which requires separate steps to resolve. For instance, a `missing_references` error and conflict error.
+	Errors []map[string]interface{} `json:"errors,omitempty"`
+
+	// Success Indicates when the import was successfully completed. When set to false, some objects may not have been created. For additional information, refer to the `errors` and `successResults` properties.
+	Success *bool `json:"success,omitempty"`
+
+	// SuccessCount Indicates the number of successfully imported records.
+	SuccessCount *int `json:"successCount,omitempty"`
+
+	// SuccessResults Indicates the objects that are successfully imported, with any metadata if applicable.
+	//
+	// NOTE: Objects are created only when all resolvable errors are addressed, including conflicts and missing references. If objects are created as new copies, each entry in the `successResults` array includes a `destinationId` attribute.
+	SuccessResults []map[string]interface{} `json:"successResults,omitempty"`
+}
 
 // IndicatorPropertiesApmAvailability Defines properties for the APM availability indicator type
 type IndicatorPropertiesApmAvailability struct {
 	// Params An object containing the indicator parameters.
-	Params struct {
-		// Environment The APM service environment or "*"
-		Environment string `json:"environment"`
-
-		// Filter KQL query used for filtering the data
-		Filter *string `json:"filter,omitempty"`
-
-		// Index The index used by APM metrics
-		Index string `json:"index"`
-
-		// Service The APM service name
-		Service string `json:"service"`
-
-		// TransactionName The APM transaction name or "*"
-		TransactionName string `json:"transactionName"`
-
-		// TransactionType The APM transaction type or "*"
-		TransactionType string `json:"transactionType"`
-	} `json:"params"`
+	Params IndicatorPropertiesApmAvailabilityParams `json:"params"`
 
 	// Type The type of indicator.
 	Type string `json:"type"`
+}
+
+// IndicatorPropertiesApmAvailabilityParams An object containing the indicator parameters.
+type IndicatorPropertiesApmAvailabilityParams struct {
+	// Environment The APM service environment or "*"
+	Environment string `json:"environment"`
+
+	// Filter KQL query used for filtering the data
+	Filter *string `json:"filter,omitempty"`
+
+	// Index The index used by APM metrics
+	Index string `json:"index"`
+
+	// Service The APM service name
+	Service string `json:"service"`
+
+	// TransactionName The APM transaction name or "*"
+	TransactionName string `json:"transactionName"`
+
+	// TransactionType The APM transaction type or "*"
+	TransactionType string `json:"transactionType"`
 }
 
 // IndicatorPropertiesApmLatency Defines properties for the APM latency indicator type
 type IndicatorPropertiesApmLatency struct {
 	// Params An object containing the indicator parameters.
-	Params struct {
-		// Environment The APM service environment or "*"
-		Environment string `json:"environment"`
-
-		// Filter KQL query used for filtering the data
-		Filter *string `json:"filter,omitempty"`
-
-		// Index The index used by APM metrics
-		Index string `json:"index"`
-
-		// Service The APM service name
-		Service string `json:"service"`
-
-		// Threshold The latency threshold in milliseconds
-		Threshold float32 `json:"threshold"`
-
-		// TransactionName The APM transaction name or "*"
-		TransactionName string `json:"transactionName"`
-
-		// TransactionType The APM transaction type or "*"
-		TransactionType string `json:"transactionType"`
-	} `json:"params"`
+	Params IndicatorPropertiesApmLatencyParams `json:"params"`
 
 	// Type The type of indicator.
 	Type string `json:"type"`
+}
+
+// IndicatorPropertiesApmLatencyParams An object containing the indicator parameters.
+type IndicatorPropertiesApmLatencyParams struct {
+	// Environment The APM service environment or "*"
+	Environment string `json:"environment"`
+
+	// Filter KQL query used for filtering the data
+	Filter *string `json:"filter,omitempty"`
+
+	// Index The index used by APM metrics
+	Index string `json:"index"`
+
+	// Service The APM service name
+	Service string `json:"service"`
+
+	// Threshold The latency threshold in milliseconds
+	Threshold float32 `json:"threshold"`
+
+	// TransactionName The APM transaction name or "*"
+	TransactionName string `json:"transactionName"`
+
+	// TransactionType The APM transaction type or "*"
+	TransactionType string `json:"transactionType"`
 }
 
 // IndicatorPropertiesCustomKql Defines properties for a custom query indicator type
 type IndicatorPropertiesCustomKql struct {
 	// Params An object containing the indicator parameters.
-	Params struct {
-		// DataViewId The kibana data view id to use, primarily used to include data view runtime mappings. Make sure to save SLO again if you add/update run time fields to the data view and if those fields are being used in slo queries.
-		DataViewId *string `json:"dataViewId,omitempty"`
-
-		// Filter Defines properties for a filter
-		Filter *KqlWithFilters `json:"filter,omitempty"`
-
-		// Good The KQL query used to define the good events.
-		Good KqlWithFiltersGood `json:"good"`
-
-		// Index The index or index pattern to use
-		Index string `json:"index"`
-
-		// TimestampField The timestamp field used in the source indice.
-		TimestampField string `json:"timestampField"`
-
-		// Total The KQL query used to define all events.
-		Total KqlWithFiltersTotal `json:"total"`
-	} `json:"params"`
+	Params IndicatorPropertiesCustomKqlParams `json:"params"`
 
 	// Type The type of indicator.
 	Type string `json:"type"`
+}
+
+// IndicatorPropertiesCustomKqlParams An object containing the indicator parameters.
+type IndicatorPropertiesCustomKqlParams struct {
+	// DataViewId The kibana data view id to use, primarily used to include data view runtime mappings. Make sure to save SLO again if you add/update run time fields to the data view and if those fields are being used in slo queries.
+	DataViewId *string `json:"dataViewId,omitempty"`
+
+	// Filter Defines properties for a filter
+	Filter *KqlWithFilters `json:"filter,omitempty"`
+
+	// Good The KQL query used to define the good events.
+	Good KqlWithFiltersGood `json:"good"`
+
+	// Index The index or index pattern to use
+	Index string `json:"index"`
+
+	// TimestampField The timestamp field used in the source indice.
+	TimestampField string `json:"timestampField"`
+
+	// Total The KQL query used to define all events.
+	Total KqlWithFiltersTotal `json:"total"`
 }
 
 // IndicatorPropertiesCustomMetric Defines properties for a custom metric indicator type
 type IndicatorPropertiesCustomMetric struct {
 	// Params An object containing the indicator parameters.
-	Params struct {
-		// DataViewId The kibana data view id to use, primarily used to include data view runtime mappings. Make sure to save SLO again if you add/update run time fields to the data view and if those fields are being used in slo queries.
-		DataViewId *string `json:"dataViewId,omitempty"`
-
-		// Filter the KQL query to filter the documents with.
-		Filter *string `json:"filter,omitempty"`
-
-		// Good An object defining the "good" metrics and equation
-		Good struct {
-			// Equation The equation to calculate the "good" metric.
-			Equation string `json:"equation"`
-
-			// Metrics List of metrics with their name, aggregation type, and field.
-			Metrics []struct {
-				// Aggregation The aggregation type of the metric. Only valid option is "sum"
-				Aggregation IndicatorPropertiesCustomMetricParamsGoodMetricsAggregation `json:"aggregation"`
-
-				// Field The field of the metric.
-				Field string `json:"field"`
-
-				// Filter The filter to apply to the metric.
-				Filter *string `json:"filter,omitempty"`
-
-				// Name The name of the metric. Only valid options are A-Z
-				Name string `json:"name"`
-			} `json:"metrics"`
-		} `json:"good"`
-
-		// Index The index or index pattern to use
-		Index string `json:"index"`
-
-		// TimestampField The timestamp field used in the source indice.
-		TimestampField string `json:"timestampField"`
-
-		// Total An object defining the "total" metrics and equation
-		Total struct {
-			// Equation The equation to calculate the "total" metric.
-			Equation string `json:"equation"`
-
-			// Metrics List of metrics with their name, aggregation type, and field.
-			Metrics []struct {
-				// Aggregation The aggregation type of the metric. Only valid option is "sum"
-				Aggregation IndicatorPropertiesCustomMetricParamsTotalMetricsAggregation `json:"aggregation"`
-
-				// Field The field of the metric.
-				Field string `json:"field"`
-
-				// Filter The filter to apply to the metric.
-				Filter *string `json:"filter,omitempty"`
-
-				// Name The name of the metric. Only valid options are A-Z
-				Name string `json:"name"`
-			} `json:"metrics"`
-		} `json:"total"`
-	} `json:"params"`
+	Params IndicatorPropertiesCustomMetricParams `json:"params"`
 
 	// Type The type of indicator.
 	Type string `json:"type"`
 }
 
-// IndicatorPropertiesCustomMetricParamsGoodMetricsAggregation The aggregation type of the metric. Only valid option is "sum"
-type IndicatorPropertiesCustomMetricParamsGoodMetricsAggregation string
+// IndicatorPropertiesCustomMetricParams An object containing the indicator parameters.
+type IndicatorPropertiesCustomMetricParams struct {
+	// DataViewId The kibana data view id to use, primarily used to include data view runtime mappings. Make sure to save SLO again if you add/update run time fields to the data view and if those fields are being used in slo queries.
+	DataViewId *string `json:"dataViewId,omitempty"`
 
-// IndicatorPropertiesCustomMetricParamsTotalMetricsAggregation The aggregation type of the metric. Only valid option is "sum"
-type IndicatorPropertiesCustomMetricParamsTotalMetricsAggregation string
+	// Filter the KQL query to filter the documents with.
+	Filter *string `json:"filter,omitempty"`
+
+	// Good An object defining the "good" metrics and equation
+	Good IndicatorPropertiesCustomMetricParamsGood `json:"good"`
+
+	// Index The index or index pattern to use
+	Index string `json:"index"`
+
+	// TimestampField The timestamp field used in the source indice.
+	TimestampField string `json:"timestampField"`
+
+	// Total An object defining the "total" metrics and equation
+	Total IndicatorPropertiesCustomMetricParamsTotal `json:"total"`
+}
+
+// IndicatorPropertiesCustomMetricParamsGood An object defining the "good" metrics and equation
+type IndicatorPropertiesCustomMetricParamsGood struct {
+	// Equation The equation to calculate the "good" metric.
+	Equation string `json:"equation"`
+
+	// Metrics List of metrics with their name, aggregation type, and field.
+	Metrics []IndicatorPropertiesCustomMetricParamsGoodMetricsItem `json:"metrics"`
+}
+
+// IndicatorPropertiesCustomMetricParamsGoodMetricsItem defines model for indicator_properties_custom_metric_params_good_metrics_item.
+type IndicatorPropertiesCustomMetricParamsGoodMetricsItem struct {
+	// Aggregation The aggregation type of the metric. Only valid option is "sum"
+	Aggregation string `json:"aggregation"`
+
+	// Field The field of the metric.
+	Field string `json:"field"`
+
+	// Filter The filter to apply to the metric.
+	Filter *string `json:"filter,omitempty"`
+
+	// Name The name of the metric. Only valid options are A-Z
+	Name string `json:"name"`
+}
+
+// IndicatorPropertiesCustomMetricParamsTotal An object defining the "total" metrics and equation
+type IndicatorPropertiesCustomMetricParamsTotal struct {
+	// Equation The equation to calculate the "total" metric.
+	Equation string `json:"equation"`
+
+	// Metrics List of metrics with their name, aggregation type, and field.
+	Metrics []IndicatorPropertiesCustomMetricParamsTotalMetricsItem `json:"metrics"`
+}
+
+// IndicatorPropertiesCustomMetricParamsTotalMetricsItem defines model for indicator_properties_custom_metric_params_total_metrics_item.
+type IndicatorPropertiesCustomMetricParamsTotalMetricsItem struct {
+	// Aggregation The aggregation type of the metric. Only valid option is "sum"
+	Aggregation string `json:"aggregation"`
+
+	// Field The field of the metric.
+	Field string `json:"field"`
+
+	// Filter The filter to apply to the metric.
+	Filter *string `json:"filter,omitempty"`
+
+	// Name The name of the metric. Only valid options are A-Z
+	Name string `json:"name"`
+}
 
 // IndicatorPropertiesHistogram Defines properties for a histogram indicator type
 type IndicatorPropertiesHistogram struct {
 	// Params An object containing the indicator parameters.
-	Params struct {
-		// DataViewId The kibana data view id to use, primarily used to include data view runtime mappings. Make sure to save SLO again if you add/update run time fields to the data view and if those fields are being used in slo queries.
-		DataViewId *string `json:"dataViewId,omitempty"`
-
-		// Filter the KQL query to filter the documents with.
-		Filter *string `json:"filter,omitempty"`
-
-		// Good An object defining the "good" events
-		Good struct {
-			// Aggregation The type of aggregation to use.
-			Aggregation IndicatorPropertiesHistogramParamsGoodAggregation `json:"aggregation"`
-
-			// Field The field use to aggregate the good events.
-			Field string `json:"field"`
-
-			// Filter The filter for good events.
-			Filter *string `json:"filter,omitempty"`
-
-			// From The starting value of the range. Only required for "range" aggregations.
-			From *float32 `json:"from,omitempty"`
-
-			// To The ending value of the range. Only required for "range" aggregations.
-			To *float32 `json:"to,omitempty"`
-		} `json:"good"`
-
-		// Index The index or index pattern to use
-		Index string `json:"index"`
-
-		// TimestampField The timestamp field used in the source indice.
-		TimestampField string `json:"timestampField"`
-
-		// Total An object defining the "total" events
-		Total struct {
-			// Aggregation The type of aggregation to use.
-			Aggregation IndicatorPropertiesHistogramParamsTotalAggregation `json:"aggregation"`
-
-			// Field The field use to aggregate the good events.
-			Field string `json:"field"`
-
-			// Filter The filter for total events.
-			Filter *string `json:"filter,omitempty"`
-
-			// From The starting value of the range. Only required for "range" aggregations.
-			From *float32 `json:"from,omitempty"`
-
-			// To The ending value of the range. Only required for "range" aggregations.
-			To *float32 `json:"to,omitempty"`
-		} `json:"total"`
-	} `json:"params"`
+	Params IndicatorPropertiesHistogramParams `json:"params"`
 
 	// Type The type of indicator.
 	Type string `json:"type"`
 }
 
-// IndicatorPropertiesHistogramParamsGoodAggregation The type of aggregation to use.
-type IndicatorPropertiesHistogramParamsGoodAggregation string
+// IndicatorPropertiesHistogramParams An object containing the indicator parameters.
+type IndicatorPropertiesHistogramParams struct {
+	// DataViewId The kibana data view id to use, primarily used to include data view runtime mappings. Make sure to save SLO again if you add/update run time fields to the data view and if those fields are being used in slo queries.
+	DataViewId *string `json:"dataViewId,omitempty"`
 
-// IndicatorPropertiesHistogramParamsTotalAggregation The type of aggregation to use.
-type IndicatorPropertiesHistogramParamsTotalAggregation string
+	// Filter the KQL query to filter the documents with.
+	Filter *string `json:"filter,omitempty"`
+
+	// Good An object defining the "good" events
+	Good IndicatorPropertiesHistogramParamsGood `json:"good"`
+
+	// Index The index or index pattern to use
+	Index string `json:"index"`
+
+	// TimestampField The timestamp field used in the source indice.
+	TimestampField string `json:"timestampField"`
+
+	// Total An object defining the "total" events
+	Total IndicatorPropertiesHistogramParamsTotal `json:"total"`
+}
+
+// IndicatorPropertiesHistogramParamsGood An object defining the "good" events
+type IndicatorPropertiesHistogramParamsGood struct {
+	// Aggregation The type of aggregation to use.
+	Aggregation string `json:"aggregation"`
+
+	// Field The field use to aggregate the good events.
+	Field string `json:"field"`
+
+	// Filter The filter for good events.
+	Filter *string `json:"filter,omitempty"`
+
+	// From The starting value of the range. Only required for "range" aggregations.
+	From *float32 `json:"from,omitempty"`
+
+	// To The ending value of the range. Only required for "range" aggregations.
+	To *float32 `json:"to,omitempty"`
+}
+
+// IndicatorPropertiesHistogramParamsTotal An object defining the "total" events
+type IndicatorPropertiesHistogramParamsTotal struct {
+	// Aggregation The type of aggregation to use.
+	Aggregation string `json:"aggregation"`
+
+	// Field The field use to aggregate the good events.
+	Field string `json:"field"`
+
+	// Filter The filter for total events.
+	Filter *string `json:"filter,omitempty"`
+
+	// From The starting value of the range. Only required for "range" aggregations.
+	From *float32 `json:"from,omitempty"`
+
+	// To The ending value of the range. Only required for "range" aggregations.
+	To *float32 `json:"to,omitempty"`
+}
 
 // IndicatorPropertiesTimesliceMetric Defines properties for a timeslice metric indicator type
 type IndicatorPropertiesTimesliceMetric struct {
 	// Params An object containing the indicator parameters.
-	Params struct {
-		// DataViewId The kibana data view id to use, primarily used to include data view runtime mappings. Make sure to save SLO again if you add/update run time fields to the data view and if those fields are being used in slo queries.
-		DataViewId *string `json:"dataViewId,omitempty"`
-
-		// Filter the KQL query to filter the documents with.
-		Filter *string `json:"filter,omitempty"`
-
-		// Index The index or index pattern to use
-		Index string `json:"index"`
-
-		// Metric An object defining the metrics, equation, and threshold to determine if it's a good slice or not
-		Metric struct {
-			// Comparator The comparator to use to compare the equation to the threshold.
-			Comparator IndicatorPropertiesTimesliceMetricParamsMetricComparator `json:"comparator"`
-
-			// Equation The equation to calculate the metric.
-			Equation string `json:"equation"`
-
-			// Metrics List of metrics with their name, aggregation type, and field.
-			Metrics []IndicatorPropertiesTimesliceMetric_Params_Metric_Metrics_Item `json:"metrics"`
-
-			// Threshold The threshold used to determine if the metric is a good slice or not.
-			Threshold float32 `json:"threshold"`
-		} `json:"metric"`
-
-		// TimestampField The timestamp field used in the source indice.
-		TimestampField string `json:"timestampField"`
-	} `json:"params"`
+	Params IndicatorPropertiesTimesliceMetricParams `json:"params"`
 
 	// Type The type of indicator.
 	Type string `json:"type"`
 }
 
-// IndicatorPropertiesTimesliceMetricParamsMetricComparator The comparator to use to compare the equation to the threshold.
-type IndicatorPropertiesTimesliceMetricParamsMetricComparator string
+// IndicatorPropertiesTimesliceMetricParams An object containing the indicator parameters.
+type IndicatorPropertiesTimesliceMetricParams struct {
+	// DataViewId The kibana data view id to use, primarily used to include data view runtime mappings. Make sure to save SLO again if you add/update run time fields to the data view and if those fields are being used in slo queries.
+	DataViewId *string `json:"dataViewId,omitempty"`
 
-// IndicatorPropertiesTimesliceMetric_Params_Metric_Metrics_Item defines model for IndicatorPropertiesTimesliceMetric.Params.Metric.metrics.Item.
-type IndicatorPropertiesTimesliceMetric_Params_Metric_Metrics_Item struct {
+	// Filter the KQL query to filter the documents with.
+	Filter *string `json:"filter,omitempty"`
+
+	// Index The index or index pattern to use
+	Index string `json:"index"`
+
+	// Metric An object defining the metrics, equation, and threshold to determine if it's a good slice or not
+	Metric IndicatorPropertiesTimesliceMetricParamsMetric `json:"metric"`
+
+	// TimestampField The timestamp field used in the source indice.
+	TimestampField string `json:"timestampField"`
+}
+
+// IndicatorPropertiesTimesliceMetricParamsMetric An object defining the metrics, equation, and threshold to determine if it's a good slice or not
+type IndicatorPropertiesTimesliceMetricParamsMetric struct {
+	// Comparator The comparator to use to compare the equation to the threshold.
+	Comparator string `json:"comparator"`
+
+	// Equation The equation to calculate the metric.
+	Equation string `json:"equation"`
+
+	// Metrics List of metrics with their name, aggregation type, and field.
+	Metrics []IndicatorPropertiesTimesliceMetricParamsMetric_Metrics_Item `json:"metrics"`
+
+	// Threshold The threshold used to determine if the metric is a good slice or not.
+	Threshold float32 `json:"threshold"`
+}
+
+// IndicatorPropertiesTimesliceMetricParamsMetric_Metrics_Item defines model for indicator_properties_timeslice_metric_params_metric.metrics.Item.
+type IndicatorPropertiesTimesliceMetricParamsMetric_Metrics_Item struct {
+	union json.RawMessage
+}
+
+// InstallPackageByUploadResponseObject defines model for install-package-by-upload_response_object.
+type InstallPackageByUploadResponseObject struct {
+	Meta  *InstallPackageByUploadResponseObjectMeta      `json:"_meta,omitempty"`
+	Items []InstallPackageByUploadResponseObjectItemItem `json:"items"`
+}
+
+// InstallPackageByUploadResponseObjectMeta defines model for install-package-by-upload_response_object__meta.
+type InstallPackageByUploadResponseObjectMeta struct {
+	InstallSource *string `json:"install_source,omitempty"`
+}
+
+// InstallPackageByUploadResponseObjectItemItem defines model for install-package-by-upload_response_object_item_item.
+type InstallPackageByUploadResponseObjectItemItem struct {
+	Id   string                                            `json:"id"`
+	Type InstallPackageByUploadResponseObjectItemItem_Type `json:"type"`
+}
+
+// InstallPackageByUploadResponseObjectItemItem_Type defines model for InstallPackageByUploadResponseObjectItemItem.Type.
+type InstallPackageByUploadResponseObjectItemItem_Type struct {
+	union json.RawMessage
+}
+
+// InstallPackageRequest defines model for install-package_request.
+type InstallPackageRequest struct {
+	Force             *bool `json:"force,omitempty"`
+	IgnoreConstraints *bool `json:"ignore_constraints,omitempty"`
+}
+
+// InstallPackageResponseObject defines model for install-package_response_object.
+type InstallPackageResponseObject struct {
+	Meta  *InstallPackageResponseObjectMeta      `json:"_meta,omitempty"`
+	Items []InstallPackageResponseObjectItemItem `json:"items"`
+}
+
+// InstallPackageResponseObjectMeta defines model for install-package_response_object__meta.
+type InstallPackageResponseObjectMeta struct {
+	InstallSource *string `json:"install_source,omitempty"`
+}
+
+// InstallPackageResponseObjectItemItem defines model for install-package_response_object_item_item.
+type InstallPackageResponseObjectItemItem struct {
+	Id   string                                    `json:"id"`
+	Type InstallPackageResponseObjectItemItem_Type `json:"type"`
+}
+
+// InstallPackageResponseObjectItemItem_Type defines model for InstallPackageResponseObjectItemItem.Type.
+type InstallPackageResponseObjectItemItem_Type struct {
 	union json.RawMessage
 }
 
 // InstallationInfo defines model for installation_info.
 type InstallationInfo struct {
-	CreatedAt                      *string                       `json:"created_at,omitempty"`
-	ExperimentalDataStreamFeatures []interface{}                 `json:"experimental_data_stream_features,omitempty"`
-	InstallFormatSchemaVersion     *string                       `json:"install_format_schema_version,omitempty"`
-	InstallKibanaSpaceId           *string                       `json:"install_kibana_space_id,omitempty"`
-	InstallSource                  InstallationInfoInstallSource `json:"install_source"`
-	InstallStatus                  InstallationInfoInstallStatus `json:"install_status"`
-	InstalledEs                    struct {
-		Deferred *bool                   `json:"deferred,omitempty"`
-		Id       *string                 `json:"id,omitempty"`
-		Type     *ElasticsearchAssetType `json:"type,omitempty"`
-	} `json:"installed_es"`
-	InstalledKibana struct {
-		Id   *string                `json:"id,omitempty"`
-		Type *KibanaSavedObjectType `json:"type,omitempty"`
-	} `json:"installed_kibana"`
+	CreatedAt                      *string                                        `json:"created_at,omitempty"`
+	ExperimentalDataStreamFeatures InstallationInfoExperimentalDataStreamFeatures `json:"experimental_data_stream_features,omitempty"`
+	InstallFormatSchemaVersion     *string                                        `json:"install_format_schema_version,omitempty"`
+	InstallKibanaSpaceId           *string                                        `json:"install_kibana_space_id,omitempty"`
+	InstallSource                  string                                         `json:"install_source"`
+	InstallStatus                  string                                         `json:"install_status"`
+	InstalledEs                    InstallationInfoInstalledEs                    `json:"installed_es"`
+	InstalledKibana                InstallationInfoInstalledKibana                `json:"installed_kibana"`
 
 	// LatestExecutedState Latest successfully executed state in package install state machine
-	LatestExecutedState *struct {
-		Error     *string                                  `json:"error,omitempty"`
-		Name      *InstallationInfoLatestExecutedStateName `json:"name,omitempty"`
-		StartedAt *string                                  `json:"started_at,omitempty"`
-	} `json:"latest_executed_state,omitempty"`
+	LatestExecutedState *InstallationInfoLatestExecutedState `json:"latest_executed_state,omitempty"`
 
 	// LatestInstallFailedAttempts Latest failed install errors
-	LatestInstallFailedAttempts []struct {
-		CreatedAt *string `json:"created_at,omitempty"`
-		Error     *struct {
-			Message *string `json:"message,omitempty"`
-			Name    *string `json:"name,omitempty"`
-			Stack   *string `json:"stack,omitempty"`
-		} `json:"error,omitempty"`
-		TargetVersion *string `json:"target_version,omitempty"`
-	} `json:"latest_install_failed_attempts"`
-	Name               string                             `json:"name"`
-	Namespaces         []string                           `json:"namespaces,omitempty"`
-	Type               *string                            `json:"type,omitempty"`
-	UpdatedAt          *string                            `json:"updated_at,omitempty"`
-	VerificationKeyId  *string                            `json:"verification_key_id"`
-	VerificationStatus InstallationInfoVerificationStatus `json:"verification_status"`
-	Version            string                             `json:"version"`
+	LatestInstallFailedAttempts []InstallationInfoLatestInstallFailedAttemptsItem `json:"latest_install_failed_attempts"`
+	Name                        string                                            `json:"name"`
+	Namespaces                  []string                                          `json:"namespaces,omitempty"`
+	Type                        *string                                           `json:"type,omitempty"`
+	UpdatedAt                   *string                                           `json:"updated_at,omitempty"`
+	VerificationKeyId           *string                                           `json:"verification_key_id"`
+	VerificationStatus          string                                            `json:"verification_status"`
+	Version                     string                                            `json:"version"`
 }
 
-// InstallationInfoInstallSource defines model for InstallationInfo.InstallSource.
-type InstallationInfoInstallSource string
+// InstallationInfoExperimentalDataStreamFeatures defines model for installation_info_experimental_data_stream_features.
+type InstallationInfoExperimentalDataStreamFeatures = []interface{}
 
-// InstallationInfoInstallStatus defines model for InstallationInfo.InstallStatus.
-type InstallationInfoInstallStatus string
+// InstallationInfoExperimentalDataStreamFeaturesFeatures defines model for installation_info_experimental_data_stream_features_features.
+type InstallationInfoExperimentalDataStreamFeaturesFeatures struct {
+	DocValueOnlyNumeric *bool `json:"doc_value_only_numeric"`
+	DocValueOnlyOther   *bool `json:"doc_value_only_other"`
+	SyntheticSource     *bool `json:"synthetic_source"`
+	Tsdb                *bool `json:"tsdb"`
+}
 
-// InstallationInfoLatestExecutedStateName defines model for InstallationInfo.LatestExecutedState.Name.
-type InstallationInfoLatestExecutedStateName string
+// InstallationInfoInstalledEs defines model for installation_info_installed_es.
+type InstallationInfoInstalledEs struct {
+	Deferred *bool                   `json:"deferred,omitempty"`
+	Id       *string                 `json:"id,omitempty"`
+	Type     *ElasticsearchAssetType `json:"type,omitempty"`
+}
 
-// InstallationInfoVerificationStatus defines model for InstallationInfo.VerificationStatus.
-type InstallationInfoVerificationStatus string
+// InstallationInfoInstalledKibana defines model for installation_info_installed_kibana.
+type InstallationInfoInstalledKibana struct {
+	Id   *string                `json:"id,omitempty"`
+	Type *KibanaSavedObjectType `json:"type,omitempty"`
+}
+
+// InstallationInfoLatestExecutedState Latest successfully executed state in package install state machine
+type InstallationInfoLatestExecutedState struct {
+	Error     *string `json:"error,omitempty"`
+	Name      *string `json:"name,omitempty"`
+	StartedAt *string `json:"started_at,omitempty"`
+}
+
+// InstallationInfoLatestInstallFailedAttemptsItem defines model for installation_info_latest_install_failed_attempts_item.
+type InstallationInfoLatestInstallFailedAttemptsItem struct {
+	CreatedAt     *string                                               `json:"created_at,omitempty"`
+	Error         *InstallationInfoLatestInstallFailedAttemptsItemError `json:"error,omitempty"`
+	TargetVersion *string                                               `json:"target_version,omitempty"`
+}
+
+// InstallationInfoLatestInstallFailedAttemptsItemError defines model for installation_info_latest_install_failed_attempts_item_error.
+type InstallationInfoLatestInstallFailedAttemptsItemError struct {
+	Message *string `json:"message,omitempty"`
+	Name    *string `json:"name,omitempty"`
+	Stack   *string `json:"stack,omitempty"`
+}
 
 // KibanaSavedObjectType defines model for kibana_saved_object_type.
-type KibanaSavedObjectType string
+type KibanaSavedObjectType = string
 
 // KqlWithFilters Defines properties for a filter
 type KqlWithFilters struct {
@@ -3316,12 +2394,6 @@ type KqlWithFilters struct {
 // KqlWithFilters0 the KQL query to filter the documents with.
 type KqlWithFilters0 = string
 
-// KqlWithFilters1 defines model for .
-type KqlWithFilters1 struct {
-	Filters  []Filter `json:"filters,omitempty"`
-	KqlQuery *string  `json:"kqlQuery,omitempty"`
-}
-
 // KqlWithFiltersGood The KQL query used to define the good events.
 type KqlWithFiltersGood struct {
 	union json.RawMessage
@@ -3330,8 +2402,14 @@ type KqlWithFiltersGood struct {
 // KqlWithFiltersGood0 the KQL query to filter the documents with.
 type KqlWithFiltersGood0 = string
 
-// KqlWithFiltersGood1 defines model for .
-type KqlWithFiltersGood1 struct {
+// KqlWithFiltersGoodOneOf1 defines model for kql_with_filters_good_oneOf_1.
+type KqlWithFiltersGoodOneOf1 struct {
+	Filters  []Filter `json:"filters,omitempty"`
+	KqlQuery *string  `json:"kqlQuery,omitempty"`
+}
+
+// KqlWithFiltersOneOf1 defines model for kql_with_filters_oneOf_1.
+type KqlWithFiltersOneOf1 struct {
 	Filters  []Filter `json:"filters,omitempty"`
 	KqlQuery *string  `json:"kqlQuery,omitempty"`
 }
@@ -3344,59 +2422,60 @@ type KqlWithFiltersTotal struct {
 // KqlWithFiltersTotal0 the KQL query to filter the documents with.
 type KqlWithFiltersTotal0 = string
 
-// KqlWithFiltersTotal1 defines model for .
-type KqlWithFiltersTotal1 struct {
+// KqlWithFiltersTotalOneOf1 defines model for kql_with_filters_total_oneOf_1.
+type KqlWithFiltersTotalOneOf1 struct {
 	Filters  []Filter `json:"filters,omitempty"`
 	KqlQuery *string  `json:"kqlQuery,omitempty"`
 }
-
-// NameRule The name of the rule. While this name does not have to be unique, a distinctive name can help you identify a rule.
-type NameRule = string
 
 // Namespaces An array of space identifiers for sharing the data view between multiple spaces.
 type Namespaces = []string
 
 // NewPackagePolicy defines model for new_package_policy.
 type NewPackagePolicy struct {
-	Description *string                          `json:"description,omitempty"`
-	Enabled     *bool                            `json:"enabled,omitempty"`
-	Inputs      map[string]NewPackagePolicyInput `json:"inputs"`
-	Name        string                           `json:"name"`
-	Namespace   *string                          `json:"namespace,omitempty"`
+	Description *string                               `json:"description,omitempty"`
+	Enabled     *bool                                 `json:"enabled,omitempty"`
+	Inputs      map[string]NewPackagePolicyInputsItem `json:"inputs"`
+	Name        string                                `json:"name"`
+	Namespace   *string                               `json:"namespace,omitempty"`
+	OutputId    *string                               `json:"output_id,omitempty"`
+	Overrides   map[string]interface{}                `json:"overrides,omitempty"`
+	Package     *NewPackagePolicyPackage              `json:"package,omitempty"`
 	// Deprecated:
-	OutputId  *string                   `json:"output_id,omitempty"`
-	Overrides map[string]interface{}    `json:"overrides,omitempty"`
-	Package   *PackagePolicyPackageInfo `json:"package,omitempty"`
-	// Deprecated:
-	PolicyId         *string  `json:"policy_id,omitempty"`
-	PolicyIds        []string `json:"policy_ids,omitempty"`
-	SecretReferences []struct {
-		Id *string `json:"id,omitempty"`
-	} `json:"secret_references,omitempty"`
-	Vars map[string]interface{} `json:"vars,omitempty"`
+	PolicyId         *string                                `json:"policy_id"`
+	PolicyIds        []string                               `json:"policy_ids,omitempty"`
+	SecretReferences []NewPackagePolicySecretReferencesItem `json:"secret_references,omitempty"`
+	Vars             map[string]interface{}                 `json:"vars,omitempty"`
 }
 
-// NewPackagePolicyInput defines model for new_package_policy_input.
-type NewPackagePolicyInput struct {
-	Config     map[string]interface{}                 `json:"config,omitempty"`
-	Enabled    bool                                   `json:"enabled"`
-	Processors []string                               `json:"processors,omitempty"`
-	Streams    map[string]NewPackagePolicyInputStream `json:"streams,omitempty"`
-	Type       string                                 `json:"type"`
-	Vars       map[string]interface{}                 `json:"vars,omitempty"`
+// NewPackagePolicyInputsItem defines model for new_package_policy_inputs_item.
+type NewPackagePolicyInputsItem struct {
+	Config     map[string]interface{}                           `json:"config,omitempty"`
+	Enabled    bool                                             `json:"enabled"`
+	Processors []string                                         `json:"processors,omitempty"`
+	Streams    map[string]NewPackagePolicyInputsItemStreamsItem `json:"streams,omitempty"`
+	Type       string                                           `json:"type"`
+	Vars       map[string]interface{}                           `json:"vars,omitempty"`
 }
 
-// NewPackagePolicyInputStream defines model for new_package_policy_input_stream.
-type NewPackagePolicyInputStream struct {
+// NewPackagePolicyInputsItemStreamsItem defines model for new_package_policy_inputs_item_streams_item.
+type NewPackagePolicyInputsItemStreamsItem struct {
 	Enabled *bool                  `json:"enabled,omitempty"`
 	Vars    map[string]interface{} `json:"vars,omitempty"`
 }
 
-// NotifyWhen Deprecated in 8.13.0. Use the `notify_when` property in the action `frequency` object instead. Indicates how often alerts generate actions. NOTE: You cannot specify `notify_when` at both the rule and action level. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
-type NotifyWhen string
+// NewPackagePolicyPackage defines model for new_package_policy_package.
+type NewPackagePolicyPackage struct {
+	Name         string  `json:"name"`
+	RequiresRoot *bool   `json:"requires_root,omitempty"`
+	Title        *string `json:"title,omitempty"`
+	Version      string  `json:"version"`
+}
 
-// NotifyWhenAction Indicates how often alerts generate actions. Valid values include: `onActionGroupChange`: Actions run when the alert status changes; `onActiveAlert`: Actions run when the alert becomes active and at each check interval while the rule conditions are met; `onThrottleInterval`: Actions run when the alert becomes active and at the interval specified in the throttle property while the rule conditions are met. NOTE: You cannot specify `notify_when` at both the rule and action level. The recommended method is to set it for each action. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
-type NotifyWhenAction string
+// NewPackagePolicySecretReferencesItem defines model for new_package_policy_secret_references_item.
+type NewPackagePolicySecretReferencesItem struct {
+	Id *string `json:"id,omitempty"`
+}
 
 // Objective Defines properties for the SLO objective
 type Objective struct {
@@ -3417,182 +2496,212 @@ type OutputCreateRequest struct {
 
 // OutputCreateRequestElasticsearch defines model for output_create_request_elasticsearch.
 type OutputCreateRequestElasticsearch struct {
-	CaSha256             *string                                 `json:"ca_sha256,omitempty"`
-	CaTrustedFingerprint *string                                 `json:"ca_trusted_fingerprint,omitempty"`
-	Config               map[string]interface{}                  `json:"config,omitempty"`
-	ConfigYaml           *string                                 `json:"config_yaml,omitempty"`
-	Hosts                []string                                `json:"hosts,omitempty"`
-	Id                   *string                                 `json:"id,omitempty"`
-	IsDefault            *bool                                   `json:"is_default,omitempty"`
-	IsDefaultMonitoring  *bool                                   `json:"is_default_monitoring,omitempty"`
-	IsInternal           *bool                                   `json:"is_internal,omitempty"`
-	Name                 string                                  `json:"name"`
-	Preset               *OutputCreateRequestElasticsearchPreset `json:"preset,omitempty"`
-	ProxyId              *string                                 `json:"proxy_id,omitempty"`
-	Shipper              *struct {
-		CompressionLevel            *float32 `json:"compression_level,omitempty"`
-		DiskQueueCompressionEnabled *bool    `json:"disk_queue_compression_enabled,omitempty"`
-		DiskQueueEnabled            *bool    `json:"disk_queue_enabled,omitempty"`
-		DiskQueueEncryptionEnabled  *bool    `json:"disk_queue_encryption_enabled,omitempty"`
-		DiskQueueMaxSize            *float32 `json:"disk_queue_max_size,omitempty"`
-		DiskQueuePath               *string  `json:"disk_queue_path,omitempty"`
-		Loadbalance                 *bool    `json:"loadbalance,omitempty"`
-	} `json:"shipper,omitempty"`
-	Ssl *struct {
-		Certificate            *string  `json:"certificate,omitempty"`
-		CertificateAuthorities []string `json:"certificate_authorities,omitempty"`
-		Key                    *string  `json:"key,omitempty"`
-	} `json:"ssl,omitempty"`
-	Type OutputCreateRequestElasticsearchType `json:"type"`
+	CaSha256             *string                                  `json:"ca_sha256,omitempty"`
+	CaTrustedFingerprint *string                                  `json:"ca_trusted_fingerprint,omitempty"`
+	Config               map[string]interface{}                   `json:"config,omitempty"`
+	ConfigYaml           *string                                  `json:"config_yaml,omitempty"`
+	Hosts                []string                                 `json:"hosts,omitempty"`
+	Id                   *string                                  `json:"id,omitempty"`
+	IsDefault            *bool                                    `json:"is_default,omitempty"`
+	IsDefaultMonitoring  *bool                                    `json:"is_default_monitoring,omitempty"`
+	IsInternal           *bool                                    `json:"is_internal,omitempty"`
+	Name                 string                                   `json:"name"`
+	Preset               *string                                  `json:"preset,omitempty"`
+	ProxyId              *string                                  `json:"proxy_id,omitempty"`
+	Shipper              *OutputCreateRequestElasticsearchShipper `json:"shipper,omitempty"`
+	Ssl                  *OutputCreateRequestElasticsearchSsl     `json:"ssl,omitempty"`
+	Type                 string                                   `json:"type"`
 }
 
-// OutputCreateRequestElasticsearchPreset defines model for OutputCreateRequestElasticsearch.Preset.
-type OutputCreateRequestElasticsearchPreset string
+// OutputCreateRequestElasticsearchShipper defines model for output_create_request_elasticsearch_shipper.
+type OutputCreateRequestElasticsearchShipper struct {
+	CompressionLevel            *float32 `json:"compression_level,omitempty"`
+	DiskQueueCompressionEnabled *bool    `json:"disk_queue_compression_enabled,omitempty"`
+	DiskQueueEnabled            *bool    `json:"disk_queue_enabled,omitempty"`
+	DiskQueueEncryptionEnabled  *bool    `json:"disk_queue_encryption_enabled,omitempty"`
+	DiskQueueMaxSize            *float32 `json:"disk_queue_max_size,omitempty"`
+	DiskQueuePath               *string  `json:"disk_queue_path,omitempty"`
+	Loadbalance                 *bool    `json:"loadbalance,omitempty"`
+}
 
-// OutputCreateRequestElasticsearchType defines model for OutputCreateRequestElasticsearch.Type.
-type OutputCreateRequestElasticsearchType string
+// OutputCreateRequestElasticsearchSsl defines model for output_create_request_elasticsearch_ssl.
+type OutputCreateRequestElasticsearchSsl struct {
+	Certificate            *string  `json:"certificate,omitempty"`
+	CertificateAuthorities []string `json:"certificate_authorities,omitempty"`
+	Key                    *string  `json:"key,omitempty"`
+}
 
 // OutputCreateRequestKafka defines model for output_create_request_kafka.
 type OutputCreateRequestKafka struct {
-	AuthType             string                                  `json:"auth_type"`
-	BrokerTimeout        *float32                                `json:"broker_timeout,omitempty"`
-	CaSha256             *string                                 `json:"ca_sha256,omitempty"`
-	CaTrustedFingerprint *string                                 `json:"ca_trusted_fingerprint,omitempty"`
-	ClientId             *string                                 `json:"client_id,omitempty"`
-	Compression          *string                                 `json:"compression,omitempty"`
-	CompressionLevel     *float32                                `json:"compression_level,omitempty"`
-	Config               map[string]interface{}                  `json:"config,omitempty"`
-	ConfigYaml           *string                                 `json:"config_yaml,omitempty"`
-	ConnectionType       *OutputCreateRequestKafkaConnectionType `json:"connection_type,omitempty"`
-	Headers              []struct {
-		Key   *string `json:"key,omitempty"`
-		Value *string `json:"value,omitempty"`
-	} `json:"headers,omitempty"`
-	Hosts               []string `json:"hosts"`
-	Id                  *string  `json:"id,omitempty"`
-	IsDefault           *bool    `json:"is_default,omitempty"`
-	IsDefaultMonitoring *bool    `json:"is_default_monitoring,omitempty"`
-	IsInternal          *bool    `json:"is_internal,omitempty"`
-	Key                 *string  `json:"key,omitempty"`
-	Name                string   `json:"name"`
-	Partition           *string  `json:"partition,omitempty"`
-	Password            *string  `json:"password,omitempty"`
-	ProxyId             *string  `json:"proxy_id,omitempty"`
-	Random              *struct {
-		GroupEvents *float32 `json:"group_events,omitempty"`
-	} `json:"random,omitempty"`
-	RequiredAcks *float32 `json:"required_acks,omitempty"`
-	RoundRobin   *struct {
-		GroupEvents *float32 `json:"group_events,omitempty"`
-	} `json:"round_robin,omitempty"`
-	Sasl *struct {
-		Mechanism *string `json:"mechanism,omitempty"`
-	} `json:"sasl,omitempty"`
-	Secrets *struct {
-		Password *string `json:"password,omitempty"`
-		Ssl      *struct {
-			Key *string `json:"key,omitempty"`
-		} `json:"ssl,omitempty"`
-	} `json:"secrets,omitempty"`
-	Shipper *struct {
-		CompressionLevel            *float32 `json:"compression_level,omitempty"`
-		DiskQueueCompressionEnabled *bool    `json:"disk_queue_compression_enabled,omitempty"`
-		DiskQueueEnabled            *bool    `json:"disk_queue_enabled,omitempty"`
-		DiskQueueEncryptionEnabled  *bool    `json:"disk_queue_encryption_enabled,omitempty"`
-		DiskQueueMaxSize            *float32 `json:"disk_queue_max_size,omitempty"`
-		DiskQueuePath               *string  `json:"disk_queue_path,omitempty"`
-		Loadbalance                 *bool    `json:"loadbalance,omitempty"`
-	} `json:"shipper,omitempty"`
-	Ssl *struct {
-		Certificate            *string                                      `json:"certificate,omitempty"`
-		CertificateAuthorities []string                                     `json:"certificate_authorities,omitempty"`
-		Key                    *string                                      `json:"key,omitempty"`
-		VerificationMode       *OutputCreateRequestKafkaSslVerificationMode `json:"verification_mode,omitempty"`
-	} `json:"ssl,omitempty"`
-	Timeout *float32 `json:"timeout,omitempty"`
-	Topic   *string  `json:"topic,omitempty"`
+	AuthType             string                                `json:"auth_type"`
+	BrokerTimeout        *float32                              `json:"broker_timeout,omitempty"`
+	CaSha256             *string                               `json:"ca_sha256,omitempty"`
+	CaTrustedFingerprint *string                               `json:"ca_trusted_fingerprint,omitempty"`
+	ClientId             *string                               `json:"client_id,omitempty"`
+	Compression          *string                               `json:"compression,omitempty"`
+	CompressionLevel     *float32                              `json:"compression_level,omitempty"`
+	Config               map[string]interface{}                `json:"config,omitempty"`
+	ConfigYaml           *string                               `json:"config_yaml,omitempty"`
+	ConnectionType       *string                               `json:"connection_type,omitempty"`
+	Headers              []OutputCreateRequestKafkaHeadersItem `json:"headers,omitempty"`
+	Hosts                []string                              `json:"hosts"`
+	Id                   *string                               `json:"id,omitempty"`
+	IsDefault            *bool                                 `json:"is_default,omitempty"`
+	IsDefaultMonitoring  *bool                                 `json:"is_default_monitoring,omitempty"`
+	IsInternal           *bool                                 `json:"is_internal,omitempty"`
+	Key                  *string                               `json:"key,omitempty"`
+	Name                 string                                `json:"name"`
+	Partition            *string                               `json:"partition,omitempty"`
+	Password             *string                               `json:"password,omitempty"`
+	ProxyId              *string                               `json:"proxy_id,omitempty"`
+	Random               *OutputCreateRequestKafkaRandom       `json:"random,omitempty"`
+	RequiredAcks         *float32                              `json:"required_acks,omitempty"`
+	RoundRobin           *OutputCreateRequestKafkaRoundRobin   `json:"round_robin,omitempty"`
+	Sasl                 *OutputCreateRequestKafkaSasl         `json:"sasl,omitempty"`
+	Secrets              *OutputCreateRequestKafkaSecrets      `json:"secrets,omitempty"`
+	Shipper              *OutputCreateRequestKafkaShipper      `json:"shipper,omitempty"`
+	Ssl                  *OutputCreateRequestKafkaSsl          `json:"ssl,omitempty"`
+	Timeout              *float32                              `json:"timeout,omitempty"`
+	Topic                *string                               `json:"topic,omitempty"`
 
 	// Topics Use topic instead.
 	// Deprecated:
-	Topics []struct {
-		Topic *string `json:"topic,omitempty"`
-
-		// When Deprecated, kafka output do not support conditionnal topics anymore.
-		// Deprecated:
-		When *struct {
-			Condition *string `json:"condition,omitempty"`
-			Type      *string `json:"type,omitempty"`
-		} `json:"when,omitempty"`
-	} `json:"topics"`
-	Type     OutputCreateRequestKafkaType `json:"type"`
-	Username *string                      `json:"username,omitempty"`
-	Version  *string                      `json:"version,omitempty"`
+	Topics   []OutputCreateRequestKafkaTopicsItem `json:"topics"`
+	Type     string                               `json:"type"`
+	Username *string                              `json:"username,omitempty"`
+	Version  *string                              `json:"version,omitempty"`
 }
 
-// OutputCreateRequestKafkaConnectionType defines model for OutputCreateRequestKafka.ConnectionType.
-type OutputCreateRequestKafkaConnectionType string
+// OutputCreateRequestKafkaHeadersItem defines model for output_create_request_kafka_headers_item.
+type OutputCreateRequestKafkaHeadersItem struct {
+	Key   *string `json:"key,omitempty"`
+	Value *string `json:"value,omitempty"`
+}
 
-// OutputCreateRequestKafkaSslVerificationMode defines model for OutputCreateRequestKafka.Ssl.VerificationMode.
-type OutputCreateRequestKafkaSslVerificationMode string
+// OutputCreateRequestKafkaRandom defines model for output_create_request_kafka_random.
+type OutputCreateRequestKafkaRandom struct {
+	GroupEvents *float32 `json:"group_events,omitempty"`
+}
 
-// OutputCreateRequestKafkaType defines model for OutputCreateRequestKafka.Type.
-type OutputCreateRequestKafkaType string
+// OutputCreateRequestKafkaRoundRobin defines model for output_create_request_kafka_round_robin.
+type OutputCreateRequestKafkaRoundRobin struct {
+	GroupEvents *float32 `json:"group_events,omitempty"`
+}
+
+// OutputCreateRequestKafkaSasl defines model for output_create_request_kafka_sasl.
+type OutputCreateRequestKafkaSasl struct {
+	Mechanism *string `json:"mechanism,omitempty"`
+}
+
+// OutputCreateRequestKafkaSecrets defines model for output_create_request_kafka_secrets.
+type OutputCreateRequestKafkaSecrets struct {
+	Password *string                             `json:"password,omitempty"`
+	Ssl      *OutputCreateRequestKafkaSecretsSsl `json:"ssl,omitempty"`
+}
+
+// OutputCreateRequestKafkaSecretsSsl defines model for output_create_request_kafka_secrets_ssl.
+type OutputCreateRequestKafkaSecretsSsl struct {
+	Key *string `json:"key,omitempty"`
+}
+
+// OutputCreateRequestKafkaShipper defines model for output_create_request_kafka_shipper.
+type OutputCreateRequestKafkaShipper struct {
+	CompressionLevel            *float32 `json:"compression_level,omitempty"`
+	DiskQueueCompressionEnabled *bool    `json:"disk_queue_compression_enabled,omitempty"`
+	DiskQueueEnabled            *bool    `json:"disk_queue_enabled,omitempty"`
+	DiskQueueEncryptionEnabled  *bool    `json:"disk_queue_encryption_enabled,omitempty"`
+	DiskQueueMaxSize            *float32 `json:"disk_queue_max_size,omitempty"`
+	DiskQueuePath               *string  `json:"disk_queue_path,omitempty"`
+	Loadbalance                 *bool    `json:"loadbalance,omitempty"`
+}
+
+// OutputCreateRequestKafkaSsl defines model for output_create_request_kafka_ssl.
+type OutputCreateRequestKafkaSsl struct {
+	Certificate            *string  `json:"certificate,omitempty"`
+	CertificateAuthorities []string `json:"certificate_authorities,omitempty"`
+	Key                    *string  `json:"key,omitempty"`
+	VerificationMode       *string  `json:"verification_mode,omitempty"`
+}
+
+// OutputCreateRequestKafkaTopicsItem defines model for output_create_request_kafka_topics_item.
+type OutputCreateRequestKafkaTopicsItem struct {
+	Topic *string `json:"topic,omitempty"`
+
+	// When Deprecated, kafka output do not support conditionnal topics anymore.
+	// Deprecated:
+	When *OutputCreateRequestKafkaTopicsItemWhen `json:"when,omitempty"`
+}
+
+// OutputCreateRequestKafkaTopicsItemWhen Deprecated, kafka output do not support conditionnal topics anymore.
+type OutputCreateRequestKafkaTopicsItemWhen struct {
+	Condition *string `json:"condition,omitempty"`
+	Type      *string `json:"type,omitempty"`
+}
 
 // OutputCreateRequestLogstash defines model for output_create_request_logstash.
 type OutputCreateRequestLogstash struct {
-	CaSha256             *string                `json:"ca_sha256,omitempty"`
-	CaTrustedFingerprint *string                `json:"ca_trusted_fingerprint,omitempty"`
-	Config               map[string]interface{} `json:"config,omitempty"`
-	ConfigYaml           *string                `json:"config_yaml,omitempty"`
-	Hosts                []string               `json:"hosts"`
-	Id                   *string                `json:"id,omitempty"`
-	IsDefault            *bool                  `json:"is_default,omitempty"`
-	IsDefaultMonitoring  *bool                  `json:"is_default_monitoring,omitempty"`
-	IsInternal           *bool                  `json:"is_internal,omitempty"`
-	Name                 string                 `json:"name"`
-	ProxyId              *string                `json:"proxy_id,omitempty"`
-	Secrets              *struct {
-		Ssl *struct {
-			Key *string `json:"key,omitempty"`
-		} `json:"ssl,omitempty"`
-	} `json:"secrets,omitempty"`
-	Shipper *struct {
-		CompressionLevel            *float32 `json:"compression_level,omitempty"`
-		DiskQueueCompressionEnabled *bool    `json:"disk_queue_compression_enabled,omitempty"`
-		DiskQueueEnabled            *bool    `json:"disk_queue_enabled,omitempty"`
-		DiskQueueEncryptionEnabled  *bool    `json:"disk_queue_encryption_enabled,omitempty"`
-		DiskQueueMaxSize            *float32 `json:"disk_queue_max_size,omitempty"`
-		DiskQueuePath               *string  `json:"disk_queue_path,omitempty"`
-		Loadbalance                 *bool    `json:"loadbalance,omitempty"`
-	} `json:"shipper,omitempty"`
-	Ssl *struct {
-		Certificate            *string  `json:"certificate,omitempty"`
-		CertificateAuthorities []string `json:"certificate_authorities,omitempty"`
-		Key                    *string  `json:"key,omitempty"`
-	} `json:"ssl,omitempty"`
-	Type OutputCreateRequestLogstashType `json:"type"`
+	CaSha256             *string                             `json:"ca_sha256,omitempty"`
+	CaTrustedFingerprint *string                             `json:"ca_trusted_fingerprint,omitempty"`
+	Config               map[string]interface{}              `json:"config,omitempty"`
+	ConfigYaml           *string                             `json:"config_yaml,omitempty"`
+	Hosts                []string                            `json:"hosts"`
+	Id                   *string                             `json:"id,omitempty"`
+	IsDefault            *bool                               `json:"is_default,omitempty"`
+	IsDefaultMonitoring  *bool                               `json:"is_default_monitoring,omitempty"`
+	IsInternal           *bool                               `json:"is_internal,omitempty"`
+	Name                 string                              `json:"name"`
+	ProxyId              *string                             `json:"proxy_id,omitempty"`
+	Secrets              *OutputCreateRequestLogstashSecrets `json:"secrets,omitempty"`
+	Shipper              *OutputCreateRequestLogstashShipper `json:"shipper,omitempty"`
+	Ssl                  *OutputCreateRequestLogstashSsl     `json:"ssl,omitempty"`
+	Type                 string                              `json:"type"`
 }
 
-// OutputCreateRequestLogstashType defines model for OutputCreateRequestLogstash.Type.
-type OutputCreateRequestLogstashType string
+// OutputCreateRequestLogstashSecrets defines model for output_create_request_logstash_secrets.
+type OutputCreateRequestLogstashSecrets struct {
+	Ssl *OutputCreateRequestLogstashSecretsSsl `json:"ssl,omitempty"`
+}
+
+// OutputCreateRequestLogstashSecretsSsl defines model for output_create_request_logstash_secrets_ssl.
+type OutputCreateRequestLogstashSecretsSsl struct {
+	Key *string `json:"key,omitempty"`
+}
+
+// OutputCreateRequestLogstashShipper defines model for output_create_request_logstash_shipper.
+type OutputCreateRequestLogstashShipper struct {
+	CompressionLevel            *float32 `json:"compression_level,omitempty"`
+	DiskQueueCompressionEnabled *bool    `json:"disk_queue_compression_enabled,omitempty"`
+	DiskQueueEnabled            *bool    `json:"disk_queue_enabled,omitempty"`
+	DiskQueueEncryptionEnabled  *bool    `json:"disk_queue_encryption_enabled,omitempty"`
+	DiskQueueMaxSize            *float32 `json:"disk_queue_max_size,omitempty"`
+	DiskQueuePath               *string  `json:"disk_queue_path,omitempty"`
+	Loadbalance                 *bool    `json:"loadbalance,omitempty"`
+}
+
+// OutputCreateRequestLogstashSsl defines model for output_create_request_logstash_ssl.
+type OutputCreateRequestLogstashSsl struct {
+	Certificate            *string  `json:"certificate,omitempty"`
+	CertificateAuthorities []string `json:"certificate_authorities,omitempty"`
+	Key                    *string  `json:"key,omitempty"`
+}
 
 // OutputCreateRequestRemoteElasticsearch defines model for output_create_request_remote_elasticsearch.
 type OutputCreateRequestRemoteElasticsearch struct {
-	Hosts               []string `json:"hosts,omitempty"`
-	Id                  *string  `json:"id,omitempty"`
-	IsDefault           *bool    `json:"is_default,omitempty"`
-	IsDefaultMonitoring *bool    `json:"is_default_monitoring,omitempty"`
-	IsInternal          *bool    `json:"is_internal,omitempty"`
-	Name                string   `json:"name"`
-	Secrets             *struct {
-		ServiceToken *string `json:"service_token,omitempty"`
-	} `json:"secrets,omitempty"`
-	ServiceToken *string                                    `json:"service_token,omitempty"`
-	Type         OutputCreateRequestRemoteElasticsearchType `json:"type"`
+	Hosts               []string                                       `json:"hosts,omitempty"`
+	Id                  *string                                        `json:"id,omitempty"`
+	IsDefault           *bool                                          `json:"is_default,omitempty"`
+	IsDefaultMonitoring *bool                                          `json:"is_default_monitoring,omitempty"`
+	IsInternal          *bool                                          `json:"is_internal,omitempty"`
+	Name                string                                         `json:"name"`
+	Secrets             *OutputCreateRequestRemoteElasticsearchSecrets `json:"secrets,omitempty"`
+	ServiceToken        *string                                        `json:"service_token,omitempty"`
+	Type                string                                         `json:"type"`
 }
 
-// OutputCreateRequestRemoteElasticsearchType defines model for OutputCreateRequestRemoteElasticsearch.Type.
-type OutputCreateRequestRemoteElasticsearchType string
+// OutputCreateRequestRemoteElasticsearchSecrets defines model for output_create_request_remote_elasticsearch_secrets.
+type OutputCreateRequestRemoteElasticsearchSecrets struct {
+	ServiceToken *string `json:"service_token,omitempty"`
+}
 
 // OutputUpdateRequest defines model for output_update_request.
 type OutputUpdateRequest struct {
@@ -3601,261 +2710,290 @@ type OutputUpdateRequest struct {
 
 // OutputUpdateRequestElasticsearch defines model for output_update_request_elasticsearch.
 type OutputUpdateRequestElasticsearch struct {
-	CaSha256             *string                                 `json:"ca_sha256,omitempty"`
-	CaTrustedFingerprint *string                                 `json:"ca_trusted_fingerprint,omitempty"`
-	Config               map[string]interface{}                  `json:"config,omitempty"`
-	ConfigYaml           *string                                 `json:"config_yaml,omitempty"`
-	Hosts                []string                                `json:"hosts"`
-	Id                   *string                                 `json:"id,omitempty"`
-	IsDefault            *bool                                   `json:"is_default,omitempty"`
-	IsDefaultMonitoring  *bool                                   `json:"is_default_monitoring,omitempty"`
-	IsInternal           *bool                                   `json:"is_internal,omitempty"`
-	Name                 string                                  `json:"name"`
-	Preset               *OutputUpdateRequestElasticsearchPreset `json:"preset,omitempty"`
-	ProxyId              *string                                 `json:"proxy_id,omitempty"`
-	Shipper              *struct {
-		CompressionLevel            *float32 `json:"compression_level,omitempty"`
-		DiskQueueCompressionEnabled *bool    `json:"disk_queue_compression_enabled,omitempty"`
-		DiskQueueEnabled            *bool    `json:"disk_queue_enabled,omitempty"`
-		DiskQueueEncryptionEnabled  *bool    `json:"disk_queue_encryption_enabled,omitempty"`
-		DiskQueueMaxSize            *float32 `json:"disk_queue_max_size,omitempty"`
-		DiskQueuePath               *string  `json:"disk_queue_path,omitempty"`
-		Loadbalance                 *bool    `json:"loadbalance,omitempty"`
-	} `json:"shipper,omitempty"`
-	Ssl *struct {
-		Certificate            *string  `json:"certificate,omitempty"`
-		CertificateAuthorities []string `json:"certificate_authorities,omitempty"`
-		Key                    *string  `json:"key,omitempty"`
-	} `json:"ssl,omitempty"`
-	Type OutputUpdateRequestElasticsearchType `json:"type"`
+	CaSha256             *string                                  `json:"ca_sha256,omitempty"`
+	CaTrustedFingerprint *string                                  `json:"ca_trusted_fingerprint,omitempty"`
+	Config               map[string]interface{}                   `json:"config,omitempty"`
+	ConfigYaml           *string                                  `json:"config_yaml,omitempty"`
+	Hosts                []string                                 `json:"hosts"`
+	Id                   *string                                  `json:"id,omitempty"`
+	IsDefault            *bool                                    `json:"is_default,omitempty"`
+	IsDefaultMonitoring  *bool                                    `json:"is_default_monitoring,omitempty"`
+	IsInternal           *bool                                    `json:"is_internal,omitempty"`
+	Name                 string                                   `json:"name"`
+	Preset               *string                                  `json:"preset,omitempty"`
+	ProxyId              *string                                  `json:"proxy_id,omitempty"`
+	Shipper              *OutputUpdateRequestElasticsearchShipper `json:"shipper,omitempty"`
+	Ssl                  *OutputUpdateRequestElasticsearchSsl     `json:"ssl,omitempty"`
+	Type                 string                                   `json:"type"`
 }
 
-// OutputUpdateRequestElasticsearchPreset defines model for OutputUpdateRequestElasticsearch.Preset.
-type OutputUpdateRequestElasticsearchPreset string
+// OutputUpdateRequestElasticsearchShipper defines model for output_update_request_elasticsearch_shipper.
+type OutputUpdateRequestElasticsearchShipper struct {
+	CompressionLevel            *float32 `json:"compression_level,omitempty"`
+	DiskQueueCompressionEnabled *bool    `json:"disk_queue_compression_enabled,omitempty"`
+	DiskQueueEnabled            *bool    `json:"disk_queue_enabled,omitempty"`
+	DiskQueueEncryptionEnabled  *bool    `json:"disk_queue_encryption_enabled,omitempty"`
+	DiskQueueMaxSize            *float32 `json:"disk_queue_max_size,omitempty"`
+	DiskQueuePath               *string  `json:"disk_queue_path,omitempty"`
+	Loadbalance                 *bool    `json:"loadbalance,omitempty"`
+}
 
-// OutputUpdateRequestElasticsearchType defines model for OutputUpdateRequestElasticsearch.Type.
-type OutputUpdateRequestElasticsearchType string
+// OutputUpdateRequestElasticsearchSsl defines model for output_update_request_elasticsearch_ssl.
+type OutputUpdateRequestElasticsearchSsl struct {
+	Certificate            *string  `json:"certificate,omitempty"`
+	CertificateAuthorities []string `json:"certificate_authorities,omitempty"`
+	Key                    *string  `json:"key,omitempty"`
+}
 
 // OutputUpdateRequestKafka defines model for output_update_request_kafka.
 type OutputUpdateRequestKafka struct {
-	AuthType             *string                                 `json:"auth_type,omitempty"`
-	BrokerTimeout        *float32                                `json:"broker_timeout,omitempty"`
-	CaSha256             *string                                 `json:"ca_sha256,omitempty"`
-	CaTrustedFingerprint *string                                 `json:"ca_trusted_fingerprint,omitempty"`
-	ClientId             *string                                 `json:"client_id,omitempty"`
-	Compression          *string                                 `json:"compression,omitempty"`
-	CompressionLevel     *float32                                `json:"compression_level,omitempty"`
-	Config               map[string]interface{}                  `json:"config,omitempty"`
-	ConfigYaml           *string                                 `json:"config_yaml,omitempty"`
-	ConnectionType       *OutputUpdateRequestKafkaConnectionType `json:"connection_type,omitempty"`
-	Headers              []struct {
-		Key   *string `json:"key,omitempty"`
-		Value *string `json:"value,omitempty"`
-	} `json:"headers,omitempty"`
-	Hosts               []string `json:"hosts,omitempty"`
-	Id                  *string  `json:"id,omitempty"`
-	IsDefault           *bool    `json:"is_default,omitempty"`
-	IsDefaultMonitoring *bool    `json:"is_default_monitoring,omitempty"`
-	IsInternal          *bool    `json:"is_internal,omitempty"`
-	Key                 *string  `json:"key,omitempty"`
-	Name                string   `json:"name"`
-	Partition           *string  `json:"partition,omitempty"`
-	Password            *string  `json:"password,omitempty"`
-	ProxyId             *string  `json:"proxy_id,omitempty"`
-	Random              *struct {
-		GroupEvents *float32 `json:"group_events,omitempty"`
-	} `json:"random,omitempty"`
-	RequiredAcks *float32 `json:"required_acks,omitempty"`
-	RoundRobin   *struct {
-		GroupEvents *float32 `json:"group_events,omitempty"`
-	} `json:"round_robin,omitempty"`
-	Sasl *struct {
-		Mechanism *string `json:"mechanism,omitempty"`
-	} `json:"sasl,omitempty"`
-	Shipper *struct {
-		CompressionLevel            *float32 `json:"compression_level,omitempty"`
-		DiskQueueCompressionEnabled *bool    `json:"disk_queue_compression_enabled,omitempty"`
-		DiskQueueEnabled            *bool    `json:"disk_queue_enabled,omitempty"`
-		DiskQueueEncryptionEnabled  *bool    `json:"disk_queue_encryption_enabled,omitempty"`
-		DiskQueueMaxSize            *float32 `json:"disk_queue_max_size,omitempty"`
-		DiskQueuePath               *string  `json:"disk_queue_path,omitempty"`
-		Loadbalance                 *bool    `json:"loadbalance,omitempty"`
-	} `json:"shipper,omitempty"`
-	Ssl *struct {
-		Certificate            *string                                      `json:"certificate,omitempty"`
-		CertificateAuthorities []string                                     `json:"certificate_authorities,omitempty"`
-		Key                    *string                                      `json:"key,omitempty"`
-		VerificationMode       *OutputUpdateRequestKafkaSslVerificationMode `json:"verification_mode,omitempty"`
-	} `json:"ssl,omitempty"`
-	Timeout *float32 `json:"timeout,omitempty"`
-	Topic   *string  `json:"topic,omitempty"`
+	AuthType             *string                               `json:"auth_type,omitempty"`
+	BrokerTimeout        *float32                              `json:"broker_timeout,omitempty"`
+	CaSha256             *string                               `json:"ca_sha256,omitempty"`
+	CaTrustedFingerprint *string                               `json:"ca_trusted_fingerprint,omitempty"`
+	ClientId             *string                               `json:"client_id,omitempty"`
+	Compression          *string                               `json:"compression,omitempty"`
+	CompressionLevel     *float32                              `json:"compression_level,omitempty"`
+	Config               map[string]interface{}                `json:"config,omitempty"`
+	ConfigYaml           *string                               `json:"config_yaml,omitempty"`
+	ConnectionType       *string                               `json:"connection_type,omitempty"`
+	Headers              []OutputUpdateRequestKafkaHeadersItem `json:"headers,omitempty"`
+	Hosts                []string                              `json:"hosts,omitempty"`
+	Id                   *string                               `json:"id,omitempty"`
+	IsDefault            *bool                                 `json:"is_default,omitempty"`
+	IsDefaultMonitoring  *bool                                 `json:"is_default_monitoring,omitempty"`
+	IsInternal           *bool                                 `json:"is_internal,omitempty"`
+	Key                  *string                               `json:"key,omitempty"`
+	Name                 string                                `json:"name"`
+	Partition            *string                               `json:"partition,omitempty"`
+	Password             *string                               `json:"password,omitempty"`
+	ProxyId              *string                               `json:"proxy_id,omitempty"`
+	Random               *OutputUpdateRequestKafkaRandom       `json:"random,omitempty"`
+	RequiredAcks         *float32                              `json:"required_acks,omitempty"`
+	RoundRobin           *OutputUpdateRequestKafkaRoundRobin   `json:"round_robin,omitempty"`
+	Sasl                 *OutputUpdateRequestKafkaSasl         `json:"sasl,omitempty"`
+	Shipper              *OutputUpdateRequestKafkaShipper      `json:"shipper,omitempty"`
+	Ssl                  *OutputUpdateRequestKafkaSsl          `json:"ssl,omitempty"`
+	Timeout              *float32                              `json:"timeout,omitempty"`
+	Topic                *string                               `json:"topic,omitempty"`
 
 	// Topics Use topic instead.
 	// Deprecated:
-	Topics []struct {
-		Topic *string `json:"topic,omitempty"`
-
-		// When Deprecated, kafka output do not support conditionnal topics anymore.
-		// Deprecated:
-		When *struct {
-			Condition *string `json:"condition,omitempty"`
-			Type      *string `json:"type,omitempty"`
-		} `json:"when,omitempty"`
-	} `json:"topics,omitempty"`
-	Type     OutputUpdateRequestKafkaType `json:"type"`
-	Username *string                      `json:"username,omitempty"`
-	Version  *string                      `json:"version,omitempty"`
+	Topics   []OutputUpdateRequestKafkaTopicsItem `json:"topics,omitempty"`
+	Type     string                               `json:"type"`
+	Username *string                              `json:"username,omitempty"`
+	Version  *string                              `json:"version,omitempty"`
 }
 
-// OutputUpdateRequestKafkaConnectionType defines model for OutputUpdateRequestKafka.ConnectionType.
-type OutputUpdateRequestKafkaConnectionType string
+// OutputUpdateRequestKafkaHeadersItem defines model for output_update_request_kafka_headers_item.
+type OutputUpdateRequestKafkaHeadersItem struct {
+	Key   *string `json:"key,omitempty"`
+	Value *string `json:"value,omitempty"`
+}
 
-// OutputUpdateRequestKafkaSslVerificationMode defines model for OutputUpdateRequestKafka.Ssl.VerificationMode.
-type OutputUpdateRequestKafkaSslVerificationMode string
+// OutputUpdateRequestKafkaRandom defines model for output_update_request_kafka_random.
+type OutputUpdateRequestKafkaRandom struct {
+	GroupEvents *float32 `json:"group_events,omitempty"`
+}
 
-// OutputUpdateRequestKafkaType defines model for OutputUpdateRequestKafka.Type.
-type OutputUpdateRequestKafkaType string
+// OutputUpdateRequestKafkaRoundRobin defines model for output_update_request_kafka_round_robin.
+type OutputUpdateRequestKafkaRoundRobin struct {
+	GroupEvents *float32 `json:"group_events,omitempty"`
+}
+
+// OutputUpdateRequestKafkaSasl defines model for output_update_request_kafka_sasl.
+type OutputUpdateRequestKafkaSasl struct {
+	Mechanism *string `json:"mechanism,omitempty"`
+}
+
+// OutputUpdateRequestKafkaShipper defines model for output_update_request_kafka_shipper.
+type OutputUpdateRequestKafkaShipper struct {
+	CompressionLevel            *float32 `json:"compression_level,omitempty"`
+	DiskQueueCompressionEnabled *bool    `json:"disk_queue_compression_enabled,omitempty"`
+	DiskQueueEnabled            *bool    `json:"disk_queue_enabled,omitempty"`
+	DiskQueueEncryptionEnabled  *bool    `json:"disk_queue_encryption_enabled,omitempty"`
+	DiskQueueMaxSize            *float32 `json:"disk_queue_max_size,omitempty"`
+	DiskQueuePath               *string  `json:"disk_queue_path,omitempty"`
+	Loadbalance                 *bool    `json:"loadbalance,omitempty"`
+}
+
+// OutputUpdateRequestKafkaSsl defines model for output_update_request_kafka_ssl.
+type OutputUpdateRequestKafkaSsl struct {
+	Certificate            *string  `json:"certificate,omitempty"`
+	CertificateAuthorities []string `json:"certificate_authorities,omitempty"`
+	Key                    *string  `json:"key,omitempty"`
+	VerificationMode       *string  `json:"verification_mode,omitempty"`
+}
+
+// OutputUpdateRequestKafkaTopicsItem defines model for output_update_request_kafka_topics_item.
+type OutputUpdateRequestKafkaTopicsItem struct {
+	Topic *string `json:"topic,omitempty"`
+
+	// When Deprecated, kafka output do not support conditionnal topics anymore.
+	// Deprecated:
+	When *OutputUpdateRequestKafkaTopicsItemWhen `json:"when,omitempty"`
+}
+
+// OutputUpdateRequestKafkaTopicsItemWhen Deprecated, kafka output do not support conditionnal topics anymore.
+type OutputUpdateRequestKafkaTopicsItemWhen struct {
+	Condition *string `json:"condition,omitempty"`
+	Type      *string `json:"type,omitempty"`
+}
 
 // OutputUpdateRequestLogstash defines model for output_update_request_logstash.
 type OutputUpdateRequestLogstash struct {
-	CaSha256             *string                `json:"ca_sha256,omitempty"`
-	CaTrustedFingerprint *string                `json:"ca_trusted_fingerprint,omitempty"`
-	Config               map[string]interface{} `json:"config,omitempty"`
-	ConfigYaml           *string                `json:"config_yaml,omitempty"`
-	Hosts                []string               `json:"hosts,omitempty"`
-	Id                   *string                `json:"id,omitempty"`
-	IsDefault            *bool                  `json:"is_default,omitempty"`
-	IsDefaultMonitoring  *bool                  `json:"is_default_monitoring,omitempty"`
-	IsInternal           *bool                  `json:"is_internal,omitempty"`
-	Name                 string                 `json:"name"`
-	ProxyId              *string                `json:"proxy_id,omitempty"`
-	Shipper              *struct {
-		CompressionLevel            *float32 `json:"compression_level,omitempty"`
-		DiskQueueCompressionEnabled *bool    `json:"disk_queue_compression_enabled,omitempty"`
-		DiskQueueEnabled            *bool    `json:"disk_queue_enabled,omitempty"`
-		DiskQueueEncryptionEnabled  *bool    `json:"disk_queue_encryption_enabled,omitempty"`
-		DiskQueueMaxSize            *float32 `json:"disk_queue_max_size,omitempty"`
-		DiskQueuePath               *string  `json:"disk_queue_path,omitempty"`
-		Loadbalance                 *bool    `json:"loadbalance,omitempty"`
-	} `json:"shipper,omitempty"`
-	Ssl *struct {
-		Certificate            *string  `json:"certificate,omitempty"`
-		CertificateAuthorities []string `json:"certificate_authorities,omitempty"`
-		Key                    *string  `json:"key,omitempty"`
-	} `json:"ssl,omitempty"`
-	Type OutputUpdateRequestLogstashType `json:"type"`
+	CaSha256             *string                             `json:"ca_sha256,omitempty"`
+	CaTrustedFingerprint *string                             `json:"ca_trusted_fingerprint,omitempty"`
+	Config               map[string]interface{}              `json:"config,omitempty"`
+	ConfigYaml           *string                             `json:"config_yaml,omitempty"`
+	Hosts                []string                            `json:"hosts,omitempty"`
+	Id                   *string                             `json:"id,omitempty"`
+	IsDefault            *bool                               `json:"is_default,omitempty"`
+	IsDefaultMonitoring  *bool                               `json:"is_default_monitoring,omitempty"`
+	IsInternal           *bool                               `json:"is_internal,omitempty"`
+	Name                 string                              `json:"name"`
+	ProxyId              *string                             `json:"proxy_id,omitempty"`
+	Shipper              *OutputUpdateRequestLogstashShipper `json:"shipper,omitempty"`
+	Ssl                  *OutputUpdateRequestLogstashSsl     `json:"ssl,omitempty"`
+	Type                 string                              `json:"type"`
 }
 
-// OutputUpdateRequestLogstashType defines model for OutputUpdateRequestLogstash.Type.
-type OutputUpdateRequestLogstashType string
+// OutputUpdateRequestLogstashShipper defines model for output_update_request_logstash_shipper.
+type OutputUpdateRequestLogstashShipper struct {
+	CompressionLevel            *float32 `json:"compression_level,omitempty"`
+	DiskQueueCompressionEnabled *bool    `json:"disk_queue_compression_enabled,omitempty"`
+	DiskQueueEnabled            *bool    `json:"disk_queue_enabled,omitempty"`
+	DiskQueueEncryptionEnabled  *bool    `json:"disk_queue_encryption_enabled,omitempty"`
+	DiskQueueMaxSize            *float32 `json:"disk_queue_max_size,omitempty"`
+	DiskQueuePath               *string  `json:"disk_queue_path,omitempty"`
+	Loadbalance                 *bool    `json:"loadbalance,omitempty"`
+}
+
+// OutputUpdateRequestLogstashSsl defines model for output_update_request_logstash_ssl.
+type OutputUpdateRequestLogstashSsl struct {
+	Certificate            *string  `json:"certificate,omitempty"`
+	CertificateAuthorities []string `json:"certificate_authorities,omitempty"`
+	Key                    *string  `json:"key,omitempty"`
+}
 
 // PackageInfo defines model for package_info.
 type PackageInfo struct {
-	Assets     []string `json:"assets"`
-	Categories []string `json:"categories"`
-	Conditions struct {
-		Elasticsearch *struct {
-			Subscription *PackageInfoConditionsElasticsearchSubscription `json:"subscription,omitempty"`
-		} `json:"elasticsearch,omitempty"`
-		Kibana *struct {
-			Versions *string `json:"versions,omitempty"`
-		} `json:"kibana,omitempty"`
-	} `json:"conditions"`
-	DataStreams []struct {
-		IngesetPipeline string `json:"ingeset_pipeline"`
-		Name            string `json:"name"`
-		Package         string `json:"package"`
-		Release         string `json:"release"`
-		Title           string `json:"title"`
-		Type            string `json:"type"`
-		Vars            []struct {
-			Default string `json:"default"`
-			Name    string `json:"name"`
-		} `json:"vars,omitempty"`
-	} `json:"data_streams,omitempty"`
-	Description   string `json:"description"`
-	Download      string `json:"download"`
-	Elasticsearch *struct {
-		Privileges *struct {
-			Cluster []string `json:"cluster,omitempty"`
-		} `json:"privileges,omitempty"`
-	} `json:"elasticsearch,omitempty"`
-	FormatVersion string   `json:"format_version"`
-	Icons         []string `json:"icons,omitempty"`
-	Internal      *bool    `json:"internal,omitempty"`
-	Name          string   `json:"name"`
-	Path          string   `json:"path"`
-	Readme        *string  `json:"readme,omitempty"`
+	Assets        []string                     `json:"assets"`
+	Categories    []string                     `json:"categories"`
+	Conditions    PackageInfoConditions        `json:"conditions"`
+	DataStreams   []PackageInfoDataStreamsItem `json:"data_streams,omitempty"`
+	Description   string                       `json:"description"`
+	Download      string                       `json:"download"`
+	Elasticsearch *PackageInfoElasticsearch    `json:"elasticsearch,omitempty"`
+	FormatVersion string                       `json:"format_version"`
+	Icons         []string                     `json:"icons,omitempty"`
+	Internal      *bool                        `json:"internal,omitempty"`
+	Name          string                       `json:"name"`
+	Path          string                       `json:"path"`
+	Readme        *string                      `json:"readme,omitempty"`
 
 	// Release release label is deprecated, derive from the version instead (packages follow semver)
 	// Deprecated:
-	Release     *PackageInfoRelease `json:"release,omitempty"`
-	Screenshots []struct {
-		Path  string  `json:"path"`
-		Size  *string `json:"size,omitempty"`
-		Src   string  `json:"src"`
-		Title *string `json:"title,omitempty"`
-		Type  *string `json:"type,omitempty"`
-	} `json:"screenshots,omitempty"`
-	Source *struct {
-		License *PackageInfoSourceLicense `json:"license,omitempty"`
-	} `json:"source,omitempty"`
-	Title   string `json:"title"`
-	Type    string `json:"type"`
-	Version string `json:"version"`
+	Release     *string                      `json:"release,omitempty"`
+	Screenshots []PackageInfoScreenshotsItem `json:"screenshots,omitempty"`
+	Source      *PackageInfoSource           `json:"source,omitempty"`
+	Title       string                       `json:"title"`
+	Type        string                       `json:"type"`
+	Version     string                       `json:"version"`
 }
 
-// PackageInfoConditionsElasticsearchSubscription defines model for PackageInfo.Conditions.Elasticsearch.Subscription.
-type PackageInfoConditionsElasticsearchSubscription string
-
-// PackageInfoRelease release label is deprecated, derive from the version instead (packages follow semver)
-type PackageInfoRelease string
-
-// PackageInfoSourceLicense defines model for PackageInfo.Source.License.
-type PackageInfoSourceLicense string
-
-// PackageInstallSource defines model for package_install_source.
-type PackageInstallSource string
-
-// PackageItem defines model for package_item.
-type PackageItem = []struct {
-	Id   string          `json:"id"`
-	Type PackageItemType `json:"type"`
+// PackageInfoConditions defines model for package_info_conditions.
+type PackageInfoConditions struct {
+	Elasticsearch *PackageInfoConditionsElasticsearch `json:"elasticsearch,omitempty"`
+	Kibana        *PackageInfoConditionsKibana        `json:"kibana,omitempty"`
 }
 
-// PackageItemType defines model for package_item_type.
-type PackageItemType struct {
-	union json.RawMessage
+// PackageInfoConditionsElasticsearch defines model for package_info_conditions_elasticsearch.
+type PackageInfoConditionsElasticsearch struct {
+	Subscription *string `json:"subscription,omitempty"`
+}
+
+// PackageInfoConditionsKibana defines model for package_info_conditions_kibana.
+type PackageInfoConditionsKibana struct {
+	Versions *string `json:"versions,omitempty"`
+}
+
+// PackageInfoDataStreamsItem defines model for package_info_data_streams_item.
+type PackageInfoDataStreamsItem struct {
+	IngesetPipeline string                               `json:"ingeset_pipeline"`
+	Name            string                               `json:"name"`
+	Package         string                               `json:"package"`
+	Release         string                               `json:"release"`
+	Title           string                               `json:"title"`
+	Type            string                               `json:"type"`
+	Vars            []PackageInfoDataStreamsItemVarsItem `json:"vars,omitempty"`
+}
+
+// PackageInfoDataStreamsItemVarsItem defines model for package_info_data_streams_item_vars_item.
+type PackageInfoDataStreamsItemVarsItem struct {
+	Default string `json:"default"`
+	Name    string `json:"name"`
+}
+
+// PackageInfoElasticsearch defines model for package_info_elasticsearch.
+type PackageInfoElasticsearch struct {
+	Privileges *PackageInfoElasticsearchPrivileges `json:"privileges,omitempty"`
+}
+
+// PackageInfoElasticsearchPrivileges defines model for package_info_elasticsearch_privileges.
+type PackageInfoElasticsearchPrivileges struct {
+	Cluster []string `json:"cluster,omitempty"`
+}
+
+// PackageInfoScreenshotsItem defines model for package_info_screenshots_item.
+type PackageInfoScreenshotsItem struct {
+	Path  string  `json:"path"`
+	Size  *string `json:"size,omitempty"`
+	Src   string  `json:"src"`
+	Title *string `json:"title,omitempty"`
+	Type  *string `json:"type,omitempty"`
+}
+
+// PackageInfoSource defines model for package_info_source.
+type PackageInfoSource struct {
+	License *string `json:"license,omitempty"`
 }
 
 // PackagePolicy defines model for package_policy.
 type PackagePolicy struct {
-	Description *string                          `json:"description,omitempty"`
-	Enabled     *bool                            `json:"enabled,omitempty"`
-	Id          string                           `json:"id"`
-	Inputs      map[string]NewPackagePolicyInput `json:"inputs"`
-	Name        string                           `json:"name"`
-	Namespace   *string                          `json:"namespace,omitempty"`
+	Description *string                               `json:"description,omitempty"`
+	Enabled     *bool                                 `json:"enabled,omitempty"`
+	Id          string                                `json:"id"`
+	Inputs      map[string]NewPackagePolicyInputsItem `json:"inputs"`
+	Name        string                                `json:"name"`
+	Namespace   *string                               `json:"namespace,omitempty"`
+	OutputId    *string                               `json:"output_id,omitempty"`
+	Overrides   map[string]interface{}                `json:"overrides,omitempty"`
+	Package     *NewPackagePolicyPackage              `json:"package,omitempty"`
 	// Deprecated:
-	OutputId  *string                   `json:"output_id,omitempty"`
-	Overrides map[string]interface{}    `json:"overrides,omitempty"`
-	Package   *PackagePolicyPackageInfo `json:"package,omitempty"`
-	// Deprecated:
-	PolicyId         *string  `json:"policy_id,omitempty"`
-	PolicyIds        []string `json:"policy_ids,omitempty"`
-	Revision         float32  `json:"revision"`
-	SecretReferences []struct {
-		Id *string `json:"id,omitempty"`
-	} `json:"secret_references,omitempty"`
-	Vars map[string]interface{} `json:"vars,omitempty"`
+	PolicyId         *string                                `json:"policy_id"`
+	PolicyIds        []string                               `json:"policy_ids,omitempty"`
+	Revision         float32                                `json:"revision"`
+	SecretReferences []NewPackagePolicySecretReferencesItem `json:"secret_references,omitempty"`
+	Vars             map[string]interface{}                 `json:"vars,omitempty"`
 }
 
-// PackagePolicyPackageInfo defines model for package_policy_package_info.
-type PackagePolicyPackageInfo struct {
-	Name         string  `json:"name"`
-	RequiresRoot *bool   `json:"requires_root,omitempty"`
-	Title        *string `json:"title,omitempty"`
-	Version      string  `json:"version"`
+// PackagePolicyAllOf0 defines model for package_policy_allOf_0.
+type PackagePolicyAllOf0 struct {
+	Id       string                      `json:"id"`
+	Inputs   *PackagePolicyAllOf0_Inputs `json:"inputs,omitempty"`
+	Revision float32                     `json:"revision"`
+}
+
+// PackagePolicyAllOf0Inputs0 defines model for .
+type PackagePolicyAllOf0Inputs0 = []interface{}
+
+// PackagePolicyAllOf0Inputs1 defines model for .
+type PackagePolicyAllOf0Inputs1 = map[string]interface{}
+
+// PackagePolicyAllOf0_Inputs defines model for PackagePolicyAllOf0.Inputs.
+type PackagePolicyAllOf0_Inputs struct {
+	union json.RawMessage
 }
 
 // PackagePolicyRequest defines model for package_policy_request.
@@ -3870,7 +3008,7 @@ type PackagePolicyRequest struct {
 	Id *string `json:"id,omitempty"`
 
 	// Inputs Package policy inputs (see integration documentation to know what inputs are available)
-	Inputs map[string]PackagePolicyRequestInput `json:"inputs,omitempty"`
+	Inputs map[string]PackagePolicyRequestInputsItem `json:"inputs,omitempty"`
 
 	// Name Package policy name (should be unique)
 	Name string `json:"name"`
@@ -3878,21 +3016,16 @@ type PackagePolicyRequest struct {
 	// Namespace The package policy namespace. Leave blank to inherit the agent policy's namespace.
 	Namespace *string `json:"namespace,omitempty"`
 
-	// Overrides Override settings that are defined in the package policy. The override option should be used only in unusual circumstances and not as a routine procedure.
-	Overrides *struct {
-		Inputs map[string]interface{} `json:"inputs,omitempty"`
-	} `json:"overrides"`
-	Package struct {
-		// Name Package name
-		Name string `json:"name"`
+	// OutputId Output ID to send package data to
+	OutputId *string `json:"output_id"`
 
-		// Version Package version
-		Version string `json:"version"`
-	} `json:"package"`
+	// Overrides Override settings that are defined in the package policy. The override option should be used only in unusual circumstances and not as a routine procedure.
+	Overrides *PackagePolicyRequestOverrides `json:"overrides"`
+	Package   PackagePolicyRequestPackage    `json:"package"`
 
 	// PolicyId Agent policy ID where that package policy will be added
 	// Deprecated:
-	PolicyId *string `json:"policy_id,omitempty"`
+	PolicyId *string `json:"policy_id"`
 
 	// PolicyIds Agent policy IDs where that package policy will be added
 	PolicyIds []string `json:"policy_ids,omitempty"`
@@ -3901,20 +3034,20 @@ type PackagePolicyRequest struct {
 	Vars map[string]interface{} `json:"vars,omitempty"`
 }
 
-// PackagePolicyRequestInput defines model for package_policy_request_input.
-type PackagePolicyRequestInput struct {
+// PackagePolicyRequestInputsItem defines model for package_policy_request_inputs_item.
+type PackagePolicyRequestInputsItem struct {
 	// Enabled enable or disable that input, (default to true)
 	Enabled *bool `json:"enabled,omitempty"`
 
 	// Streams Input streams (see integration documentation to know what streams are available)
-	Streams map[string]PackagePolicyRequestInputStream `json:"streams,omitempty"`
+	Streams map[string]PackagePolicyRequestInputsItemStreamsItem `json:"streams,omitempty"`
 
 	// Vars Input level variable (see integration documentation for more information)
 	Vars map[string]interface{} `json:"vars,omitempty"`
 }
 
-// PackagePolicyRequestInputStream defines model for package_policy_request_input_stream.
-type PackagePolicyRequestInputStream struct {
+// PackagePolicyRequestInputsItemStreamsItem defines model for package_policy_request_inputs_item_streams_item.
+type PackagePolicyRequestInputsItemStreamsItem struct {
 	// Enabled enable or disable that stream, (default to true)
 	Enabled *bool `json:"enabled,omitempty"`
 
@@ -3922,779 +3055,54 @@ type PackagePolicyRequestInputStream struct {
 	Vars map[string]interface{} `json:"vars,omitempty"`
 }
 
-// PackageStatus defines model for package_status.
-type PackageStatus string
-
-// ParamsEsQueryRule defines model for params_es_query_rule.
-type ParamsEsQueryRule struct {
-	union json.RawMessage
+// PackagePolicyRequestOverrides Override settings that are defined in the package policy. The override option should be used only in unusual circumstances and not as a routine procedure.
+type PackagePolicyRequestOverrides struct {
+	Inputs map[string]interface{} `json:"inputs,omitempty"`
 }
 
-// ParamsEsQueryRule0 The parameters for an Elasticsearch query rule that uses ES|QL to define the query. This functionality is in technical pre view and may be changed or removed in a future release. Elastic will work to fix any issues, but features in technical preview are not subject to the support SLA of official GA features.
-type ParamsEsQueryRule0 struct {
-	// AggField The name of the numeric field that is used in the aggregation. This property is required when `aggType` is `avg`, `max`, `min` or `sum`.
-	AggField *Aggfield `json:"aggField,omitempty"`
+// PackagePolicyRequestPackage defines model for package_policy_request_package.
+type PackagePolicyRequestPackage struct {
+	// Name Package name
+	Name string `json:"name"`
 
-	// AggType The type of aggregation to perform.
-	AggType   *Aggtype `json:"aggType,omitempty"`
-	EsqlQuery struct {
-		// Esql The query definition, which uses Elasticsearch Query Language.
-		Esql string `json:"esql"`
-	} `json:"esqlQuery"`
-
-	// ExcludeHitsFromPreviousRun Indicates whether to exclude matches from previous runs. If `true`, you can avoid alert duplication by excluding documents that have already been detected by the previous rule run. This option is not available when a grouping field is specified.
-	ExcludeHitsFromPreviousRun *Excludehitsfrompreviousrun `json:"excludeHitsFromPreviousRun,omitempty"`
-
-	// GroupBy Indicates whether the aggregation is applied over all documents (`all`) or split into groups (`top`) using a grouping field (`termField`). If grouping is used, an alert will be created for each group when it exceeds the threshold; only the top groups (up to `termSize` number of groups) are checked.
-	GroupBy *Groupby `json:"groupBy,omitempty"`
-
-	// SearchType The type of query, in this case a query that uses Elasticsearch Query Language (ES|QL).
-	SearchType ParamsEsQueryRule0SearchType `json:"searchType"`
-
-	// Size When `searchType` is `esqlQuery`, this property is required but it does not affect the rule behavior.
-	Size int `json:"size"`
-
-	// TermSize This property is required when `groupBy` is `top`. It specifies the number of groups to check against the threshold and therefore limits the number of alerts on high cardinality fields.
-	TermSize *Termsize `json:"termSize,omitempty"`
-
-	// Threshold The threshold value that is used with the `thresholdComparator`. When `searchType` is `esqlQuery`, this property is required and must be set to zero.
-	Threshold []int `json:"threshold"`
-
-	// ThresholdComparator The comparison function for the threshold. When `searchType` is `esqlQuery`, this property is required and must be set to ">". Since the `threshold` value must be `0`, the result is that an alert occurs whenever the query returns results.
-	ThresholdComparator ParamsEsQueryRule0ThresholdComparator `json:"thresholdComparator"`
-
-	// TimeField The field that is used to calculate the time window.
-	TimeField *Timefield `json:"timeField,omitempty"`
-
-	// TimeWindowSize The size of the time window (in `timeWindowUnit` units), which determines how far back to search for documents. Generally it should be a value higher than the rule check interval to avoid gaps in detection.
-	TimeWindowSize Timewindowsize `json:"timeWindowSize"`
-
-	// TimeWindowUnit The type of units for the time window: seconds, minutes, hours, or days.
-	TimeWindowUnit Timewindowunit `json:"timeWindowUnit"`
+	// Version Package version
+	Version string `json:"version"`
 }
 
-// ParamsEsQueryRule0SearchType The type of query, in this case a query that uses Elasticsearch Query Language (ES|QL).
-type ParamsEsQueryRule0SearchType string
+// PostFleetServerHostsRequest defines model for post-fleet-server-hosts_request.
+type PostFleetServerHostsRequest struct {
+	HostUrls   []string `json:"host_urls"`
+	Id         *string  `json:"id,omitempty"`
+	IsDefault  *bool    `json:"is_default,omitempty"`
+	IsInternal *bool    `json:"is_internal,omitempty"`
+	Name       string   `json:"name"`
 
-// ParamsEsQueryRule0ThresholdComparator The comparison function for the threshold. When `searchType` is `esqlQuery`, this property is required and must be set to ">". Since the `threshold` value must be `0`, the result is that an alert occurs whenever the query returns results.
-type ParamsEsQueryRule0ThresholdComparator string
-
-// ParamsEsQueryRule1 The parameters for an Elasticsearch query rule that uses KQL or Lucene to define the query.
-type ParamsEsQueryRule1 struct {
-	// AggField The name of the numeric field that is used in the aggregation. This property is required when `aggType` is `avg`, `max`, `min` or `sum`.
-	AggField *Aggfield `json:"aggField,omitempty"`
-
-	// AggType The type of aggregation to perform.
-	AggType *Aggtype `json:"aggType,omitempty"`
-
-	// ExcludeHitsFromPreviousRun Indicates whether to exclude matches from previous runs. If `true`, you can avoid alert duplication by excluding documents that have already been detected by the previous rule run. This option is not available when a grouping field is specified.
-	ExcludeHitsFromPreviousRun *Excludehitsfrompreviousrun `json:"excludeHitsFromPreviousRun,omitempty"`
-
-	// GroupBy Indicates whether the aggregation is applied over all documents (`all`) or split into groups (`top`) using a grouping field (`termField`). If grouping is used, an alert will be created for each group when it exceeds the threshold; only the top groups (up to `termSize` number of groups) are checked.
-	GroupBy *Groupby `json:"groupBy,omitempty"`
-
-	// SearchConfiguration The query definition, which uses KQL or Lucene to fetch the documents from Elasticsearch.
-	SearchConfiguration *struct {
-		Filter []Filter `json:"filter,omitempty"`
-
-		// Index The indices to query.
-		Index *ParamsEsQueryRule_1_SearchConfiguration_Index `json:"index,omitempty"`
-		Query *struct {
-			Language *string `json:"language,omitempty"`
-			Query    *string `json:"query,omitempty"`
-		} `json:"query,omitempty"`
-	} `json:"searchConfiguration,omitempty"`
-
-	// SearchType The type of query, in this case a text-based query that uses KQL or Lucene.
-	SearchType ParamsEsQueryRule1SearchType `json:"searchType"`
-
-	// Size The number of documents to pass to the configured actions when the threshold condition is met.
-	Size Size `json:"size"`
-
-	// TermField The names of up to four fields that are used for grouping the aggregation. This property is required when `groupBy` is `top`.
-	TermField *Termfield `json:"termField,omitempty"`
-
-	// TermSize This property is required when `groupBy` is `top`. It specifies the number of groups to check against the threshold and therefore limits the number of alerts on high cardinality fields.
-	TermSize *Termsize `json:"termSize,omitempty"`
-
-	// Threshold The threshold value that is used with the `thresholdComparator`. If the `thresholdComparator` is `between` or `notBetween`, you must specify the boundary values.
-	Threshold Threshold `json:"threshold"`
-
-	// ThresholdComparator The comparison function for the threshold. For example, "is above", "is above or equals", "is below", "is below or equals", "is between", and "is not between".
-	ThresholdComparator Thresholdcomparator `json:"thresholdComparator"`
-
-	// TimeField The field that is used to calculate the time window.
-	TimeField *Timefield `json:"timeField,omitempty"`
-
-	// TimeWindowSize The size of the time window (in `timeWindowUnit` units), which determines how far back to search for documents. Generally it should be a value higher than the rule check interval to avoid gaps in detection.
-	TimeWindowSize Timewindowsize `json:"timeWindowSize"`
-
-	// TimeWindowUnit The type of units for the time window: seconds, minutes, hours, or days.
-	TimeWindowUnit Timewindowunit `json:"timeWindowUnit"`
+	// ProxyId The ID of the proxy to use for this fleet server host. See the proxies API for more information.
+	ProxyId *string `json:"proxy_id,omitempty"`
 }
 
-// ParamsEsQueryRule1SearchConfigurationIndex0 defines model for .
-type ParamsEsQueryRule1SearchConfigurationIndex0 = string
-
-// ParamsEsQueryRule1SearchConfigurationIndex1 defines model for .
-type ParamsEsQueryRule1SearchConfigurationIndex1 = []string
-
-// ParamsEsQueryRule_1_SearchConfiguration_Index The indices to query.
-type ParamsEsQueryRule_1_SearchConfiguration_Index struct {
-	union json.RawMessage
+// PostFleetServerHostsResponseObject defines model for post-fleet-server-hosts_response_object.
+type PostFleetServerHostsResponseObject struct {
+	Item *FleetServerHost `json:"item,omitempty"`
 }
 
-// ParamsEsQueryRule1SearchType The type of query, in this case a text-based query that uses KQL or Lucene.
-type ParamsEsQueryRule1SearchType string
-
-// ParamsEsQueryRule2 The parameters for an Elasticsearch query rule that uses Elasticsearch Query DSL to define the query.
-type ParamsEsQueryRule2 struct {
-	// AggField The name of the numeric field that is used in the aggregation. This property is required when `aggType` is `avg`, `max`, `min` or `sum`.
-	AggField *Aggfield `json:"aggField,omitempty"`
-
-	// AggType The type of aggregation to perform.
-	AggType *Aggtype `json:"aggType,omitempty"`
-
-	// EsQuery The query definition, which uses Elasticsearch Query DSL.
-	EsQuery string `json:"esQuery"`
-
-	// ExcludeHitsFromPreviousRun Indicates whether to exclude matches from previous runs. If `true`, you can avoid alert duplication by excluding documents that have already been detected by the previous rule run. This option is not available when a grouping field is specified.
-	ExcludeHitsFromPreviousRun *Excludehitsfrompreviousrun `json:"excludeHitsFromPreviousRun,omitempty"`
-
-	// GroupBy Indicates whether the aggregation is applied over all documents (`all`) or split into groups (`top`) using a grouping field (`termField`). If grouping is used, an alert will be created for each group when it exceeds the threshold; only the top groups (up to `termSize` number of groups) are checked.
-	GroupBy *Groupby `json:"groupBy,omitempty"`
-
-	// Index The indices to query.
-	Index ParamsEsQueryRule_2_Index `json:"index"`
-
-	// SearchType The type of query, in this case a query that uses Elasticsearch Query DSL.
-	SearchType *ParamsEsQueryRule2SearchType `json:"searchType,omitempty"`
-
-	// Size The number of documents to pass to the configured actions when the threshold condition is met.
-	Size *Size `json:"size,omitempty"`
-
-	// TermField The names of up to four fields that are used for grouping the aggregation. This property is required when `groupBy` is `top`.
-	TermField *Termfield `json:"termField,omitempty"`
-
-	// TermSize This property is required when `groupBy` is `top`. It specifies the number of groups to check against the threshold and therefore limits the number of alerts on high cardinality fields.
-	TermSize *Termsize `json:"termSize,omitempty"`
-
-	// Threshold The threshold value that is used with the `thresholdComparator`. If the `thresholdComparator` is `between` or `notBetween`, you must specify the boundary values.
-	Threshold Threshold `json:"threshold"`
-
-	// ThresholdComparator The comparison function for the threshold. For example, "is above", "is above or equals", "is below", "is below or equals", "is between", and "is not between".
-	ThresholdComparator Thresholdcomparator `json:"thresholdComparator"`
-
-	// TimeField The field that is used to calculate the time window.
-	TimeField Timefield `json:"timeField"`
-
-	// TimeWindowSize The size of the time window (in `timeWindowUnit` units), which determines how far back to search for documents. Generally it should be a value higher than the rule check interval to avoid gaps in detection.
-	TimeWindowSize Timewindowsize `json:"timeWindowSize"`
-
-	// TimeWindowUnit The type of units for the time window: seconds, minutes, hours, or days.
-	TimeWindowUnit Timewindowunit `json:"timeWindowUnit"`
-}
-
-// ParamsEsQueryRule2Index0 defines model for .
-type ParamsEsQueryRule2Index0 = []string
-
-// ParamsEsQueryRule2Index1 defines model for .
-type ParamsEsQueryRule2Index1 = string
-
-// ParamsEsQueryRule_2_Index The indices to query.
-type ParamsEsQueryRule_2_Index struct {
-	union json.RawMessage
-}
-
-// ParamsEsQueryRule2SearchType The type of query, in this case a query that uses Elasticsearch Query DSL.
-type ParamsEsQueryRule2SearchType string
-
-// ParamsIndexThresholdRule The parameters for an index threshold rule.
-type ParamsIndexThresholdRule struct {
-	// AggField The name of the numeric field that is used in the aggregation. This property is required when `aggType` is `avg`, `max`, `min` or `sum`.
-	AggField *Aggfield `json:"aggField,omitempty"`
-
-	// AggType The type of aggregation to perform.
-	AggType *Aggtype `json:"aggType,omitempty"`
-
-	// FilterKuery A KQL expression thats limits the scope of alerts.
-	FilterKuery *string `json:"filterKuery,omitempty"`
-
-	// GroupBy Indicates whether the aggregation is applied over all documents (`all`) or split into groups (`top`) using a grouping field (`termField`). If grouping is used, an alert will be created for each group when it exceeds the threshold; only the top groups (up to `termSize` number of groups) are checked.
-	GroupBy *Groupby `json:"groupBy,omitempty"`
-
-	// Index The indices to query.
-	Index []string `json:"index"`
-
-	// TermField The names of up to four fields that are used for grouping the aggregation. This property is required when `groupBy` is `top`.
-	TermField *Termfield `json:"termField,omitempty"`
-
-	// TermSize This property is required when `groupBy` is `top`. It specifies the number of groups to check against the threshold and therefore limits the number of alerts on high cardinality fields.
-	TermSize *Termsize `json:"termSize,omitempty"`
-
-	// Threshold The threshold value that is used with the `thresholdComparator`. If the `thresholdComparator` is `between` or `notBetween`, you must specify the boundary values.
-	Threshold Threshold `json:"threshold"`
-
-	// ThresholdComparator The comparison function for the threshold. For example, "is above", "is above or equals", "is below", "is below or equals", "is between", and "is not between".
-	ThresholdComparator Thresholdcomparator `json:"thresholdComparator"`
-
-	// TimeField The field that is used to calculate the time window.
-	TimeField Timefield `json:"timeField"`
-
-	// TimeWindowSize The size of the time window (in `timeWindowUnit` units), which determines how far back to search for documents. Generally it should be a value higher than the rule check interval to avoid gaps in detection.
-	TimeWindowSize Timewindowsize `json:"timeWindowSize"`
-
-	// TimeWindowUnit The type of units for the time window: seconds, minutes, hours, or days.
-	TimeWindowUnit Timewindowunit `json:"timeWindowUnit"`
-}
-
-// ParamsPropertyApmAnomaly defines model for params_property_apm_anomaly.
-type ParamsPropertyApmAnomaly struct {
-	// AnomalySeverityType The anomaly threshold value
-	AnomalySeverityType ParamsPropertyApmAnomalyAnomalySeverityType `json:"anomalySeverityType"`
-
-	// Environment The environment from APM
-	Environment string `json:"environment"`
-
-	// ServiceName The service name from APM
-	ServiceName *string `json:"serviceName,omitempty"`
-
-	// TransactionType The transaction type from APM
-	TransactionType *string `json:"transactionType,omitempty"`
-
-	// WindowSize The window size
-	WindowSize float32 `json:"windowSize"`
-
-	// WindowUnit The window size unit
-	WindowUnit ParamsPropertyApmAnomalyWindowUnit `json:"windowUnit"`
-}
-
-// ParamsPropertyApmAnomalyAnomalySeverityType The anomaly threshold value
-type ParamsPropertyApmAnomalyAnomalySeverityType string
-
-// ParamsPropertyApmAnomalyWindowUnit The window size unit
-type ParamsPropertyApmAnomalyWindowUnit string
-
-// ParamsPropertyApmErrorCount defines model for params_property_apm_error_count.
-type ParamsPropertyApmErrorCount struct {
-	// Environment The environment from APM
-	Environment      string                               `json:"environment"`
-	ErrorGroupingKey *string                              `json:"errorGroupingKey,omitempty"`
-	GroupBy          []ParamsPropertyApmErrorCountGroupBy `json:"groupBy,omitempty"`
-
-	// ServiceName The service name from APM
-	ServiceName *string `json:"serviceName,omitempty"`
-
-	// Threshold The error count threshold value
-	Threshold float32 `json:"threshold"`
-
-	// WindowSize The window size
-	WindowSize float32 `json:"windowSize"`
-
-	// WindowUnit The window size unit
-	WindowUnit ParamsPropertyApmErrorCountWindowUnit `json:"windowUnit"`
-}
-
-// ParamsPropertyApmErrorCountGroupBy defines model for ParamsPropertyApmErrorCount.GroupBy.
-type ParamsPropertyApmErrorCountGroupBy string
-
-// ParamsPropertyApmErrorCountWindowUnit The window size unit
-type ParamsPropertyApmErrorCountWindowUnit string
-
-// ParamsPropertyApmTransactionDuration defines model for params_property_apm_transaction_duration.
-type ParamsPropertyApmTransactionDuration struct {
-	AggregationType ParamsPropertyApmTransactionDurationAggregationType `json:"aggregationType"`
-	Environment     string                                              `json:"environment"`
-	GroupBy         []ParamsPropertyApmTransactionDurationGroupBy       `json:"groupBy,omitempty"`
-
-	// ServiceName The service name from APM
-	ServiceName *string `json:"serviceName,omitempty"`
-
-	// Threshold The latency threshold value
-	Threshold float32 `json:"threshold"`
-
-	// TransactionName The transaction name from APM
-	TransactionName *string `json:"transactionName,omitempty"`
-
-	// TransactionType The transaction type from APM
-	TransactionType *string `json:"transactionType,omitempty"`
-
-	// WindowSize The window size
-	WindowSize float32 `json:"windowSize"`
-
-	// WindowUnit ç
-	WindowUnit ParamsPropertyApmTransactionDurationWindowUnit `json:"windowUnit"`
-}
-
-// ParamsPropertyApmTransactionDurationAggregationType defines model for ParamsPropertyApmTransactionDuration.AggregationType.
-type ParamsPropertyApmTransactionDurationAggregationType string
-
-// ParamsPropertyApmTransactionDurationGroupBy defines model for ParamsPropertyApmTransactionDuration.GroupBy.
-type ParamsPropertyApmTransactionDurationGroupBy string
-
-// ParamsPropertyApmTransactionDurationWindowUnit ç
-type ParamsPropertyApmTransactionDurationWindowUnit string
-
-// ParamsPropertyApmTransactionErrorRate defines model for params_property_apm_transaction_error_rate.
-type ParamsPropertyApmTransactionErrorRate struct {
-	// Environment The environment from APM
-	Environment string                                         `json:"environment"`
-	GroupBy     []ParamsPropertyApmTransactionErrorRateGroupBy `json:"groupBy,omitempty"`
-
-	// ServiceName The service name from APM
-	ServiceName *string `json:"serviceName,omitempty"`
-
-	// Threshold The error rate threshold value
-	Threshold float32 `json:"threshold"`
-
-	// TransactionName The transaction name from APM
-	TransactionName *string `json:"transactionName,omitempty"`
-
-	// TransactionType The transaction type from APM
-	TransactionType *string `json:"transactionType,omitempty"`
-
-	// WindowSize The window size
-	WindowSize float32 `json:"windowSize"`
-
-	// WindowUnit The window size unit
-	WindowUnit ParamsPropertyApmTransactionErrorRateWindowUnit `json:"windowUnit"`
-}
-
-// ParamsPropertyApmTransactionErrorRateGroupBy defines model for ParamsPropertyApmTransactionErrorRate.GroupBy.
-type ParamsPropertyApmTransactionErrorRateGroupBy string
-
-// ParamsPropertyApmTransactionErrorRateWindowUnit The window size unit
-type ParamsPropertyApmTransactionErrorRateWindowUnit string
-
-// ParamsPropertyInfraInventory defines model for params_property_infra_inventory.
-type ParamsPropertyInfraInventory struct {
-	AlertOnNoData *bool `json:"alertOnNoData,omitempty"`
-	Criteria      []struct {
-		Comparator   *ParamsPropertyInfraInventoryCriteriaComparator `json:"comparator,omitempty"`
-		CustomMetric *struct {
-			Aggregation *ParamsPropertyInfraInventoryCriteriaCustomMetricAggregation `json:"aggregation,omitempty"`
-			Field       *string                                                      `json:"field,omitempty"`
-			Id          *string                                                      `json:"id,omitempty"`
-			Label       *string                                                      `json:"label,omitempty"`
-			Type        *ParamsPropertyInfraInventoryCriteriaCustomMetricType        `json:"type,omitempty"`
-		} `json:"customMetric,omitempty"`
-		Metric            *ParamsPropertyInfraInventoryCriteriaMetric            `json:"metric,omitempty"`
-		SourceId          *string                                                `json:"sourceId,omitempty"`
-		Threshold         []float32                                              `json:"threshold,omitempty"`
-		TimeSize          *float32                                               `json:"timeSize,omitempty"`
-		TimeUnit          *ParamsPropertyInfraInventoryCriteriaTimeUnit          `json:"timeUnit,omitempty"`
-		WarningComparator *ParamsPropertyInfraInventoryCriteriaWarningComparator `json:"warningComparator,omitempty"`
-		WarningThreshold  []float32                                              `json:"warningThreshold,omitempty"`
-	} `json:"criteria,omitempty"`
-	FilterQuery     *string                               `json:"filterQuery,omitempty"`
-	FilterQueryText *string                               `json:"filterQueryText,omitempty"`
-	NodeType        *ParamsPropertyInfraInventoryNodeType `json:"nodeType,omitempty"`
-	SourceId        *string                               `json:"sourceId,omitempty"`
-}
-
-// ParamsPropertyInfraInventoryCriteriaComparator defines model for ParamsPropertyInfraInventory.Criteria.Comparator.
-type ParamsPropertyInfraInventoryCriteriaComparator string
-
-// ParamsPropertyInfraInventoryCriteriaCustomMetricAggregation defines model for ParamsPropertyInfraInventory.Criteria.CustomMetric.Aggregation.
-type ParamsPropertyInfraInventoryCriteriaCustomMetricAggregation string
-
-// ParamsPropertyInfraInventoryCriteriaCustomMetricType defines model for ParamsPropertyInfraInventory.Criteria.CustomMetric.Type.
-type ParamsPropertyInfraInventoryCriteriaCustomMetricType string
-
-// ParamsPropertyInfraInventoryCriteriaMetric defines model for ParamsPropertyInfraInventory.Criteria.Metric.
-type ParamsPropertyInfraInventoryCriteriaMetric string
-
-// ParamsPropertyInfraInventoryCriteriaTimeUnit defines model for ParamsPropertyInfraInventory.Criteria.TimeUnit.
-type ParamsPropertyInfraInventoryCriteriaTimeUnit string
-
-// ParamsPropertyInfraInventoryCriteriaWarningComparator defines model for ParamsPropertyInfraInventory.Criteria.WarningComparator.
-type ParamsPropertyInfraInventoryCriteriaWarningComparator string
-
-// ParamsPropertyInfraInventoryNodeType defines model for ParamsPropertyInfraInventory.NodeType.
-type ParamsPropertyInfraInventoryNodeType string
-
-// ParamsPropertyInfraMetricThreshold defines model for params_property_infra_metric_threshold.
-type ParamsPropertyInfraMetricThreshold struct {
-	AlertOnGroupDisappear *bool                                              `json:"alertOnGroupDisappear,omitempty"`
-	AlertOnNoData         *bool                                              `json:"alertOnNoData,omitempty"`
-	Criteria              []ParamsPropertyInfraMetricThreshold_Criteria_Item `json:"criteria,omitempty"`
-	FilterQuery           *string                                            `json:"filterQuery,omitempty"`
-	GroupBy               *ParamsPropertyInfraMetricThreshold_GroupBy        `json:"groupBy,omitempty"`
-	SourceId              *string                                            `json:"sourceId,omitempty"`
-}
-
-// ParamsPropertyInfraMetricThresholdCriteria0 defines model for .
-type ParamsPropertyInfraMetricThresholdCriteria0 struct {
-	AggType           *ParamsPropertyInfraMetricThresholdCriteria0AggType           `json:"aggType,omitempty"`
-	Comparator        *ParamsPropertyInfraMetricThresholdCriteria0Comparator        `json:"comparator,omitempty"`
-	Metric            *string                                                       `json:"metric,omitempty"`
-	Threshold         []float32                                                     `json:"threshold,omitempty"`
-	TimeSize          *float32                                                      `json:"timeSize,omitempty"`
-	TimeUnit          *string                                                       `json:"timeUnit,omitempty"`
-	WarningComparator *ParamsPropertyInfraMetricThresholdCriteria0WarningComparator `json:"warningComparator,omitempty"`
-	WarningThreshold  []float32                                                     `json:"warningThreshold,omitempty"`
-}
-
-// ParamsPropertyInfraMetricThresholdCriteria0AggType defines model for ParamsPropertyInfraMetricThreshold.Criteria.0.AggType.
-type ParamsPropertyInfraMetricThresholdCriteria0AggType string
-
-// ParamsPropertyInfraMetricThresholdCriteria0Comparator defines model for ParamsPropertyInfraMetricThreshold.Criteria.0.Comparator.
-type ParamsPropertyInfraMetricThresholdCriteria0Comparator string
-
-// ParamsPropertyInfraMetricThresholdCriteria0WarningComparator defines model for ParamsPropertyInfraMetricThreshold.Criteria.0.WarningComparator.
-type ParamsPropertyInfraMetricThresholdCriteria0WarningComparator string
-
-// ParamsPropertyInfraMetricThresholdCriteria1 defines model for .
-type ParamsPropertyInfraMetricThresholdCriteria1 struct {
-	AggType           *ParamsPropertyInfraMetricThresholdCriteria1AggType           `json:"aggType,omitempty"`
-	Comparator        *ParamsPropertyInfraMetricThresholdCriteria1Comparator        `json:"comparator,omitempty"`
-	Threshold         []float32                                                     `json:"threshold,omitempty"`
-	TimeSize          *float32                                                      `json:"timeSize,omitempty"`
-	TimeUnit          *string                                                       `json:"timeUnit,omitempty"`
-	WarningComparator *ParamsPropertyInfraMetricThresholdCriteria1WarningComparator `json:"warningComparator,omitempty"`
-	WarningThreshold  []float32                                                     `json:"warningThreshold,omitempty"`
-}
-
-// ParamsPropertyInfraMetricThresholdCriteria1AggType defines model for ParamsPropertyInfraMetricThreshold.Criteria.1.AggType.
-type ParamsPropertyInfraMetricThresholdCriteria1AggType string
-
-// ParamsPropertyInfraMetricThresholdCriteria1Comparator defines model for ParamsPropertyInfraMetricThreshold.Criteria.1.Comparator.
-type ParamsPropertyInfraMetricThresholdCriteria1Comparator string
-
-// ParamsPropertyInfraMetricThresholdCriteria1WarningComparator defines model for ParamsPropertyInfraMetricThreshold.Criteria.1.WarningComparator.
-type ParamsPropertyInfraMetricThresholdCriteria1WarningComparator string
-
-// ParamsPropertyInfraMetricThresholdCriteria2 defines model for .
-type ParamsPropertyInfraMetricThresholdCriteria2 struct {
-	AggType           *ParamsPropertyInfraMetricThresholdCriteria2AggType               `json:"aggType,omitempty"`
-	Comparator        *ParamsPropertyInfraMetricThresholdCriteria2Comparator            `json:"comparator,omitempty"`
-	CustomMetric      []ParamsPropertyInfraMetricThreshold_Criteria_2_CustomMetric_Item `json:"customMetric,omitempty"`
-	Equation          *string                                                           `json:"equation,omitempty"`
-	Label             *string                                                           `json:"label,omitempty"`
-	Threshold         []float32                                                         `json:"threshold,omitempty"`
-	TimeSize          *float32                                                          `json:"timeSize,omitempty"`
-	TimeUnit          *string                                                           `json:"timeUnit,omitempty"`
-	WarningComparator *ParamsPropertyInfraMetricThresholdCriteria2WarningComparator     `json:"warningComparator,omitempty"`
-	WarningThreshold  []float32                                                         `json:"warningThreshold,omitempty"`
-}
-
-// ParamsPropertyInfraMetricThresholdCriteria2AggType defines model for ParamsPropertyInfraMetricThreshold.Criteria.2.AggType.
-type ParamsPropertyInfraMetricThresholdCriteria2AggType string
-
-// ParamsPropertyInfraMetricThresholdCriteria2Comparator defines model for ParamsPropertyInfraMetricThreshold.Criteria.2.Comparator.
-type ParamsPropertyInfraMetricThresholdCriteria2Comparator string
-
-// ParamsPropertyInfraMetricThresholdCriteria2CustomMetric0 defines model for .
-type ParamsPropertyInfraMetricThresholdCriteria2CustomMetric0 struct {
-	AggType *ParamsPropertyInfraMetricThresholdCriteria2CustomMetric0AggType `json:"aggType,omitempty"`
-	Field   *string                                                          `json:"field,omitempty"`
-	Name    *string                                                          `json:"name,omitempty"`
-}
-
-// ParamsPropertyInfraMetricThresholdCriteria2CustomMetric0AggType defines model for ParamsPropertyInfraMetricThreshold.Criteria.2.CustomMetric.0.AggType.
-type ParamsPropertyInfraMetricThresholdCriteria2CustomMetric0AggType string
-
-// ParamsPropertyInfraMetricThresholdCriteria2CustomMetric1 defines model for .
-type ParamsPropertyInfraMetricThresholdCriteria2CustomMetric1 struct {
-	AggType *ParamsPropertyInfraMetricThresholdCriteria2CustomMetric1AggType `json:"aggType,omitempty"`
-	Filter  *string                                                          `json:"filter,omitempty"`
-	Name    *string                                                          `json:"name,omitempty"`
-}
-
-// ParamsPropertyInfraMetricThresholdCriteria2CustomMetric1AggType defines model for ParamsPropertyInfraMetricThreshold.Criteria.2.CustomMetric.1.AggType.
-type ParamsPropertyInfraMetricThresholdCriteria2CustomMetric1AggType string
-
-// ParamsPropertyInfraMetricThreshold_Criteria_2_CustomMetric_Item defines model for ParamsPropertyInfraMetricThreshold.Criteria.2.customMetric.Item.
-type ParamsPropertyInfraMetricThreshold_Criteria_2_CustomMetric_Item struct {
-	union json.RawMessage
-}
-
-// ParamsPropertyInfraMetricThresholdCriteria2WarningComparator defines model for ParamsPropertyInfraMetricThreshold.Criteria.2.WarningComparator.
-type ParamsPropertyInfraMetricThresholdCriteria2WarningComparator string
-
-// ParamsPropertyInfraMetricThreshold_Criteria_Item defines model for params_property_infra_metric_threshold.criteria.Item.
-type ParamsPropertyInfraMetricThreshold_Criteria_Item struct {
-	union json.RawMessage
-}
-
-// ParamsPropertyInfraMetricThresholdGroupBy0 defines model for .
-type ParamsPropertyInfraMetricThresholdGroupBy0 = string
-
-// ParamsPropertyInfraMetricThresholdGroupBy1 defines model for .
-type ParamsPropertyInfraMetricThresholdGroupBy1 = []string
-
-// ParamsPropertyInfraMetricThreshold_GroupBy defines model for ParamsPropertyInfraMetricThreshold.GroupBy.
-type ParamsPropertyInfraMetricThreshold_GroupBy struct {
-	union json.RawMessage
-}
-
-// ParamsPropertyLogThreshold defines model for params_property_log_threshold.
-type ParamsPropertyLogThreshold struct {
-	union json.RawMessage
-}
-
-// ParamsPropertyLogThreshold0 defines model for .
-type ParamsPropertyLogThreshold0 struct {
-	Count struct {
-		Comparator *ParamsPropertyLogThreshold0CountComparator `json:"comparator,omitempty"`
-		Value      *float32                                    `json:"value,omitempty"`
-	} `json:"count"`
-	Criteria []struct {
-		Comparator *ParamsPropertyLogThreshold0CriteriaComparator `json:"comparator,omitempty"`
-		Field      *string                                        `json:"field,omitempty"`
-		Value      *ParamsPropertyLogThreshold_0_Criteria_Value   `json:"value,omitempty"`
-	} `json:"criteria,omitempty"`
-	GroupBy []string `json:"groupBy,omitempty"`
-	LogView struct {
-		LogViewId *string                                 `json:"logViewId,omitempty"`
-		Type      *ParamsPropertyLogThreshold0LogViewType `json:"type,omitempty"`
-	} `json:"logView"`
-	TimeSize float32                             `json:"timeSize"`
-	TimeUnit ParamsPropertyLogThreshold0TimeUnit `json:"timeUnit"`
-}
-
-// ParamsPropertyLogThreshold0CountComparator defines model for ParamsPropertyLogThreshold.0.Count.Comparator.
-type ParamsPropertyLogThreshold0CountComparator string
-
-// ParamsPropertyLogThreshold0CriteriaComparator defines model for ParamsPropertyLogThreshold.0.Criteria.Comparator.
-type ParamsPropertyLogThreshold0CriteriaComparator string
-
-// ParamsPropertyLogThreshold0CriteriaValue0 defines model for .
-type ParamsPropertyLogThreshold0CriteriaValue0 = float32
-
-// ParamsPropertyLogThreshold0CriteriaValue1 defines model for .
-type ParamsPropertyLogThreshold0CriteriaValue1 = string
-
-// ParamsPropertyLogThreshold_0_Criteria_Value defines model for ParamsPropertyLogThreshold.0.Criteria.Value.
-type ParamsPropertyLogThreshold_0_Criteria_Value struct {
-	union json.RawMessage
-}
-
-// ParamsPropertyLogThreshold0LogViewType defines model for ParamsPropertyLogThreshold.0.LogView.Type.
-type ParamsPropertyLogThreshold0LogViewType string
-
-// ParamsPropertyLogThreshold0TimeUnit defines model for ParamsPropertyLogThreshold.0.TimeUnit.
-type ParamsPropertyLogThreshold0TimeUnit string
-
-// ParamsPropertyLogThreshold1 defines model for .
-type ParamsPropertyLogThreshold1 struct {
-	Count struct {
-		Comparator *ParamsPropertyLogThreshold1CountComparator `json:"comparator,omitempty"`
-		Value      *float32                                    `json:"value,omitempty"`
-	} `json:"count"`
-	Criteria [][]struct {
-		Comparator *ParamsPropertyLogThreshold1CriteriaComparator `json:"comparator,omitempty"`
-		Field      *string                                        `json:"field,omitempty"`
-		Value      *ParamsPropertyLogThreshold_1_Criteria_Value   `json:"value,omitempty"`
-	} `json:"criteria,omitempty"`
-	GroupBy []string `json:"groupBy,omitempty"`
-	LogView struct {
-		LogViewId *string                                 `json:"logViewId,omitempty"`
-		Type      *ParamsPropertyLogThreshold1LogViewType `json:"type,omitempty"`
-	} `json:"logView"`
-	TimeSize float32                             `json:"timeSize"`
-	TimeUnit ParamsPropertyLogThreshold1TimeUnit `json:"timeUnit"`
-}
-
-// ParamsPropertyLogThreshold1CountComparator defines model for ParamsPropertyLogThreshold.1.Count.Comparator.
-type ParamsPropertyLogThreshold1CountComparator string
-
-// ParamsPropertyLogThreshold1CriteriaComparator defines model for ParamsPropertyLogThreshold.1.Criteria.Comparator.
-type ParamsPropertyLogThreshold1CriteriaComparator string
-
-// ParamsPropertyLogThreshold1CriteriaValue0 defines model for .
-type ParamsPropertyLogThreshold1CriteriaValue0 = float32
-
-// ParamsPropertyLogThreshold1CriteriaValue1 defines model for .
-type ParamsPropertyLogThreshold1CriteriaValue1 = string
-
-// ParamsPropertyLogThreshold_1_Criteria_Value defines model for ParamsPropertyLogThreshold.1.Criteria.Value.
-type ParamsPropertyLogThreshold_1_Criteria_Value struct {
-	union json.RawMessage
-}
-
-// ParamsPropertyLogThreshold1LogViewType defines model for ParamsPropertyLogThreshold.1.LogView.Type.
-type ParamsPropertyLogThreshold1LogViewType string
-
-// ParamsPropertyLogThreshold1TimeUnit defines model for ParamsPropertyLogThreshold.1.TimeUnit.
-type ParamsPropertyLogThreshold1TimeUnit string
-
-// ParamsPropertySloBurnRate defines model for params_property_slo_burn_rate.
-type ParamsPropertySloBurnRate struct {
-	// BurnRateThreshold The burn rate threshold used to trigger the alert
-	BurnRateThreshold *float32 `json:"burnRateThreshold,omitempty"`
-
-	// LongWindow The duration of the long window used to compute the burn rate
-	LongWindow *struct {
-		// Unit The duration unit
-		Unit *string `json:"unit,omitempty"`
-
-		// Value The duration value
-		Value *float32 `json:"value,omitempty"`
-	} `json:"longWindow,omitempty"`
-
-	// MaxBurnRateThreshold The maximum burn rate threshold value defined by the SLO error budget
-	MaxBurnRateThreshold *float32 `json:"maxBurnRateThreshold,omitempty"`
-
-	// ShortWindow The duration of the short window used to compute the burn rate
-	ShortWindow *struct {
-		// Unit The duration unit
-		Unit *string `json:"unit,omitempty"`
-
-		// Value The duration value
-		Value *float32 `json:"value,omitempty"`
-	} `json:"shortWindow,omitempty"`
-
-	// SloId The SLO identifier used by the rule
-	SloId *string `json:"sloId,omitempty"`
-}
-
-// ParamsPropertySyntheticsMonitorStatus defines model for params_property_synthetics_monitor_status.
-type ParamsPropertySyntheticsMonitorStatus struct {
-	Availability *struct {
-		Range     *float32 `json:"range,omitempty"`
-		RangeUnit *string  `json:"rangeUnit,omitempty"`
-		Threshold *string  `json:"threshold,omitempty"`
-	} `json:"availability,omitempty"`
-	Filters         *ParamsPropertySyntheticsMonitorStatus_Filters `json:"filters,omitempty"`
-	IsAutoGenerated *bool                                          `json:"isAutoGenerated,omitempty"`
-	// Deprecated:
-	Locations               []string `json:"locations,omitempty"`
-	NumTimes                float32  `json:"numTimes"`
-	Search                  *string  `json:"search,omitempty"`
-	ShouldCheckAvailability bool     `json:"shouldCheckAvailability"`
-	ShouldCheckStatus       bool     `json:"shouldCheckStatus"`
-	// Deprecated:
-	Timerange *struct {
-		From *string `json:"from,omitempty"`
-		To   *string `json:"to,omitempty"`
-	} `json:"timerange,omitempty"`
-	TimerangeCount *float32 `json:"timerangeCount,omitempty"`
-	TimerangeUnit  *string  `json:"timerangeUnit,omitempty"`
-	Version        *float32 `json:"version,omitempty"`
-}
-
-// ParamsPropertySyntheticsMonitorStatusFilters0 defines model for .
-type ParamsPropertySyntheticsMonitorStatusFilters0 = string
-
-// ParamsPropertySyntheticsMonitorStatusFilters1 defines model for .
-type ParamsPropertySyntheticsMonitorStatusFilters1 struct {
-	MonitorType     []string `json:"monitor.type,omitempty"`
-	ObserverGeoName []string `json:"observer.geo.name,omitempty"`
-	Tags            []string `json:"tags,omitempty"`
-	UrlPort         []string `json:"url.port,omitempty"`
-}
-
-// ParamsPropertySyntheticsMonitorStatus_Filters defines model for ParamsPropertySyntheticsMonitorStatus.Filters.
-type ParamsPropertySyntheticsMonitorStatus_Filters struct {
-	union json.RawMessage
-}
-
-// ParamsPropertySyntheticsUptimeTls defines model for params_property_synthetics_uptime_tls.
-type ParamsPropertySyntheticsUptimeTls struct {
-	CertAgeThreshold        *float32 `json:"certAgeThreshold,omitempty"`
-	CertExpirationThreshold *float32 `json:"certExpirationThreshold,omitempty"`
-	Search                  *string  `json:"search,omitempty"`
-}
-
-// RuleResponseProperties defines model for rule_response_properties.
-type RuleResponseProperties struct {
-	Actions Actions `json:"actions"`
-
-	// AlertDelay Indicates that an alert occurs only when the specified number of consecutive runs met the rule conditions.
-	AlertDelay *AlertDelay `json:"alert_delay,omitempty"`
-
-	// ApiKeyCreatedByUser Indicates whether the API key that is associated with the rule was created by the user.
-	ApiKeyCreatedByUser *bool `json:"api_key_created_by_user,omitempty"`
-
-	// ApiKeyOwner The owner of the API key that is associated with the rule and used to run background tasks.
-	ApiKeyOwner *string `json:"api_key_owner"`
-
-	// Consumer The application or feature that owns the rule. For example, `alerts`, `apm`, `discover`, `infrastructure`, `logs`, `metrics`, `ml`, `monitoring`, `securitySolution`, `siem`, `stackAlerts`, or `uptime`.
-	Consumer string `json:"consumer"`
-
-	// CreatedAt The date and time that the rule was created.
-	CreatedAt time.Time `json:"created_at"`
-
-	// CreatedBy The identifier for the user that created the rule.
-	CreatedBy *string `json:"created_by"`
-
-	// Enabled Indicates whether the rule is currently enabled.
-	Enabled         bool `json:"enabled"`
-	ExecutionStatus struct {
-		LastDuration      *int       `json:"last_duration,omitempty"`
-		LastExecutionDate *time.Time `json:"last_execution_date,omitempty"`
-		Status            *string    `json:"status,omitempty"`
-	} `json:"execution_status"`
-
-	// Id The identifier for the rule.
-	Id      string `json:"id"`
-	LastRun *struct {
-		AlertsCount *struct {
-			Active    *int `json:"active,omitempty"`
-			Ignored   *int `json:"ignored,omitempty"`
-			New       *int `json:"new,omitempty"`
-			Recovered *int `json:"recovered,omitempty"`
-		} `json:"alerts_count,omitempty"`
-		Outcome      *string  `json:"outcome,omitempty"`
-		OutcomeMsg   []string `json:"outcome_msg"`
-		OutcomeOrder *int     `json:"outcome_order,omitempty"`
-		Warning      *string  `json:"warning"`
-	} `json:"last_run,omitempty"`
-	MuteAll       bool     `json:"mute_all"`
-	MutedAlertIds []string `json:"muted_alert_ids"`
-
-	// Name The name of the rule.
-	Name    string     `json:"name"`
-	NextRun *time.Time `json:"next_run"`
-
-	// NotifyWhen Indicates how often alerts generate actions.
-	NotifyWhen *string `json:"notify_when"`
-
-	// Params The parameters for the rule.
-	Params map[string]interface{} `json:"params"`
-
-	// Revision The rule revision number.
-	Revision *int `json:"revision,omitempty"`
-
-	// RuleTypeId The identifier for the type of rule. For example, `.es-query`, `.index-threshold`, `logs.alert.document.count`, `monitoring_alert_cluster_health`, `siem.thresholdRule`, or `xpack.ml.anomaly_detection_alert`.
-	RuleTypeId string `json:"rule_type_id"`
-
-	// Running Indicates whether the rule is running.
-	Running *bool `json:"running,omitempty"`
-
-	// Schedule The check interval, which specifies how frequently the rule conditions are checked. The interval is specified in seconds, minutes, hours, or days.
-	Schedule        Schedule `json:"schedule"`
-	ScheduledTaskId *string  `json:"scheduled_task_id,omitempty"`
-
-	// Tags The tags for the rule.
-	Tags Tags `json:"tags"`
-
-	// Throttle Deprecated in 8.13.0. Use the `throttle` property in the action `frequency` object instead. The throttle interval, which defines how often an alert generates repeated actions. NOTE: You cannot specify the throttle interval at both the rule and action level. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
-	// Deprecated:
-	Throttle *Throttle `json:"throttle"`
-
-	// UpdatedAt The date and time that the rule was updated most recently.
-	UpdatedAt string `json:"updated_at"`
-
-	// UpdatedBy The identifier for the user that updated this rule most recently.
-	UpdatedBy *string `json:"updated_by"`
+// PostOutputsResponseObject defines model for post-outputs_response_object.
+type PostOutputsResponseObject struct {
+	Item *OutputCreateRequest `json:"item,omitempty"`
 }
 
 // Runtimefieldmap A map of runtime field definitions by field name.
 type Runtimefieldmap struct {
-	Script struct {
-		// Source Script for the runtime field.
-		Source *string `json:"source,omitempty"`
-	} `json:"script"`
+	Script RuntimefieldmapScript `json:"script"`
 
 	// Type Mapping type of the runtime field.
 	Type string `json:"type"`
 }
 
-// Schedule The check interval, which specifies how frequently the rule conditions are checked. The interval is specified in seconds, minutes, hours, or days.
-type Schedule struct {
-	Interval *string `json:"interval,omitempty"`
+// RuntimefieldmapScript defines model for runtimefieldmap_script.
+type RuntimefieldmapScript struct {
+	// Source Script for the runtime field.
+	Source *string `json:"source,omitempty"`
 }
 
 // SearchResult defines model for search_result.
@@ -4724,9 +3132,6 @@ type Settings struct {
 	// SyncDelay The synch delay to apply to the transform. Default 1m
 	SyncDelay *string `json:"syncDelay,omitempty"`
 }
-
-// Size The number of documents to pass to the configured actions when the threshold condition is met.
-type Size = int
 
 // SloDefinitionResponse defines model for slo_definition_response.
 type SloDefinitionResponse struct {
@@ -4837,7 +3242,10 @@ type SloWithSummaryResponse_Indicator struct {
 }
 
 // Sourcefilters The array of field names you want to filter out in Discover.
-type Sourcefilters = []struct {
+type Sourcefilters = []SourcefiltersItem
+
+// SourcefiltersItem defines model for sourcefilters_item.
+type SourcefiltersItem struct {
 	Value string `json:"value"`
 }
 
@@ -4849,36 +3257,7 @@ type Summary struct {
 }
 
 // SummaryStatus defines model for summary_status.
-type SummaryStatus string
-
-// Tags The tags for the rule.
-type Tags = []string
-
-// Termfield The names of up to four fields that are used for grouping the aggregation. This property is required when `groupBy` is `top`.
-type Termfield struct {
-	union json.RawMessage
-}
-
-// Termfield0 defines model for .
-type Termfield0 = string
-
-// Termfield1 defines model for .
-type Termfield1 = []string
-
-// Termsize This property is required when `groupBy` is `top`. It specifies the number of groups to check against the threshold and therefore limits the number of alerts on high cardinality fields.
-type Termsize = int
-
-// Threshold The threshold value that is used with the `thresholdComparator`. If the `thresholdComparator` is `between` or `notBetween`, you must specify the boundary values.
-type Threshold = []int
-
-// Thresholdcomparator The comparison function for the threshold. For example, "is above", "is above or equals", "is below", "is below or equals", "is between", and "is not between".
-type Thresholdcomparator string
-
-// Throttle Deprecated in 8.13.0. Use the `throttle` property in the action `frequency` object instead. The throttle interval, which defines how often an alert generates repeated actions. NOTE: You cannot specify the throttle interval at both the rule and action level. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
-type Throttle = string
-
-// ThrottleAction The throttle interval, which defines how often an alert generates repeated actions. It is specified in seconds, minutes, hours, or days and is applicable only if `notify_when` is set to `onThrottleInterval`. NOTE: You cannot specify the throttle interval at both the rule and action level. The recommended method is to set it for each action. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
-type ThrottleAction = string
+type SummaryStatus = string
 
 // TimeWindow Defines properties for the SLO time window
 type TimeWindow struct {
@@ -4886,14 +3265,8 @@ type TimeWindow struct {
 	Duration string `json:"duration"`
 
 	// Type Indicates weither the time window is a rolling or a calendar aligned time window.
-	Type TimeWindowType `json:"type"`
+	Type string `json:"type"`
 }
-
-// TimeWindowType Indicates weither the time window is a rolling or a calendar aligned time window.
-type TimeWindowType string
-
-// Timefield The field that is used to calculate the time window.
-type Timefield = string
 
 // Timefieldname The timestamp field name, which you use for time-based data views.
 type Timefieldname = string
@@ -4901,7 +3274,7 @@ type Timefieldname = string
 // TimesliceMetricBasicMetricWithField defines model for timeslice_metric_basic_metric_with_field.
 type TimesliceMetricBasicMetricWithField struct {
 	// Aggregation The aggregation type of the metric.
-	Aggregation TimesliceMetricBasicMetricWithFieldAggregation `json:"aggregation"`
+	Aggregation string `json:"aggregation"`
 
 	// Field The field of the metric.
 	Field string `json:"field"`
@@ -4913,13 +3286,10 @@ type TimesliceMetricBasicMetricWithField struct {
 	Name string `json:"name"`
 }
 
-// TimesliceMetricBasicMetricWithFieldAggregation The aggregation type of the metric.
-type TimesliceMetricBasicMetricWithFieldAggregation string
-
 // TimesliceMetricDocCountMetric defines model for timeslice_metric_doc_count_metric.
 type TimesliceMetricDocCountMetric struct {
 	// Aggregation The aggregation type of the metric. Only valid option is "doc_count"
-	Aggregation TimesliceMetricDocCountMetricAggregation `json:"aggregation"`
+	Aggregation string `json:"aggregation"`
 
 	// Filter The filter to apply to the metric.
 	Filter *string `json:"filter,omitempty"`
@@ -4928,13 +3298,10 @@ type TimesliceMetricDocCountMetric struct {
 	Name string `json:"name"`
 }
 
-// TimesliceMetricDocCountMetricAggregation The aggregation type of the metric. Only valid option is "doc_count"
-type TimesliceMetricDocCountMetricAggregation string
-
 // TimesliceMetricPercentileMetric defines model for timeslice_metric_percentile_metric.
 type TimesliceMetricPercentileMetric struct {
 	// Aggregation The aggregation type of the metric. Only valid option is "percentile"
-	Aggregation TimesliceMetricPercentileMetricAggregation `json:"aggregation"`
+	Aggregation string `json:"aggregation"`
 
 	// Field The field of the metric.
 	Field string `json:"field"`
@@ -4948,15 +3315,6 @@ type TimesliceMetricPercentileMetric struct {
 	// Percentile The percentile value.
 	Percentile float32 `json:"percentile"`
 }
-
-// TimesliceMetricPercentileMetricAggregation The aggregation type of the metric. Only valid option is "percentile"
-type TimesliceMetricPercentileMetricAggregation string
-
-// Timewindowsize The size of the time window (in `timeWindowUnit` units), which determines how far back to search for documents. Generally it should be a value higher than the rule check interval to avoid gaps in detection.
-type Timewindowsize = int
-
-// Timewindowunit The type of units for the time window: seconds, minutes, hours, or days.
-type Timewindowunit string
 
 // Title Comma-separated list of data streams, indices, and aliases that you want to search. Supports wildcards (`*`).
 type Title = string
@@ -4982,65 +3340,646 @@ type TypemetaResponse struct {
 	Params map[string]interface{} `json:"params,omitempty"`
 }
 
+// UpdateAgentPolicyResponseObject defines model for update-agent-policy_response_object.
+type UpdateAgentPolicyResponseObject struct {
+	Item AgentPolicy `json:"item"`
+}
+
+// UpdateFleetServerHostsRequest defines model for update-fleet-server-hosts_request.
+type UpdateFleetServerHostsRequest struct {
+	HostUrls   []string `json:"host_urls,omitempty"`
+	IsDefault  *bool    `json:"is_default,omitempty"`
+	IsInternal *bool    `json:"is_internal,omitempty"`
+	Name       *string  `json:"name,omitempty"`
+
+	// ProxyId The ID of the proxy to use for this fleet server host. See the proxies API for more information.
+	ProxyId *string `json:"proxy_id"`
+}
+
+// UpdateFleetServerHostsResponseObject defines model for update-fleet-server-hosts_response_object.
+type UpdateFleetServerHostsResponseObject struct {
+	Item FleetServerHost `json:"item"`
+}
+
+// UpdateOutputResponseObject defines model for update-output_response_object.
+type UpdateOutputResponseObject struct {
+	Item *OutputUpdateRequest `json:"item,omitempty"`
+}
+
+// UpdatePackagePolicyResponseObject defines model for update-package-policy_response_object.
+type UpdatePackagePolicyResponseObject struct {
+	Item   PackagePolicy `json:"item"`
+	Sucess bool          `json:"sucess"`
+}
+
+// UpdatePackageRequest defines model for update-package_request.
+type UpdatePackageRequest struct {
+	KeepPoliciesUpToDate *bool `json:"keepPoliciesUpToDate,omitempty"`
+}
+
+// UpdatePackageResponseObject defines model for update-package_response_object.
+type UpdatePackageResponseObject struct {
+	Items []UpdatePackageResponseObjectItemItem `json:"items"`
+}
+
+// UpdatePackageResponseObjectItemItem defines model for update-package_response_object_item_item.
+type UpdatePackageResponseObjectItemItem struct {
+	Id   string                                   `json:"id"`
+	Type UpdatePackageResponseObjectItemItem_Type `json:"type"`
+}
+
+// UpdatePackageResponseObjectItemItem_Type defines model for UpdatePackageResponseObjectItemItem.Type.
+type UpdatePackageResponseObjectItemItem_Type struct {
+	union json.RawMessage
+}
+
+// UpdateConnectorRequest defines model for update_connector_request.
+type UpdateConnectorRequest struct {
+	Config map[string]interface{} `json:"config,omitempty"`
+
+	// Name The display name for the connector.
+	Name    string                 `json:"name"`
+	Secrets map[string]interface{} `json:"secrets,omitempty"`
+}
+
+// UpdateConnectorResponseObject defines model for update_connector_response_object.
+type UpdateConnectorResponseObject struct {
+	Config map[string]interface{} `json:"config,omitempty"`
+
+	// ConnectorTypeId The connector type identifier.
+	ConnectorTypeId string `json:"connector_type_id"`
+
+	// Id The identifier for the connector.
+	Id string `json:"id"`
+
+	// IsDeprecated Indicates whether the connector is deprecated.
+	IsDeprecated bool `json:"is_deprecated"`
+
+	// IsMissingSecrets Indicates whether the connector is missing secrets.
+	IsMissingSecrets *bool `json:"is_missing_secrets,omitempty"`
+
+	// IsPreconfigured Indicates whether the connector is preconfigured. If true, the `config` and `is_missing_secrets` properties are omitted from the response.
+	IsPreconfigured bool `json:"is_preconfigured"`
+
+	// IsSystemAction Indicates whether the connector is used for system actions.
+	IsSystemAction bool `json:"is_system_action"`
+
+	// Name  The name of the rule.
+	Name string `json:"name"`
+}
+
 // UpdateDataViewRequestObject defines model for update_data_view_request_object.
 type UpdateDataViewRequestObject struct {
 	// DataView The data view properties you want to update. Only the specified properties are updated in the data view. Unspecified fields stay as they are persisted.
-	DataView struct {
-		// AllowNoIndex Allows the data view saved object to exist before the data is available.
-		AllowNoIndex *Allownoindex `json:"allowNoIndex,omitempty"`
-
-		// FieldFormats A map of field formats by field name.
-		FieldFormats    Fieldformats               `json:"fieldFormats,omitempty"`
-		Fields          map[string]interface{}     `json:"fields,omitempty"`
-		Name            *string                    `json:"name,omitempty"`
-		RuntimeFieldMap map[string]Runtimefieldmap `json:"runtimeFieldMap,omitempty"`
-
-		// SourceFilters The array of field names you want to filter out in Discover.
-		SourceFilters Sourcefilters `json:"sourceFilters,omitempty"`
-
-		// TimeFieldName The timestamp field name, which you use for time-based data views.
-		TimeFieldName *Timefieldname `json:"timeFieldName,omitempty"`
-
-		// Title Comma-separated list of data streams, indices, and aliases that you want to search. Supports wildcards (`*`).
-		Title *Title `json:"title,omitempty"`
-
-		// Type When set to `rollup`, identifies the rollup data views.
-		Type *Type `json:"type,omitempty"`
-
-		// TypeMeta When you use rollup indices, contains the field list for the rollup data view API endpoints.
-		TypeMeta *Typemeta `json:"typeMeta,omitempty"`
-	} `json:"data_view"`
+	DataView UpdateDataViewRequestObjectDataView `json:"data_view"`
 
 	// RefreshFields Reloads the data view fields after the data view is updated.
 	RefreshFields *bool `json:"refresh_fields,omitempty"`
 }
 
-// UpdateRuleRequest The update rule API request body varies depending on the type of rule and actions.
+// UpdateDataViewRequestObjectDataView The data view properties you want to update. Only the specified properties are updated in the data view. Unspecified fields stay as they are persisted.
+type UpdateDataViewRequestObjectDataView struct {
+	// AllowNoIndex Allows the data view saved object to exist before the data is available.
+	AllowNoIndex *Allownoindex `json:"allowNoIndex,omitempty"`
+
+	// FieldFormats A map of field formats by field name.
+	FieldFormats    Fieldformats               `json:"fieldFormats,omitempty"`
+	Fields          map[string]interface{}     `json:"fields,omitempty"`
+	Name            *string                    `json:"name,omitempty"`
+	RuntimeFieldMap map[string]Runtimefieldmap `json:"runtimeFieldMap,omitempty"`
+
+	// SourceFilters The array of field names you want to filter out in Discover.
+	SourceFilters Sourcefilters `json:"sourceFilters,omitempty"`
+
+	// TimeFieldName The timestamp field name, which you use for time-based data views.
+	TimeFieldName *Timefieldname `json:"timeFieldName,omitempty"`
+
+	// Title Comma-separated list of data streams, indices, and aliases that you want to search. Supports wildcards (`*`).
+	Title *Title `json:"title,omitempty"`
+
+	// Type When set to `rollup`, identifies the rollup data views.
+	Type *Type `json:"type,omitempty"`
+
+	// TypeMeta When you use rollup indices, contains the field list for the rollup data view API endpoints.
+	TypeMeta *Typemeta `json:"typeMeta,omitempty"`
+}
+
+// UpdateRuleRequest defines model for update_rule_request.
 type UpdateRuleRequest struct {
-	Actions Actions `json:"actions"`
+	Actions []UpdateRuleRequestActionsItem `json:"actions,omitempty"`
 
 	// AlertDelay Indicates that an alert occurs only when the specified number of consecutive runs met the rule conditions.
-	AlertDelay *AlertDelay `json:"alert_delay,omitempty"`
+	AlertDelay *UpdateRuleRequestAlertDelay `json:"alert_delay,omitempty"`
 
-	// Name The name of the rule.
+	// Name The name of the rule. While this name does not have to be unique, a distinctive name can help you identify a rule.
 	Name string `json:"name"`
 
-	// NotifyWhen Deprecated in 8.13.0. Use the `notify_when` property in the action `frequency` object instead. Indicates how often alerts generate actions. NOTE: You cannot specify `notify_when` at both the rule and action level. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
-	// Deprecated:
-	NotifyWhen *NotifyWhen `json:"notify_when,omitempty"`
+	// NotifyWhen Indicates how often alerts generate actions. Valid values include: `onActionGroupChange`: Actions run when the alert status changes; `onActiveAlert`: Actions run when the alert becomes active and at each check interval while the rule conditions are met; `onThrottleInterval`: Actions run when the alert becomes active and at the interval specified in the throttle property while the rule conditions are met. NOTE: You cannot specify `notify_when` at both the rule and action level. The recommended method is to set it for each action. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
+	NotifyWhen *string `json:"notify_when"`
+
+	// Params The parameters for the rule.
+	Params   map[string]interface{}    `json:"params,omitempty"`
+	Schedule UpdateRuleRequestSchedule `json:"schedule"`
+	Tags     []string                  `json:"tags,omitempty"`
+
+	// Throttle Use the `throttle` property in the action `frequency` object instead. The throttle interval, which defines how often an alert generates repeated actions. NOTE: You cannot specify the throttle interval at both the rule and action level. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
+	Throttle *string `json:"throttle"`
+}
+
+// UpdateRuleRequestActionsItem An action that runs under defined conditions.
+type UpdateRuleRequestActionsItem struct {
+	AlertsFilter *UpdateRuleRequestActionsItemAlertsFilter `json:"alerts_filter,omitempty"`
+	Frequency    *UpdateRuleRequestActionsItemFrequency    `json:"frequency,omitempty"`
+
+	// Group The group name, which affects when the action runs (for example, when the threshold is met or when the alert is recovered). Each rule type has a list of valid action group names. If you don't need to group actions, set to `default`.
+	Group *string `json:"group,omitempty"`
+
+	// Id The identifier for the connector saved object.
+	Id string `json:"id"`
+
+	// Params The parameters for the action, which are sent to the connector. The `params` are handled as Mustache templates and passed a default set of context.
+	Params map[string]interface{} `json:"params,omitempty"`
+
+	// UseAlertDataForTemplate Indicates whether to use alert data as a template.
+	UseAlertDataForTemplate *bool `json:"use_alert_data_for_template,omitempty"`
+
+	// Uuid A universally unique identifier (UUID) for the action.
+	Uuid *string `json:"uuid,omitempty"`
+}
+
+// UpdateRuleRequestActionsItemAlertsFilter defines model for update_rule_request_actions_item_alerts_filter.
+type UpdateRuleRequestActionsItemAlertsFilter struct {
+	Query *UpdateRuleRequestActionsItemAlertsFilterQuery `json:"query,omitempty"`
+
+	// Timeframe Defines a period that limits whether the action runs.
+	Timeframe *UpdateRuleRequestActionsItemAlertsFilterTimeframe `json:"timeframe,omitempty"`
+}
+
+// UpdateRuleRequestActionsItemAlertsFilterQuery defines model for update_rule_request_actions_item_alerts_filter_query.
+type UpdateRuleRequestActionsItemAlertsFilterQuery struct {
+	// Dsl A filter written in Elasticsearch Query Domain Specific Language (DSL).
+	Dsl *string `json:"dsl,omitempty"`
+
+	// Filters A filter written in Elasticsearch Query Domain Specific Language (DSL) as defined in the `kbn-es-query` package.
+	Filters []UpdateRuleRequestActionsItemAlertsFilterQueryFiltersItem `json:"filters"`
+
+	// Kql A filter written in Kibana Query Language (KQL).
+	Kql string `json:"kql"`
+}
+
+// UpdateRuleRequestActionsItemAlertsFilterQueryFiltersItem defines model for update_rule_request_actions_item_alerts_filter_query_filters_item.
+type UpdateRuleRequestActionsItemAlertsFilterQueryFiltersItem struct {
+	State *UpdateRuleRequestActionsItemAlertsFilterQueryFiltersItemState `json:"$state,omitempty"`
+	Meta  map[string]interface{}                                         `json:"meta"`
+	Query map[string]interface{}                                         `json:"query,omitempty"`
+}
+
+// UpdateRuleRequestActionsItemAlertsFilterQueryFiltersItemState defines model for update_rule_request_actions_item_alerts_filter_query_filters_item_$state.
+type UpdateRuleRequestActionsItemAlertsFilterQueryFiltersItemState struct {
+	// Store A filter can be either specific to an application context or applied globally.
+	Store string `json:"store"`
+}
+
+// UpdateRuleRequestActionsItemAlertsFilterTimeframe Defines a period that limits whether the action runs.
+type UpdateRuleRequestActionsItemAlertsFilterTimeframe struct {
+	// Days Defines the days of the week that the action can run, represented as an array of numbers. For example, `1` represents Monday. An empty array is equivalent to specifying all the days of the week.
+	Days []int `json:"days"`
+
+	// Hours Defines the range of time in a day that the action can run. If the `start` value is `00:00` and the `end` value is `24:00`, actions be generated all day.
+	Hours UpdateRuleRequestActionsItemAlertsFilterTimeframeHours `json:"hours"`
+
+	// Timezone The ISO time zone for the `hours` values. Values such as `UTC` and `UTC+1` also work but lack built-in daylight savings time support and are not recommended.
+	Timezone string `json:"timezone"`
+}
+
+// UpdateRuleRequestActionsItemAlertsFilterTimeframeHours Defines the range of time in a day that the action can run. If the `start` value is `00:00` and the `end` value is `24:00`, actions be generated all day.
+type UpdateRuleRequestActionsItemAlertsFilterTimeframeHours struct {
+	// End The end of the time frame in 24-hour notation (`hh:mm`).
+	End string `json:"end"`
+
+	// Start The start of the time frame in 24-hour notation (`hh:mm`).
+	Start string `json:"start"`
+}
+
+// UpdateRuleRequestActionsItemFrequency defines model for update_rule_request_actions_item_frequency.
+type UpdateRuleRequestActionsItemFrequency struct {
+	// NotifyWhen Indicates how often alerts generate actions. Valid values include: `onActionGroupChange`: Actions run when the alert status changes; `onActiveAlert`: Actions run when the alert becomes active and at each check interval while the rule conditions are met; `onThrottleInterval`: Actions run when the alert becomes active and at the interval specified in the throttle property while the rule conditions are met. NOTE: You cannot specify `notify_when` at both the rule and action level. The recommended method is to set it for each action. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
+	NotifyWhen string `json:"notify_when"`
+
+	// Summary Indicates whether the action is a summary.
+	Summary bool `json:"summary"`
+
+	// Throttle The throttle interval, which defines how often an alert generates repeated actions. It is specified in seconds, minutes, hours, or days and is applicable only if `notify_when` is set to `onThrottleInterval`. NOTE: You cannot specify the throttle interval at both the rule and action level. The recommended method is to set it for each action. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
+	Throttle *string `json:"throttle"`
+}
+
+// UpdateRuleRequestAlertDelay Indicates that an alert occurs only when the specified number of consecutive runs met the rule conditions.
+type UpdateRuleRequestAlertDelay struct {
+	// Active The number of consecutive runs that must meet the rule conditions.
+	Active float32 `json:"active"`
+}
+
+// UpdateRuleRequestSchedule defines model for update_rule_request_schedule.
+type UpdateRuleRequestSchedule struct {
+	// Interval The interval is specified in seconds, minutes, hours, or days.
+	Interval string `json:"interval"`
+}
+
+// UpdateRuleResponseObject defines model for update_rule_response_object.
+type UpdateRuleResponseObject struct {
+	Actions       []UpdateRuleResponseObjectActionsItem `json:"actions"`
+	ActiveSnoozes []string                              `json:"active_snoozes,omitempty"`
+
+	// AlertDelay Indicates that an alert occurs only when the specified number of consecutive runs met the rule conditions.
+	AlertDelay *UpdateRuleResponseObjectAlertDelay `json:"alert_delay,omitempty"`
+
+	// ApiKeyCreatedByUser Indicates whether the API key that is associated with the rule was created by the user.
+	ApiKeyCreatedByUser *bool `json:"api_key_created_by_user"`
+
+	// ApiKeyOwner The owner of the API key that is associated with the rule and used to run background tasks.
+	ApiKeyOwner *string `json:"api_key_owner"`
+
+	// Consumer The name of the application or feature that owns the rule. For example: `alerts`, `apm`, `discover`, `infrastructure`, `logs`, `metrics`, `ml`, `monitoring`, `securitySolution`, `siem`, `stackAlerts`, or `uptime`.
+	Consumer string `json:"consumer"`
+
+	// CreatedAt The date and time that the rule was created.
+	CreatedAt string `json:"created_at"`
+
+	// CreatedBy The identifier for the user that created the rule.
+	CreatedBy *string `json:"created_by"`
+
+	// Enabled Indicates whether you want to run the rule on an interval basis after it is created.
+	Enabled         bool                                    `json:"enabled"`
+	ExecutionStatus UpdateRuleResponseObjectExecutionStatus `json:"execution_status"`
+
+	// Id The identifier for the rule.
+	Id string `json:"id"`
+
+	// IsSnoozedUntil The date when the rule will no longer be snoozed.
+	IsSnoozedUntil *string                          `json:"is_snoozed_until"`
+	LastRun        *UpdateRuleResponseObjectLastRun `json:"last_run"`
+	MappedParams   map[string]interface{}           `json:"mapped_params,omitempty"`
+
+	// Monitoring Monitoring details of the rule.
+	Monitoring *UpdateRuleResponseObjectMonitoring `json:"monitoring,omitempty"`
+
+	// MuteAll Indicates whether all alerts are muted.
+	MuteAll       bool     `json:"mute_all"`
+	MutedAlertIds []string `json:"muted_alert_ids"`
+
+	// Name  The name of the rule.
+	Name string `json:"name"`
+
+	// NextRun Date and time of the next run of the rule.
+	NextRun *string `json:"next_run"`
+
+	// NotifyWhen Indicates how often alerts generate actions. Valid values include: `onActionGroupChange`: Actions run when the alert status changes; `onActiveAlert`: Actions run when the alert becomes active and at each check interval while the rule conditions are met; `onThrottleInterval`: Actions run when the alert becomes active and at the interval specified in the throttle property while the rule conditions are met. NOTE: You cannot specify `notify_when` at both the rule and action level. The recommended method is to set it for each action. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
+	NotifyWhen *string `json:"notify_when"`
 
 	// Params The parameters for the rule.
 	Params map[string]interface{} `json:"params"`
 
-	// Schedule The check interval, which specifies how frequently the rule conditions are checked. The interval is specified in seconds, minutes, hours, or days.
-	Schedule Schedule `json:"schedule"`
+	// Revision The rule revision number.
+	Revision float32 `json:"revision"`
 
-	// Tags The tags for the rule.
-	Tags Tags `json:"tags,omitempty"`
+	// RuleTypeId The rule type identifier.
+	RuleTypeId string `json:"rule_type_id"`
+
+	// Running Indicates whether the rule is running.
+	Running  *bool                            `json:"running"`
+	Schedule UpdateRuleResponseObjectSchedule `json:"schedule"`
+
+	// ScheduledTaskId Identifier of the scheduled task.
+	ScheduledTaskId *string                                      `json:"scheduled_task_id,omitempty"`
+	SnoozeSchedule  []UpdateRuleResponseObjectSnoozeScheduleItem `json:"snooze_schedule,omitempty"`
+	Tags            []string                                     `json:"tags"`
 
 	// Throttle Deprecated in 8.13.0. Use the `throttle` property in the action `frequency` object instead. The throttle interval, which defines how often an alert generates repeated actions. NOTE: You cannot specify the throttle interval at both the rule and action level. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
 	// Deprecated:
-	Throttle *Throttle `json:"throttle"`
+	Throttle *string `json:"throttle"`
+
+	// UpdatedAt The date and time that the rule was updated most recently.
+	UpdatedAt string `json:"updated_at"`
+
+	// UpdatedBy The identifier for the user that updated this rule most recently.
+	UpdatedBy *string `json:"updated_by"`
+
+	// ViewInAppRelativeUrl Relative URL to view rule in the app.
+	ViewInAppRelativeUrl *string `json:"view_in_app_relative_url"`
+}
+
+// UpdateRuleResponseObjectActionsItem defines model for update_rule_response_object_actions_item.
+type UpdateRuleResponseObjectActionsItem struct {
+	// AlertsFilter Defines a period that limits whether the action runs.
+	AlertsFilter *UpdateRuleResponseObjectActionsItemAlertsFilter `json:"alerts_filter,omitempty"`
+
+	// ConnectorTypeId The type of connector. This property appears in responses but cannot be set in requests.
+	ConnectorTypeId string                                        `json:"connector_type_id"`
+	Frequency       *UpdateRuleResponseObjectActionsItemFrequency `json:"frequency,omitempty"`
+
+	// Group The group name, which affects when the action runs (for example, when the threshold is met or when the alert is recovered). Each rule type has a list of valid action group names. If you don't need to group actions, set to `default`.
+	Group *string `json:"group,omitempty"`
+
+	// Id The identifier for the connector saved object.
+	Id string `json:"id"`
+
+	// Params The parameters for the action, which are sent to the connector. The `params` are handled as Mustache templates and passed a default set of context.
+	Params map[string]interface{} `json:"params"`
+
+	// UseAlertDataForTemplate Indicates whether to use alert data as a template.
+	UseAlertDataForTemplate *bool `json:"use_alert_data_for_template,omitempty"`
+
+	// Uuid A universally unique identifier (UUID) for the action.
+	Uuid *string `json:"uuid,omitempty"`
+}
+
+// UpdateRuleResponseObjectActionsItemAlertsFilter Defines a period that limits whether the action runs.
+type UpdateRuleResponseObjectActionsItemAlertsFilter struct {
+	Query     *UpdateRuleResponseObjectActionsItemAlertsFilterQuery     `json:"query,omitempty"`
+	Timeframe *UpdateRuleResponseObjectActionsItemAlertsFilterTimeframe `json:"timeframe,omitempty"`
+}
+
+// UpdateRuleResponseObjectActionsItemAlertsFilterQuery defines model for update_rule_response_object_actions_item_alerts_filter_query.
+type UpdateRuleResponseObjectActionsItemAlertsFilterQuery struct {
+	// Dsl A filter written in Elasticsearch Query Domain Specific Language (DSL).
+	Dsl *string `json:"dsl,omitempty"`
+
+	// Filters A filter written in Elasticsearch Query Domain Specific Language (DSL) as defined in the `kbn-es-query` package.
+	Filters []UpdateRuleResponseObjectActionsItemAlertsFilterQueryFiltersItem `json:"filters"`
+
+	// Kql A filter written in Kibana Query Language (KQL).
+	Kql string `json:"kql"`
+}
+
+// UpdateRuleResponseObjectActionsItemAlertsFilterQueryFiltersItem defines model for update_rule_response_object_actions_item_alerts_filter_query_filters_item.
+type UpdateRuleResponseObjectActionsItemAlertsFilterQueryFiltersItem struct {
+	State *UpdateRuleResponseObjectActionsItemAlertsFilterQueryFiltersItemState `json:"$state,omitempty"`
+	Meta  map[string]interface{}                                                `json:"meta"`
+	Query map[string]interface{}                                                `json:"query,omitempty"`
+}
+
+// UpdateRuleResponseObjectActionsItemAlertsFilterQueryFiltersItemState defines model for update_rule_response_object_actions_item_alerts_filter_query_filters_item_$state.
+type UpdateRuleResponseObjectActionsItemAlertsFilterQueryFiltersItemState struct {
+	// Store A filter can be either specific to an application context or applied globally.
+	Store string `json:"store"`
+}
+
+// UpdateRuleResponseObjectActionsItemAlertsFilterTimeframe defines model for update_rule_response_object_actions_item_alerts_filter_timeframe.
+type UpdateRuleResponseObjectActionsItemAlertsFilterTimeframe struct {
+	// Days Defines the days of the week that the action can run, represented as an array of numbers. For example, `1` represents Monday. An empty array is equivalent to specifying all the days of the week.
+	Days  []int                                                         `json:"days"`
+	Hours UpdateRuleResponseObjectActionsItemAlertsFilterTimeframeHours `json:"hours"`
+
+	// Timezone The ISO time zone for the `hours` values. Values such as `UTC` and `UTC+1` also work but lack built-in daylight savings time support and are not recommended.
+	Timezone string `json:"timezone"`
+}
+
+// UpdateRuleResponseObjectActionsItemAlertsFilterTimeframeHours defines model for update_rule_response_object_actions_item_alerts_filter_timeframe_hours.
+type UpdateRuleResponseObjectActionsItemAlertsFilterTimeframeHours struct {
+	// End The end of the time frame in 24-hour notation (`hh:mm`).
+	End string `json:"end"`
+
+	// Start The start of the time frame in 24-hour notation (`hh:mm`).
+	Start string `json:"start"`
+}
+
+// UpdateRuleResponseObjectActionsItemFrequency defines model for update_rule_response_object_actions_item_frequency.
+type UpdateRuleResponseObjectActionsItemFrequency struct {
+	// NotifyWhen Indicates how often alerts generate actions. Valid values include: `onActionGroupChange`: Actions run when the alert status changes; `onActiveAlert`: Actions run when the alert becomes active and at each check interval while the rule conditions are met; `onThrottleInterval`: Actions run when the alert becomes active and at the interval specified in the throttle property while the rule conditions are met. NOTE: You cannot specify `notify_when` at both the rule and action level. The recommended method is to set it for each action. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
+	NotifyWhen string `json:"notify_when"`
+
+	// Summary Indicates whether the action is a summary.
+	Summary bool `json:"summary"`
+
+	// Throttle The throttle interval, which defines how often an alert generates repeated actions. It is specified in seconds, minutes, hours, or days and is applicable only if 'notify_when' is set to 'onThrottleInterval'. NOTE: You cannot specify the throttle interval at both the rule and action level. The recommended method is to set it for each action. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
+	Throttle *string `json:"throttle"`
+}
+
+// UpdateRuleResponseObjectAlertDelay Indicates that an alert occurs only when the specified number of consecutive runs met the rule conditions.
+type UpdateRuleResponseObjectAlertDelay struct {
+	// Active The number of consecutive runs that must meet the rule conditions.
+	Active float32 `json:"active"`
+}
+
+// UpdateRuleResponseObjectExecutionStatus defines model for update_rule_response_object_execution_status.
+type UpdateRuleResponseObjectExecutionStatus struct {
+	Error *UpdateRuleResponseObjectExecutionStatusError `json:"error,omitempty"`
+
+	// LastDuration Duration of last execution of the rule.
+	LastDuration *float32 `json:"last_duration,omitempty"`
+
+	// LastExecutionDate The date and time when rule was executed last.
+	LastExecutionDate string `json:"last_execution_date"`
+
+	// Status Status of rule execution.
+	Status  string                                          `json:"status"`
+	Warning *UpdateRuleResponseObjectExecutionStatusWarning `json:"warning,omitempty"`
+}
+
+// UpdateRuleResponseObjectExecutionStatusError defines model for update_rule_response_object_execution_status_error.
+type UpdateRuleResponseObjectExecutionStatusError struct {
+	// Message Error message.
+	Message string `json:"message"`
+
+	// Reason Reason for error.
+	Reason string `json:"reason"`
+}
+
+// UpdateRuleResponseObjectExecutionStatusWarning defines model for update_rule_response_object_execution_status_warning.
+type UpdateRuleResponseObjectExecutionStatusWarning struct {
+	// Message Warning message.
+	Message string `json:"message"`
+
+	// Reason Reason for warning.
+	Reason string `json:"reason"`
+}
+
+// UpdateRuleResponseObjectLastRun defines model for update_rule_response_object_last_run.
+type UpdateRuleResponseObjectLastRun struct {
+	AlertsCount UpdateRuleResponseObjectLastRunAlertsCount `json:"alerts_count"`
+
+	// Outcome Outcome of last run of the rule. Value could be succeeded, warning or failed.
+	Outcome    string   `json:"outcome"`
+	OutcomeMsg []string `json:"outcome_msg"`
+
+	// OutcomeOrder Order of the outcome.
+	OutcomeOrder *float32 `json:"outcome_order,omitempty"`
+
+	// Warning Warning of last rule execution.
+	Warning *string `json:"warning"`
+}
+
+// UpdateRuleResponseObjectLastRunAlertsCount defines model for update_rule_response_object_last_run_alerts_count.
+type UpdateRuleResponseObjectLastRunAlertsCount struct {
+	// Active Number of active alerts during last run.
+	Active *float32 `json:"active"`
+
+	// Ignored Number of ignored alerts during last run.
+	Ignored *float32 `json:"ignored"`
+
+	// New Number of new alerts during last run.
+	New *float32 `json:"new"`
+
+	// Recovered Number of recovered alerts during last run.
+	Recovered *float32 `json:"recovered"`
+}
+
+// UpdateRuleResponseObjectMonitoring Monitoring details of the rule.
+type UpdateRuleResponseObjectMonitoring struct {
+	// Run Rule run details.
+	Run UpdateRuleResponseObjectMonitoringRun `json:"run"`
+}
+
+// UpdateRuleResponseObjectMonitoringRun Rule run details.
+type UpdateRuleResponseObjectMonitoringRun struct {
+	// CalculatedMetrics Calculation of different percentiles and success ratio.
+	CalculatedMetrics UpdateRuleResponseObjectMonitoringRunCalculatedMetrics `json:"calculated_metrics"`
+
+	// History History of the rule run.
+	History []UpdateRuleResponseObjectMonitoringRunHistoryItem `json:"history"`
+	LastRun UpdateRuleResponseObjectMonitoringRunLastRun       `json:"last_run"`
+}
+
+// UpdateRuleResponseObjectMonitoringRunCalculatedMetrics Calculation of different percentiles and success ratio.
+type UpdateRuleResponseObjectMonitoringRunCalculatedMetrics struct {
+	P50          *float32 `json:"p50,omitempty"`
+	P95          *float32 `json:"p95,omitempty"`
+	P99          *float32 `json:"p99,omitempty"`
+	SuccessRatio float32  `json:"success_ratio"`
+}
+
+// UpdateRuleResponseObjectMonitoringRunHistoryItem defines model for update_rule_response_object_monitoring_run_history_item.
+type UpdateRuleResponseObjectMonitoringRunHistoryItem struct {
+	// Duration Duration of the rule run.
+	Duration *float32                                                 `json:"duration,omitempty"`
+	Outcome  *UpdateRuleResponseObjectMonitoringRunHistoryItemOutcome `json:"outcome,omitempty"`
+
+	// Success Indicates whether the rule run was successful.
+	Success bool `json:"success"`
+
+	// Timestamp Time of rule run.
+	Timestamp float32 `json:"timestamp"`
+}
+
+// UpdateRuleResponseObjectMonitoringRunHistoryItemOutcome defines model for update_rule_response_object_monitoring_run_history_item_outcome.
+type UpdateRuleResponseObjectMonitoringRunHistoryItemOutcome struct {
+	AlertsCount UpdateRuleResponseObjectMonitoringRunHistoryItemOutcomeAlertsCount `json:"alerts_count"`
+
+	// Outcome Outcome of last run of the rule. Value could be succeeded, warning or failed.
+	Outcome    string   `json:"outcome"`
+	OutcomeMsg []string `json:"outcome_msg"`
+
+	// OutcomeOrder Order of the outcome.
+	OutcomeOrder *float32 `json:"outcome_order,omitempty"`
+
+	// Warning Warning of last rule execution.
+	Warning *string `json:"warning"`
+}
+
+// UpdateRuleResponseObjectMonitoringRunHistoryItemOutcomeAlertsCount defines model for update_rule_response_object_monitoring_run_history_item_outcome_alerts_count.
+type UpdateRuleResponseObjectMonitoringRunHistoryItemOutcomeAlertsCount struct {
+	// Active Number of active alerts during last run.
+	Active *float32 `json:"active"`
+
+	// Ignored Number of ignored alerts during last run.
+	Ignored *float32 `json:"ignored"`
+
+	// New Number of new alerts during last run.
+	New *float32 `json:"new"`
+
+	// Recovered Number of recovered alerts during last run.
+	Recovered *float32 `json:"recovered"`
+}
+
+// UpdateRuleResponseObjectMonitoringRunLastRun defines model for update_rule_response_object_monitoring_run_last_run.
+type UpdateRuleResponseObjectMonitoringRunLastRun struct {
+	Metrics UpdateRuleResponseObjectMonitoringRunLastRunMetrics `json:"metrics"`
+
+	// Timestamp Time of the most recent rule run.
+	Timestamp string `json:"timestamp"`
+}
+
+// UpdateRuleResponseObjectMonitoringRunLastRunMetrics defines model for update_rule_response_object_monitoring_run_last_run_metrics.
+type UpdateRuleResponseObjectMonitoringRunLastRunMetrics struct {
+	// Duration Duration of most recent rule run.
+	Duration *float32 `json:"duration,omitempty"`
+
+	// GapDurationS Duration in seconds of rule run gap.
+	GapDurationS *float32 `json:"gap_duration_s"`
+
+	// TotalAlertsCreated Total number of alerts created during last rule run.
+	TotalAlertsCreated *float32 `json:"total_alerts_created"`
+
+	// TotalAlertsDetected Total number of alerts detected during last rule run.
+	TotalAlertsDetected *float32 `json:"total_alerts_detected"`
+
+	// TotalIndexingDurationMs Total time spent indexing documents during last rule run in milliseconds.
+	TotalIndexingDurationMs *float32 `json:"total_indexing_duration_ms"`
+
+	// TotalSearchDurationMs Total time spent performing Elasticsearch searches as measured by Kibana; includes network latency and time spent serializing or deserializing the request and response.
+	TotalSearchDurationMs *float32 `json:"total_search_duration_ms"`
+}
+
+// UpdateRuleResponseObjectSchedule defines model for update_rule_response_object_schedule.
+type UpdateRuleResponseObjectSchedule struct {
+	// Interval The interval is specified in seconds, minutes, hours, or days.
+	Interval string `json:"interval"`
+}
+
+// UpdateRuleResponseObjectSnoozeScheduleItem defines model for update_rule_response_object_snooze_schedule_item.
+type UpdateRuleResponseObjectSnoozeScheduleItem struct {
+	// Duration Duration of the rule snooze schedule.
+	Duration float32 `json:"duration"`
+
+	// Id Identifier of the rule snooze schedule.
+	Id              *string                                         `json:"id,omitempty"`
+	RRule           UpdateRuleResponseObjectSnoozeScheduleItemRRule `json:"rRule"`
+	SkipRecurrences []string                                        `json:"skipRecurrences,omitempty"`
+}
+
+// UpdateRuleResponseObjectSnoozeScheduleItemRRule defines model for update_rule_response_object_snooze_schedule_item_rRule.
+type UpdateRuleResponseObjectSnoozeScheduleItemRRule struct {
+	Byhour     []float32                                                        `json:"byhour,omitempty"`
+	Byminute   []float32                                                        `json:"byminute,omitempty"`
+	Bymonth    []float32                                                        `json:"bymonth,omitempty"`
+	Bymonthday []float32                                                        `json:"bymonthday,omitempty"`
+	Bysecond   []float32                                                        `json:"bysecond,omitempty"`
+	Bysetpos   []float32                                                        `json:"bysetpos,omitempty"`
+	Byweekday  []UpdateRuleResponseObjectSnoozeScheduleItemRRule_Byweekday_Item `json:"byweekday,omitempty"`
+	Byweekno   []float32                                                        `json:"byweekno,omitempty"`
+	Byyearday  []float32                                                        `json:"byyearday,omitempty"`
+
+	// Count Number of times the rule should recur until it stops.
+	Count *float32 `json:"count,omitempty"`
+
+	// Dtstart Rule start date in Coordinated Universal Time (UTC).
+	Dtstart string `json:"dtstart"`
+
+	// Freq Indicates frequency of the rule. Options are YEARLY, MONTHLY, WEEKLY, DAILY.
+	Freq *int `json:"freq,omitempty"`
+
+	// Interval Indicates the interval of frequency. For example, 1 and YEARLY is every 1 year, 2 and WEEKLY is every 2 weeks.
+	Interval *float32 `json:"interval,omitempty"`
+
+	// Tzid Indicates timezone abbreviation.
+	Tzid string `json:"tzid"`
+
+	// Until Recur the rule until this date.
+	Until *string `json:"until,omitempty"`
+
+	// Wkst Indicates the start of week, defaults to Monday.
+	Wkst *string `json:"wkst,omitempty"`
+}
+
+// UpdateRuleResponseObjectSnoozeScheduleItemRRuleByweekday0 defines model for .
+type UpdateRuleResponseObjectSnoozeScheduleItemRRuleByweekday0 = string
+
+// UpdateRuleResponseObjectSnoozeScheduleItemRRuleByweekday1 defines model for .
+type UpdateRuleResponseObjectSnoozeScheduleItemRRuleByweekday1 = float32
+
+// UpdateRuleResponseObjectSnoozeScheduleItemRRule_Byweekday_Item Indicates the days of the week to recur or else nth-day-of-month strings. For example, "+2TU" second Tuesday of month, "-1FR" last Friday of the month, which are internally converted to a `byweekday/bysetpos` combination.
+type UpdateRuleResponseObjectSnoozeScheduleItemRRule_Byweekday_Item struct {
+	union json.RawMessage
 }
 
 // UpdateSloRequest The update SLO API request body varies depending on the type of indicator, time window and budgeting method. Partial update is handled.
@@ -5074,7 +4013,7 @@ type UpdateSloRequest_Indicator struct {
 }
 
 // Format defines model for format.
-type Format string
+type Format = string
 
 // Kuery defines model for kuery.
 type Kuery = string
@@ -5085,9 +4024,6 @@ type PageIndex = int
 // PageSize defines model for page_size.
 type PageSize = int
 
-// RuleId defines model for rule_id.
-type RuleId = string
-
 // SloId defines model for slo_id.
 type SloId = string
 
@@ -5097,60 +4033,55 @@ type SpaceId = string
 // ViewId defines model for view_id.
 type ViewId = string
 
-// Error defines model for error.
-type Error struct {
-	Error      *string  `json:"error,omitempty"`
-	Message    *string  `json:"message,omitempty"`
-	StatusCode *float32 `json:"statusCode,omitempty"`
+// DeleteConnectorDefaultParams defines parameters for DeleteConnectorDefault.
+type DeleteConnectorDefaultParams struct {
+	// KbnXsrf A required header to protect against CSRF attacks
+	KbnXsrf string `json:"kbn-xsrf"`
 }
 
-// AgentPolicyListParams defines parameters for AgentPolicyList.
-type AgentPolicyListParams struct {
-	// PerPage The number of items to return
-	PerPage *PageSize  `form:"perPage,omitempty" json:"perPage,omitempty"`
-	Page    *PageIndex `form:"page,omitempty" json:"page,omitempty"`
-	Kuery   *Kuery     `form:"kuery,omitempty" json:"kuery,omitempty"`
-
-	// Full When set to true, retrieve the related package policies for each agent policy.
-	Full *bool `form:"full,omitempty" json:"full,omitempty"`
-
-	// NoAgentCount When set to true, do not count how many agents are in the agent policy, this can improve performance if you are searching over a large number of agent policies. The "agents" property will always be 0 if set to true.
-	NoAgentCount *bool `form:"noAgentCount,omitempty" json:"noAgentCount,omitempty"`
+// CreateConnectorDefaultParams defines parameters for CreateConnectorDefault.
+type CreateConnectorDefaultParams struct {
+	// KbnXsrf A required header to protect against CSRF attacks
+	KbnXsrf string `json:"kbn-xsrf"`
 }
 
-// DeleteAgentPolicyJSONBody defines parameters for DeleteAgentPolicy.
-type DeleteAgentPolicyJSONBody struct {
-	AgentPolicyId string `json:"agentPolicyId"`
-
-	// Force bypass validation checks that can prevent agent policy deletion
-	Force *bool `json:"force,omitempty"`
+// UpdateConnectorDefaultParams defines parameters for UpdateConnectorDefault.
+type UpdateConnectorDefaultParams struct {
+	// KbnXsrf A required header to protect against CSRF attacks
+	KbnXsrf string `json:"kbn-xsrf"`
 }
 
-// FindRulesParams defines parameters for FindRules.
-type FindRulesParams struct {
-	// DefaultSearchOperator The default operator to use for the simple_query_string.
-	DefaultSearchOperator *string `form:"default_search_operator,omitempty" json:"default_search_operator,omitempty"`
+// DeleteRuleDefaultParams defines parameters for DeleteRuleDefault.
+type DeleteRuleDefaultParams struct {
+	// KbnXsrf A required header to protect against CSRF attacks
+	KbnXsrf string `json:"kbn-xsrf"`
+}
 
-	// Fields The fields to return in the `attributes` key of the response.
-	Fields []string `form:"fields,omitempty" json:"fields,omitempty"`
+// CreateRuleDefaultParams defines parameters for CreateRuleDefault.
+type CreateRuleDefaultParams struct {
+	// KbnXsrf A required header to protect against CSRF attacks
+	KbnXsrf string `json:"kbn-xsrf"`
+}
 
-	// Filter A KQL string that you filter with an attribute from your saved object. It should look like `savedObjectType.attributes.title: "myTitle"`. However, if you used a direct attribute of a saved object, such as `updatedAt`, you must define your filter, for example, `savedObjectType.updatedAt > 2018-12-22`.
-	Filter *string `form:"filter,omitempty" json:"filter,omitempty"`
+// UpdateRuleDefaultParams defines parameters for UpdateRuleDefault.
+type UpdateRuleDefaultParams struct {
+	// KbnXsrf A required header to protect against CSRF attacks
+	KbnXsrf string `json:"kbn-xsrf"`
+}
 
-	// HasReference Filters the rules that have a relation with the reference objects with a specific type and identifier.
-	HasReference *struct {
-		Id   *string `json:"id,omitempty"`
-		Type *string `json:"type,omitempty"`
-	} `form:"has_reference,omitempty" json:"has_reference,omitempty"`
+// FindRuleDefaultParams defines parameters for FindRuleDefault.
+type FindRuleDefaultParams struct {
+	// PerPage The number of rules to return per page.
+	PerPage *float32 `form:"per_page,omitempty" json:"per_page,omitempty"`
 
 	// Page The page number to return.
-	Page *int `form:"page,omitempty" json:"page,omitempty"`
-
-	// PerPage The number of rules to return per page.
-	PerPage *int `form:"per_page,omitempty" json:"per_page,omitempty"`
+	Page *float32 `form:"page,omitempty" json:"page,omitempty"`
 
 	// Search An Elasticsearch simple_query_string query that filters the objects in the response.
 	Search *string `form:"search,omitempty" json:"search,omitempty"`
+
+	// DefaultSearchOperator The default operator to use for the simple_query_string.
+	DefaultSearchOperator *string `form:"default_search_operator,omitempty" json:"default_search_operator,omitempty"`
 
 	// SearchFields The fields to perform the simple_query_string parsed query against.
 	SearchFields *struct {
@@ -5161,34 +4092,61 @@ type FindRulesParams struct {
 	SortField *string `form:"sort_field,omitempty" json:"sort_field,omitempty"`
 
 	// SortOrder Determines the sort order.
-	SortOrder *FindRulesParamsSortOrder `form:"sort_order,omitempty" json:"sort_order,omitempty"`
+	SortOrder *string `form:"sort_order,omitempty" json:"sort_order,omitempty"`
+
+	// HasReference Filters the rules that have a relation with the reference objects with a specific type and identifier.
+	HasReference *struct {
+		Id   string `json:"id"`
+		Type string `json:"type"`
+	} `form:"has_reference,omitempty" json:"has_reference,omitempty"`
+	Fields []string `form:"fields" json:"fields"`
+
+	// Filter A KQL string that you filter with an attribute from your saved object. It should look like `savedObjectType.attributes.title: "myTitle"`. However, if you used a direct attribute of a saved object, such as `updatedAt`, you must define your filter, for example, `savedObjectType.updatedAt > 2018-12-22`.
+	Filter          *string  `form:"filter,omitempty" json:"filter,omitempty"`
+	FilterConsumers []string `form:"filter_consumers" json:"filter_consumers"`
 }
 
-// FindRulesParamsSearchFields0 defines parameters for FindRules.
-type FindRulesParamsSearchFields0 = string
+// FindRuleDefaultParamsSearchFields0 defines parameters for FindRuleDefault.
+type FindRuleDefaultParamsSearchFields0 = []string
 
-// FindRulesParamsSearchFields1 defines parameters for FindRules.
-type FindRulesParamsSearchFields1 = []string
+// FindRuleDefaultParamsSearchFields1 defines parameters for FindRuleDefault.
+type FindRuleDefaultParamsSearchFields1 = string
 
-// FindRulesParamsSortOrder defines parameters for FindRules.
-type FindRulesParamsSortOrder string
+// AgentPolicyListParams defines parameters for AgentPolicyList.
+type AgentPolicyListParams struct {
+	// PerPage The number of items to return
+	PerPage *PageSize  `form:"perPage,omitempty" json:"perPage,omitempty"`
+	Page    *PageIndex `form:"page,omitempty" json:"page,omitempty"`
+	Kuery   *Kuery     `form:"kuery,omitempty" json:"kuery,omitempty"`
 
-// ImportSavedObjectsDefaultMultipartBody defines parameters for ImportSavedObjectsDefault.
-type ImportSavedObjectsDefaultMultipartBody struct {
-	// File A file exported using the export API. NOTE: The `savedObjects.maxImportExportSize` configuration setting limits the number of saved objects which may be included in this file. Similarly, the `savedObjects.maxImportPayloadBytes` setting limits the overall size of the file that can be imported.
-	File *interface{} `json:"file,omitempty"`
+	// Format Simplified or legacy format for package inputs
+	Format *Format `form:"format,omitempty" json:"format,omitempty"`
+
+	// Full When set to true, retrieve the related package policies for each agent policy.
+	Full *bool `form:"full,omitempty" json:"full,omitempty"`
+
+	// NoAgentCount When set to true, do not count how many agents are in the agent policy, this can improve performance if you are searching over a large number of agent policies. The "agents" property will always be 0 if set to true.
+	NoAgentCount *bool `form:"noAgentCount,omitempty" json:"noAgentCount,omitempty"`
 }
 
-// ImportSavedObjectsDefaultParams defines parameters for ImportSavedObjectsDefault.
-type ImportSavedObjectsDefaultParams struct {
-	// CreateNewCopies Creates copies of saved objects, regenerates each object ID, and resets the origin. When used, potential conflict errors are avoided. NOTE: This option cannot be used with the `overwrite` and `compatibilityMode` options.
-	CreateNewCopies *bool `form:"createNewCopies,omitempty" json:"createNewCopies,omitempty"`
+// AgentPolicyInfoParams defines parameters for AgentPolicyInfo.
+type AgentPolicyInfoParams struct {
+	// Format Simplified or legacy format for package inputs
+	Format *Format `form:"format,omitempty" json:"format,omitempty"`
+}
 
-	// Overwrite Overwrites saved objects when they already exist. When used, potential conflict errors are automatically resolved by overwriting the destination object. NOTE: This option cannot be used with the `createNewCopies` option.
-	Overwrite *bool `form:"overwrite,omitempty" json:"overwrite,omitempty"`
+// UpdateAgentPolicyParams defines parameters for UpdateAgentPolicy.
+type UpdateAgentPolicyParams struct {
+	// Format Simplified or legacy format for package inputs
+	Format *Format `form:"format,omitempty" json:"format,omitempty"`
+}
 
-	// CompatibilityMode Applies various adjustments to the saved objects that are being imported to maintain compatibility between different Kibana versions. Use this option only if you encounter issues with imported saved objects. NOTE: This option cannot be used with the `createNewCopies` option.
-	CompatibilityMode *bool `form:"compatibilityMode,omitempty" json:"compatibilityMode,omitempty"`
+// GetEnrollmentApiKeysParams defines parameters for GetEnrollmentApiKeys.
+type GetEnrollmentApiKeysParams struct {
+	// PerPage The number of items to return
+	PerPage *PageSize  `form:"perPage,omitempty" json:"perPage,omitempty"`
+	Page    *PageIndex `form:"page,omitempty" json:"page,omitempty"`
+	Kuery   *Kuery     `form:"kuery,omitempty" json:"kuery,omitempty"`
 }
 
 // ListAllPackagesParams defines parameters for ListAllPackages.
@@ -5209,11 +4167,6 @@ type InstallPackageByUploadParams struct {
 
 	// SkipDataStreamRollover Skip data stream rollover during index template mapping or settings update
 	SkipDataStreamRollover *bool `form:"skipDataStreamRollover,omitempty" json:"skipDataStreamRollover,omitempty"`
-}
-
-// DeletePackageJSONBody defines parameters for DeletePackage.
-type DeletePackageJSONBody struct {
-	Force *bool `json:"force,omitempty"`
 }
 
 // DeletePackageParams defines parameters for DeletePackage.
@@ -5243,12 +4196,6 @@ type GetPackageParams struct {
 	Prerelease *bool `form:"prerelease,omitempty" json:"prerelease,omitempty"`
 }
 
-// InstallPackageJSONBody defines parameters for InstallPackage.
-type InstallPackageJSONBody struct {
-	Force             *bool `json:"force,omitempty"`
-	IgnoreConstraints *bool `json:"ignore_constraints,omitempty"`
-}
-
 // InstallPackageParams defines parameters for InstallPackage.
 type InstallPackageParams struct {
 	// IgnoreMappingUpdateErrors avoid erroring out on unexpected mapping update errors
@@ -5267,11 +4214,6 @@ type InstallPackageParams struct {
 	Prerelease *bool `form:"prerelease,omitempty" json:"prerelease,omitempty"`
 }
 
-// UpdatePackageJSONBody defines parameters for UpdatePackage.
-type UpdatePackageJSONBody struct {
-	KeepPoliciesUpToDate *bool `json:"keepPoliciesUpToDate,omitempty"`
-}
-
 // UpdatePackageParams defines parameters for UpdatePackage.
 type UpdatePackageParams struct {
 	// IgnoreUnverified Ignore if the package is fails signature verification
@@ -5284,29 +4226,6 @@ type UpdatePackageParams struct {
 	Prerelease *bool `form:"prerelease,omitempty" json:"prerelease,omitempty"`
 }
 
-// PostFleetServerHostsJSONBody defines parameters for PostFleetServerHosts.
-type PostFleetServerHostsJSONBody struct {
-	HostUrls   []string `json:"host_urls"`
-	Id         *string  `json:"id,omitempty"`
-	IsDefault  *bool    `json:"is_default,omitempty"`
-	IsInternal *bool    `json:"is_internal,omitempty"`
-	Name       string   `json:"name"`
-
-	// ProxyId The ID of the proxy to use for this fleet server host. See the proxies API for more information.
-	ProxyId *string `json:"proxy_id,omitempty"`
-}
-
-// UpdateFleetServerHostsJSONBody defines parameters for UpdateFleetServerHosts.
-type UpdateFleetServerHostsJSONBody struct {
-	HostUrls   []string `json:"host_urls,omitempty"`
-	IsDefault  *bool    `json:"is_default,omitempty"`
-	IsInternal *bool    `json:"is_internal,omitempty"`
-	Name       *string  `json:"name,omitempty"`
-
-	// ProxyId The ID of the proxy to use for this fleet server host. See the proxies API for more information.
-	ProxyId *string `json:"proxy_id"`
-}
-
 // GetPackagePoliciesParams defines parameters for GetPackagePolicies.
 type GetPackagePoliciesParams struct {
 	// PerPage The number of items to return
@@ -5315,20 +4234,14 @@ type GetPackagePoliciesParams struct {
 	Kuery   *Kuery     `form:"kuery,omitempty" json:"kuery,omitempty"`
 
 	// Format Simplified or legacy format for package inputs
-	Format *GetPackagePoliciesParamsFormat `form:"format,omitempty" json:"format,omitempty"`
+	Format *Format `form:"format,omitempty" json:"format,omitempty"`
 }
-
-// GetPackagePoliciesParamsFormat defines parameters for GetPackagePolicies.
-type GetPackagePoliciesParamsFormat string
 
 // CreatePackagePolicyParams defines parameters for CreatePackagePolicy.
 type CreatePackagePolicyParams struct {
 	// Format Simplified or legacy format for package inputs
-	Format *CreatePackagePolicyParamsFormat `form:"format,omitempty" json:"format,omitempty"`
+	Format *Format `form:"format,omitempty" json:"format,omitempty"`
 }
-
-// CreatePackagePolicyParamsFormat defines parameters for CreatePackagePolicy.
-type CreatePackagePolicyParamsFormat string
 
 // DeletePackagePolicyParams defines parameters for DeletePackagePolicy.
 type DeletePackagePolicyParams struct {
@@ -5338,20 +4251,32 @@ type DeletePackagePolicyParams struct {
 // GetPackagePolicyParams defines parameters for GetPackagePolicy.
 type GetPackagePolicyParams struct {
 	// Format Simplified or legacy format for package inputs
-	Format *GetPackagePolicyParamsFormat `form:"format,omitempty" json:"format,omitempty"`
+	Format *Format `form:"format,omitempty" json:"format,omitempty"`
 }
-
-// GetPackagePolicyParamsFormat defines parameters for GetPackagePolicy.
-type GetPackagePolicyParamsFormat string
 
 // UpdatePackagePolicyParams defines parameters for UpdatePackagePolicy.
 type UpdatePackagePolicyParams struct {
 	// Format Simplified or legacy format for package inputs
-	Format *UpdatePackagePolicyParamsFormat `form:"format,omitempty" json:"format,omitempty"`
+	Format *Format `form:"format,omitempty" json:"format,omitempty"`
 }
 
-// UpdatePackagePolicyParamsFormat defines parameters for UpdatePackagePolicy.
-type UpdatePackagePolicyParamsFormat string
+// ImportSavedObjectsDefaultMultipartBody defines parameters for ImportSavedObjectsDefault.
+type ImportSavedObjectsDefaultMultipartBody struct {
+	// File A file exported using the export API. NOTE: The `savedObjects.maxImportExportSize` configuration setting limits the number of saved objects which may be included in this file. Similarly, the `savedObjects.maxImportPayloadBytes` setting limits the overall size of the file that can be imported.
+	File *interface{} `json:"file,omitempty"`
+}
+
+// ImportSavedObjectsDefaultParams defines parameters for ImportSavedObjectsDefault.
+type ImportSavedObjectsDefaultParams struct {
+	// CreateNewCopies Creates copies of saved objects, regenerates each object ID, and resets the origin. When used, potential conflict errors are avoided. NOTE: This option cannot be used with the `overwrite` and `compatibilityMode` options.
+	CreateNewCopies *bool `form:"createNewCopies,omitempty" json:"createNewCopies,omitempty"`
+
+	// Overwrite Overwrites saved objects when they already exist. When used, potential conflict errors are automatically resolved by overwriting the destination object. NOTE: This option cannot be used with the `createNewCopies` option.
+	Overwrite *bool `form:"overwrite,omitempty" json:"overwrite,omitempty"`
+
+	// CompatibilityMode Applies various adjustments to the saved objects that are being imported to maintain compatibility between different Kibana versions. Use this option only if you encounter issues with imported saved objects. NOTE: This option cannot be used with the `createNewCopies` option.
+	CompatibilityMode *bool `form:"compatibilityMode,omitempty" json:"compatibilityMode,omitempty"`
+}
 
 // FindSlosOpParams defines parameters for FindSlosOp.
 type FindSlosOpParams struct {
@@ -5365,20 +4290,14 @@ type FindSlosOpParams struct {
 	PerPage *int `form:"perPage,omitempty" json:"perPage,omitempty"`
 
 	// SortBy Sort by field
-	SortBy *FindSlosOpParamsSortBy `form:"sortBy,omitempty" json:"sortBy,omitempty"`
+	SortBy *string `form:"sortBy,omitempty" json:"sortBy,omitempty"`
 
 	// SortDirection Sort order
-	SortDirection *FindSlosOpParamsSortDirection `form:"sortDirection,omitempty" json:"sortDirection,omitempty"`
+	SortDirection *string `form:"sortDirection,omitempty" json:"sortDirection,omitempty"`
 
 	// HideStale Hide stale SLOs from the list as defined by stale SLO threshold in SLO settings
 	HideStale *bool `form:"hideStale,omitempty" json:"hideStale,omitempty"`
 }
-
-// FindSlosOpParamsSortBy defines parameters for FindSlosOp.
-type FindSlosOpParamsSortBy string
-
-// FindSlosOpParamsSortDirection defines parameters for FindSlosOp.
-type FindSlosOpParamsSortDirection string
 
 // GetSloOpParams defines parameters for GetSloOp.
 type GetSloOpParams struct {
@@ -5386,47 +4305,47 @@ type GetSloOpParams struct {
 	InstanceId *string `form:"instanceId,omitempty" json:"instanceId,omitempty"`
 }
 
-// CreateAgentPolicyJSONRequestBody defines body for CreateAgentPolicy for application/json ContentType.
-type CreateAgentPolicyJSONRequestBody = AgentPolicyCreateRequest
+// CreateConnectorDefaultJSONRequestBody defines body for CreateConnectorDefault for application/json ContentType.
+type CreateConnectorDefaultJSONRequestBody = CreateConnectorRequest
 
-// DeleteAgentPolicyJSONRequestBody defines body for DeleteAgentPolicy for application/json ContentType.
-type DeleteAgentPolicyJSONRequestBody DeleteAgentPolicyJSONBody
+// UpdateConnectorDefaultJSONRequestBody defines body for UpdateConnectorDefault for application/json ContentType.
+type UpdateConnectorDefaultJSONRequestBody = UpdateConnectorRequest
 
-// UpdateAgentPolicyJSONRequestBody defines body for UpdateAgentPolicy for application/json ContentType.
-type UpdateAgentPolicyJSONRequestBody = AgentPolicyUpdateRequest
+// CreateRuleDefaultJSONRequestBody defines body for CreateRuleDefault for application/json ContentType.
+type CreateRuleDefaultJSONRequestBody = CreateRuleRequest
 
-// CreateRuleJSONRequestBody defines body for CreateRule for application/json ContentType.
-type CreateRuleJSONRequestBody = CreateRuleRequest
+// UpdateRuleDefaultJSONRequestBody defines body for UpdateRuleDefault for application/json ContentType.
+type UpdateRuleDefaultJSONRequestBody = UpdateRuleRequest
 
-// CreateRuleIdJSONRequestBody defines body for CreateRuleId for application/json ContentType.
-type CreateRuleIdJSONRequestBody = CreateRuleRequest
-
-// UpdateRuleJSONRequestBody defines body for UpdateRule for application/json ContentType.
-type UpdateRuleJSONRequestBody = UpdateRuleRequest
-
-// CreateDataViewDefaultwJSONRequestBody defines body for CreateDataViewDefaultw for application/json ContentType.
-type CreateDataViewDefaultwJSONRequestBody = CreateDataViewRequestObject
+// CreateDataViewDefaultJSONRequestBody defines body for CreateDataViewDefault for application/json ContentType.
+type CreateDataViewDefaultJSONRequestBody = CreateDataViewRequestObject
 
 // UpdateDataViewDefaultJSONRequestBody defines body for UpdateDataViewDefault for application/json ContentType.
 type UpdateDataViewDefaultJSONRequestBody = UpdateDataViewRequestObject
 
-// ImportSavedObjectsDefaultMultipartRequestBody defines body for ImportSavedObjectsDefault for multipart/form-data ContentType.
-type ImportSavedObjectsDefaultMultipartRequestBody ImportSavedObjectsDefaultMultipartBody
+// CreateAgentPolicyJSONRequestBody defines body for CreateAgentPolicy for application/json ContentType.
+type CreateAgentPolicyJSONRequestBody = AgentPolicyCreateRequest
+
+// DeleteAgentPolicyJSONRequestBody defines body for DeleteAgentPolicy for application/json ContentType.
+type DeleteAgentPolicyJSONRequestBody = DeleteAgentPolicyRequest
+
+// UpdateAgentPolicyJSONRequestBody defines body for UpdateAgentPolicy for application/json ContentType.
+type UpdateAgentPolicyJSONRequestBody = AgentPolicyUpdateRequest
 
 // DeletePackageJSONRequestBody defines body for DeletePackage for application/json ContentType.
-type DeletePackageJSONRequestBody DeletePackageJSONBody
+type DeletePackageJSONRequestBody = DeletePackageRequest
 
 // InstallPackageJSONRequestBody defines body for InstallPackage for application/json ContentType.
-type InstallPackageJSONRequestBody InstallPackageJSONBody
+type InstallPackageJSONRequestBody = InstallPackageRequest
 
 // UpdatePackageJSONRequestBody defines body for UpdatePackage for application/json ContentType.
-type UpdatePackageJSONRequestBody UpdatePackageJSONBody
+type UpdatePackageJSONRequestBody = UpdatePackageRequest
 
 // PostFleetServerHostsJSONRequestBody defines body for PostFleetServerHosts for application/json ContentType.
-type PostFleetServerHostsJSONRequestBody PostFleetServerHostsJSONBody
+type PostFleetServerHostsJSONRequestBody = PostFleetServerHostsRequest
 
 // UpdateFleetServerHostsJSONRequestBody defines body for UpdateFleetServerHosts for application/json ContentType.
-type UpdateFleetServerHostsJSONRequestBody UpdateFleetServerHostsJSONBody
+type UpdateFleetServerHostsJSONRequestBody = UpdateFleetServerHostsRequest
 
 // PostOutputsJSONRequestBody defines body for PostOutputs for application/json ContentType.
 type PostOutputsJSONRequestBody = OutputCreateRequest
@@ -5439,6 +4358,9 @@ type CreatePackagePolicyJSONRequestBody = PackagePolicyRequest
 
 // UpdatePackagePolicyJSONRequestBody defines body for UpdatePackagePolicy for application/json ContentType.
 type UpdatePackagePolicyJSONRequestBody = PackagePolicyRequest
+
+// ImportSavedObjectsDefaultMultipartRequestBody defines body for ImportSavedObjectsDefault for multipart/form-data ContentType.
+type ImportSavedObjectsDefaultMultipartRequestBody ImportSavedObjectsDefaultMultipartBody
 
 // CreateSloOpJSONRequestBody defines body for CreateSloOp for application/json ContentType.
 type CreateSloOpJSONRequestBody = CreateSloRequest
@@ -5570,24 +4492,22 @@ func (t *AgentPolicyCreateRequest_GlobalDataTags_AdditionalProperties) Unmarshal
 	return err
 }
 
-// AsCreateAnomalyDetectionAlertRuleRequest returns the union data inside the CreateRuleRequest as a CreateAnomalyDetectionAlertRuleRequest
-func (t CreateRuleRequest) AsCreateAnomalyDetectionAlertRuleRequest() (CreateAnomalyDetectionAlertRuleRequest, error) {
-	var body CreateAnomalyDetectionAlertRuleRequest
+// AsCreateRuleResponseObjectSnoozeScheduleItemRRuleByweekday0 returns the union data inside the CreateRuleResponseObjectSnoozeScheduleItemRRule_Byweekday_Item as a CreateRuleResponseObjectSnoozeScheduleItemRRuleByweekday0
+func (t CreateRuleResponseObjectSnoozeScheduleItemRRule_Byweekday_Item) AsCreateRuleResponseObjectSnoozeScheduleItemRRuleByweekday0() (CreateRuleResponseObjectSnoozeScheduleItemRRuleByweekday0, error) {
+	var body CreateRuleResponseObjectSnoozeScheduleItemRRuleByweekday0
 	err := json.Unmarshal(t.union, &body)
 	return body, err
 }
 
-// FromCreateAnomalyDetectionAlertRuleRequest overwrites any union data inside the CreateRuleRequest as the provided CreateAnomalyDetectionAlertRuleRequest
-func (t *CreateRuleRequest) FromCreateAnomalyDetectionAlertRuleRequest(v CreateAnomalyDetectionAlertRuleRequest) error {
-	v.RuleTypeId = "xpack.ml.anomaly_detection_alert"
+// FromCreateRuleResponseObjectSnoozeScheduleItemRRuleByweekday0 overwrites any union data inside the CreateRuleResponseObjectSnoozeScheduleItemRRule_Byweekday_Item as the provided CreateRuleResponseObjectSnoozeScheduleItemRRuleByweekday0
+func (t *CreateRuleResponseObjectSnoozeScheduleItemRRule_Byweekday_Item) FromCreateRuleResponseObjectSnoozeScheduleItemRRuleByweekday0(v CreateRuleResponseObjectSnoozeScheduleItemRRuleByweekday0) error {
 	b, err := json.Marshal(v)
 	t.union = b
 	return err
 }
 
-// MergeCreateAnomalyDetectionAlertRuleRequest performs a merge with any union data inside the CreateRuleRequest, using the provided CreateAnomalyDetectionAlertRuleRequest
-func (t *CreateRuleRequest) MergeCreateAnomalyDetectionAlertRuleRequest(v CreateAnomalyDetectionAlertRuleRequest) error {
-	v.RuleTypeId = "xpack.ml.anomaly_detection_alert"
+// MergeCreateRuleResponseObjectSnoozeScheduleItemRRuleByweekday0 performs a merge with any union data inside the CreateRuleResponseObjectSnoozeScheduleItemRRule_Byweekday_Item, using the provided CreateRuleResponseObjectSnoozeScheduleItemRRuleByweekday0
+func (t *CreateRuleResponseObjectSnoozeScheduleItemRRule_Byweekday_Item) MergeCreateRuleResponseObjectSnoozeScheduleItemRRuleByweekday0(v CreateRuleResponseObjectSnoozeScheduleItemRRuleByweekday0) error {
 	b, err := json.Marshal(v)
 	if err != nil {
 		return err
@@ -5598,24 +4518,22 @@ func (t *CreateRuleRequest) MergeCreateAnomalyDetectionAlertRuleRequest(v Create
 	return err
 }
 
-// AsCreateAnomalyDetectionJobsHealthRuleRequest returns the union data inside the CreateRuleRequest as a CreateAnomalyDetectionJobsHealthRuleRequest
-func (t CreateRuleRequest) AsCreateAnomalyDetectionJobsHealthRuleRequest() (CreateAnomalyDetectionJobsHealthRuleRequest, error) {
-	var body CreateAnomalyDetectionJobsHealthRuleRequest
+// AsCreateRuleResponseObjectSnoozeScheduleItemRRuleByweekday1 returns the union data inside the CreateRuleResponseObjectSnoozeScheduleItemRRule_Byweekday_Item as a CreateRuleResponseObjectSnoozeScheduleItemRRuleByweekday1
+func (t CreateRuleResponseObjectSnoozeScheduleItemRRule_Byweekday_Item) AsCreateRuleResponseObjectSnoozeScheduleItemRRuleByweekday1() (CreateRuleResponseObjectSnoozeScheduleItemRRuleByweekday1, error) {
+	var body CreateRuleResponseObjectSnoozeScheduleItemRRuleByweekday1
 	err := json.Unmarshal(t.union, &body)
 	return body, err
 }
 
-// FromCreateAnomalyDetectionJobsHealthRuleRequest overwrites any union data inside the CreateRuleRequest as the provided CreateAnomalyDetectionJobsHealthRuleRequest
-func (t *CreateRuleRequest) FromCreateAnomalyDetectionJobsHealthRuleRequest(v CreateAnomalyDetectionJobsHealthRuleRequest) error {
-	v.RuleTypeId = "xpack.ml.anomaly_detection_jobs_health"
+// FromCreateRuleResponseObjectSnoozeScheduleItemRRuleByweekday1 overwrites any union data inside the CreateRuleResponseObjectSnoozeScheduleItemRRule_Byweekday_Item as the provided CreateRuleResponseObjectSnoozeScheduleItemRRuleByweekday1
+func (t *CreateRuleResponseObjectSnoozeScheduleItemRRule_Byweekday_Item) FromCreateRuleResponseObjectSnoozeScheduleItemRRuleByweekday1(v CreateRuleResponseObjectSnoozeScheduleItemRRuleByweekday1) error {
 	b, err := json.Marshal(v)
 	t.union = b
 	return err
 }
 
-// MergeCreateAnomalyDetectionJobsHealthRuleRequest performs a merge with any union data inside the CreateRuleRequest, using the provided CreateAnomalyDetectionJobsHealthRuleRequest
-func (t *CreateRuleRequest) MergeCreateAnomalyDetectionJobsHealthRuleRequest(v CreateAnomalyDetectionJobsHealthRuleRequest) error {
-	v.RuleTypeId = "xpack.ml.anomaly_detection_jobs_health"
+// MergeCreateRuleResponseObjectSnoozeScheduleItemRRuleByweekday1 performs a merge with any union data inside the CreateRuleResponseObjectSnoozeScheduleItemRRule_Byweekday_Item, using the provided CreateRuleResponseObjectSnoozeScheduleItemRRuleByweekday1
+func (t *CreateRuleResponseObjectSnoozeScheduleItemRRule_Byweekday_Item) MergeCreateRuleResponseObjectSnoozeScheduleItemRRuleByweekday1(v CreateRuleResponseObjectSnoozeScheduleItemRRuleByweekday1) error {
 	b, err := json.Marshal(v)
 	if err != nil {
 		return err
@@ -5626,1235 +4544,12 @@ func (t *CreateRuleRequest) MergeCreateAnomalyDetectionJobsHealthRuleRequest(v C
 	return err
 }
 
-// AsCreateApmAnomalyRuleRequest returns the union data inside the CreateRuleRequest as a CreateApmAnomalyRuleRequest
-func (t CreateRuleRequest) AsCreateApmAnomalyRuleRequest() (CreateApmAnomalyRuleRequest, error) {
-	var body CreateApmAnomalyRuleRequest
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromCreateApmAnomalyRuleRequest overwrites any union data inside the CreateRuleRequest as the provided CreateApmAnomalyRuleRequest
-func (t *CreateRuleRequest) FromCreateApmAnomalyRuleRequest(v CreateApmAnomalyRuleRequest) error {
-	v.RuleTypeId = "apm.anomaly"
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeCreateApmAnomalyRuleRequest performs a merge with any union data inside the CreateRuleRequest, using the provided CreateApmAnomalyRuleRequest
-func (t *CreateRuleRequest) MergeCreateApmAnomalyRuleRequest(v CreateApmAnomalyRuleRequest) error {
-	v.RuleTypeId = "apm.anomaly"
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-// AsCreateApmErrorCountRuleRequest returns the union data inside the CreateRuleRequest as a CreateApmErrorCountRuleRequest
-func (t CreateRuleRequest) AsCreateApmErrorCountRuleRequest() (CreateApmErrorCountRuleRequest, error) {
-	var body CreateApmErrorCountRuleRequest
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromCreateApmErrorCountRuleRequest overwrites any union data inside the CreateRuleRequest as the provided CreateApmErrorCountRuleRequest
-func (t *CreateRuleRequest) FromCreateApmErrorCountRuleRequest(v CreateApmErrorCountRuleRequest) error {
-	v.RuleTypeId = "apm.error_rate"
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeCreateApmErrorCountRuleRequest performs a merge with any union data inside the CreateRuleRequest, using the provided CreateApmErrorCountRuleRequest
-func (t *CreateRuleRequest) MergeCreateApmErrorCountRuleRequest(v CreateApmErrorCountRuleRequest) error {
-	v.RuleTypeId = "apm.error_rate"
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-// AsCreateApmTransactionDurationRuleRequest returns the union data inside the CreateRuleRequest as a CreateApmTransactionDurationRuleRequest
-func (t CreateRuleRequest) AsCreateApmTransactionDurationRuleRequest() (CreateApmTransactionDurationRuleRequest, error) {
-	var body CreateApmTransactionDurationRuleRequest
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromCreateApmTransactionDurationRuleRequest overwrites any union data inside the CreateRuleRequest as the provided CreateApmTransactionDurationRuleRequest
-func (t *CreateRuleRequest) FromCreateApmTransactionDurationRuleRequest(v CreateApmTransactionDurationRuleRequest) error {
-	v.RuleTypeId = "apm.transaction_duration"
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeCreateApmTransactionDurationRuleRequest performs a merge with any union data inside the CreateRuleRequest, using the provided CreateApmTransactionDurationRuleRequest
-func (t *CreateRuleRequest) MergeCreateApmTransactionDurationRuleRequest(v CreateApmTransactionDurationRuleRequest) error {
-	v.RuleTypeId = "apm.transaction_duration"
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-// AsCreateApmTransactionErrorRateRuleRequest returns the union data inside the CreateRuleRequest as a CreateApmTransactionErrorRateRuleRequest
-func (t CreateRuleRequest) AsCreateApmTransactionErrorRateRuleRequest() (CreateApmTransactionErrorRateRuleRequest, error) {
-	var body CreateApmTransactionErrorRateRuleRequest
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromCreateApmTransactionErrorRateRuleRequest overwrites any union data inside the CreateRuleRequest as the provided CreateApmTransactionErrorRateRuleRequest
-func (t *CreateRuleRequest) FromCreateApmTransactionErrorRateRuleRequest(v CreateApmTransactionErrorRateRuleRequest) error {
-	v.RuleTypeId = "apm.transaction_error_rate"
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeCreateApmTransactionErrorRateRuleRequest performs a merge with any union data inside the CreateRuleRequest, using the provided CreateApmTransactionErrorRateRuleRequest
-func (t *CreateRuleRequest) MergeCreateApmTransactionErrorRateRuleRequest(v CreateApmTransactionErrorRateRuleRequest) error {
-	v.RuleTypeId = "apm.transaction_error_rate"
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-// AsCreateEsQueryRuleRequest returns the union data inside the CreateRuleRequest as a CreateEsQueryRuleRequest
-func (t CreateRuleRequest) AsCreateEsQueryRuleRequest() (CreateEsQueryRuleRequest, error) {
-	var body CreateEsQueryRuleRequest
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromCreateEsQueryRuleRequest overwrites any union data inside the CreateRuleRequest as the provided CreateEsQueryRuleRequest
-func (t *CreateRuleRequest) FromCreateEsQueryRuleRequest(v CreateEsQueryRuleRequest) error {
-	v.RuleTypeId = ".es-query"
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeCreateEsQueryRuleRequest performs a merge with any union data inside the CreateRuleRequest, using the provided CreateEsQueryRuleRequest
-func (t *CreateRuleRequest) MergeCreateEsQueryRuleRequest(v CreateEsQueryRuleRequest) error {
-	v.RuleTypeId = ".es-query"
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-// AsCreateGeoContainmentRuleRequest returns the union data inside the CreateRuleRequest as a CreateGeoContainmentRuleRequest
-func (t CreateRuleRequest) AsCreateGeoContainmentRuleRequest() (CreateGeoContainmentRuleRequest, error) {
-	var body CreateGeoContainmentRuleRequest
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromCreateGeoContainmentRuleRequest overwrites any union data inside the CreateRuleRequest as the provided CreateGeoContainmentRuleRequest
-func (t *CreateRuleRequest) FromCreateGeoContainmentRuleRequest(v CreateGeoContainmentRuleRequest) error {
-	v.RuleTypeId = ".geo-containment"
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeCreateGeoContainmentRuleRequest performs a merge with any union data inside the CreateRuleRequest, using the provided CreateGeoContainmentRuleRequest
-func (t *CreateRuleRequest) MergeCreateGeoContainmentRuleRequest(v CreateGeoContainmentRuleRequest) error {
-	v.RuleTypeId = ".geo-containment"
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-// AsCreateIndexThresholdRuleRequest returns the union data inside the CreateRuleRequest as a CreateIndexThresholdRuleRequest
-func (t CreateRuleRequest) AsCreateIndexThresholdRuleRequest() (CreateIndexThresholdRuleRequest, error) {
-	var body CreateIndexThresholdRuleRequest
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromCreateIndexThresholdRuleRequest overwrites any union data inside the CreateRuleRequest as the provided CreateIndexThresholdRuleRequest
-func (t *CreateRuleRequest) FromCreateIndexThresholdRuleRequest(v CreateIndexThresholdRuleRequest) error {
-	v.RuleTypeId = ".index-threshold"
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeCreateIndexThresholdRuleRequest performs a merge with any union data inside the CreateRuleRequest, using the provided CreateIndexThresholdRuleRequest
-func (t *CreateRuleRequest) MergeCreateIndexThresholdRuleRequest(v CreateIndexThresholdRuleRequest) error {
-	v.RuleTypeId = ".index-threshold"
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-// AsCreateInfraInventoryRuleRequest returns the union data inside the CreateRuleRequest as a CreateInfraInventoryRuleRequest
-func (t CreateRuleRequest) AsCreateInfraInventoryRuleRequest() (CreateInfraInventoryRuleRequest, error) {
-	var body CreateInfraInventoryRuleRequest
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromCreateInfraInventoryRuleRequest overwrites any union data inside the CreateRuleRequest as the provided CreateInfraInventoryRuleRequest
-func (t *CreateRuleRequest) FromCreateInfraInventoryRuleRequest(v CreateInfraInventoryRuleRequest) error {
-	v.RuleTypeId = "metrics.alert.inventory.threshold"
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeCreateInfraInventoryRuleRequest performs a merge with any union data inside the CreateRuleRequest, using the provided CreateInfraInventoryRuleRequest
-func (t *CreateRuleRequest) MergeCreateInfraInventoryRuleRequest(v CreateInfraInventoryRuleRequest) error {
-	v.RuleTypeId = "metrics.alert.inventory.threshold"
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-// AsCreateInfraMetricAnomalyRuleRequest returns the union data inside the CreateRuleRequest as a CreateInfraMetricAnomalyRuleRequest
-func (t CreateRuleRequest) AsCreateInfraMetricAnomalyRuleRequest() (CreateInfraMetricAnomalyRuleRequest, error) {
-	var body CreateInfraMetricAnomalyRuleRequest
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromCreateInfraMetricAnomalyRuleRequest overwrites any union data inside the CreateRuleRequest as the provided CreateInfraMetricAnomalyRuleRequest
-func (t *CreateRuleRequest) FromCreateInfraMetricAnomalyRuleRequest(v CreateInfraMetricAnomalyRuleRequest) error {
-	v.RuleTypeId = "metrics.alert.anomaly"
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeCreateInfraMetricAnomalyRuleRequest performs a merge with any union data inside the CreateRuleRequest, using the provided CreateInfraMetricAnomalyRuleRequest
-func (t *CreateRuleRequest) MergeCreateInfraMetricAnomalyRuleRequest(v CreateInfraMetricAnomalyRuleRequest) error {
-	v.RuleTypeId = "metrics.alert.anomaly"
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-// AsCreateInfraMetricThresholdRuleRequest returns the union data inside the CreateRuleRequest as a CreateInfraMetricThresholdRuleRequest
-func (t CreateRuleRequest) AsCreateInfraMetricThresholdRuleRequest() (CreateInfraMetricThresholdRuleRequest, error) {
-	var body CreateInfraMetricThresholdRuleRequest
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromCreateInfraMetricThresholdRuleRequest overwrites any union data inside the CreateRuleRequest as the provided CreateInfraMetricThresholdRuleRequest
-func (t *CreateRuleRequest) FromCreateInfraMetricThresholdRuleRequest(v CreateInfraMetricThresholdRuleRequest) error {
-	v.RuleTypeId = "metrics.alert.threshold"
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeCreateInfraMetricThresholdRuleRequest performs a merge with any union data inside the CreateRuleRequest, using the provided CreateInfraMetricThresholdRuleRequest
-func (t *CreateRuleRequest) MergeCreateInfraMetricThresholdRuleRequest(v CreateInfraMetricThresholdRuleRequest) error {
-	v.RuleTypeId = "metrics.alert.threshold"
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-// AsCreateMonitoringJvmMemoryUsageRuleRequest returns the union data inside the CreateRuleRequest as a CreateMonitoringJvmMemoryUsageRuleRequest
-func (t CreateRuleRequest) AsCreateMonitoringJvmMemoryUsageRuleRequest() (CreateMonitoringJvmMemoryUsageRuleRequest, error) {
-	var body CreateMonitoringJvmMemoryUsageRuleRequest
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromCreateMonitoringJvmMemoryUsageRuleRequest overwrites any union data inside the CreateRuleRequest as the provided CreateMonitoringJvmMemoryUsageRuleRequest
-func (t *CreateRuleRequest) FromCreateMonitoringJvmMemoryUsageRuleRequest(v CreateMonitoringJvmMemoryUsageRuleRequest) error {
-	v.RuleTypeId = "monitoring_alert_jvm_memory_usage"
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeCreateMonitoringJvmMemoryUsageRuleRequest performs a merge with any union data inside the CreateRuleRequest, using the provided CreateMonitoringJvmMemoryUsageRuleRequest
-func (t *CreateRuleRequest) MergeCreateMonitoringJvmMemoryUsageRuleRequest(v CreateMonitoringJvmMemoryUsageRuleRequest) error {
-	v.RuleTypeId = "monitoring_alert_jvm_memory_usage"
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-// AsCreateLogThresholdRuleRequest returns the union data inside the CreateRuleRequest as a CreateLogThresholdRuleRequest
-func (t CreateRuleRequest) AsCreateLogThresholdRuleRequest() (CreateLogThresholdRuleRequest, error) {
-	var body CreateLogThresholdRuleRequest
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromCreateLogThresholdRuleRequest overwrites any union data inside the CreateRuleRequest as the provided CreateLogThresholdRuleRequest
-func (t *CreateRuleRequest) FromCreateLogThresholdRuleRequest(v CreateLogThresholdRuleRequest) error {
-	v.RuleTypeId = "logs.alert.document.count"
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeCreateLogThresholdRuleRequest performs a merge with any union data inside the CreateRuleRequest, using the provided CreateLogThresholdRuleRequest
-func (t *CreateRuleRequest) MergeCreateLogThresholdRuleRequest(v CreateLogThresholdRuleRequest) error {
-	v.RuleTypeId = "logs.alert.document.count"
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-// AsCreateMonitoringCcrExceptionsRuleRequest returns the union data inside the CreateRuleRequest as a CreateMonitoringCcrExceptionsRuleRequest
-func (t CreateRuleRequest) AsCreateMonitoringCcrExceptionsRuleRequest() (CreateMonitoringCcrExceptionsRuleRequest, error) {
-	var body CreateMonitoringCcrExceptionsRuleRequest
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromCreateMonitoringCcrExceptionsRuleRequest overwrites any union data inside the CreateRuleRequest as the provided CreateMonitoringCcrExceptionsRuleRequest
-func (t *CreateRuleRequest) FromCreateMonitoringCcrExceptionsRuleRequest(v CreateMonitoringCcrExceptionsRuleRequest) error {
-	v.RuleTypeId = "monitoring_ccr_read_exceptions"
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeCreateMonitoringCcrExceptionsRuleRequest performs a merge with any union data inside the CreateRuleRequest, using the provided CreateMonitoringCcrExceptionsRuleRequest
-func (t *CreateRuleRequest) MergeCreateMonitoringCcrExceptionsRuleRequest(v CreateMonitoringCcrExceptionsRuleRequest) error {
-	v.RuleTypeId = "monitoring_ccr_read_exceptions"
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-// AsCreateMonitoringClusterHealthRuleRequest returns the union data inside the CreateRuleRequest as a CreateMonitoringClusterHealthRuleRequest
-func (t CreateRuleRequest) AsCreateMonitoringClusterHealthRuleRequest() (CreateMonitoringClusterHealthRuleRequest, error) {
-	var body CreateMonitoringClusterHealthRuleRequest
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromCreateMonitoringClusterHealthRuleRequest overwrites any union data inside the CreateRuleRequest as the provided CreateMonitoringClusterHealthRuleRequest
-func (t *CreateRuleRequest) FromCreateMonitoringClusterHealthRuleRequest(v CreateMonitoringClusterHealthRuleRequest) error {
-	v.RuleTypeId = "monitoring_alert_cluster_health"
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeCreateMonitoringClusterHealthRuleRequest performs a merge with any union data inside the CreateRuleRequest, using the provided CreateMonitoringClusterHealthRuleRequest
-func (t *CreateRuleRequest) MergeCreateMonitoringClusterHealthRuleRequest(v CreateMonitoringClusterHealthRuleRequest) error {
-	v.RuleTypeId = "monitoring_alert_cluster_health"
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-// AsCreateMonitoringCpuUsageRuleRequest returns the union data inside the CreateRuleRequest as a CreateMonitoringCpuUsageRuleRequest
-func (t CreateRuleRequest) AsCreateMonitoringCpuUsageRuleRequest() (CreateMonitoringCpuUsageRuleRequest, error) {
-	var body CreateMonitoringCpuUsageRuleRequest
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromCreateMonitoringCpuUsageRuleRequest overwrites any union data inside the CreateRuleRequest as the provided CreateMonitoringCpuUsageRuleRequest
-func (t *CreateRuleRequest) FromCreateMonitoringCpuUsageRuleRequest(v CreateMonitoringCpuUsageRuleRequest) error {
-	v.RuleTypeId = "monitoring_alert_cpu_usage"
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeCreateMonitoringCpuUsageRuleRequest performs a merge with any union data inside the CreateRuleRequest, using the provided CreateMonitoringCpuUsageRuleRequest
-func (t *CreateRuleRequest) MergeCreateMonitoringCpuUsageRuleRequest(v CreateMonitoringCpuUsageRuleRequest) error {
-	v.RuleTypeId = "monitoring_alert_cpu_usage"
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-// AsCreateMonitoringDiskUsageRuleRequest returns the union data inside the CreateRuleRequest as a CreateMonitoringDiskUsageRuleRequest
-func (t CreateRuleRequest) AsCreateMonitoringDiskUsageRuleRequest() (CreateMonitoringDiskUsageRuleRequest, error) {
-	var body CreateMonitoringDiskUsageRuleRequest
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromCreateMonitoringDiskUsageRuleRequest overwrites any union data inside the CreateRuleRequest as the provided CreateMonitoringDiskUsageRuleRequest
-func (t *CreateRuleRequest) FromCreateMonitoringDiskUsageRuleRequest(v CreateMonitoringDiskUsageRuleRequest) error {
-	v.RuleTypeId = "monitoring_alert_disk_usage"
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeCreateMonitoringDiskUsageRuleRequest performs a merge with any union data inside the CreateRuleRequest, using the provided CreateMonitoringDiskUsageRuleRequest
-func (t *CreateRuleRequest) MergeCreateMonitoringDiskUsageRuleRequest(v CreateMonitoringDiskUsageRuleRequest) error {
-	v.RuleTypeId = "monitoring_alert_disk_usage"
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-// AsCreateMonitoringElasticsearchVersionMismatchRuleRequest returns the union data inside the CreateRuleRequest as a CreateMonitoringElasticsearchVersionMismatchRuleRequest
-func (t CreateRuleRequest) AsCreateMonitoringElasticsearchVersionMismatchRuleRequest() (CreateMonitoringElasticsearchVersionMismatchRuleRequest, error) {
-	var body CreateMonitoringElasticsearchVersionMismatchRuleRequest
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromCreateMonitoringElasticsearchVersionMismatchRuleRequest overwrites any union data inside the CreateRuleRequest as the provided CreateMonitoringElasticsearchVersionMismatchRuleRequest
-func (t *CreateRuleRequest) FromCreateMonitoringElasticsearchVersionMismatchRuleRequest(v CreateMonitoringElasticsearchVersionMismatchRuleRequest) error {
-	v.RuleTypeId = "monitoring_alert_elasticsearch_version_mismatch"
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeCreateMonitoringElasticsearchVersionMismatchRuleRequest performs a merge with any union data inside the CreateRuleRequest, using the provided CreateMonitoringElasticsearchVersionMismatchRuleRequest
-func (t *CreateRuleRequest) MergeCreateMonitoringElasticsearchVersionMismatchRuleRequest(v CreateMonitoringElasticsearchVersionMismatchRuleRequest) error {
-	v.RuleTypeId = "monitoring_alert_elasticsearch_version_mismatch"
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-// AsCreateMonitoringLicenseExpirationRuleRequest returns the union data inside the CreateRuleRequest as a CreateMonitoringLicenseExpirationRuleRequest
-func (t CreateRuleRequest) AsCreateMonitoringLicenseExpirationRuleRequest() (CreateMonitoringLicenseExpirationRuleRequest, error) {
-	var body CreateMonitoringLicenseExpirationRuleRequest
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromCreateMonitoringLicenseExpirationRuleRequest overwrites any union data inside the CreateRuleRequest as the provided CreateMonitoringLicenseExpirationRuleRequest
-func (t *CreateRuleRequest) FromCreateMonitoringLicenseExpirationRuleRequest(v CreateMonitoringLicenseExpirationRuleRequest) error {
-	v.RuleTypeId = "monitoring_alert_license_expiration"
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeCreateMonitoringLicenseExpirationRuleRequest performs a merge with any union data inside the CreateRuleRequest, using the provided CreateMonitoringLicenseExpirationRuleRequest
-func (t *CreateRuleRequest) MergeCreateMonitoringLicenseExpirationRuleRequest(v CreateMonitoringLicenseExpirationRuleRequest) error {
-	v.RuleTypeId = "monitoring_alert_license_expiration"
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-// AsCreateMonitoringKibanaVersionMismatchRuleRequest returns the union data inside the CreateRuleRequest as a CreateMonitoringKibanaVersionMismatchRuleRequest
-func (t CreateRuleRequest) AsCreateMonitoringKibanaVersionMismatchRuleRequest() (CreateMonitoringKibanaVersionMismatchRuleRequest, error) {
-	var body CreateMonitoringKibanaVersionMismatchRuleRequest
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromCreateMonitoringKibanaVersionMismatchRuleRequest overwrites any union data inside the CreateRuleRequest as the provided CreateMonitoringKibanaVersionMismatchRuleRequest
-func (t *CreateRuleRequest) FromCreateMonitoringKibanaVersionMismatchRuleRequest(v CreateMonitoringKibanaVersionMismatchRuleRequest) error {
-	v.RuleTypeId = "monitoring_alert_kibana_version_mismatch"
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeCreateMonitoringKibanaVersionMismatchRuleRequest performs a merge with any union data inside the CreateRuleRequest, using the provided CreateMonitoringKibanaVersionMismatchRuleRequest
-func (t *CreateRuleRequest) MergeCreateMonitoringKibanaVersionMismatchRuleRequest(v CreateMonitoringKibanaVersionMismatchRuleRequest) error {
-	v.RuleTypeId = "monitoring_alert_kibana_version_mismatch"
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-// AsCreateMonitoringLogstashVersionMismatchRuleRequest returns the union data inside the CreateRuleRequest as a CreateMonitoringLogstashVersionMismatchRuleRequest
-func (t CreateRuleRequest) AsCreateMonitoringLogstashVersionMismatchRuleRequest() (CreateMonitoringLogstashVersionMismatchRuleRequest, error) {
-	var body CreateMonitoringLogstashVersionMismatchRuleRequest
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromCreateMonitoringLogstashVersionMismatchRuleRequest overwrites any union data inside the CreateRuleRequest as the provided CreateMonitoringLogstashVersionMismatchRuleRequest
-func (t *CreateRuleRequest) FromCreateMonitoringLogstashVersionMismatchRuleRequest(v CreateMonitoringLogstashVersionMismatchRuleRequest) error {
-	v.RuleTypeId = "monitoring_alert_logstash_version_mismatch"
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeCreateMonitoringLogstashVersionMismatchRuleRequest performs a merge with any union data inside the CreateRuleRequest, using the provided CreateMonitoringLogstashVersionMismatchRuleRequest
-func (t *CreateRuleRequest) MergeCreateMonitoringLogstashVersionMismatchRuleRequest(v CreateMonitoringLogstashVersionMismatchRuleRequest) error {
-	v.RuleTypeId = "monitoring_alert_logstash_version_mismatch"
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-// AsCreateMonitoringMissingDataRuleRequest returns the union data inside the CreateRuleRequest as a CreateMonitoringMissingDataRuleRequest
-func (t CreateRuleRequest) AsCreateMonitoringMissingDataRuleRequest() (CreateMonitoringMissingDataRuleRequest, error) {
-	var body CreateMonitoringMissingDataRuleRequest
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromCreateMonitoringMissingDataRuleRequest overwrites any union data inside the CreateRuleRequest as the provided CreateMonitoringMissingDataRuleRequest
-func (t *CreateRuleRequest) FromCreateMonitoringMissingDataRuleRequest(v CreateMonitoringMissingDataRuleRequest) error {
-	v.RuleTypeId = "monitoring_alert_missing_monitoring_data"
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeCreateMonitoringMissingDataRuleRequest performs a merge with any union data inside the CreateRuleRequest, using the provided CreateMonitoringMissingDataRuleRequest
-func (t *CreateRuleRequest) MergeCreateMonitoringMissingDataRuleRequest(v CreateMonitoringMissingDataRuleRequest) error {
-	v.RuleTypeId = "monitoring_alert_missing_monitoring_data"
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-// AsCreateMonitoringNodesChangedRuleRequest returns the union data inside the CreateRuleRequest as a CreateMonitoringNodesChangedRuleRequest
-func (t CreateRuleRequest) AsCreateMonitoringNodesChangedRuleRequest() (CreateMonitoringNodesChangedRuleRequest, error) {
-	var body CreateMonitoringNodesChangedRuleRequest
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromCreateMonitoringNodesChangedRuleRequest overwrites any union data inside the CreateRuleRequest as the provided CreateMonitoringNodesChangedRuleRequest
-func (t *CreateRuleRequest) FromCreateMonitoringNodesChangedRuleRequest(v CreateMonitoringNodesChangedRuleRequest) error {
-	v.RuleTypeId = "monitoring_alert_nodes_changed"
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeCreateMonitoringNodesChangedRuleRequest performs a merge with any union data inside the CreateRuleRequest, using the provided CreateMonitoringNodesChangedRuleRequest
-func (t *CreateRuleRequest) MergeCreateMonitoringNodesChangedRuleRequest(v CreateMonitoringNodesChangedRuleRequest) error {
-	v.RuleTypeId = "monitoring_alert_nodes_changed"
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-// AsCreateMonitoringShardSizeRuleRequest returns the union data inside the CreateRuleRequest as a CreateMonitoringShardSizeRuleRequest
-func (t CreateRuleRequest) AsCreateMonitoringShardSizeRuleRequest() (CreateMonitoringShardSizeRuleRequest, error) {
-	var body CreateMonitoringShardSizeRuleRequest
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromCreateMonitoringShardSizeRuleRequest overwrites any union data inside the CreateRuleRequest as the provided CreateMonitoringShardSizeRuleRequest
-func (t *CreateRuleRequest) FromCreateMonitoringShardSizeRuleRequest(v CreateMonitoringShardSizeRuleRequest) error {
-	v.RuleTypeId = "monitoring_shard_size"
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeCreateMonitoringShardSizeRuleRequest performs a merge with any union data inside the CreateRuleRequest, using the provided CreateMonitoringShardSizeRuleRequest
-func (t *CreateRuleRequest) MergeCreateMonitoringShardSizeRuleRequest(v CreateMonitoringShardSizeRuleRequest) error {
-	v.RuleTypeId = "monitoring_shard_size"
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-// AsCreateMonitoringThreadPoolSearchRejectionsRuleRequest returns the union data inside the CreateRuleRequest as a CreateMonitoringThreadPoolSearchRejectionsRuleRequest
-func (t CreateRuleRequest) AsCreateMonitoringThreadPoolSearchRejectionsRuleRequest() (CreateMonitoringThreadPoolSearchRejectionsRuleRequest, error) {
-	var body CreateMonitoringThreadPoolSearchRejectionsRuleRequest
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromCreateMonitoringThreadPoolSearchRejectionsRuleRequest overwrites any union data inside the CreateRuleRequest as the provided CreateMonitoringThreadPoolSearchRejectionsRuleRequest
-func (t *CreateRuleRequest) FromCreateMonitoringThreadPoolSearchRejectionsRuleRequest(v CreateMonitoringThreadPoolSearchRejectionsRuleRequest) error {
-	v.RuleTypeId = "monitoring_alert_thread_pool_search_rejections"
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeCreateMonitoringThreadPoolSearchRejectionsRuleRequest performs a merge with any union data inside the CreateRuleRequest, using the provided CreateMonitoringThreadPoolSearchRejectionsRuleRequest
-func (t *CreateRuleRequest) MergeCreateMonitoringThreadPoolSearchRejectionsRuleRequest(v CreateMonitoringThreadPoolSearchRejectionsRuleRequest) error {
-	v.RuleTypeId = "monitoring_alert_thread_pool_search_rejections"
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-// AsCreateMonitoringThreadPoolWriteRejectionsRuleRequest returns the union data inside the CreateRuleRequest as a CreateMonitoringThreadPoolWriteRejectionsRuleRequest
-func (t CreateRuleRequest) AsCreateMonitoringThreadPoolWriteRejectionsRuleRequest() (CreateMonitoringThreadPoolWriteRejectionsRuleRequest, error) {
-	var body CreateMonitoringThreadPoolWriteRejectionsRuleRequest
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromCreateMonitoringThreadPoolWriteRejectionsRuleRequest overwrites any union data inside the CreateRuleRequest as the provided CreateMonitoringThreadPoolWriteRejectionsRuleRequest
-func (t *CreateRuleRequest) FromCreateMonitoringThreadPoolWriteRejectionsRuleRequest(v CreateMonitoringThreadPoolWriteRejectionsRuleRequest) error {
-	v.RuleTypeId = "monitoring_alert_thread_pool_write_rejections"
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeCreateMonitoringThreadPoolWriteRejectionsRuleRequest performs a merge with any union data inside the CreateRuleRequest, using the provided CreateMonitoringThreadPoolWriteRejectionsRuleRequest
-func (t *CreateRuleRequest) MergeCreateMonitoringThreadPoolWriteRejectionsRuleRequest(v CreateMonitoringThreadPoolWriteRejectionsRuleRequest) error {
-	v.RuleTypeId = "monitoring_alert_thread_pool_write_rejections"
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-// AsCreateSiemEqlRuleRequest returns the union data inside the CreateRuleRequest as a CreateSiemEqlRuleRequest
-func (t CreateRuleRequest) AsCreateSiemEqlRuleRequest() (CreateSiemEqlRuleRequest, error) {
-	var body CreateSiemEqlRuleRequest
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromCreateSiemEqlRuleRequest overwrites any union data inside the CreateRuleRequest as the provided CreateSiemEqlRuleRequest
-func (t *CreateRuleRequest) FromCreateSiemEqlRuleRequest(v CreateSiemEqlRuleRequest) error {
-	v.RuleTypeId = "siem.eqlRule"
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeCreateSiemEqlRuleRequest performs a merge with any union data inside the CreateRuleRequest, using the provided CreateSiemEqlRuleRequest
-func (t *CreateRuleRequest) MergeCreateSiemEqlRuleRequest(v CreateSiemEqlRuleRequest) error {
-	v.RuleTypeId = "siem.eqlRule"
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-// AsCreateSiemIndicatorRuleRequest returns the union data inside the CreateRuleRequest as a CreateSiemIndicatorRuleRequest
-func (t CreateRuleRequest) AsCreateSiemIndicatorRuleRequest() (CreateSiemIndicatorRuleRequest, error) {
-	var body CreateSiemIndicatorRuleRequest
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromCreateSiemIndicatorRuleRequest overwrites any union data inside the CreateRuleRequest as the provided CreateSiemIndicatorRuleRequest
-func (t *CreateRuleRequest) FromCreateSiemIndicatorRuleRequest(v CreateSiemIndicatorRuleRequest) error {
-	v.RuleTypeId = "siem.indicatorRule"
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeCreateSiemIndicatorRuleRequest performs a merge with any union data inside the CreateRuleRequest, using the provided CreateSiemIndicatorRuleRequest
-func (t *CreateRuleRequest) MergeCreateSiemIndicatorRuleRequest(v CreateSiemIndicatorRuleRequest) error {
-	v.RuleTypeId = "siem.indicatorRule"
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-// AsCreateSiemMlRuleRequest returns the union data inside the CreateRuleRequest as a CreateSiemMlRuleRequest
-func (t CreateRuleRequest) AsCreateSiemMlRuleRequest() (CreateSiemMlRuleRequest, error) {
-	var body CreateSiemMlRuleRequest
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromCreateSiemMlRuleRequest overwrites any union data inside the CreateRuleRequest as the provided CreateSiemMlRuleRequest
-func (t *CreateRuleRequest) FromCreateSiemMlRuleRequest(v CreateSiemMlRuleRequest) error {
-	v.RuleTypeId = "siem.mlRule"
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeCreateSiemMlRuleRequest performs a merge with any union data inside the CreateRuleRequest, using the provided CreateSiemMlRuleRequest
-func (t *CreateRuleRequest) MergeCreateSiemMlRuleRequest(v CreateSiemMlRuleRequest) error {
-	v.RuleTypeId = "siem.mlRule"
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-// AsCreateSiemNewTermsRuleRequest returns the union data inside the CreateRuleRequest as a CreateSiemNewTermsRuleRequest
-func (t CreateRuleRequest) AsCreateSiemNewTermsRuleRequest() (CreateSiemNewTermsRuleRequest, error) {
-	var body CreateSiemNewTermsRuleRequest
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromCreateSiemNewTermsRuleRequest overwrites any union data inside the CreateRuleRequest as the provided CreateSiemNewTermsRuleRequest
-func (t *CreateRuleRequest) FromCreateSiemNewTermsRuleRequest(v CreateSiemNewTermsRuleRequest) error {
-	v.RuleTypeId = "siem.newTermsRule"
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeCreateSiemNewTermsRuleRequest performs a merge with any union data inside the CreateRuleRequest, using the provided CreateSiemNewTermsRuleRequest
-func (t *CreateRuleRequest) MergeCreateSiemNewTermsRuleRequest(v CreateSiemNewTermsRuleRequest) error {
-	v.RuleTypeId = "siem.newTermsRule"
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-// AsCreateSiemNotificationsRuleRequest returns the union data inside the CreateRuleRequest as a CreateSiemNotificationsRuleRequest
-func (t CreateRuleRequest) AsCreateSiemNotificationsRuleRequest() (CreateSiemNotificationsRuleRequest, error) {
-	var body CreateSiemNotificationsRuleRequest
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromCreateSiemNotificationsRuleRequest overwrites any union data inside the CreateRuleRequest as the provided CreateSiemNotificationsRuleRequest
-func (t *CreateRuleRequest) FromCreateSiemNotificationsRuleRequest(v CreateSiemNotificationsRuleRequest) error {
-	v.RuleTypeId = "siem.notifications"
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeCreateSiemNotificationsRuleRequest performs a merge with any union data inside the CreateRuleRequest, using the provided CreateSiemNotificationsRuleRequest
-func (t *CreateRuleRequest) MergeCreateSiemNotificationsRuleRequest(v CreateSiemNotificationsRuleRequest) error {
-	v.RuleTypeId = "siem.notifications"
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-// AsCreateSiemQueryRuleRequest returns the union data inside the CreateRuleRequest as a CreateSiemQueryRuleRequest
-func (t CreateRuleRequest) AsCreateSiemQueryRuleRequest() (CreateSiemQueryRuleRequest, error) {
-	var body CreateSiemQueryRuleRequest
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromCreateSiemQueryRuleRequest overwrites any union data inside the CreateRuleRequest as the provided CreateSiemQueryRuleRequest
-func (t *CreateRuleRequest) FromCreateSiemQueryRuleRequest(v CreateSiemQueryRuleRequest) error {
-	v.RuleTypeId = "siem.queryRule"
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeCreateSiemQueryRuleRequest performs a merge with any union data inside the CreateRuleRequest, using the provided CreateSiemQueryRuleRequest
-func (t *CreateRuleRequest) MergeCreateSiemQueryRuleRequest(v CreateSiemQueryRuleRequest) error {
-	v.RuleTypeId = "siem.queryRule"
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-// AsCreateSiemSavedQueryRuleRequest returns the union data inside the CreateRuleRequest as a CreateSiemSavedQueryRuleRequest
-func (t CreateRuleRequest) AsCreateSiemSavedQueryRuleRequest() (CreateSiemSavedQueryRuleRequest, error) {
-	var body CreateSiemSavedQueryRuleRequest
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromCreateSiemSavedQueryRuleRequest overwrites any union data inside the CreateRuleRequest as the provided CreateSiemSavedQueryRuleRequest
-func (t *CreateRuleRequest) FromCreateSiemSavedQueryRuleRequest(v CreateSiemSavedQueryRuleRequest) error {
-	v.RuleTypeId = "siem.savedQueryRule"
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeCreateSiemSavedQueryRuleRequest performs a merge with any union data inside the CreateRuleRequest, using the provided CreateSiemSavedQueryRuleRequest
-func (t *CreateRuleRequest) MergeCreateSiemSavedQueryRuleRequest(v CreateSiemSavedQueryRuleRequest) error {
-	v.RuleTypeId = "siem.savedQueryRule"
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-// AsCreateSiemThresholdRuleRequest returns the union data inside the CreateRuleRequest as a CreateSiemThresholdRuleRequest
-func (t CreateRuleRequest) AsCreateSiemThresholdRuleRequest() (CreateSiemThresholdRuleRequest, error) {
-	var body CreateSiemThresholdRuleRequest
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromCreateSiemThresholdRuleRequest overwrites any union data inside the CreateRuleRequest as the provided CreateSiemThresholdRuleRequest
-func (t *CreateRuleRequest) FromCreateSiemThresholdRuleRequest(v CreateSiemThresholdRuleRequest) error {
-	v.RuleTypeId = "siem.thresholdRule"
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeCreateSiemThresholdRuleRequest performs a merge with any union data inside the CreateRuleRequest, using the provided CreateSiemThresholdRuleRequest
-func (t *CreateRuleRequest) MergeCreateSiemThresholdRuleRequest(v CreateSiemThresholdRuleRequest) error {
-	v.RuleTypeId = "siem.thresholdRule"
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-// AsCreateSloBurnRateRuleRequest returns the union data inside the CreateRuleRequest as a CreateSloBurnRateRuleRequest
-func (t CreateRuleRequest) AsCreateSloBurnRateRuleRequest() (CreateSloBurnRateRuleRequest, error) {
-	var body CreateSloBurnRateRuleRequest
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromCreateSloBurnRateRuleRequest overwrites any union data inside the CreateRuleRequest as the provided CreateSloBurnRateRuleRequest
-func (t *CreateRuleRequest) FromCreateSloBurnRateRuleRequest(v CreateSloBurnRateRuleRequest) error {
-	v.RuleTypeId = "slo.rules.burnRate"
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeCreateSloBurnRateRuleRequest performs a merge with any union data inside the CreateRuleRequest, using the provided CreateSloBurnRateRuleRequest
-func (t *CreateRuleRequest) MergeCreateSloBurnRateRuleRequest(v CreateSloBurnRateRuleRequest) error {
-	v.RuleTypeId = "slo.rules.burnRate"
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-// AsCreateSyntheticsMonitorStatusRuleRequest returns the union data inside the CreateRuleRequest as a CreateSyntheticsMonitorStatusRuleRequest
-func (t CreateRuleRequest) AsCreateSyntheticsMonitorStatusRuleRequest() (CreateSyntheticsMonitorStatusRuleRequest, error) {
-	var body CreateSyntheticsMonitorStatusRuleRequest
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromCreateSyntheticsMonitorStatusRuleRequest overwrites any union data inside the CreateRuleRequest as the provided CreateSyntheticsMonitorStatusRuleRequest
-func (t *CreateRuleRequest) FromCreateSyntheticsMonitorStatusRuleRequest(v CreateSyntheticsMonitorStatusRuleRequest) error {
-	v.RuleTypeId = "xpack.synthetics.alerts.monitorStatus"
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeCreateSyntheticsMonitorStatusRuleRequest performs a merge with any union data inside the CreateRuleRequest, using the provided CreateSyntheticsMonitorStatusRuleRequest
-func (t *CreateRuleRequest) MergeCreateSyntheticsMonitorStatusRuleRequest(v CreateSyntheticsMonitorStatusRuleRequest) error {
-	v.RuleTypeId = "xpack.synthetics.alerts.monitorStatus"
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-// AsCreateSyntheticsUptimeDurationAnomalyRuleRequest returns the union data inside the CreateRuleRequest as a CreateSyntheticsUptimeDurationAnomalyRuleRequest
-func (t CreateRuleRequest) AsCreateSyntheticsUptimeDurationAnomalyRuleRequest() (CreateSyntheticsUptimeDurationAnomalyRuleRequest, error) {
-	var body CreateSyntheticsUptimeDurationAnomalyRuleRequest
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromCreateSyntheticsUptimeDurationAnomalyRuleRequest overwrites any union data inside the CreateRuleRequest as the provided CreateSyntheticsUptimeDurationAnomalyRuleRequest
-func (t *CreateRuleRequest) FromCreateSyntheticsUptimeDurationAnomalyRuleRequest(v CreateSyntheticsUptimeDurationAnomalyRuleRequest) error {
-	v.RuleTypeId = "xpack.uptime.alerts.durationAnomaly"
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeCreateSyntheticsUptimeDurationAnomalyRuleRequest performs a merge with any union data inside the CreateRuleRequest, using the provided CreateSyntheticsUptimeDurationAnomalyRuleRequest
-func (t *CreateRuleRequest) MergeCreateSyntheticsUptimeDurationAnomalyRuleRequest(v CreateSyntheticsUptimeDurationAnomalyRuleRequest) error {
-	v.RuleTypeId = "xpack.uptime.alerts.durationAnomaly"
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-// AsCreateSyntheticsUptimeTlsRuleRequest returns the union data inside the CreateRuleRequest as a CreateSyntheticsUptimeTlsRuleRequest
-func (t CreateRuleRequest) AsCreateSyntheticsUptimeTlsRuleRequest() (CreateSyntheticsUptimeTlsRuleRequest, error) {
-	var body CreateSyntheticsUptimeTlsRuleRequest
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromCreateSyntheticsUptimeTlsRuleRequest overwrites any union data inside the CreateRuleRequest as the provided CreateSyntheticsUptimeTlsRuleRequest
-func (t *CreateRuleRequest) FromCreateSyntheticsUptimeTlsRuleRequest(v CreateSyntheticsUptimeTlsRuleRequest) error {
-	v.RuleTypeId = "xpack.uptime.alerts.tls"
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeCreateSyntheticsUptimeTlsRuleRequest performs a merge with any union data inside the CreateRuleRequest, using the provided CreateSyntheticsUptimeTlsRuleRequest
-func (t *CreateRuleRequest) MergeCreateSyntheticsUptimeTlsRuleRequest(v CreateSyntheticsUptimeTlsRuleRequest) error {
-	v.RuleTypeId = "xpack.uptime.alerts.tls"
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-// AsCreateSyntheticsUptimeTlsCertificateRuleRequest returns the union data inside the CreateRuleRequest as a CreateSyntheticsUptimeTlsCertificateRuleRequest
-func (t CreateRuleRequest) AsCreateSyntheticsUptimeTlsCertificateRuleRequest() (CreateSyntheticsUptimeTlsCertificateRuleRequest, error) {
-	var body CreateSyntheticsUptimeTlsCertificateRuleRequest
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromCreateSyntheticsUptimeTlsCertificateRuleRequest overwrites any union data inside the CreateRuleRequest as the provided CreateSyntheticsUptimeTlsCertificateRuleRequest
-func (t *CreateRuleRequest) FromCreateSyntheticsUptimeTlsCertificateRuleRequest(v CreateSyntheticsUptimeTlsCertificateRuleRequest) error {
-	v.RuleTypeId = "xpack.uptime.alerts.tlsCertificate"
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeCreateSyntheticsUptimeTlsCertificateRuleRequest performs a merge with any union data inside the CreateRuleRequest, using the provided CreateSyntheticsUptimeTlsCertificateRuleRequest
-func (t *CreateRuleRequest) MergeCreateSyntheticsUptimeTlsCertificateRuleRequest(v CreateSyntheticsUptimeTlsCertificateRuleRequest) error {
-	v.RuleTypeId = "xpack.uptime.alerts.tlsCertificate"
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-// AsCreateTransformHealthRuleRequest returns the union data inside the CreateRuleRequest as a CreateTransformHealthRuleRequest
-func (t CreateRuleRequest) AsCreateTransformHealthRuleRequest() (CreateTransformHealthRuleRequest, error) {
-	var body CreateTransformHealthRuleRequest
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromCreateTransformHealthRuleRequest overwrites any union data inside the CreateRuleRequest as the provided CreateTransformHealthRuleRequest
-func (t *CreateRuleRequest) FromCreateTransformHealthRuleRequest(v CreateTransformHealthRuleRequest) error {
-	v.RuleTypeId = "transform_health"
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeCreateTransformHealthRuleRequest performs a merge with any union data inside the CreateRuleRequest, using the provided CreateTransformHealthRuleRequest
-func (t *CreateRuleRequest) MergeCreateTransformHealthRuleRequest(v CreateTransformHealthRuleRequest) error {
-	v.RuleTypeId = "transform_health"
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-// AsCreateUptimeMonitorStatusRuleRequest returns the union data inside the CreateRuleRequest as a CreateUptimeMonitorStatusRuleRequest
-func (t CreateRuleRequest) AsCreateUptimeMonitorStatusRuleRequest() (CreateUptimeMonitorStatusRuleRequest, error) {
-	var body CreateUptimeMonitorStatusRuleRequest
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromCreateUptimeMonitorStatusRuleRequest overwrites any union data inside the CreateRuleRequest as the provided CreateUptimeMonitorStatusRuleRequest
-func (t *CreateRuleRequest) FromCreateUptimeMonitorStatusRuleRequest(v CreateUptimeMonitorStatusRuleRequest) error {
-	v.RuleTypeId = "xpack.uptime.alerts.monitorStatus"
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeCreateUptimeMonitorStatusRuleRequest performs a merge with any union data inside the CreateRuleRequest, using the provided CreateUptimeMonitorStatusRuleRequest
-func (t *CreateRuleRequest) MergeCreateUptimeMonitorStatusRuleRequest(v CreateUptimeMonitorStatusRuleRequest) error {
-	v.RuleTypeId = "xpack.uptime.alerts.monitorStatus"
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-func (t CreateRuleRequest) Discriminator() (string, error) {
-	var discriminator struct {
-		Discriminator string `json:"rule_type_id"`
-	}
-	err := json.Unmarshal(t.union, &discriminator)
-	return discriminator.Discriminator, err
-}
-
-func (t CreateRuleRequest) ValueByDiscriminator() (interface{}, error) {
-	discriminator, err := t.Discriminator()
-	if err != nil {
-		return nil, err
-	}
-	switch discriminator {
-	case ".es-query":
-		return t.AsCreateEsQueryRuleRequest()
-	case ".geo-containment":
-		return t.AsCreateGeoContainmentRuleRequest()
-	case ".index-threshold":
-		return t.AsCreateIndexThresholdRuleRequest()
-	case "apm.anomaly":
-		return t.AsCreateApmAnomalyRuleRequest()
-	case "apm.error_rate":
-		return t.AsCreateApmErrorCountRuleRequest()
-	case "apm.transaction_duration":
-		return t.AsCreateApmTransactionDurationRuleRequest()
-	case "apm.transaction_error_rate":
-		return t.AsCreateApmTransactionErrorRateRuleRequest()
-	case "logs.alert.document.count":
-		return t.AsCreateLogThresholdRuleRequest()
-	case "metrics.alert.anomaly":
-		return t.AsCreateInfraMetricAnomalyRuleRequest()
-	case "metrics.alert.inventory.threshold":
-		return t.AsCreateInfraInventoryRuleRequest()
-	case "metrics.alert.threshold":
-		return t.AsCreateInfraMetricThresholdRuleRequest()
-	case "monitoring_alert_cluster_health":
-		return t.AsCreateMonitoringClusterHealthRuleRequest()
-	case "monitoring_alert_cpu_usage":
-		return t.AsCreateMonitoringCpuUsageRuleRequest()
-	case "monitoring_alert_disk_usage":
-		return t.AsCreateMonitoringDiskUsageRuleRequest()
-	case "monitoring_alert_elasticsearch_version_mismatch":
-		return t.AsCreateMonitoringElasticsearchVersionMismatchRuleRequest()
-	case "monitoring_alert_jvm_memory_usage":
-		return t.AsCreateMonitoringJvmMemoryUsageRuleRequest()
-	case "monitoring_alert_kibana_version_mismatch":
-		return t.AsCreateMonitoringKibanaVersionMismatchRuleRequest()
-	case "monitoring_alert_license_expiration":
-		return t.AsCreateMonitoringLicenseExpirationRuleRequest()
-	case "monitoring_alert_logstash_version_mismatch":
-		return t.AsCreateMonitoringLogstashVersionMismatchRuleRequest()
-	case "monitoring_alert_missing_monitoring_data":
-		return t.AsCreateMonitoringMissingDataRuleRequest()
-	case "monitoring_alert_nodes_changed":
-		return t.AsCreateMonitoringNodesChangedRuleRequest()
-	case "monitoring_alert_thread_pool_search_rejections":
-		return t.AsCreateMonitoringThreadPoolSearchRejectionsRuleRequest()
-	case "monitoring_alert_thread_pool_write_rejections":
-		return t.AsCreateMonitoringThreadPoolWriteRejectionsRuleRequest()
-	case "monitoring_ccr_read_exceptions":
-		return t.AsCreateMonitoringCcrExceptionsRuleRequest()
-	case "monitoring_shard_size":
-		return t.AsCreateMonitoringShardSizeRuleRequest()
-	case "siem.eqlRule":
-		return t.AsCreateSiemEqlRuleRequest()
-	case "siem.indicatorRule":
-		return t.AsCreateSiemIndicatorRuleRequest()
-	case "siem.mlRule":
-		return t.AsCreateSiemMlRuleRequest()
-	case "siem.newTermsRule":
-		return t.AsCreateSiemNewTermsRuleRequest()
-	case "siem.notifications":
-		return t.AsCreateSiemNotificationsRuleRequest()
-	case "siem.queryRule":
-		return t.AsCreateSiemQueryRuleRequest()
-	case "siem.savedQueryRule":
-		return t.AsCreateSiemSavedQueryRuleRequest()
-	case "siem.thresholdRule":
-		return t.AsCreateSiemThresholdRuleRequest()
-	case "slo.rules.burnRate":
-		return t.AsCreateSloBurnRateRuleRequest()
-	case "transform_health":
-		return t.AsCreateTransformHealthRuleRequest()
-	case "xpack.ml.anomaly_detection_alert":
-		return t.AsCreateAnomalyDetectionAlertRuleRequest()
-	case "xpack.ml.anomaly_detection_jobs_health":
-		return t.AsCreateAnomalyDetectionJobsHealthRuleRequest()
-	case "xpack.synthetics.alerts.monitorStatus":
-		return t.AsCreateSyntheticsMonitorStatusRuleRequest()
-	case "xpack.uptime.alerts.durationAnomaly":
-		return t.AsCreateSyntheticsUptimeDurationAnomalyRuleRequest()
-	case "xpack.uptime.alerts.monitorStatus":
-		return t.AsCreateUptimeMonitorStatusRuleRequest()
-	case "xpack.uptime.alerts.tls":
-		return t.AsCreateSyntheticsUptimeTlsRuleRequest()
-	case "xpack.uptime.alerts.tlsCertificate":
-		return t.AsCreateSyntheticsUptimeTlsCertificateRuleRequest()
-	default:
-		return nil, errors.New("unknown discriminator value: " + discriminator)
-	}
-}
-
-func (t CreateRuleRequest) MarshalJSON() ([]byte, error) {
+func (t CreateRuleResponseObjectSnoozeScheduleItemRRule_Byweekday_Item) MarshalJSON() ([]byte, error) {
 	b, err := t.union.MarshalJSON()
 	return b, err
 }
 
-func (t *CreateRuleRequest) UnmarshalJSON(b []byte) error {
+func (t *CreateRuleResponseObjectSnoozeScheduleItemRRule_Byweekday_Item) UnmarshalJSON(b []byte) error {
 	err := t.union.UnmarshalJSON(b)
 	return err
 }
@@ -7025,22 +4720,208 @@ func (t *CreateSloRequest_Indicator) UnmarshalJSON(b []byte) error {
 	return err
 }
 
-// AsTimesliceMetricBasicMetricWithField returns the union data inside the IndicatorPropertiesTimesliceMetric_Params_Metric_Metrics_Item as a TimesliceMetricBasicMetricWithField
-func (t IndicatorPropertiesTimesliceMetric_Params_Metric_Metrics_Item) AsTimesliceMetricBasicMetricWithField() (TimesliceMetricBasicMetricWithField, error) {
+// AsKibanaSavedObjectType returns the union data inside the DeletePackageResponseObjectItemItem_Type as a KibanaSavedObjectType
+func (t DeletePackageResponseObjectItemItem_Type) AsKibanaSavedObjectType() (KibanaSavedObjectType, error) {
+	var body KibanaSavedObjectType
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromKibanaSavedObjectType overwrites any union data inside the DeletePackageResponseObjectItemItem_Type as the provided KibanaSavedObjectType
+func (t *DeletePackageResponseObjectItemItem_Type) FromKibanaSavedObjectType(v KibanaSavedObjectType) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeKibanaSavedObjectType performs a merge with any union data inside the DeletePackageResponseObjectItemItem_Type, using the provided KibanaSavedObjectType
+func (t *DeletePackageResponseObjectItemItem_Type) MergeKibanaSavedObjectType(v KibanaSavedObjectType) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsElasticsearchAssetType returns the union data inside the DeletePackageResponseObjectItemItem_Type as a ElasticsearchAssetType
+func (t DeletePackageResponseObjectItemItem_Type) AsElasticsearchAssetType() (ElasticsearchAssetType, error) {
+	var body ElasticsearchAssetType
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromElasticsearchAssetType overwrites any union data inside the DeletePackageResponseObjectItemItem_Type as the provided ElasticsearchAssetType
+func (t *DeletePackageResponseObjectItemItem_Type) FromElasticsearchAssetType(v ElasticsearchAssetType) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeElasticsearchAssetType performs a merge with any union data inside the DeletePackageResponseObjectItemItem_Type, using the provided ElasticsearchAssetType
+func (t *DeletePackageResponseObjectItemItem_Type) MergeElasticsearchAssetType(v ElasticsearchAssetType) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+func (t DeletePackageResponseObjectItemItem_Type) MarshalJSON() ([]byte, error) {
+	b, err := t.union.MarshalJSON()
+	return b, err
+}
+
+func (t *DeletePackageResponseObjectItemItem_Type) UnmarshalJSON(b []byte) error {
+	err := t.union.UnmarshalJSON(b)
+	return err
+}
+
+// AsFindRuleResponseObjectSnoozeScheduleItemRRuleByweekday0 returns the union data inside the FindRuleResponseObjectSnoozeScheduleItemRRule_Byweekday_Item as a FindRuleResponseObjectSnoozeScheduleItemRRuleByweekday0
+func (t FindRuleResponseObjectSnoozeScheduleItemRRule_Byweekday_Item) AsFindRuleResponseObjectSnoozeScheduleItemRRuleByweekday0() (FindRuleResponseObjectSnoozeScheduleItemRRuleByweekday0, error) {
+	var body FindRuleResponseObjectSnoozeScheduleItemRRuleByweekday0
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromFindRuleResponseObjectSnoozeScheduleItemRRuleByweekday0 overwrites any union data inside the FindRuleResponseObjectSnoozeScheduleItemRRule_Byweekday_Item as the provided FindRuleResponseObjectSnoozeScheduleItemRRuleByweekday0
+func (t *FindRuleResponseObjectSnoozeScheduleItemRRule_Byweekday_Item) FromFindRuleResponseObjectSnoozeScheduleItemRRuleByweekday0(v FindRuleResponseObjectSnoozeScheduleItemRRuleByweekday0) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeFindRuleResponseObjectSnoozeScheduleItemRRuleByweekday0 performs a merge with any union data inside the FindRuleResponseObjectSnoozeScheduleItemRRule_Byweekday_Item, using the provided FindRuleResponseObjectSnoozeScheduleItemRRuleByweekday0
+func (t *FindRuleResponseObjectSnoozeScheduleItemRRule_Byweekday_Item) MergeFindRuleResponseObjectSnoozeScheduleItemRRuleByweekday0(v FindRuleResponseObjectSnoozeScheduleItemRRuleByweekday0) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsFindRuleResponseObjectSnoozeScheduleItemRRuleByweekday1 returns the union data inside the FindRuleResponseObjectSnoozeScheduleItemRRule_Byweekday_Item as a FindRuleResponseObjectSnoozeScheduleItemRRuleByweekday1
+func (t FindRuleResponseObjectSnoozeScheduleItemRRule_Byweekday_Item) AsFindRuleResponseObjectSnoozeScheduleItemRRuleByweekday1() (FindRuleResponseObjectSnoozeScheduleItemRRuleByweekday1, error) {
+	var body FindRuleResponseObjectSnoozeScheduleItemRRuleByweekday1
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromFindRuleResponseObjectSnoozeScheduleItemRRuleByweekday1 overwrites any union data inside the FindRuleResponseObjectSnoozeScheduleItemRRule_Byweekday_Item as the provided FindRuleResponseObjectSnoozeScheduleItemRRuleByweekday1
+func (t *FindRuleResponseObjectSnoozeScheduleItemRRule_Byweekday_Item) FromFindRuleResponseObjectSnoozeScheduleItemRRuleByweekday1(v FindRuleResponseObjectSnoozeScheduleItemRRuleByweekday1) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeFindRuleResponseObjectSnoozeScheduleItemRRuleByweekday1 performs a merge with any union data inside the FindRuleResponseObjectSnoozeScheduleItemRRule_Byweekday_Item, using the provided FindRuleResponseObjectSnoozeScheduleItemRRuleByweekday1
+func (t *FindRuleResponseObjectSnoozeScheduleItemRRule_Byweekday_Item) MergeFindRuleResponseObjectSnoozeScheduleItemRRuleByweekday1(v FindRuleResponseObjectSnoozeScheduleItemRRuleByweekday1) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+func (t FindRuleResponseObjectSnoozeScheduleItemRRule_Byweekday_Item) MarshalJSON() ([]byte, error) {
+	b, err := t.union.MarshalJSON()
+	return b, err
+}
+
+func (t *FindRuleResponseObjectSnoozeScheduleItemRRule_Byweekday_Item) UnmarshalJSON(b []byte) error {
+	err := t.union.UnmarshalJSON(b)
+	return err
+}
+
+// AsGetRuleResponseObjectSnoozeScheduleItemRRuleByweekday0 returns the union data inside the GetRuleResponseObjectSnoozeScheduleItemRRule_Byweekday_Item as a GetRuleResponseObjectSnoozeScheduleItemRRuleByweekday0
+func (t GetRuleResponseObjectSnoozeScheduleItemRRule_Byweekday_Item) AsGetRuleResponseObjectSnoozeScheduleItemRRuleByweekday0() (GetRuleResponseObjectSnoozeScheduleItemRRuleByweekday0, error) {
+	var body GetRuleResponseObjectSnoozeScheduleItemRRuleByweekday0
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromGetRuleResponseObjectSnoozeScheduleItemRRuleByweekday0 overwrites any union data inside the GetRuleResponseObjectSnoozeScheduleItemRRule_Byweekday_Item as the provided GetRuleResponseObjectSnoozeScheduleItemRRuleByweekday0
+func (t *GetRuleResponseObjectSnoozeScheduleItemRRule_Byweekday_Item) FromGetRuleResponseObjectSnoozeScheduleItemRRuleByweekday0(v GetRuleResponseObjectSnoozeScheduleItemRRuleByweekday0) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeGetRuleResponseObjectSnoozeScheduleItemRRuleByweekday0 performs a merge with any union data inside the GetRuleResponseObjectSnoozeScheduleItemRRule_Byweekday_Item, using the provided GetRuleResponseObjectSnoozeScheduleItemRRuleByweekday0
+func (t *GetRuleResponseObjectSnoozeScheduleItemRRule_Byweekday_Item) MergeGetRuleResponseObjectSnoozeScheduleItemRRuleByweekday0(v GetRuleResponseObjectSnoozeScheduleItemRRuleByweekday0) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsGetRuleResponseObjectSnoozeScheduleItemRRuleByweekday1 returns the union data inside the GetRuleResponseObjectSnoozeScheduleItemRRule_Byweekday_Item as a GetRuleResponseObjectSnoozeScheduleItemRRuleByweekday1
+func (t GetRuleResponseObjectSnoozeScheduleItemRRule_Byweekday_Item) AsGetRuleResponseObjectSnoozeScheduleItemRRuleByweekday1() (GetRuleResponseObjectSnoozeScheduleItemRRuleByweekday1, error) {
+	var body GetRuleResponseObjectSnoozeScheduleItemRRuleByweekday1
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromGetRuleResponseObjectSnoozeScheduleItemRRuleByweekday1 overwrites any union data inside the GetRuleResponseObjectSnoozeScheduleItemRRule_Byweekday_Item as the provided GetRuleResponseObjectSnoozeScheduleItemRRuleByweekday1
+func (t *GetRuleResponseObjectSnoozeScheduleItemRRule_Byweekday_Item) FromGetRuleResponseObjectSnoozeScheduleItemRRuleByweekday1(v GetRuleResponseObjectSnoozeScheduleItemRRuleByweekday1) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeGetRuleResponseObjectSnoozeScheduleItemRRuleByweekday1 performs a merge with any union data inside the GetRuleResponseObjectSnoozeScheduleItemRRule_Byweekday_Item, using the provided GetRuleResponseObjectSnoozeScheduleItemRRuleByweekday1
+func (t *GetRuleResponseObjectSnoozeScheduleItemRRule_Byweekday_Item) MergeGetRuleResponseObjectSnoozeScheduleItemRRuleByweekday1(v GetRuleResponseObjectSnoozeScheduleItemRRuleByweekday1) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+func (t GetRuleResponseObjectSnoozeScheduleItemRRule_Byweekday_Item) MarshalJSON() ([]byte, error) {
+	b, err := t.union.MarshalJSON()
+	return b, err
+}
+
+func (t *GetRuleResponseObjectSnoozeScheduleItemRRule_Byweekday_Item) UnmarshalJSON(b []byte) error {
+	err := t.union.UnmarshalJSON(b)
+	return err
+}
+
+// AsTimesliceMetricBasicMetricWithField returns the union data inside the IndicatorPropertiesTimesliceMetricParamsMetric_Metrics_Item as a TimesliceMetricBasicMetricWithField
+func (t IndicatorPropertiesTimesliceMetricParamsMetric_Metrics_Item) AsTimesliceMetricBasicMetricWithField() (TimesliceMetricBasicMetricWithField, error) {
 	var body TimesliceMetricBasicMetricWithField
 	err := json.Unmarshal(t.union, &body)
 	return body, err
 }
 
-// FromTimesliceMetricBasicMetricWithField overwrites any union data inside the IndicatorPropertiesTimesliceMetric_Params_Metric_Metrics_Item as the provided TimesliceMetricBasicMetricWithField
-func (t *IndicatorPropertiesTimesliceMetric_Params_Metric_Metrics_Item) FromTimesliceMetricBasicMetricWithField(v TimesliceMetricBasicMetricWithField) error {
+// FromTimesliceMetricBasicMetricWithField overwrites any union data inside the IndicatorPropertiesTimesliceMetricParamsMetric_Metrics_Item as the provided TimesliceMetricBasicMetricWithField
+func (t *IndicatorPropertiesTimesliceMetricParamsMetric_Metrics_Item) FromTimesliceMetricBasicMetricWithField(v TimesliceMetricBasicMetricWithField) error {
 	b, err := json.Marshal(v)
 	t.union = b
 	return err
 }
 
-// MergeTimesliceMetricBasicMetricWithField performs a merge with any union data inside the IndicatorPropertiesTimesliceMetric_Params_Metric_Metrics_Item, using the provided TimesliceMetricBasicMetricWithField
-func (t *IndicatorPropertiesTimesliceMetric_Params_Metric_Metrics_Item) MergeTimesliceMetricBasicMetricWithField(v TimesliceMetricBasicMetricWithField) error {
+// MergeTimesliceMetricBasicMetricWithField performs a merge with any union data inside the IndicatorPropertiesTimesliceMetricParamsMetric_Metrics_Item, using the provided TimesliceMetricBasicMetricWithField
+func (t *IndicatorPropertiesTimesliceMetricParamsMetric_Metrics_Item) MergeTimesliceMetricBasicMetricWithField(v TimesliceMetricBasicMetricWithField) error {
 	b, err := json.Marshal(v)
 	if err != nil {
 		return err
@@ -7051,22 +4932,22 @@ func (t *IndicatorPropertiesTimesliceMetric_Params_Metric_Metrics_Item) MergeTim
 	return err
 }
 
-// AsTimesliceMetricPercentileMetric returns the union data inside the IndicatorPropertiesTimesliceMetric_Params_Metric_Metrics_Item as a TimesliceMetricPercentileMetric
-func (t IndicatorPropertiesTimesliceMetric_Params_Metric_Metrics_Item) AsTimesliceMetricPercentileMetric() (TimesliceMetricPercentileMetric, error) {
+// AsTimesliceMetricPercentileMetric returns the union data inside the IndicatorPropertiesTimesliceMetricParamsMetric_Metrics_Item as a TimesliceMetricPercentileMetric
+func (t IndicatorPropertiesTimesliceMetricParamsMetric_Metrics_Item) AsTimesliceMetricPercentileMetric() (TimesliceMetricPercentileMetric, error) {
 	var body TimesliceMetricPercentileMetric
 	err := json.Unmarshal(t.union, &body)
 	return body, err
 }
 
-// FromTimesliceMetricPercentileMetric overwrites any union data inside the IndicatorPropertiesTimesliceMetric_Params_Metric_Metrics_Item as the provided TimesliceMetricPercentileMetric
-func (t *IndicatorPropertiesTimesliceMetric_Params_Metric_Metrics_Item) FromTimesliceMetricPercentileMetric(v TimesliceMetricPercentileMetric) error {
+// FromTimesliceMetricPercentileMetric overwrites any union data inside the IndicatorPropertiesTimesliceMetricParamsMetric_Metrics_Item as the provided TimesliceMetricPercentileMetric
+func (t *IndicatorPropertiesTimesliceMetricParamsMetric_Metrics_Item) FromTimesliceMetricPercentileMetric(v TimesliceMetricPercentileMetric) error {
 	b, err := json.Marshal(v)
 	t.union = b
 	return err
 }
 
-// MergeTimesliceMetricPercentileMetric performs a merge with any union data inside the IndicatorPropertiesTimesliceMetric_Params_Metric_Metrics_Item, using the provided TimesliceMetricPercentileMetric
-func (t *IndicatorPropertiesTimesliceMetric_Params_Metric_Metrics_Item) MergeTimesliceMetricPercentileMetric(v TimesliceMetricPercentileMetric) error {
+// MergeTimesliceMetricPercentileMetric performs a merge with any union data inside the IndicatorPropertiesTimesliceMetricParamsMetric_Metrics_Item, using the provided TimesliceMetricPercentileMetric
+func (t *IndicatorPropertiesTimesliceMetricParamsMetric_Metrics_Item) MergeTimesliceMetricPercentileMetric(v TimesliceMetricPercentileMetric) error {
 	b, err := json.Marshal(v)
 	if err != nil {
 		return err
@@ -7077,22 +4958,22 @@ func (t *IndicatorPropertiesTimesliceMetric_Params_Metric_Metrics_Item) MergeTim
 	return err
 }
 
-// AsTimesliceMetricDocCountMetric returns the union data inside the IndicatorPropertiesTimesliceMetric_Params_Metric_Metrics_Item as a TimesliceMetricDocCountMetric
-func (t IndicatorPropertiesTimesliceMetric_Params_Metric_Metrics_Item) AsTimesliceMetricDocCountMetric() (TimesliceMetricDocCountMetric, error) {
+// AsTimesliceMetricDocCountMetric returns the union data inside the IndicatorPropertiesTimesliceMetricParamsMetric_Metrics_Item as a TimesliceMetricDocCountMetric
+func (t IndicatorPropertiesTimesliceMetricParamsMetric_Metrics_Item) AsTimesliceMetricDocCountMetric() (TimesliceMetricDocCountMetric, error) {
 	var body TimesliceMetricDocCountMetric
 	err := json.Unmarshal(t.union, &body)
 	return body, err
 }
 
-// FromTimesliceMetricDocCountMetric overwrites any union data inside the IndicatorPropertiesTimesliceMetric_Params_Metric_Metrics_Item as the provided TimesliceMetricDocCountMetric
-func (t *IndicatorPropertiesTimesliceMetric_Params_Metric_Metrics_Item) FromTimesliceMetricDocCountMetric(v TimesliceMetricDocCountMetric) error {
+// FromTimesliceMetricDocCountMetric overwrites any union data inside the IndicatorPropertiesTimesliceMetricParamsMetric_Metrics_Item as the provided TimesliceMetricDocCountMetric
+func (t *IndicatorPropertiesTimesliceMetricParamsMetric_Metrics_Item) FromTimesliceMetricDocCountMetric(v TimesliceMetricDocCountMetric) error {
 	b, err := json.Marshal(v)
 	t.union = b
 	return err
 }
 
-// MergeTimesliceMetricDocCountMetric performs a merge with any union data inside the IndicatorPropertiesTimesliceMetric_Params_Metric_Metrics_Item, using the provided TimesliceMetricDocCountMetric
-func (t *IndicatorPropertiesTimesliceMetric_Params_Metric_Metrics_Item) MergeTimesliceMetricDocCountMetric(v TimesliceMetricDocCountMetric) error {
+// MergeTimesliceMetricDocCountMetric performs a merge with any union data inside the IndicatorPropertiesTimesliceMetricParamsMetric_Metrics_Item, using the provided TimesliceMetricDocCountMetric
+func (t *IndicatorPropertiesTimesliceMetricParamsMetric_Metrics_Item) MergeTimesliceMetricDocCountMetric(v TimesliceMetricDocCountMetric) error {
 	b, err := json.Marshal(v)
 	if err != nil {
 		return err
@@ -7103,12 +4984,136 @@ func (t *IndicatorPropertiesTimesliceMetric_Params_Metric_Metrics_Item) MergeTim
 	return err
 }
 
-func (t IndicatorPropertiesTimesliceMetric_Params_Metric_Metrics_Item) MarshalJSON() ([]byte, error) {
+func (t IndicatorPropertiesTimesliceMetricParamsMetric_Metrics_Item) MarshalJSON() ([]byte, error) {
 	b, err := t.union.MarshalJSON()
 	return b, err
 }
 
-func (t *IndicatorPropertiesTimesliceMetric_Params_Metric_Metrics_Item) UnmarshalJSON(b []byte) error {
+func (t *IndicatorPropertiesTimesliceMetricParamsMetric_Metrics_Item) UnmarshalJSON(b []byte) error {
+	err := t.union.UnmarshalJSON(b)
+	return err
+}
+
+// AsKibanaSavedObjectType returns the union data inside the InstallPackageByUploadResponseObjectItemItem_Type as a KibanaSavedObjectType
+func (t InstallPackageByUploadResponseObjectItemItem_Type) AsKibanaSavedObjectType() (KibanaSavedObjectType, error) {
+	var body KibanaSavedObjectType
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromKibanaSavedObjectType overwrites any union data inside the InstallPackageByUploadResponseObjectItemItem_Type as the provided KibanaSavedObjectType
+func (t *InstallPackageByUploadResponseObjectItemItem_Type) FromKibanaSavedObjectType(v KibanaSavedObjectType) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeKibanaSavedObjectType performs a merge with any union data inside the InstallPackageByUploadResponseObjectItemItem_Type, using the provided KibanaSavedObjectType
+func (t *InstallPackageByUploadResponseObjectItemItem_Type) MergeKibanaSavedObjectType(v KibanaSavedObjectType) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsElasticsearchAssetType returns the union data inside the InstallPackageByUploadResponseObjectItemItem_Type as a ElasticsearchAssetType
+func (t InstallPackageByUploadResponseObjectItemItem_Type) AsElasticsearchAssetType() (ElasticsearchAssetType, error) {
+	var body ElasticsearchAssetType
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromElasticsearchAssetType overwrites any union data inside the InstallPackageByUploadResponseObjectItemItem_Type as the provided ElasticsearchAssetType
+func (t *InstallPackageByUploadResponseObjectItemItem_Type) FromElasticsearchAssetType(v ElasticsearchAssetType) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeElasticsearchAssetType performs a merge with any union data inside the InstallPackageByUploadResponseObjectItemItem_Type, using the provided ElasticsearchAssetType
+func (t *InstallPackageByUploadResponseObjectItemItem_Type) MergeElasticsearchAssetType(v ElasticsearchAssetType) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+func (t InstallPackageByUploadResponseObjectItemItem_Type) MarshalJSON() ([]byte, error) {
+	b, err := t.union.MarshalJSON()
+	return b, err
+}
+
+func (t *InstallPackageByUploadResponseObjectItemItem_Type) UnmarshalJSON(b []byte) error {
+	err := t.union.UnmarshalJSON(b)
+	return err
+}
+
+// AsKibanaSavedObjectType returns the union data inside the InstallPackageResponseObjectItemItem_Type as a KibanaSavedObjectType
+func (t InstallPackageResponseObjectItemItem_Type) AsKibanaSavedObjectType() (KibanaSavedObjectType, error) {
+	var body KibanaSavedObjectType
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromKibanaSavedObjectType overwrites any union data inside the InstallPackageResponseObjectItemItem_Type as the provided KibanaSavedObjectType
+func (t *InstallPackageResponseObjectItemItem_Type) FromKibanaSavedObjectType(v KibanaSavedObjectType) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeKibanaSavedObjectType performs a merge with any union data inside the InstallPackageResponseObjectItemItem_Type, using the provided KibanaSavedObjectType
+func (t *InstallPackageResponseObjectItemItem_Type) MergeKibanaSavedObjectType(v KibanaSavedObjectType) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsElasticsearchAssetType returns the union data inside the InstallPackageResponseObjectItemItem_Type as a ElasticsearchAssetType
+func (t InstallPackageResponseObjectItemItem_Type) AsElasticsearchAssetType() (ElasticsearchAssetType, error) {
+	var body ElasticsearchAssetType
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromElasticsearchAssetType overwrites any union data inside the InstallPackageResponseObjectItemItem_Type as the provided ElasticsearchAssetType
+func (t *InstallPackageResponseObjectItemItem_Type) FromElasticsearchAssetType(v ElasticsearchAssetType) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeElasticsearchAssetType performs a merge with any union data inside the InstallPackageResponseObjectItemItem_Type, using the provided ElasticsearchAssetType
+func (t *InstallPackageResponseObjectItemItem_Type) MergeElasticsearchAssetType(v ElasticsearchAssetType) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+func (t InstallPackageResponseObjectItemItem_Type) MarshalJSON() ([]byte, error) {
+	b, err := t.union.MarshalJSON()
+	return b, err
+}
+
+func (t *InstallPackageResponseObjectItemItem_Type) UnmarshalJSON(b []byte) error {
 	err := t.union.UnmarshalJSON(b)
 	return err
 }
@@ -7139,22 +5144,22 @@ func (t *KqlWithFilters) MergeKqlWithFilters0(v KqlWithFilters0) error {
 	return err
 }
 
-// AsKqlWithFilters1 returns the union data inside the KqlWithFilters as a KqlWithFilters1
-func (t KqlWithFilters) AsKqlWithFilters1() (KqlWithFilters1, error) {
-	var body KqlWithFilters1
+// AsKqlWithFiltersOneOf1 returns the union data inside the KqlWithFilters as a KqlWithFiltersOneOf1
+func (t KqlWithFilters) AsKqlWithFiltersOneOf1() (KqlWithFiltersOneOf1, error) {
+	var body KqlWithFiltersOneOf1
 	err := json.Unmarshal(t.union, &body)
 	return body, err
 }
 
-// FromKqlWithFilters1 overwrites any union data inside the KqlWithFilters as the provided KqlWithFilters1
-func (t *KqlWithFilters) FromKqlWithFilters1(v KqlWithFilters1) error {
+// FromKqlWithFiltersOneOf1 overwrites any union data inside the KqlWithFilters as the provided KqlWithFiltersOneOf1
+func (t *KqlWithFilters) FromKqlWithFiltersOneOf1(v KqlWithFiltersOneOf1) error {
 	b, err := json.Marshal(v)
 	t.union = b
 	return err
 }
 
-// MergeKqlWithFilters1 performs a merge with any union data inside the KqlWithFilters, using the provided KqlWithFilters1
-func (t *KqlWithFilters) MergeKqlWithFilters1(v KqlWithFilters1) error {
+// MergeKqlWithFiltersOneOf1 performs a merge with any union data inside the KqlWithFilters, using the provided KqlWithFiltersOneOf1
+func (t *KqlWithFilters) MergeKqlWithFiltersOneOf1(v KqlWithFiltersOneOf1) error {
 	b, err := json.Marshal(v)
 	if err != nil {
 		return err
@@ -7201,22 +5206,22 @@ func (t *KqlWithFiltersGood) MergeKqlWithFiltersGood0(v KqlWithFiltersGood0) err
 	return err
 }
 
-// AsKqlWithFiltersGood1 returns the union data inside the KqlWithFiltersGood as a KqlWithFiltersGood1
-func (t KqlWithFiltersGood) AsKqlWithFiltersGood1() (KqlWithFiltersGood1, error) {
-	var body KqlWithFiltersGood1
+// AsKqlWithFiltersGoodOneOf1 returns the union data inside the KqlWithFiltersGood as a KqlWithFiltersGoodOneOf1
+func (t KqlWithFiltersGood) AsKqlWithFiltersGoodOneOf1() (KqlWithFiltersGoodOneOf1, error) {
+	var body KqlWithFiltersGoodOneOf1
 	err := json.Unmarshal(t.union, &body)
 	return body, err
 }
 
-// FromKqlWithFiltersGood1 overwrites any union data inside the KqlWithFiltersGood as the provided KqlWithFiltersGood1
-func (t *KqlWithFiltersGood) FromKqlWithFiltersGood1(v KqlWithFiltersGood1) error {
+// FromKqlWithFiltersGoodOneOf1 overwrites any union data inside the KqlWithFiltersGood as the provided KqlWithFiltersGoodOneOf1
+func (t *KqlWithFiltersGood) FromKqlWithFiltersGoodOneOf1(v KqlWithFiltersGoodOneOf1) error {
 	b, err := json.Marshal(v)
 	t.union = b
 	return err
 }
 
-// MergeKqlWithFiltersGood1 performs a merge with any union data inside the KqlWithFiltersGood, using the provided KqlWithFiltersGood1
-func (t *KqlWithFiltersGood) MergeKqlWithFiltersGood1(v KqlWithFiltersGood1) error {
+// MergeKqlWithFiltersGoodOneOf1 performs a merge with any union data inside the KqlWithFiltersGood, using the provided KqlWithFiltersGoodOneOf1
+func (t *KqlWithFiltersGood) MergeKqlWithFiltersGoodOneOf1(v KqlWithFiltersGoodOneOf1) error {
 	b, err := json.Marshal(v)
 	if err != nil {
 		return err
@@ -7263,22 +5268,22 @@ func (t *KqlWithFiltersTotal) MergeKqlWithFiltersTotal0(v KqlWithFiltersTotal0) 
 	return err
 }
 
-// AsKqlWithFiltersTotal1 returns the union data inside the KqlWithFiltersTotal as a KqlWithFiltersTotal1
-func (t KqlWithFiltersTotal) AsKqlWithFiltersTotal1() (KqlWithFiltersTotal1, error) {
-	var body KqlWithFiltersTotal1
+// AsKqlWithFiltersTotalOneOf1 returns the union data inside the KqlWithFiltersTotal as a KqlWithFiltersTotalOneOf1
+func (t KqlWithFiltersTotal) AsKqlWithFiltersTotalOneOf1() (KqlWithFiltersTotalOneOf1, error) {
+	var body KqlWithFiltersTotalOneOf1
 	err := json.Unmarshal(t.union, &body)
 	return body, err
 }
 
-// FromKqlWithFiltersTotal1 overwrites any union data inside the KqlWithFiltersTotal as the provided KqlWithFiltersTotal1
-func (t *KqlWithFiltersTotal) FromKqlWithFiltersTotal1(v KqlWithFiltersTotal1) error {
+// FromKqlWithFiltersTotalOneOf1 overwrites any union data inside the KqlWithFiltersTotal as the provided KqlWithFiltersTotalOneOf1
+func (t *KqlWithFiltersTotal) FromKqlWithFiltersTotalOneOf1(v KqlWithFiltersTotalOneOf1) error {
 	b, err := json.Marshal(v)
 	t.union = b
 	return err
 }
 
-// MergeKqlWithFiltersTotal1 performs a merge with any union data inside the KqlWithFiltersTotal, using the provided KqlWithFiltersTotal1
-func (t *KqlWithFiltersTotal) MergeKqlWithFiltersTotal1(v KqlWithFiltersTotal1) error {
+// MergeKqlWithFiltersTotalOneOf1 performs a merge with any union data inside the KqlWithFiltersTotal, using the provided KqlWithFiltersTotalOneOf1
+func (t *KqlWithFiltersTotal) MergeKqlWithFiltersTotalOneOf1(v KqlWithFiltersTotalOneOf1) error {
 	b, err := json.Marshal(v)
 	if err != nil {
 		return err
@@ -7567,22 +5572,22 @@ func (t *OutputUpdateRequest) UnmarshalJSON(b []byte) error {
 	return err
 }
 
-// AsKibanaSavedObjectType returns the union data inside the PackageItemType as a KibanaSavedObjectType
-func (t PackageItemType) AsKibanaSavedObjectType() (KibanaSavedObjectType, error) {
-	var body KibanaSavedObjectType
+// AsPackagePolicyAllOf0Inputs0 returns the union data inside the PackagePolicyAllOf0_Inputs as a PackagePolicyAllOf0Inputs0
+func (t PackagePolicyAllOf0_Inputs) AsPackagePolicyAllOf0Inputs0() (PackagePolicyAllOf0Inputs0, error) {
+	var body PackagePolicyAllOf0Inputs0
 	err := json.Unmarshal(t.union, &body)
 	return body, err
 }
 
-// FromKibanaSavedObjectType overwrites any union data inside the PackageItemType as the provided KibanaSavedObjectType
-func (t *PackageItemType) FromKibanaSavedObjectType(v KibanaSavedObjectType) error {
+// FromPackagePolicyAllOf0Inputs0 overwrites any union data inside the PackagePolicyAllOf0_Inputs as the provided PackagePolicyAllOf0Inputs0
+func (t *PackagePolicyAllOf0_Inputs) FromPackagePolicyAllOf0Inputs0(v PackagePolicyAllOf0Inputs0) error {
 	b, err := json.Marshal(v)
 	t.union = b
 	return err
 }
 
-// MergeKibanaSavedObjectType performs a merge with any union data inside the PackageItemType, using the provided KibanaSavedObjectType
-func (t *PackageItemType) MergeKibanaSavedObjectType(v KibanaSavedObjectType) error {
+// MergePackagePolicyAllOf0Inputs0 performs a merge with any union data inside the PackagePolicyAllOf0_Inputs, using the provided PackagePolicyAllOf0Inputs0
+func (t *PackagePolicyAllOf0_Inputs) MergePackagePolicyAllOf0Inputs0(v PackagePolicyAllOf0Inputs0) error {
 	b, err := json.Marshal(v)
 	if err != nil {
 		return err
@@ -7593,22 +5598,22 @@ func (t *PackageItemType) MergeKibanaSavedObjectType(v KibanaSavedObjectType) er
 	return err
 }
 
-// AsElasticsearchAssetType returns the union data inside the PackageItemType as a ElasticsearchAssetType
-func (t PackageItemType) AsElasticsearchAssetType() (ElasticsearchAssetType, error) {
-	var body ElasticsearchAssetType
+// AsPackagePolicyAllOf0Inputs1 returns the union data inside the PackagePolicyAllOf0_Inputs as a PackagePolicyAllOf0Inputs1
+func (t PackagePolicyAllOf0_Inputs) AsPackagePolicyAllOf0Inputs1() (PackagePolicyAllOf0Inputs1, error) {
+	var body PackagePolicyAllOf0Inputs1
 	err := json.Unmarshal(t.union, &body)
 	return body, err
 }
 
-// FromElasticsearchAssetType overwrites any union data inside the PackageItemType as the provided ElasticsearchAssetType
-func (t *PackageItemType) FromElasticsearchAssetType(v ElasticsearchAssetType) error {
+// FromPackagePolicyAllOf0Inputs1 overwrites any union data inside the PackagePolicyAllOf0_Inputs as the provided PackagePolicyAllOf0Inputs1
+func (t *PackagePolicyAllOf0_Inputs) FromPackagePolicyAllOf0Inputs1(v PackagePolicyAllOf0Inputs1) error {
 	b, err := json.Marshal(v)
 	t.union = b
 	return err
 }
 
-// MergeElasticsearchAssetType performs a merge with any union data inside the PackageItemType, using the provided ElasticsearchAssetType
-func (t *PackageItemType) MergeElasticsearchAssetType(v ElasticsearchAssetType) error {
+// MergePackagePolicyAllOf0Inputs1 performs a merge with any union data inside the PackagePolicyAllOf0_Inputs, using the provided PackagePolicyAllOf0Inputs1
+func (t *PackagePolicyAllOf0_Inputs) MergePackagePolicyAllOf0Inputs1(v PackagePolicyAllOf0Inputs1) error {
 	b, err := json.Marshal(v)
 	if err != nil {
 		return err
@@ -7619,684 +5624,12 @@ func (t *PackageItemType) MergeElasticsearchAssetType(v ElasticsearchAssetType) 
 	return err
 }
 
-func (t PackageItemType) MarshalJSON() ([]byte, error) {
+func (t PackagePolicyAllOf0_Inputs) MarshalJSON() ([]byte, error) {
 	b, err := t.union.MarshalJSON()
 	return b, err
 }
 
-func (t *PackageItemType) UnmarshalJSON(b []byte) error {
-	err := t.union.UnmarshalJSON(b)
-	return err
-}
-
-// AsParamsEsQueryRule0 returns the union data inside the ParamsEsQueryRule as a ParamsEsQueryRule0
-func (t ParamsEsQueryRule) AsParamsEsQueryRule0() (ParamsEsQueryRule0, error) {
-	var body ParamsEsQueryRule0
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromParamsEsQueryRule0 overwrites any union data inside the ParamsEsQueryRule as the provided ParamsEsQueryRule0
-func (t *ParamsEsQueryRule) FromParamsEsQueryRule0(v ParamsEsQueryRule0) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeParamsEsQueryRule0 performs a merge with any union data inside the ParamsEsQueryRule, using the provided ParamsEsQueryRule0
-func (t *ParamsEsQueryRule) MergeParamsEsQueryRule0(v ParamsEsQueryRule0) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-// AsParamsEsQueryRule1 returns the union data inside the ParamsEsQueryRule as a ParamsEsQueryRule1
-func (t ParamsEsQueryRule) AsParamsEsQueryRule1() (ParamsEsQueryRule1, error) {
-	var body ParamsEsQueryRule1
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromParamsEsQueryRule1 overwrites any union data inside the ParamsEsQueryRule as the provided ParamsEsQueryRule1
-func (t *ParamsEsQueryRule) FromParamsEsQueryRule1(v ParamsEsQueryRule1) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeParamsEsQueryRule1 performs a merge with any union data inside the ParamsEsQueryRule, using the provided ParamsEsQueryRule1
-func (t *ParamsEsQueryRule) MergeParamsEsQueryRule1(v ParamsEsQueryRule1) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-// AsParamsEsQueryRule2 returns the union data inside the ParamsEsQueryRule as a ParamsEsQueryRule2
-func (t ParamsEsQueryRule) AsParamsEsQueryRule2() (ParamsEsQueryRule2, error) {
-	var body ParamsEsQueryRule2
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromParamsEsQueryRule2 overwrites any union data inside the ParamsEsQueryRule as the provided ParamsEsQueryRule2
-func (t *ParamsEsQueryRule) FromParamsEsQueryRule2(v ParamsEsQueryRule2) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeParamsEsQueryRule2 performs a merge with any union data inside the ParamsEsQueryRule, using the provided ParamsEsQueryRule2
-func (t *ParamsEsQueryRule) MergeParamsEsQueryRule2(v ParamsEsQueryRule2) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-func (t ParamsEsQueryRule) MarshalJSON() ([]byte, error) {
-	b, err := t.union.MarshalJSON()
-	return b, err
-}
-
-func (t *ParamsEsQueryRule) UnmarshalJSON(b []byte) error {
-	err := t.union.UnmarshalJSON(b)
-	return err
-}
-
-// AsParamsEsQueryRule1SearchConfigurationIndex0 returns the union data inside the ParamsEsQueryRule_1_SearchConfiguration_Index as a ParamsEsQueryRule1SearchConfigurationIndex0
-func (t ParamsEsQueryRule_1_SearchConfiguration_Index) AsParamsEsQueryRule1SearchConfigurationIndex0() (ParamsEsQueryRule1SearchConfigurationIndex0, error) {
-	var body ParamsEsQueryRule1SearchConfigurationIndex0
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromParamsEsQueryRule1SearchConfigurationIndex0 overwrites any union data inside the ParamsEsQueryRule_1_SearchConfiguration_Index as the provided ParamsEsQueryRule1SearchConfigurationIndex0
-func (t *ParamsEsQueryRule_1_SearchConfiguration_Index) FromParamsEsQueryRule1SearchConfigurationIndex0(v ParamsEsQueryRule1SearchConfigurationIndex0) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeParamsEsQueryRule1SearchConfigurationIndex0 performs a merge with any union data inside the ParamsEsQueryRule_1_SearchConfiguration_Index, using the provided ParamsEsQueryRule1SearchConfigurationIndex0
-func (t *ParamsEsQueryRule_1_SearchConfiguration_Index) MergeParamsEsQueryRule1SearchConfigurationIndex0(v ParamsEsQueryRule1SearchConfigurationIndex0) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-// AsParamsEsQueryRule1SearchConfigurationIndex1 returns the union data inside the ParamsEsQueryRule_1_SearchConfiguration_Index as a ParamsEsQueryRule1SearchConfigurationIndex1
-func (t ParamsEsQueryRule_1_SearchConfiguration_Index) AsParamsEsQueryRule1SearchConfigurationIndex1() (ParamsEsQueryRule1SearchConfigurationIndex1, error) {
-	var body ParamsEsQueryRule1SearchConfigurationIndex1
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromParamsEsQueryRule1SearchConfigurationIndex1 overwrites any union data inside the ParamsEsQueryRule_1_SearchConfiguration_Index as the provided ParamsEsQueryRule1SearchConfigurationIndex1
-func (t *ParamsEsQueryRule_1_SearchConfiguration_Index) FromParamsEsQueryRule1SearchConfigurationIndex1(v ParamsEsQueryRule1SearchConfigurationIndex1) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeParamsEsQueryRule1SearchConfigurationIndex1 performs a merge with any union data inside the ParamsEsQueryRule_1_SearchConfiguration_Index, using the provided ParamsEsQueryRule1SearchConfigurationIndex1
-func (t *ParamsEsQueryRule_1_SearchConfiguration_Index) MergeParamsEsQueryRule1SearchConfigurationIndex1(v ParamsEsQueryRule1SearchConfigurationIndex1) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-func (t ParamsEsQueryRule_1_SearchConfiguration_Index) MarshalJSON() ([]byte, error) {
-	b, err := t.union.MarshalJSON()
-	return b, err
-}
-
-func (t *ParamsEsQueryRule_1_SearchConfiguration_Index) UnmarshalJSON(b []byte) error {
-	err := t.union.UnmarshalJSON(b)
-	return err
-}
-
-// AsParamsEsQueryRule2Index0 returns the union data inside the ParamsEsQueryRule_2_Index as a ParamsEsQueryRule2Index0
-func (t ParamsEsQueryRule_2_Index) AsParamsEsQueryRule2Index0() (ParamsEsQueryRule2Index0, error) {
-	var body ParamsEsQueryRule2Index0
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromParamsEsQueryRule2Index0 overwrites any union data inside the ParamsEsQueryRule_2_Index as the provided ParamsEsQueryRule2Index0
-func (t *ParamsEsQueryRule_2_Index) FromParamsEsQueryRule2Index0(v ParamsEsQueryRule2Index0) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeParamsEsQueryRule2Index0 performs a merge with any union data inside the ParamsEsQueryRule_2_Index, using the provided ParamsEsQueryRule2Index0
-func (t *ParamsEsQueryRule_2_Index) MergeParamsEsQueryRule2Index0(v ParamsEsQueryRule2Index0) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-// AsParamsEsQueryRule2Index1 returns the union data inside the ParamsEsQueryRule_2_Index as a ParamsEsQueryRule2Index1
-func (t ParamsEsQueryRule_2_Index) AsParamsEsQueryRule2Index1() (ParamsEsQueryRule2Index1, error) {
-	var body ParamsEsQueryRule2Index1
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromParamsEsQueryRule2Index1 overwrites any union data inside the ParamsEsQueryRule_2_Index as the provided ParamsEsQueryRule2Index1
-func (t *ParamsEsQueryRule_2_Index) FromParamsEsQueryRule2Index1(v ParamsEsQueryRule2Index1) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeParamsEsQueryRule2Index1 performs a merge with any union data inside the ParamsEsQueryRule_2_Index, using the provided ParamsEsQueryRule2Index1
-func (t *ParamsEsQueryRule_2_Index) MergeParamsEsQueryRule2Index1(v ParamsEsQueryRule2Index1) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-func (t ParamsEsQueryRule_2_Index) MarshalJSON() ([]byte, error) {
-	b, err := t.union.MarshalJSON()
-	return b, err
-}
-
-func (t *ParamsEsQueryRule_2_Index) UnmarshalJSON(b []byte) error {
-	err := t.union.UnmarshalJSON(b)
-	return err
-}
-
-// AsParamsPropertyInfraMetricThresholdCriteria2CustomMetric0 returns the union data inside the ParamsPropertyInfraMetricThreshold_Criteria_2_CustomMetric_Item as a ParamsPropertyInfraMetricThresholdCriteria2CustomMetric0
-func (t ParamsPropertyInfraMetricThreshold_Criteria_2_CustomMetric_Item) AsParamsPropertyInfraMetricThresholdCriteria2CustomMetric0() (ParamsPropertyInfraMetricThresholdCriteria2CustomMetric0, error) {
-	var body ParamsPropertyInfraMetricThresholdCriteria2CustomMetric0
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromParamsPropertyInfraMetricThresholdCriteria2CustomMetric0 overwrites any union data inside the ParamsPropertyInfraMetricThreshold_Criteria_2_CustomMetric_Item as the provided ParamsPropertyInfraMetricThresholdCriteria2CustomMetric0
-func (t *ParamsPropertyInfraMetricThreshold_Criteria_2_CustomMetric_Item) FromParamsPropertyInfraMetricThresholdCriteria2CustomMetric0(v ParamsPropertyInfraMetricThresholdCriteria2CustomMetric0) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeParamsPropertyInfraMetricThresholdCriteria2CustomMetric0 performs a merge with any union data inside the ParamsPropertyInfraMetricThreshold_Criteria_2_CustomMetric_Item, using the provided ParamsPropertyInfraMetricThresholdCriteria2CustomMetric0
-func (t *ParamsPropertyInfraMetricThreshold_Criteria_2_CustomMetric_Item) MergeParamsPropertyInfraMetricThresholdCriteria2CustomMetric0(v ParamsPropertyInfraMetricThresholdCriteria2CustomMetric0) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-// AsParamsPropertyInfraMetricThresholdCriteria2CustomMetric1 returns the union data inside the ParamsPropertyInfraMetricThreshold_Criteria_2_CustomMetric_Item as a ParamsPropertyInfraMetricThresholdCriteria2CustomMetric1
-func (t ParamsPropertyInfraMetricThreshold_Criteria_2_CustomMetric_Item) AsParamsPropertyInfraMetricThresholdCriteria2CustomMetric1() (ParamsPropertyInfraMetricThresholdCriteria2CustomMetric1, error) {
-	var body ParamsPropertyInfraMetricThresholdCriteria2CustomMetric1
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromParamsPropertyInfraMetricThresholdCriteria2CustomMetric1 overwrites any union data inside the ParamsPropertyInfraMetricThreshold_Criteria_2_CustomMetric_Item as the provided ParamsPropertyInfraMetricThresholdCriteria2CustomMetric1
-func (t *ParamsPropertyInfraMetricThreshold_Criteria_2_CustomMetric_Item) FromParamsPropertyInfraMetricThresholdCriteria2CustomMetric1(v ParamsPropertyInfraMetricThresholdCriteria2CustomMetric1) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeParamsPropertyInfraMetricThresholdCriteria2CustomMetric1 performs a merge with any union data inside the ParamsPropertyInfraMetricThreshold_Criteria_2_CustomMetric_Item, using the provided ParamsPropertyInfraMetricThresholdCriteria2CustomMetric1
-func (t *ParamsPropertyInfraMetricThreshold_Criteria_2_CustomMetric_Item) MergeParamsPropertyInfraMetricThresholdCriteria2CustomMetric1(v ParamsPropertyInfraMetricThresholdCriteria2CustomMetric1) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-func (t ParamsPropertyInfraMetricThreshold_Criteria_2_CustomMetric_Item) MarshalJSON() ([]byte, error) {
-	b, err := t.union.MarshalJSON()
-	return b, err
-}
-
-func (t *ParamsPropertyInfraMetricThreshold_Criteria_2_CustomMetric_Item) UnmarshalJSON(b []byte) error {
-	err := t.union.UnmarshalJSON(b)
-	return err
-}
-
-// AsParamsPropertyInfraMetricThresholdCriteria0 returns the union data inside the ParamsPropertyInfraMetricThreshold_Criteria_Item as a ParamsPropertyInfraMetricThresholdCriteria0
-func (t ParamsPropertyInfraMetricThreshold_Criteria_Item) AsParamsPropertyInfraMetricThresholdCriteria0() (ParamsPropertyInfraMetricThresholdCriteria0, error) {
-	var body ParamsPropertyInfraMetricThresholdCriteria0
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromParamsPropertyInfraMetricThresholdCriteria0 overwrites any union data inside the ParamsPropertyInfraMetricThreshold_Criteria_Item as the provided ParamsPropertyInfraMetricThresholdCriteria0
-func (t *ParamsPropertyInfraMetricThreshold_Criteria_Item) FromParamsPropertyInfraMetricThresholdCriteria0(v ParamsPropertyInfraMetricThresholdCriteria0) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeParamsPropertyInfraMetricThresholdCriteria0 performs a merge with any union data inside the ParamsPropertyInfraMetricThreshold_Criteria_Item, using the provided ParamsPropertyInfraMetricThresholdCriteria0
-func (t *ParamsPropertyInfraMetricThreshold_Criteria_Item) MergeParamsPropertyInfraMetricThresholdCriteria0(v ParamsPropertyInfraMetricThresholdCriteria0) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-// AsParamsPropertyInfraMetricThresholdCriteria1 returns the union data inside the ParamsPropertyInfraMetricThreshold_Criteria_Item as a ParamsPropertyInfraMetricThresholdCriteria1
-func (t ParamsPropertyInfraMetricThreshold_Criteria_Item) AsParamsPropertyInfraMetricThresholdCriteria1() (ParamsPropertyInfraMetricThresholdCriteria1, error) {
-	var body ParamsPropertyInfraMetricThresholdCriteria1
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromParamsPropertyInfraMetricThresholdCriteria1 overwrites any union data inside the ParamsPropertyInfraMetricThreshold_Criteria_Item as the provided ParamsPropertyInfraMetricThresholdCriteria1
-func (t *ParamsPropertyInfraMetricThreshold_Criteria_Item) FromParamsPropertyInfraMetricThresholdCriteria1(v ParamsPropertyInfraMetricThresholdCriteria1) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeParamsPropertyInfraMetricThresholdCriteria1 performs a merge with any union data inside the ParamsPropertyInfraMetricThreshold_Criteria_Item, using the provided ParamsPropertyInfraMetricThresholdCriteria1
-func (t *ParamsPropertyInfraMetricThreshold_Criteria_Item) MergeParamsPropertyInfraMetricThresholdCriteria1(v ParamsPropertyInfraMetricThresholdCriteria1) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-// AsParamsPropertyInfraMetricThresholdCriteria2 returns the union data inside the ParamsPropertyInfraMetricThreshold_Criteria_Item as a ParamsPropertyInfraMetricThresholdCriteria2
-func (t ParamsPropertyInfraMetricThreshold_Criteria_Item) AsParamsPropertyInfraMetricThresholdCriteria2() (ParamsPropertyInfraMetricThresholdCriteria2, error) {
-	var body ParamsPropertyInfraMetricThresholdCriteria2
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromParamsPropertyInfraMetricThresholdCriteria2 overwrites any union data inside the ParamsPropertyInfraMetricThreshold_Criteria_Item as the provided ParamsPropertyInfraMetricThresholdCriteria2
-func (t *ParamsPropertyInfraMetricThreshold_Criteria_Item) FromParamsPropertyInfraMetricThresholdCriteria2(v ParamsPropertyInfraMetricThresholdCriteria2) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeParamsPropertyInfraMetricThresholdCriteria2 performs a merge with any union data inside the ParamsPropertyInfraMetricThreshold_Criteria_Item, using the provided ParamsPropertyInfraMetricThresholdCriteria2
-func (t *ParamsPropertyInfraMetricThreshold_Criteria_Item) MergeParamsPropertyInfraMetricThresholdCriteria2(v ParamsPropertyInfraMetricThresholdCriteria2) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-func (t ParamsPropertyInfraMetricThreshold_Criteria_Item) MarshalJSON() ([]byte, error) {
-	b, err := t.union.MarshalJSON()
-	return b, err
-}
-
-func (t *ParamsPropertyInfraMetricThreshold_Criteria_Item) UnmarshalJSON(b []byte) error {
-	err := t.union.UnmarshalJSON(b)
-	return err
-}
-
-// AsParamsPropertyInfraMetricThresholdGroupBy0 returns the union data inside the ParamsPropertyInfraMetricThreshold_GroupBy as a ParamsPropertyInfraMetricThresholdGroupBy0
-func (t ParamsPropertyInfraMetricThreshold_GroupBy) AsParamsPropertyInfraMetricThresholdGroupBy0() (ParamsPropertyInfraMetricThresholdGroupBy0, error) {
-	var body ParamsPropertyInfraMetricThresholdGroupBy0
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromParamsPropertyInfraMetricThresholdGroupBy0 overwrites any union data inside the ParamsPropertyInfraMetricThreshold_GroupBy as the provided ParamsPropertyInfraMetricThresholdGroupBy0
-func (t *ParamsPropertyInfraMetricThreshold_GroupBy) FromParamsPropertyInfraMetricThresholdGroupBy0(v ParamsPropertyInfraMetricThresholdGroupBy0) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeParamsPropertyInfraMetricThresholdGroupBy0 performs a merge with any union data inside the ParamsPropertyInfraMetricThreshold_GroupBy, using the provided ParamsPropertyInfraMetricThresholdGroupBy0
-func (t *ParamsPropertyInfraMetricThreshold_GroupBy) MergeParamsPropertyInfraMetricThresholdGroupBy0(v ParamsPropertyInfraMetricThresholdGroupBy0) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-// AsParamsPropertyInfraMetricThresholdGroupBy1 returns the union data inside the ParamsPropertyInfraMetricThreshold_GroupBy as a ParamsPropertyInfraMetricThresholdGroupBy1
-func (t ParamsPropertyInfraMetricThreshold_GroupBy) AsParamsPropertyInfraMetricThresholdGroupBy1() (ParamsPropertyInfraMetricThresholdGroupBy1, error) {
-	var body ParamsPropertyInfraMetricThresholdGroupBy1
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromParamsPropertyInfraMetricThresholdGroupBy1 overwrites any union data inside the ParamsPropertyInfraMetricThreshold_GroupBy as the provided ParamsPropertyInfraMetricThresholdGroupBy1
-func (t *ParamsPropertyInfraMetricThreshold_GroupBy) FromParamsPropertyInfraMetricThresholdGroupBy1(v ParamsPropertyInfraMetricThresholdGroupBy1) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeParamsPropertyInfraMetricThresholdGroupBy1 performs a merge with any union data inside the ParamsPropertyInfraMetricThreshold_GroupBy, using the provided ParamsPropertyInfraMetricThresholdGroupBy1
-func (t *ParamsPropertyInfraMetricThreshold_GroupBy) MergeParamsPropertyInfraMetricThresholdGroupBy1(v ParamsPropertyInfraMetricThresholdGroupBy1) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-func (t ParamsPropertyInfraMetricThreshold_GroupBy) MarshalJSON() ([]byte, error) {
-	b, err := t.union.MarshalJSON()
-	return b, err
-}
-
-func (t *ParamsPropertyInfraMetricThreshold_GroupBy) UnmarshalJSON(b []byte) error {
-	err := t.union.UnmarshalJSON(b)
-	return err
-}
-
-// AsParamsPropertyLogThreshold0 returns the union data inside the ParamsPropertyLogThreshold as a ParamsPropertyLogThreshold0
-func (t ParamsPropertyLogThreshold) AsParamsPropertyLogThreshold0() (ParamsPropertyLogThreshold0, error) {
-	var body ParamsPropertyLogThreshold0
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromParamsPropertyLogThreshold0 overwrites any union data inside the ParamsPropertyLogThreshold as the provided ParamsPropertyLogThreshold0
-func (t *ParamsPropertyLogThreshold) FromParamsPropertyLogThreshold0(v ParamsPropertyLogThreshold0) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeParamsPropertyLogThreshold0 performs a merge with any union data inside the ParamsPropertyLogThreshold, using the provided ParamsPropertyLogThreshold0
-func (t *ParamsPropertyLogThreshold) MergeParamsPropertyLogThreshold0(v ParamsPropertyLogThreshold0) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-// AsParamsPropertyLogThreshold1 returns the union data inside the ParamsPropertyLogThreshold as a ParamsPropertyLogThreshold1
-func (t ParamsPropertyLogThreshold) AsParamsPropertyLogThreshold1() (ParamsPropertyLogThreshold1, error) {
-	var body ParamsPropertyLogThreshold1
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromParamsPropertyLogThreshold1 overwrites any union data inside the ParamsPropertyLogThreshold as the provided ParamsPropertyLogThreshold1
-func (t *ParamsPropertyLogThreshold) FromParamsPropertyLogThreshold1(v ParamsPropertyLogThreshold1) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeParamsPropertyLogThreshold1 performs a merge with any union data inside the ParamsPropertyLogThreshold, using the provided ParamsPropertyLogThreshold1
-func (t *ParamsPropertyLogThreshold) MergeParamsPropertyLogThreshold1(v ParamsPropertyLogThreshold1) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-func (t ParamsPropertyLogThreshold) MarshalJSON() ([]byte, error) {
-	b, err := t.union.MarshalJSON()
-	return b, err
-}
-
-func (t *ParamsPropertyLogThreshold) UnmarshalJSON(b []byte) error {
-	err := t.union.UnmarshalJSON(b)
-	return err
-}
-
-// AsParamsPropertyLogThreshold0CriteriaValue0 returns the union data inside the ParamsPropertyLogThreshold_0_Criteria_Value as a ParamsPropertyLogThreshold0CriteriaValue0
-func (t ParamsPropertyLogThreshold_0_Criteria_Value) AsParamsPropertyLogThreshold0CriteriaValue0() (ParamsPropertyLogThreshold0CriteriaValue0, error) {
-	var body ParamsPropertyLogThreshold0CriteriaValue0
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromParamsPropertyLogThreshold0CriteriaValue0 overwrites any union data inside the ParamsPropertyLogThreshold_0_Criteria_Value as the provided ParamsPropertyLogThreshold0CriteriaValue0
-func (t *ParamsPropertyLogThreshold_0_Criteria_Value) FromParamsPropertyLogThreshold0CriteriaValue0(v ParamsPropertyLogThreshold0CriteriaValue0) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeParamsPropertyLogThreshold0CriteriaValue0 performs a merge with any union data inside the ParamsPropertyLogThreshold_0_Criteria_Value, using the provided ParamsPropertyLogThreshold0CriteriaValue0
-func (t *ParamsPropertyLogThreshold_0_Criteria_Value) MergeParamsPropertyLogThreshold0CriteriaValue0(v ParamsPropertyLogThreshold0CriteriaValue0) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-// AsParamsPropertyLogThreshold0CriteriaValue1 returns the union data inside the ParamsPropertyLogThreshold_0_Criteria_Value as a ParamsPropertyLogThreshold0CriteriaValue1
-func (t ParamsPropertyLogThreshold_0_Criteria_Value) AsParamsPropertyLogThreshold0CriteriaValue1() (ParamsPropertyLogThreshold0CriteriaValue1, error) {
-	var body ParamsPropertyLogThreshold0CriteriaValue1
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromParamsPropertyLogThreshold0CriteriaValue1 overwrites any union data inside the ParamsPropertyLogThreshold_0_Criteria_Value as the provided ParamsPropertyLogThreshold0CriteriaValue1
-func (t *ParamsPropertyLogThreshold_0_Criteria_Value) FromParamsPropertyLogThreshold0CriteriaValue1(v ParamsPropertyLogThreshold0CriteriaValue1) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeParamsPropertyLogThreshold0CriteriaValue1 performs a merge with any union data inside the ParamsPropertyLogThreshold_0_Criteria_Value, using the provided ParamsPropertyLogThreshold0CriteriaValue1
-func (t *ParamsPropertyLogThreshold_0_Criteria_Value) MergeParamsPropertyLogThreshold0CriteriaValue1(v ParamsPropertyLogThreshold0CriteriaValue1) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-func (t ParamsPropertyLogThreshold_0_Criteria_Value) MarshalJSON() ([]byte, error) {
-	b, err := t.union.MarshalJSON()
-	return b, err
-}
-
-func (t *ParamsPropertyLogThreshold_0_Criteria_Value) UnmarshalJSON(b []byte) error {
-	err := t.union.UnmarshalJSON(b)
-	return err
-}
-
-// AsParamsPropertyLogThreshold1CriteriaValue0 returns the union data inside the ParamsPropertyLogThreshold_1_Criteria_Value as a ParamsPropertyLogThreshold1CriteriaValue0
-func (t ParamsPropertyLogThreshold_1_Criteria_Value) AsParamsPropertyLogThreshold1CriteriaValue0() (ParamsPropertyLogThreshold1CriteriaValue0, error) {
-	var body ParamsPropertyLogThreshold1CriteriaValue0
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromParamsPropertyLogThreshold1CriteriaValue0 overwrites any union data inside the ParamsPropertyLogThreshold_1_Criteria_Value as the provided ParamsPropertyLogThreshold1CriteriaValue0
-func (t *ParamsPropertyLogThreshold_1_Criteria_Value) FromParamsPropertyLogThreshold1CriteriaValue0(v ParamsPropertyLogThreshold1CriteriaValue0) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeParamsPropertyLogThreshold1CriteriaValue0 performs a merge with any union data inside the ParamsPropertyLogThreshold_1_Criteria_Value, using the provided ParamsPropertyLogThreshold1CriteriaValue0
-func (t *ParamsPropertyLogThreshold_1_Criteria_Value) MergeParamsPropertyLogThreshold1CriteriaValue0(v ParamsPropertyLogThreshold1CriteriaValue0) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-// AsParamsPropertyLogThreshold1CriteriaValue1 returns the union data inside the ParamsPropertyLogThreshold_1_Criteria_Value as a ParamsPropertyLogThreshold1CriteriaValue1
-func (t ParamsPropertyLogThreshold_1_Criteria_Value) AsParamsPropertyLogThreshold1CriteriaValue1() (ParamsPropertyLogThreshold1CriteriaValue1, error) {
-	var body ParamsPropertyLogThreshold1CriteriaValue1
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromParamsPropertyLogThreshold1CriteriaValue1 overwrites any union data inside the ParamsPropertyLogThreshold_1_Criteria_Value as the provided ParamsPropertyLogThreshold1CriteriaValue1
-func (t *ParamsPropertyLogThreshold_1_Criteria_Value) FromParamsPropertyLogThreshold1CriteriaValue1(v ParamsPropertyLogThreshold1CriteriaValue1) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeParamsPropertyLogThreshold1CriteriaValue1 performs a merge with any union data inside the ParamsPropertyLogThreshold_1_Criteria_Value, using the provided ParamsPropertyLogThreshold1CriteriaValue1
-func (t *ParamsPropertyLogThreshold_1_Criteria_Value) MergeParamsPropertyLogThreshold1CriteriaValue1(v ParamsPropertyLogThreshold1CriteriaValue1) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-func (t ParamsPropertyLogThreshold_1_Criteria_Value) MarshalJSON() ([]byte, error) {
-	b, err := t.union.MarshalJSON()
-	return b, err
-}
-
-func (t *ParamsPropertyLogThreshold_1_Criteria_Value) UnmarshalJSON(b []byte) error {
-	err := t.union.UnmarshalJSON(b)
-	return err
-}
-
-// AsParamsPropertySyntheticsMonitorStatusFilters0 returns the union data inside the ParamsPropertySyntheticsMonitorStatus_Filters as a ParamsPropertySyntheticsMonitorStatusFilters0
-func (t ParamsPropertySyntheticsMonitorStatus_Filters) AsParamsPropertySyntheticsMonitorStatusFilters0() (ParamsPropertySyntheticsMonitorStatusFilters0, error) {
-	var body ParamsPropertySyntheticsMonitorStatusFilters0
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromParamsPropertySyntheticsMonitorStatusFilters0 overwrites any union data inside the ParamsPropertySyntheticsMonitorStatus_Filters as the provided ParamsPropertySyntheticsMonitorStatusFilters0
-func (t *ParamsPropertySyntheticsMonitorStatus_Filters) FromParamsPropertySyntheticsMonitorStatusFilters0(v ParamsPropertySyntheticsMonitorStatusFilters0) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeParamsPropertySyntheticsMonitorStatusFilters0 performs a merge with any union data inside the ParamsPropertySyntheticsMonitorStatus_Filters, using the provided ParamsPropertySyntheticsMonitorStatusFilters0
-func (t *ParamsPropertySyntheticsMonitorStatus_Filters) MergeParamsPropertySyntheticsMonitorStatusFilters0(v ParamsPropertySyntheticsMonitorStatusFilters0) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-// AsParamsPropertySyntheticsMonitorStatusFilters1 returns the union data inside the ParamsPropertySyntheticsMonitorStatus_Filters as a ParamsPropertySyntheticsMonitorStatusFilters1
-func (t ParamsPropertySyntheticsMonitorStatus_Filters) AsParamsPropertySyntheticsMonitorStatusFilters1() (ParamsPropertySyntheticsMonitorStatusFilters1, error) {
-	var body ParamsPropertySyntheticsMonitorStatusFilters1
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromParamsPropertySyntheticsMonitorStatusFilters1 overwrites any union data inside the ParamsPropertySyntheticsMonitorStatus_Filters as the provided ParamsPropertySyntheticsMonitorStatusFilters1
-func (t *ParamsPropertySyntheticsMonitorStatus_Filters) FromParamsPropertySyntheticsMonitorStatusFilters1(v ParamsPropertySyntheticsMonitorStatusFilters1) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeParamsPropertySyntheticsMonitorStatusFilters1 performs a merge with any union data inside the ParamsPropertySyntheticsMonitorStatus_Filters, using the provided ParamsPropertySyntheticsMonitorStatusFilters1
-func (t *ParamsPropertySyntheticsMonitorStatus_Filters) MergeParamsPropertySyntheticsMonitorStatusFilters1(v ParamsPropertySyntheticsMonitorStatusFilters1) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-func (t ParamsPropertySyntheticsMonitorStatus_Filters) MarshalJSON() ([]byte, error) {
-	b, err := t.union.MarshalJSON()
-	return b, err
-}
-
-func (t *ParamsPropertySyntheticsMonitorStatus_Filters) UnmarshalJSON(b []byte) error {
+func (t *PackagePolicyAllOf0_Inputs) UnmarshalJSON(b []byte) error {
 	err := t.union.UnmarshalJSON(b)
 	return err
 }
@@ -8719,22 +6052,22 @@ func (t *SloWithSummaryResponse_Indicator) UnmarshalJSON(b []byte) error {
 	return err
 }
 
-// AsTermfield0 returns the union data inside the Termfield as a Termfield0
-func (t Termfield) AsTermfield0() (Termfield0, error) {
-	var body Termfield0
+// AsKibanaSavedObjectType returns the union data inside the UpdatePackageResponseObjectItemItem_Type as a KibanaSavedObjectType
+func (t UpdatePackageResponseObjectItemItem_Type) AsKibanaSavedObjectType() (KibanaSavedObjectType, error) {
+	var body KibanaSavedObjectType
 	err := json.Unmarshal(t.union, &body)
 	return body, err
 }
 
-// FromTermfield0 overwrites any union data inside the Termfield as the provided Termfield0
-func (t *Termfield) FromTermfield0(v Termfield0) error {
+// FromKibanaSavedObjectType overwrites any union data inside the UpdatePackageResponseObjectItemItem_Type as the provided KibanaSavedObjectType
+func (t *UpdatePackageResponseObjectItemItem_Type) FromKibanaSavedObjectType(v KibanaSavedObjectType) error {
 	b, err := json.Marshal(v)
 	t.union = b
 	return err
 }
 
-// MergeTermfield0 performs a merge with any union data inside the Termfield, using the provided Termfield0
-func (t *Termfield) MergeTermfield0(v Termfield0) error {
+// MergeKibanaSavedObjectType performs a merge with any union data inside the UpdatePackageResponseObjectItemItem_Type, using the provided KibanaSavedObjectType
+func (t *UpdatePackageResponseObjectItemItem_Type) MergeKibanaSavedObjectType(v KibanaSavedObjectType) error {
 	b, err := json.Marshal(v)
 	if err != nil {
 		return err
@@ -8745,22 +6078,22 @@ func (t *Termfield) MergeTermfield0(v Termfield0) error {
 	return err
 }
 
-// AsTermfield1 returns the union data inside the Termfield as a Termfield1
-func (t Termfield) AsTermfield1() (Termfield1, error) {
-	var body Termfield1
+// AsElasticsearchAssetType returns the union data inside the UpdatePackageResponseObjectItemItem_Type as a ElasticsearchAssetType
+func (t UpdatePackageResponseObjectItemItem_Type) AsElasticsearchAssetType() (ElasticsearchAssetType, error) {
+	var body ElasticsearchAssetType
 	err := json.Unmarshal(t.union, &body)
 	return body, err
 }
 
-// FromTermfield1 overwrites any union data inside the Termfield as the provided Termfield1
-func (t *Termfield) FromTermfield1(v Termfield1) error {
+// FromElasticsearchAssetType overwrites any union data inside the UpdatePackageResponseObjectItemItem_Type as the provided ElasticsearchAssetType
+func (t *UpdatePackageResponseObjectItemItem_Type) FromElasticsearchAssetType(v ElasticsearchAssetType) error {
 	b, err := json.Marshal(v)
 	t.union = b
 	return err
 }
 
-// MergeTermfield1 performs a merge with any union data inside the Termfield, using the provided Termfield1
-func (t *Termfield) MergeTermfield1(v Termfield1) error {
+// MergeElasticsearchAssetType performs a merge with any union data inside the UpdatePackageResponseObjectItemItem_Type, using the provided ElasticsearchAssetType
+func (t *UpdatePackageResponseObjectItemItem_Type) MergeElasticsearchAssetType(v ElasticsearchAssetType) error {
 	b, err := json.Marshal(v)
 	if err != nil {
 		return err
@@ -8771,12 +6104,74 @@ func (t *Termfield) MergeTermfield1(v Termfield1) error {
 	return err
 }
 
-func (t Termfield) MarshalJSON() ([]byte, error) {
+func (t UpdatePackageResponseObjectItemItem_Type) MarshalJSON() ([]byte, error) {
 	b, err := t.union.MarshalJSON()
 	return b, err
 }
 
-func (t *Termfield) UnmarshalJSON(b []byte) error {
+func (t *UpdatePackageResponseObjectItemItem_Type) UnmarshalJSON(b []byte) error {
+	err := t.union.UnmarshalJSON(b)
+	return err
+}
+
+// AsUpdateRuleResponseObjectSnoozeScheduleItemRRuleByweekday0 returns the union data inside the UpdateRuleResponseObjectSnoozeScheduleItemRRule_Byweekday_Item as a UpdateRuleResponseObjectSnoozeScheduleItemRRuleByweekday0
+func (t UpdateRuleResponseObjectSnoozeScheduleItemRRule_Byweekday_Item) AsUpdateRuleResponseObjectSnoozeScheduleItemRRuleByweekday0() (UpdateRuleResponseObjectSnoozeScheduleItemRRuleByweekday0, error) {
+	var body UpdateRuleResponseObjectSnoozeScheduleItemRRuleByweekday0
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromUpdateRuleResponseObjectSnoozeScheduleItemRRuleByweekday0 overwrites any union data inside the UpdateRuleResponseObjectSnoozeScheduleItemRRule_Byweekday_Item as the provided UpdateRuleResponseObjectSnoozeScheduleItemRRuleByweekday0
+func (t *UpdateRuleResponseObjectSnoozeScheduleItemRRule_Byweekday_Item) FromUpdateRuleResponseObjectSnoozeScheduleItemRRuleByweekday0(v UpdateRuleResponseObjectSnoozeScheduleItemRRuleByweekday0) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeUpdateRuleResponseObjectSnoozeScheduleItemRRuleByweekday0 performs a merge with any union data inside the UpdateRuleResponseObjectSnoozeScheduleItemRRule_Byweekday_Item, using the provided UpdateRuleResponseObjectSnoozeScheduleItemRRuleByweekday0
+func (t *UpdateRuleResponseObjectSnoozeScheduleItemRRule_Byweekday_Item) MergeUpdateRuleResponseObjectSnoozeScheduleItemRRuleByweekday0(v UpdateRuleResponseObjectSnoozeScheduleItemRRuleByweekday0) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsUpdateRuleResponseObjectSnoozeScheduleItemRRuleByweekday1 returns the union data inside the UpdateRuleResponseObjectSnoozeScheduleItemRRule_Byweekday_Item as a UpdateRuleResponseObjectSnoozeScheduleItemRRuleByweekday1
+func (t UpdateRuleResponseObjectSnoozeScheduleItemRRule_Byweekday_Item) AsUpdateRuleResponseObjectSnoozeScheduleItemRRuleByweekday1() (UpdateRuleResponseObjectSnoozeScheduleItemRRuleByweekday1, error) {
+	var body UpdateRuleResponseObjectSnoozeScheduleItemRRuleByweekday1
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromUpdateRuleResponseObjectSnoozeScheduleItemRRuleByweekday1 overwrites any union data inside the UpdateRuleResponseObjectSnoozeScheduleItemRRule_Byweekday_Item as the provided UpdateRuleResponseObjectSnoozeScheduleItemRRuleByweekday1
+func (t *UpdateRuleResponseObjectSnoozeScheduleItemRRule_Byweekday_Item) FromUpdateRuleResponseObjectSnoozeScheduleItemRRuleByweekday1(v UpdateRuleResponseObjectSnoozeScheduleItemRRuleByweekday1) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeUpdateRuleResponseObjectSnoozeScheduleItemRRuleByweekday1 performs a merge with any union data inside the UpdateRuleResponseObjectSnoozeScheduleItemRRule_Byweekday_Item, using the provided UpdateRuleResponseObjectSnoozeScheduleItemRRuleByweekday1
+func (t *UpdateRuleResponseObjectSnoozeScheduleItemRRule_Byweekday_Item) MergeUpdateRuleResponseObjectSnoozeScheduleItemRRuleByweekday1(v UpdateRuleResponseObjectSnoozeScheduleItemRRuleByweekday1) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+func (t UpdateRuleResponseObjectSnoozeScheduleItemRRule_Byweekday_Item) MarshalJSON() ([]byte, error) {
+	b, err := t.union.MarshalJSON()
+	return b, err
+}
+
+func (t *UpdateRuleResponseObjectSnoozeScheduleItemRRule_Byweekday_Item) UnmarshalJSON(b []byte) error {
 	err := t.union.UnmarshalJSON(b)
 	return err
 }
@@ -9020,6 +6415,63 @@ func WithRequestEditorFn(fn RequestEditorFn) ClientOption {
 
 // The interface specification for the client above.
 type ClientInterface interface {
+	// DeleteConnectorDefault request
+	DeleteConnectorDefault(ctx context.Context, id string, params *DeleteConnectorDefaultParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// GetConnectorDefault request
+	GetConnectorDefault(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// CreateConnectorDefaultWithBody request with any body
+	CreateConnectorDefaultWithBody(ctx context.Context, id string, params *CreateConnectorDefaultParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	CreateConnectorDefault(ctx context.Context, id string, params *CreateConnectorDefaultParams, body CreateConnectorDefaultJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// UpdateConnectorDefaultWithBody request with any body
+	UpdateConnectorDefaultWithBody(ctx context.Context, id string, params *UpdateConnectorDefaultParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	UpdateConnectorDefault(ctx context.Context, id string, params *UpdateConnectorDefaultParams, body UpdateConnectorDefaultJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// GetAllConnectorsDefault request
+	GetAllConnectorsDefault(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// DeleteRuleDefault request
+	DeleteRuleDefault(ctx context.Context, id string, params *DeleteRuleDefaultParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// GetRuleDefault request
+	GetRuleDefault(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// CreateRuleDefaultWithBody request with any body
+	CreateRuleDefaultWithBody(ctx context.Context, id string, params *CreateRuleDefaultParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	CreateRuleDefault(ctx context.Context, id string, params *CreateRuleDefaultParams, body CreateRuleDefaultJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// UpdateRuleDefaultWithBody request with any body
+	UpdateRuleDefaultWithBody(ctx context.Context, id string, params *UpdateRuleDefaultParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	UpdateRuleDefault(ctx context.Context, id string, params *UpdateRuleDefaultParams, body UpdateRuleDefaultJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// FindRuleDefault request
+	FindRuleDefault(ctx context.Context, params *FindRuleDefaultParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// GetAllDataViewsDefault request
+	GetAllDataViewsDefault(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// CreateDataViewDefaultWithBody request with any body
+	CreateDataViewDefaultWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	CreateDataViewDefault(ctx context.Context, body CreateDataViewDefaultJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// DeleteDataViewDefault request
+	DeleteDataViewDefault(ctx context.Context, viewId ViewId, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// GetDataViewDefault request
+	GetDataViewDefault(ctx context.Context, viewId ViewId, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// UpdateDataViewDefaultWithBody request with any body
+	UpdateDataViewDefaultWithBody(ctx context.Context, viewId ViewId, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	UpdateDataViewDefault(ctx context.Context, viewId ViewId, body UpdateDataViewDefaultJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+
 	// AgentPolicyList request
 	AgentPolicyList(ctx context.Context, params *AgentPolicyListParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
@@ -9034,64 +6486,15 @@ type ClientInterface interface {
 	DeleteAgentPolicy(ctx context.Context, body DeleteAgentPolicyJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// AgentPolicyInfo request
-	AgentPolicyInfo(ctx context.Context, agentPolicyId string, reqEditors ...RequestEditorFn) (*http.Response, error)
+	AgentPolicyInfo(ctx context.Context, agentPolicyId string, params *AgentPolicyInfoParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// UpdateAgentPolicyWithBody request with any body
-	UpdateAgentPolicyWithBody(ctx context.Context, agentPolicyId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	UpdateAgentPolicyWithBody(ctx context.Context, agentPolicyId string, params *UpdateAgentPolicyParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	UpdateAgentPolicy(ctx context.Context, agentPolicyId string, body UpdateAgentPolicyJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// CreateRuleWithBody request with any body
-	CreateRuleWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	CreateRule(ctx context.Context, body CreateRuleJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// DeleteRule request
-	DeleteRule(ctx context.Context, ruleId RuleId, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// GetRule request
-	GetRule(ctx context.Context, ruleId RuleId, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// CreateRuleIdWithBody request with any body
-	CreateRuleIdWithBody(ctx context.Context, ruleId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	CreateRuleId(ctx context.Context, ruleId string, body CreateRuleIdJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// UpdateRuleWithBody request with any body
-	UpdateRuleWithBody(ctx context.Context, ruleId RuleId, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	UpdateRule(ctx context.Context, ruleId RuleId, body UpdateRuleJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// FindRules request
-	FindRules(ctx context.Context, params *FindRulesParams, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// GetAllDataViewsDefault request
-	GetAllDataViewsDefault(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// CreateDataViewDefaultwWithBody request with any body
-	CreateDataViewDefaultwWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	CreateDataViewDefaultw(ctx context.Context, body CreateDataViewDefaultwJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// DeleteDataViewDefault request
-	DeleteDataViewDefault(ctx context.Context, viewId ViewId, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// GetDataViewDefault request
-	GetDataViewDefault(ctx context.Context, viewId ViewId, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// UpdateDataViewDefaultWithBody request with any body
-	UpdateDataViewDefaultWithBody(ctx context.Context, viewId ViewId, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	UpdateDataViewDefault(ctx context.Context, viewId ViewId, body UpdateDataViewDefaultJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ImportSavedObjectsDefaultWithBody request with any body
-	ImportSavedObjectsDefaultWithBody(ctx context.Context, params *ImportSavedObjectsDefaultParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	UpdateAgentPolicy(ctx context.Context, agentPolicyId string, params *UpdateAgentPolicyParams, body UpdateAgentPolicyJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetEnrollmentApiKeys request
-	GetEnrollmentApiKeys(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// CreateEnrollmentApiKeys request
-	CreateEnrollmentApiKeys(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error)
+	GetEnrollmentApiKeys(ctx context.Context, params *GetEnrollmentApiKeysParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// ListAllPackages request
 	ListAllPackages(ctx context.Context, params *ListAllPackagesParams, reqEditors ...RequestEditorFn) (*http.Response, error)
@@ -9174,6 +6577,12 @@ type ClientInterface interface {
 
 	UpdatePackagePolicy(ctx context.Context, packagePolicyId string, params *UpdatePackagePolicyParams, body UpdatePackagePolicyJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
+	// GenerateServiceToken request
+	GenerateServiceToken(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// ImportSavedObjectsDefaultWithBody request with any body
+	ImportSavedObjectsDefaultWithBody(ctx context.Context, params *ImportSavedObjectsDefaultParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+
 	// FindSlosOp request
 	FindSlosOp(ctx context.Context, spaceId SpaceId, params *FindSlosOpParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
@@ -9192,9 +6601,258 @@ type ClientInterface interface {
 	UpdateSloOpWithBody(ctx context.Context, spaceId SpaceId, sloId SloId, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	UpdateSloOp(ctx context.Context, spaceId SpaceId, sloId SloId, body UpdateSloOpJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+}
 
-	// GenerateServiceToken request
-	GenerateServiceToken(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error)
+func (c *Client) DeleteConnectorDefault(ctx context.Context, id string, params *DeleteConnectorDefaultParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewDeleteConnectorDefaultRequest(c.Server, id, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) GetConnectorDefault(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetConnectorDefaultRequest(c.Server, id)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) CreateConnectorDefaultWithBody(ctx context.Context, id string, params *CreateConnectorDefaultParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewCreateConnectorDefaultRequestWithBody(c.Server, id, params, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) CreateConnectorDefault(ctx context.Context, id string, params *CreateConnectorDefaultParams, body CreateConnectorDefaultJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewCreateConnectorDefaultRequest(c.Server, id, params, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) UpdateConnectorDefaultWithBody(ctx context.Context, id string, params *UpdateConnectorDefaultParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewUpdateConnectorDefaultRequestWithBody(c.Server, id, params, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) UpdateConnectorDefault(ctx context.Context, id string, params *UpdateConnectorDefaultParams, body UpdateConnectorDefaultJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewUpdateConnectorDefaultRequest(c.Server, id, params, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) GetAllConnectorsDefault(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetAllConnectorsDefaultRequest(c.Server)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) DeleteRuleDefault(ctx context.Context, id string, params *DeleteRuleDefaultParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewDeleteRuleDefaultRequest(c.Server, id, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) GetRuleDefault(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetRuleDefaultRequest(c.Server, id)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) CreateRuleDefaultWithBody(ctx context.Context, id string, params *CreateRuleDefaultParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewCreateRuleDefaultRequestWithBody(c.Server, id, params, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) CreateRuleDefault(ctx context.Context, id string, params *CreateRuleDefaultParams, body CreateRuleDefaultJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewCreateRuleDefaultRequest(c.Server, id, params, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) UpdateRuleDefaultWithBody(ctx context.Context, id string, params *UpdateRuleDefaultParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewUpdateRuleDefaultRequestWithBody(c.Server, id, params, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) UpdateRuleDefault(ctx context.Context, id string, params *UpdateRuleDefaultParams, body UpdateRuleDefaultJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewUpdateRuleDefaultRequest(c.Server, id, params, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) FindRuleDefault(ctx context.Context, params *FindRuleDefaultParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewFindRuleDefaultRequest(c.Server, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) GetAllDataViewsDefault(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetAllDataViewsDefaultRequest(c.Server)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) CreateDataViewDefaultWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewCreateDataViewDefaultRequestWithBody(c.Server, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) CreateDataViewDefault(ctx context.Context, body CreateDataViewDefaultJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewCreateDataViewDefaultRequest(c.Server, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) DeleteDataViewDefault(ctx context.Context, viewId ViewId, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewDeleteDataViewDefaultRequest(c.Server, viewId)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) GetDataViewDefault(ctx context.Context, viewId ViewId, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetDataViewDefaultRequest(c.Server, viewId)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) UpdateDataViewDefaultWithBody(ctx context.Context, viewId ViewId, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewUpdateDataViewDefaultRequestWithBody(c.Server, viewId, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) UpdateDataViewDefault(ctx context.Context, viewId ViewId, body UpdateDataViewDefaultJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewUpdateDataViewDefaultRequest(c.Server, viewId, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
 }
 
 func (c *Client) AgentPolicyList(ctx context.Context, params *AgentPolicyListParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -9257,8 +6915,8 @@ func (c *Client) DeleteAgentPolicy(ctx context.Context, body DeleteAgentPolicyJS
 	return c.Client.Do(req)
 }
 
-func (c *Client) AgentPolicyInfo(ctx context.Context, agentPolicyId string, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewAgentPolicyInfoRequest(c.Server, agentPolicyId)
+func (c *Client) AgentPolicyInfo(ctx context.Context, agentPolicyId string, params *AgentPolicyInfoParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewAgentPolicyInfoRequest(c.Server, agentPolicyId, params)
 	if err != nil {
 		return nil, err
 	}
@@ -9269,8 +6927,8 @@ func (c *Client) AgentPolicyInfo(ctx context.Context, agentPolicyId string, reqE
 	return c.Client.Do(req)
 }
 
-func (c *Client) UpdateAgentPolicyWithBody(ctx context.Context, agentPolicyId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewUpdateAgentPolicyRequestWithBody(c.Server, agentPolicyId, contentType, body)
+func (c *Client) UpdateAgentPolicyWithBody(ctx context.Context, agentPolicyId string, params *UpdateAgentPolicyParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewUpdateAgentPolicyRequestWithBody(c.Server, agentPolicyId, params, contentType, body)
 	if err != nil {
 		return nil, err
 	}
@@ -9281,8 +6939,8 @@ func (c *Client) UpdateAgentPolicyWithBody(ctx context.Context, agentPolicyId st
 	return c.Client.Do(req)
 }
 
-func (c *Client) UpdateAgentPolicy(ctx context.Context, agentPolicyId string, body UpdateAgentPolicyJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewUpdateAgentPolicyRequest(c.Server, agentPolicyId, body)
+func (c *Client) UpdateAgentPolicy(ctx context.Context, agentPolicyId string, params *UpdateAgentPolicyParams, body UpdateAgentPolicyJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewUpdateAgentPolicyRequest(c.Server, agentPolicyId, params, body)
 	if err != nil {
 		return nil, err
 	}
@@ -9293,224 +6951,8 @@ func (c *Client) UpdateAgentPolicy(ctx context.Context, agentPolicyId string, bo
 	return c.Client.Do(req)
 }
 
-func (c *Client) CreateRuleWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewCreateRuleRequestWithBody(c.Server, contentType, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-func (c *Client) CreateRule(ctx context.Context, body CreateRuleJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewCreateRuleRequest(c.Server, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-func (c *Client) DeleteRule(ctx context.Context, ruleId RuleId, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewDeleteRuleRequest(c.Server, ruleId)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-func (c *Client) GetRule(ctx context.Context, ruleId RuleId, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewGetRuleRequest(c.Server, ruleId)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-func (c *Client) CreateRuleIdWithBody(ctx context.Context, ruleId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewCreateRuleIdRequestWithBody(c.Server, ruleId, contentType, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-func (c *Client) CreateRuleId(ctx context.Context, ruleId string, body CreateRuleIdJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewCreateRuleIdRequest(c.Server, ruleId, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-func (c *Client) UpdateRuleWithBody(ctx context.Context, ruleId RuleId, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewUpdateRuleRequestWithBody(c.Server, ruleId, contentType, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-func (c *Client) UpdateRule(ctx context.Context, ruleId RuleId, body UpdateRuleJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewUpdateRuleRequest(c.Server, ruleId, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-func (c *Client) FindRules(ctx context.Context, params *FindRulesParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewFindRulesRequest(c.Server, params)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-func (c *Client) GetAllDataViewsDefault(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewGetAllDataViewsDefaultRequest(c.Server)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-func (c *Client) CreateDataViewDefaultwWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewCreateDataViewDefaultwRequestWithBody(c.Server, contentType, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-func (c *Client) CreateDataViewDefaultw(ctx context.Context, body CreateDataViewDefaultwJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewCreateDataViewDefaultwRequest(c.Server, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-func (c *Client) DeleteDataViewDefault(ctx context.Context, viewId ViewId, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewDeleteDataViewDefaultRequest(c.Server, viewId)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-func (c *Client) GetDataViewDefault(ctx context.Context, viewId ViewId, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewGetDataViewDefaultRequest(c.Server, viewId)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-func (c *Client) UpdateDataViewDefaultWithBody(ctx context.Context, viewId ViewId, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewUpdateDataViewDefaultRequestWithBody(c.Server, viewId, contentType, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-func (c *Client) UpdateDataViewDefault(ctx context.Context, viewId ViewId, body UpdateDataViewDefaultJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewUpdateDataViewDefaultRequest(c.Server, viewId, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-func (c *Client) ImportSavedObjectsDefaultWithBody(ctx context.Context, params *ImportSavedObjectsDefaultParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewImportSavedObjectsDefaultRequestWithBody(c.Server, params, contentType, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-func (c *Client) GetEnrollmentApiKeys(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewGetEnrollmentApiKeysRequest(c.Server)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-func (c *Client) CreateEnrollmentApiKeys(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewCreateEnrollmentApiKeysRequest(c.Server)
+func (c *Client) GetEnrollmentApiKeys(ctx context.Context, params *GetEnrollmentApiKeysParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetEnrollmentApiKeysRequest(c.Server, params)
 	if err != nil {
 		return nil, err
 	}
@@ -9881,6 +7323,30 @@ func (c *Client) UpdatePackagePolicy(ctx context.Context, packagePolicyId string
 	return c.Client.Do(req)
 }
 
+func (c *Client) GenerateServiceToken(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGenerateServiceTokenRequest(c.Server)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) ImportSavedObjectsDefaultWithBody(ctx context.Context, params *ImportSavedObjectsDefaultParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewImportSavedObjectsDefaultRequestWithBody(c.Server, params, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
 func (c *Client) FindSlosOp(ctx context.Context, spaceId SpaceId, params *FindSlosOpParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewFindSlosOpRequest(c.Server, spaceId, params)
 	if err != nil {
@@ -9965,218 +7431,60 @@ func (c *Client) UpdateSloOp(ctx context.Context, spaceId SpaceId, sloId SloId, 
 	return c.Client.Do(req)
 }
 
-func (c *Client) GenerateServiceToken(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewGenerateServiceTokenRequest(c.Server)
+// NewDeleteConnectorDefaultRequest generates requests for DeleteConnectorDefault
+func NewDeleteConnectorDefaultRequest(server string, id string, params *DeleteConnectorDefaultParams) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "id", runtime.ParamLocationPath, id)
 	if err != nil {
 		return nil, err
 	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// NewAgentPolicyListRequest generates requests for AgentPolicyList
-func NewAgentPolicyListRequest(server string, params *AgentPolicyListParams) (*http.Request, error) {
-	var err error
 
 	serverURL, err := url.Parse(server)
 	if err != nil {
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/agent_policies")
+	operationPath := fmt.Sprintf("/api/actions/connector/%s", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
 
 	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest("DELETE", queryURL.String(), nil)
 	if err != nil {
 		return nil, err
 	}
 
 	if params != nil {
-		queryValues := queryURL.Query()
 
-		if params.PerPage != nil {
+		var headerParam0 string
 
-			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "perPage", runtime.ParamLocationQuery, *params.PerPage); err != nil {
-				return nil, err
-			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
-				return nil, err
-			} else {
-				for k, v := range parsed {
-					for _, v2 := range v {
-						queryValues.Add(k, v2)
-					}
-				}
-			}
-
+		headerParam0, err = runtime.StyleParamWithLocation("simple", false, "kbn-xsrf", runtime.ParamLocationHeader, params.KbnXsrf)
+		if err != nil {
+			return nil, err
 		}
 
-		if params.Page != nil {
+		req.Header.Set("kbn-xsrf", headerParam0)
 
-			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "page", runtime.ParamLocationQuery, *params.Page); err != nil {
-				return nil, err
-			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
-				return nil, err
-			} else {
-				for k, v := range parsed {
-					for _, v2 := range v {
-						queryValues.Add(k, v2)
-					}
-				}
-			}
-
-		}
-
-		if params.Kuery != nil {
-
-			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "kuery", runtime.ParamLocationQuery, *params.Kuery); err != nil {
-				return nil, err
-			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
-				return nil, err
-			} else {
-				for k, v := range parsed {
-					for _, v2 := range v {
-						queryValues.Add(k, v2)
-					}
-				}
-			}
-
-		}
-
-		if params.Full != nil {
-
-			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "full", runtime.ParamLocationQuery, *params.Full); err != nil {
-				return nil, err
-			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
-				return nil, err
-			} else {
-				for k, v := range parsed {
-					for _, v2 := range v {
-						queryValues.Add(k, v2)
-					}
-				}
-			}
-
-		}
-
-		if params.NoAgentCount != nil {
-
-			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "noAgentCount", runtime.ParamLocationQuery, *params.NoAgentCount); err != nil {
-				return nil, err
-			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
-				return nil, err
-			} else {
-				for k, v := range parsed {
-					for _, v2 := range v {
-						queryValues.Add(k, v2)
-					}
-				}
-			}
-
-		}
-
-		queryURL.RawQuery = queryValues.Encode()
-	}
-
-	req, err := http.NewRequest("GET", queryURL.String(), nil)
-	if err != nil {
-		return nil, err
 	}
 
 	return req, nil
 }
 
-// NewCreateAgentPolicyRequest calls the generic CreateAgentPolicy builder with application/json body
-func NewCreateAgentPolicyRequest(server string, body CreateAgentPolicyJSONRequestBody) (*http.Request, error) {
-	var bodyReader io.Reader
-	buf, err := json.Marshal(body)
-	if err != nil {
-		return nil, err
-	}
-	bodyReader = bytes.NewReader(buf)
-	return NewCreateAgentPolicyRequestWithBody(server, "application/json", bodyReader)
-}
-
-// NewCreateAgentPolicyRequestWithBody generates requests for CreateAgentPolicy with any type of body
-func NewCreateAgentPolicyRequestWithBody(server string, contentType string, body io.Reader) (*http.Request, error) {
-	var err error
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/agent_policies")
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	req, err := http.NewRequest("POST", queryURL.String(), body)
-	if err != nil {
-		return nil, err
-	}
-
-	req.Header.Add("Content-Type", contentType)
-
-	return req, nil
-}
-
-// NewDeleteAgentPolicyRequest calls the generic DeleteAgentPolicy builder with application/json body
-func NewDeleteAgentPolicyRequest(server string, body DeleteAgentPolicyJSONRequestBody) (*http.Request, error) {
-	var bodyReader io.Reader
-	buf, err := json.Marshal(body)
-	if err != nil {
-		return nil, err
-	}
-	bodyReader = bytes.NewReader(buf)
-	return NewDeleteAgentPolicyRequestWithBody(server, "application/json", bodyReader)
-}
-
-// NewDeleteAgentPolicyRequestWithBody generates requests for DeleteAgentPolicy with any type of body
-func NewDeleteAgentPolicyRequestWithBody(server string, contentType string, body io.Reader) (*http.Request, error) {
-	var err error
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/agent_policies/delete")
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	req, err := http.NewRequest("POST", queryURL.String(), body)
-	if err != nil {
-		return nil, err
-	}
-
-	req.Header.Add("Content-Type", contentType)
-
-	return req, nil
-}
-
-// NewAgentPolicyInfoRequest generates requests for AgentPolicyInfo
-func NewAgentPolicyInfoRequest(server string, agentPolicyId string) (*http.Request, error) {
+// NewGetConnectorDefaultRequest generates requests for GetConnectorDefault
+func NewGetConnectorDefaultRequest(server string, id string) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "agentPolicyId", runtime.ParamLocationPath, agentPolicyId)
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "id", runtime.ParamLocationPath, id)
 	if err != nil {
 		return nil, err
 	}
@@ -10186,7 +7494,7 @@ func NewAgentPolicyInfoRequest(server string, agentPolicyId string) (*http.Reque
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/agent_policies/%s", pathParam0)
+	operationPath := fmt.Sprintf("/api/actions/connector/%s", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -10204,24 +7512,24 @@ func NewAgentPolicyInfoRequest(server string, agentPolicyId string) (*http.Reque
 	return req, nil
 }
 
-// NewUpdateAgentPolicyRequest calls the generic UpdateAgentPolicy builder with application/json body
-func NewUpdateAgentPolicyRequest(server string, agentPolicyId string, body UpdateAgentPolicyJSONRequestBody) (*http.Request, error) {
+// NewCreateConnectorDefaultRequest calls the generic CreateConnectorDefault builder with application/json body
+func NewCreateConnectorDefaultRequest(server string, id string, params *CreateConnectorDefaultParams, body CreateConnectorDefaultJSONRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
 	buf, err := json.Marshal(body)
 	if err != nil {
 		return nil, err
 	}
 	bodyReader = bytes.NewReader(buf)
-	return NewUpdateAgentPolicyRequestWithBody(server, agentPolicyId, "application/json", bodyReader)
+	return NewCreateConnectorDefaultRequestWithBody(server, id, params, "application/json", bodyReader)
 }
 
-// NewUpdateAgentPolicyRequestWithBody generates requests for UpdateAgentPolicy with any type of body
-func NewUpdateAgentPolicyRequestWithBody(server string, agentPolicyId string, contentType string, body io.Reader) (*http.Request, error) {
+// NewCreateConnectorDefaultRequestWithBody generates requests for CreateConnectorDefault with any type of body
+func NewCreateConnectorDefaultRequestWithBody(server string, id string, params *CreateConnectorDefaultParams, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "agentPolicyId", runtime.ParamLocationPath, agentPolicyId)
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "id", runtime.ParamLocationPath, id)
 	if err != nil {
 		return nil, err
 	}
@@ -10231,7 +7539,67 @@ func NewUpdateAgentPolicyRequestWithBody(server string, agentPolicyId string, co
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/agent_policies/%s", pathParam0)
+	operationPath := fmt.Sprintf("/api/actions/connector/%s", pathParam0)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest("POST", queryURL.String(), body)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("Content-Type", contentType)
+
+	if params != nil {
+
+		var headerParam0 string
+
+		headerParam0, err = runtime.StyleParamWithLocation("simple", false, "kbn-xsrf", runtime.ParamLocationHeader, params.KbnXsrf)
+		if err != nil {
+			return nil, err
+		}
+
+		req.Header.Set("kbn-xsrf", headerParam0)
+
+	}
+
+	return req, nil
+}
+
+// NewUpdateConnectorDefaultRequest calls the generic UpdateConnectorDefault builder with application/json body
+func NewUpdateConnectorDefaultRequest(server string, id string, params *UpdateConnectorDefaultParams, body UpdateConnectorDefaultJSONRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	buf, err := json.Marshal(body)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = bytes.NewReader(buf)
+	return NewUpdateConnectorDefaultRequestWithBody(server, id, params, "application/json", bodyReader)
+}
+
+// NewUpdateConnectorDefaultRequestWithBody generates requests for UpdateConnectorDefault with any type of body
+func NewUpdateConnectorDefaultRequestWithBody(server string, id string, params *UpdateConnectorDefaultParams, contentType string, body io.Reader) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "id", runtime.ParamLocationPath, id)
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/actions/connector/%s", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -10248,22 +7616,24 @@ func NewUpdateAgentPolicyRequestWithBody(server string, agentPolicyId string, co
 
 	req.Header.Add("Content-Type", contentType)
 
+	if params != nil {
+
+		var headerParam0 string
+
+		headerParam0, err = runtime.StyleParamWithLocation("simple", false, "kbn-xsrf", runtime.ParamLocationHeader, params.KbnXsrf)
+		if err != nil {
+			return nil, err
+		}
+
+		req.Header.Set("kbn-xsrf", headerParam0)
+
+	}
+
 	return req, nil
 }
 
-// NewCreateRuleRequest calls the generic CreateRule builder with application/json body
-func NewCreateRuleRequest(server string, body CreateRuleJSONRequestBody) (*http.Request, error) {
-	var bodyReader io.Reader
-	buf, err := json.Marshal(body)
-	if err != nil {
-		return nil, err
-	}
-	bodyReader = bytes.NewReader(buf)
-	return NewCreateRuleRequestWithBody(server, "application/json", bodyReader)
-}
-
-// NewCreateRuleRequestWithBody generates requests for CreateRule with any type of body
-func NewCreateRuleRequestWithBody(server string, contentType string, body io.Reader) (*http.Request, error) {
+// NewGetAllConnectorsDefaultRequest generates requests for GetAllConnectorsDefault
+func NewGetAllConnectorsDefaultRequest(server string) (*http.Request, error) {
 	var err error
 
 	serverURL, err := url.Parse(server)
@@ -10271,7 +7641,7 @@ func NewCreateRuleRequestWithBody(server string, contentType string, body io.Rea
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/api/alerting/rule")
+	operationPath := fmt.Sprintf("/api/actions/connectors")
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -10281,23 +7651,21 @@ func NewCreateRuleRequestWithBody(server string, contentType string, body io.Rea
 		return nil, err
 	}
 
-	req, err := http.NewRequest("POST", queryURL.String(), body)
+	req, err := http.NewRequest("GET", queryURL.String(), nil)
 	if err != nil {
 		return nil, err
 	}
 
-	req.Header.Add("Content-Type", contentType)
-
 	return req, nil
 }
 
-// NewDeleteRuleRequest generates requests for DeleteRule
-func NewDeleteRuleRequest(server string, ruleId RuleId) (*http.Request, error) {
+// NewDeleteRuleDefaultRequest generates requests for DeleteRuleDefault
+func NewDeleteRuleDefaultRequest(server string, id string, params *DeleteRuleDefaultParams) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "ruleId", runtime.ParamLocationPath, ruleId)
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "id", runtime.ParamLocationPath, id)
 	if err != nil {
 		return nil, err
 	}
@@ -10322,16 +7690,29 @@ func NewDeleteRuleRequest(server string, ruleId RuleId) (*http.Request, error) {
 		return nil, err
 	}
 
+	if params != nil {
+
+		var headerParam0 string
+
+		headerParam0, err = runtime.StyleParamWithLocation("simple", false, "kbn-xsrf", runtime.ParamLocationHeader, params.KbnXsrf)
+		if err != nil {
+			return nil, err
+		}
+
+		req.Header.Set("kbn-xsrf", headerParam0)
+
+	}
+
 	return req, nil
 }
 
-// NewGetRuleRequest generates requests for GetRule
-func NewGetRuleRequest(server string, ruleId RuleId) (*http.Request, error) {
+// NewGetRuleDefaultRequest generates requests for GetRuleDefault
+func NewGetRuleDefaultRequest(server string, id string) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "ruleId", runtime.ParamLocationPath, ruleId)
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "id", runtime.ParamLocationPath, id)
 	if err != nil {
 		return nil, err
 	}
@@ -10359,24 +7740,24 @@ func NewGetRuleRequest(server string, ruleId RuleId) (*http.Request, error) {
 	return req, nil
 }
 
-// NewCreateRuleIdRequest calls the generic CreateRuleId builder with application/json body
-func NewCreateRuleIdRequest(server string, ruleId string, body CreateRuleIdJSONRequestBody) (*http.Request, error) {
+// NewCreateRuleDefaultRequest calls the generic CreateRuleDefault builder with application/json body
+func NewCreateRuleDefaultRequest(server string, id string, params *CreateRuleDefaultParams, body CreateRuleDefaultJSONRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
 	buf, err := json.Marshal(body)
 	if err != nil {
 		return nil, err
 	}
 	bodyReader = bytes.NewReader(buf)
-	return NewCreateRuleIdRequestWithBody(server, ruleId, "application/json", bodyReader)
+	return NewCreateRuleDefaultRequestWithBody(server, id, params, "application/json", bodyReader)
 }
 
-// NewCreateRuleIdRequestWithBody generates requests for CreateRuleId with any type of body
-func NewCreateRuleIdRequestWithBody(server string, ruleId string, contentType string, body io.Reader) (*http.Request, error) {
+// NewCreateRuleDefaultRequestWithBody generates requests for CreateRuleDefault with any type of body
+func NewCreateRuleDefaultRequestWithBody(server string, id string, params *CreateRuleDefaultParams, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "ruleId", runtime.ParamLocationPath, ruleId)
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "id", runtime.ParamLocationPath, id)
 	if err != nil {
 		return nil, err
 	}
@@ -10403,27 +7784,40 @@ func NewCreateRuleIdRequestWithBody(server string, ruleId string, contentType st
 
 	req.Header.Add("Content-Type", contentType)
 
+	if params != nil {
+
+		var headerParam0 string
+
+		headerParam0, err = runtime.StyleParamWithLocation("simple", false, "kbn-xsrf", runtime.ParamLocationHeader, params.KbnXsrf)
+		if err != nil {
+			return nil, err
+		}
+
+		req.Header.Set("kbn-xsrf", headerParam0)
+
+	}
+
 	return req, nil
 }
 
-// NewUpdateRuleRequest calls the generic UpdateRule builder with application/json body
-func NewUpdateRuleRequest(server string, ruleId RuleId, body UpdateRuleJSONRequestBody) (*http.Request, error) {
+// NewUpdateRuleDefaultRequest calls the generic UpdateRuleDefault builder with application/json body
+func NewUpdateRuleDefaultRequest(server string, id string, params *UpdateRuleDefaultParams, body UpdateRuleDefaultJSONRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
 	buf, err := json.Marshal(body)
 	if err != nil {
 		return nil, err
 	}
 	bodyReader = bytes.NewReader(buf)
-	return NewUpdateRuleRequestWithBody(server, ruleId, "application/json", bodyReader)
+	return NewUpdateRuleDefaultRequestWithBody(server, id, params, "application/json", bodyReader)
 }
 
-// NewUpdateRuleRequestWithBody generates requests for UpdateRule with any type of body
-func NewUpdateRuleRequestWithBody(server string, ruleId RuleId, contentType string, body io.Reader) (*http.Request, error) {
+// NewUpdateRuleDefaultRequestWithBody generates requests for UpdateRuleDefault with any type of body
+func NewUpdateRuleDefaultRequestWithBody(server string, id string, params *UpdateRuleDefaultParams, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "ruleId", runtime.ParamLocationPath, ruleId)
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "id", runtime.ParamLocationPath, id)
 	if err != nil {
 		return nil, err
 	}
@@ -10450,11 +7844,24 @@ func NewUpdateRuleRequestWithBody(server string, ruleId RuleId, contentType stri
 
 	req.Header.Add("Content-Type", contentType)
 
+	if params != nil {
+
+		var headerParam0 string
+
+		headerParam0, err = runtime.StyleParamWithLocation("simple", false, "kbn-xsrf", runtime.ParamLocationHeader, params.KbnXsrf)
+		if err != nil {
+			return nil, err
+		}
+
+		req.Header.Set("kbn-xsrf", headerParam0)
+
+	}
+
 	return req, nil
 }
 
-// NewFindRulesRequest generates requests for FindRules
-func NewFindRulesRequest(server string, params *FindRulesParams) (*http.Request, error) {
+// NewFindRuleDefaultRequest generates requests for FindRuleDefault
+func NewFindRuleDefaultRequest(server string, params *FindRuleDefaultParams) (*http.Request, error) {
 	var err error
 
 	serverURL, err := url.Parse(server)
@@ -10475,57 +7882,9 @@ func NewFindRulesRequest(server string, params *FindRulesParams) (*http.Request,
 	if params != nil {
 		queryValues := queryURL.Query()
 
-		if params.DefaultSearchOperator != nil {
+		if params.PerPage != nil {
 
-			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "default_search_operator", runtime.ParamLocationQuery, *params.DefaultSearchOperator); err != nil {
-				return nil, err
-			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
-				return nil, err
-			} else {
-				for k, v := range parsed {
-					for _, v2 := range v {
-						queryValues.Add(k, v2)
-					}
-				}
-			}
-
-		}
-
-		if params.Fields != nil {
-
-			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "fields", runtime.ParamLocationQuery, *params.Fields); err != nil {
-				return nil, err
-			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
-				return nil, err
-			} else {
-				for k, v := range parsed {
-					for _, v2 := range v {
-						queryValues.Add(k, v2)
-					}
-				}
-			}
-
-		}
-
-		if params.Filter != nil {
-
-			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "filter", runtime.ParamLocationQuery, *params.Filter); err != nil {
-				return nil, err
-			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
-				return nil, err
-			} else {
-				for k, v := range parsed {
-					for _, v2 := range v {
-						queryValues.Add(k, v2)
-					}
-				}
-			}
-
-		}
-
-		if params.HasReference != nil {
-
-			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "has_reference", runtime.ParamLocationQuery, *params.HasReference); err != nil {
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "per_page", runtime.ParamLocationQuery, *params.PerPage); err != nil {
 				return nil, err
 			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
 				return nil, err
@@ -10555,9 +7914,9 @@ func NewFindRulesRequest(server string, params *FindRulesParams) (*http.Request,
 
 		}
 
-		if params.PerPage != nil {
+		if params.Search != nil {
 
-			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "per_page", runtime.ParamLocationQuery, *params.PerPage); err != nil {
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "search", runtime.ParamLocationQuery, *params.Search); err != nil {
 				return nil, err
 			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
 				return nil, err
@@ -10571,9 +7930,9 @@ func NewFindRulesRequest(server string, params *FindRulesParams) (*http.Request,
 
 		}
 
-		if params.Search != nil {
+		if params.DefaultSearchOperator != nil {
 
-			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "search", runtime.ParamLocationQuery, *params.Search); err != nil {
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "default_search_operator", runtime.ParamLocationQuery, *params.DefaultSearchOperator); err != nil {
 				return nil, err
 			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
 				return nil, err
@@ -10635,6 +7994,62 @@ func NewFindRulesRequest(server string, params *FindRulesParams) (*http.Request,
 
 		}
 
+		if params.HasReference != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "has_reference", runtime.ParamLocationQuery, *params.HasReference); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "fields", runtime.ParamLocationQuery, params.Fields); err != nil {
+			return nil, err
+		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+			return nil, err
+		} else {
+			for k, v := range parsed {
+				for _, v2 := range v {
+					queryValues.Add(k, v2)
+				}
+			}
+		}
+
+		if params.Filter != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "filter", runtime.ParamLocationQuery, *params.Filter); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "filter_consumers", runtime.ParamLocationQuery, params.FilterConsumers); err != nil {
+			return nil, err
+		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+			return nil, err
+		} else {
+			for k, v := range parsed {
+				for _, v2 := range v {
+					queryValues.Add(k, v2)
+				}
+			}
+		}
+
 		queryURL.RawQuery = queryValues.Encode()
 	}
 
@@ -10673,19 +8088,19 @@ func NewGetAllDataViewsDefaultRequest(server string) (*http.Request, error) {
 	return req, nil
 }
 
-// NewCreateDataViewDefaultwRequest calls the generic CreateDataViewDefaultw builder with application/json body
-func NewCreateDataViewDefaultwRequest(server string, body CreateDataViewDefaultwJSONRequestBody) (*http.Request, error) {
+// NewCreateDataViewDefaultRequest calls the generic CreateDataViewDefault builder with application/json body
+func NewCreateDataViewDefaultRequest(server string, body CreateDataViewDefaultJSONRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
 	buf, err := json.Marshal(body)
 	if err != nil {
 		return nil, err
 	}
 	bodyReader = bytes.NewReader(buf)
-	return NewCreateDataViewDefaultwRequestWithBody(server, "application/json", bodyReader)
+	return NewCreateDataViewDefaultRequestWithBody(server, "application/json", bodyReader)
 }
 
-// NewCreateDataViewDefaultwRequestWithBody generates requests for CreateDataViewDefaultw with any type of body
-func NewCreateDataViewDefaultwRequestWithBody(server string, contentType string, body io.Reader) (*http.Request, error) {
+// NewCreateDataViewDefaultRequestWithBody generates requests for CreateDataViewDefault with any type of body
+func NewCreateDataViewDefaultRequestWithBody(server string, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	serverURL, err := url.Parse(server)
@@ -10828,8 +8243,8 @@ func NewUpdateDataViewDefaultRequestWithBody(server string, viewId ViewId, conte
 	return req, nil
 }
 
-// NewImportSavedObjectsDefaultRequestWithBody generates requests for ImportSavedObjectsDefault with any type of body
-func NewImportSavedObjectsDefaultRequestWithBody(server string, params *ImportSavedObjectsDefaultParams, contentType string, body io.Reader) (*http.Request, error) {
+// NewAgentPolicyListRequest generates requests for AgentPolicyList
+func NewAgentPolicyListRequest(server string, params *AgentPolicyListParams) (*http.Request, error) {
 	var err error
 
 	serverURL, err := url.Parse(server)
@@ -10837,7 +8252,7 @@ func NewImportSavedObjectsDefaultRequestWithBody(server string, params *ImportSa
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/api/saved_objects/_import")
+	operationPath := fmt.Sprintf("/api/fleet/agent_policies")
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -10850,9 +8265,9 @@ func NewImportSavedObjectsDefaultRequestWithBody(server string, params *ImportSa
 	if params != nil {
 		queryValues := queryURL.Query()
 
-		if params.CreateNewCopies != nil {
+		if params.PerPage != nil {
 
-			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "createNewCopies", runtime.ParamLocationQuery, *params.CreateNewCopies); err != nil {
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "perPage", runtime.ParamLocationQuery, *params.PerPage); err != nil {
 				return nil, err
 			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
 				return nil, err
@@ -10866,9 +8281,9 @@ func NewImportSavedObjectsDefaultRequestWithBody(server string, params *ImportSa
 
 		}
 
-		if params.Overwrite != nil {
+		if params.Page != nil {
 
-			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "overwrite", runtime.ParamLocationQuery, *params.Overwrite); err != nil {
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "page", runtime.ParamLocationQuery, *params.Page); err != nil {
 				return nil, err
 			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
 				return nil, err
@@ -10882,9 +8297,57 @@ func NewImportSavedObjectsDefaultRequestWithBody(server string, params *ImportSa
 
 		}
 
-		if params.CompatibilityMode != nil {
+		if params.Kuery != nil {
 
-			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "compatibilityMode", runtime.ParamLocationQuery, *params.CompatibilityMode); err != nil {
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "kuery", runtime.ParamLocationQuery, *params.Kuery); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		if params.Format != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "format", runtime.ParamLocationQuery, *params.Format); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		if params.Full != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "full", runtime.ParamLocationQuery, *params.Full); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		if params.NoAgentCount != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "noAgentCount", runtime.ParamLocationQuery, *params.NoAgentCount); err != nil {
 				return nil, err
 			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
 				return nil, err
@@ -10901,6 +8364,44 @@ func NewImportSavedObjectsDefaultRequestWithBody(server string, params *ImportSa
 		queryURL.RawQuery = queryValues.Encode()
 	}
 
+	req, err := http.NewRequest("GET", queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
+// NewCreateAgentPolicyRequest calls the generic CreateAgentPolicy builder with application/json body
+func NewCreateAgentPolicyRequest(server string, body CreateAgentPolicyJSONRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	buf, err := json.Marshal(body)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = bytes.NewReader(buf)
+	return NewCreateAgentPolicyRequestWithBody(server, "application/json", bodyReader)
+}
+
+// NewCreateAgentPolicyRequestWithBody generates requests for CreateAgentPolicy with any type of body
+func NewCreateAgentPolicyRequestWithBody(server string, contentType string, body io.Reader) (*http.Request, error) {
+	var err error
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/fleet/agent_policies")
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
 	req, err := http.NewRequest("POST", queryURL.String(), body)
 	if err != nil {
 		return nil, err
@@ -10911,8 +8412,19 @@ func NewImportSavedObjectsDefaultRequestWithBody(server string, params *ImportSa
 	return req, nil
 }
 
-// NewGetEnrollmentApiKeysRequest generates requests for GetEnrollmentApiKeys
-func NewGetEnrollmentApiKeysRequest(server string) (*http.Request, error) {
+// NewDeleteAgentPolicyRequest calls the generic DeleteAgentPolicy builder with application/json body
+func NewDeleteAgentPolicyRequest(server string, body DeleteAgentPolicyJSONRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	buf, err := json.Marshal(body)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = bytes.NewReader(buf)
+	return NewDeleteAgentPolicyRequestWithBody(server, "application/json", bodyReader)
+}
+
+// NewDeleteAgentPolicyRequestWithBody generates requests for DeleteAgentPolicy with any type of body
+func NewDeleteAgentPolicyRequestWithBody(server string, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	serverURL, err := url.Parse(server)
@@ -10920,7 +8432,7 @@ func NewGetEnrollmentApiKeysRequest(server string) (*http.Request, error) {
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/enrollment_api_keys")
+	operationPath := fmt.Sprintf("/api/fleet/agent_policies/delete")
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -10928,6 +8440,64 @@ func NewGetEnrollmentApiKeysRequest(server string) (*http.Request, error) {
 	queryURL, err := serverURL.Parse(operationPath)
 	if err != nil {
 		return nil, err
+	}
+
+	req, err := http.NewRequest("POST", queryURL.String(), body)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("Content-Type", contentType)
+
+	return req, nil
+}
+
+// NewAgentPolicyInfoRequest generates requests for AgentPolicyInfo
+func NewAgentPolicyInfoRequest(server string, agentPolicyId string, params *AgentPolicyInfoParams) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "agentPolicyId", runtime.ParamLocationPath, agentPolicyId)
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/fleet/agent_policies/%s", pathParam0)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	if params != nil {
+		queryValues := queryURL.Query()
+
+		if params.Format != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "format", runtime.ParamLocationQuery, *params.Format); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		queryURL.RawQuery = queryValues.Encode()
 	}
 
 	req, err := http.NewRequest("GET", queryURL.String(), nil)
@@ -10938,16 +8508,34 @@ func NewGetEnrollmentApiKeysRequest(server string) (*http.Request, error) {
 	return req, nil
 }
 
-// NewCreateEnrollmentApiKeysRequest generates requests for CreateEnrollmentApiKeys
-func NewCreateEnrollmentApiKeysRequest(server string) (*http.Request, error) {
+// NewUpdateAgentPolicyRequest calls the generic UpdateAgentPolicy builder with application/json body
+func NewUpdateAgentPolicyRequest(server string, agentPolicyId string, params *UpdateAgentPolicyParams, body UpdateAgentPolicyJSONRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	buf, err := json.Marshal(body)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = bytes.NewReader(buf)
+	return NewUpdateAgentPolicyRequestWithBody(server, agentPolicyId, params, "application/json", bodyReader)
+}
+
+// NewUpdateAgentPolicyRequestWithBody generates requests for UpdateAgentPolicy with any type of body
+func NewUpdateAgentPolicyRequestWithBody(server string, agentPolicyId string, params *UpdateAgentPolicyParams, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "agentPolicyId", runtime.ParamLocationPath, agentPolicyId)
+	if err != nil {
+		return nil, err
+	}
 
 	serverURL, err := url.Parse(server)
 	if err != nil {
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/enrollment_api_keys")
+	operationPath := fmt.Sprintf("/api/fleet/agent_policies/%s", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -10957,7 +8545,112 @@ func NewCreateEnrollmentApiKeysRequest(server string) (*http.Request, error) {
 		return nil, err
 	}
 
-	req, err := http.NewRequest("POST", queryURL.String(), nil)
+	if params != nil {
+		queryValues := queryURL.Query()
+
+		if params.Format != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "format", runtime.ParamLocationQuery, *params.Format); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		queryURL.RawQuery = queryValues.Encode()
+	}
+
+	req, err := http.NewRequest("PUT", queryURL.String(), body)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("Content-Type", contentType)
+
+	return req, nil
+}
+
+// NewGetEnrollmentApiKeysRequest generates requests for GetEnrollmentApiKeys
+func NewGetEnrollmentApiKeysRequest(server string, params *GetEnrollmentApiKeysParams) (*http.Request, error) {
+	var err error
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/fleet/enrollment_api_keys")
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	if params != nil {
+		queryValues := queryURL.Query()
+
+		if params.PerPage != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "perPage", runtime.ParamLocationQuery, *params.PerPage); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		if params.Page != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "page", runtime.ParamLocationQuery, *params.Page); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		if params.Kuery != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "kuery", runtime.ParamLocationQuery, *params.Kuery); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		queryURL.RawQuery = queryValues.Encode()
+	}
+
+	req, err := http.NewRequest("GET", queryURL.String(), nil)
 	if err != nil {
 		return nil, err
 	}
@@ -10974,7 +8667,7 @@ func NewListAllPackagesRequest(server string, params *ListAllPackagesParams) (*h
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/epm/packages")
+	operationPath := fmt.Sprintf("/api/fleet/epm/packages")
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -11071,7 +8764,7 @@ func NewInstallPackageByUploadRequestWithBody(server string, params *InstallPack
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/epm/packages")
+	operationPath := fmt.Sprintf("/api/fleet/epm/packages")
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -11163,7 +8856,7 @@ func NewDeletePackageRequestWithBody(server string, pkgName string, pkgVersion s
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/epm/packages/%s/%s", pathParam0, pathParam1)
+	operationPath := fmt.Sprintf("/api/fleet/epm/packages/%s/%s", pathParam0, pathParam1)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -11276,7 +8969,7 @@ func NewGetPackageRequest(server string, pkgName string, pkgVersion string, para
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/epm/packages/%s/%s", pathParam0, pathParam1)
+	operationPath := fmt.Sprintf("/api/fleet/epm/packages/%s/%s", pathParam0, pathParam1)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -11382,7 +9075,7 @@ func NewInstallPackageRequestWithBody(server string, pkgName string, pkgVersion 
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/epm/packages/%s/%s", pathParam0, pathParam1)
+	operationPath := fmt.Sprintf("/api/fleet/epm/packages/%s/%s", pathParam0, pathParam1)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -11522,7 +9215,7 @@ func NewUpdatePackageRequestWithBody(server string, pkgName string, pkgVersion s
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/epm/packages/%s/%s", pathParam0, pathParam1)
+	operationPath := fmt.Sprintf("/api/fleet/epm/packages/%s/%s", pathParam0, pathParam1)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -11605,7 +9298,7 @@ func NewGetFleetServerHostsRequest(server string) (*http.Request, error) {
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/fleet_server_hosts")
+	operationPath := fmt.Sprintf("/api/fleet/fleet_server_hosts")
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -11643,7 +9336,7 @@ func NewPostFleetServerHostsRequestWithBody(server string, contentType string, b
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/fleet_server_hosts")
+	operationPath := fmt.Sprintf("/api/fleet/fleet_server_hosts")
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -11679,7 +9372,7 @@ func NewDeleteFleetServerHostsRequest(server string, itemId string) (*http.Reque
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/fleet_server_hosts/%s", pathParam0)
+	operationPath := fmt.Sprintf("/api/fleet/fleet_server_hosts/%s", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -11713,7 +9406,7 @@ func NewGetOneFleetServerHostsRequest(server string, itemId string) (*http.Reque
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/fleet_server_hosts/%s", pathParam0)
+	operationPath := fmt.Sprintf("/api/fleet/fleet_server_hosts/%s", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -11758,7 +9451,7 @@ func NewUpdateFleetServerHostsRequestWithBody(server string, itemId string, cont
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/fleet_server_hosts/%s", pathParam0)
+	operationPath := fmt.Sprintf("/api/fleet/fleet_server_hosts/%s", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -11787,7 +9480,7 @@ func NewGetOutputsRequest(server string) (*http.Request, error) {
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/outputs")
+	operationPath := fmt.Sprintf("/api/fleet/outputs")
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -11825,7 +9518,7 @@ func NewPostOutputsRequestWithBody(server string, contentType string, body io.Re
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/outputs")
+	operationPath := fmt.Sprintf("/api/fleet/outputs")
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -11861,7 +9554,7 @@ func NewDeleteOutputRequest(server string, outputId string) (*http.Request, erro
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/outputs/%s", pathParam0)
+	operationPath := fmt.Sprintf("/api/fleet/outputs/%s", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -11895,7 +9588,7 @@ func NewGetOutputRequest(server string, outputId string) (*http.Request, error) 
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/outputs/%s", pathParam0)
+	operationPath := fmt.Sprintf("/api/fleet/outputs/%s", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -11940,7 +9633,7 @@ func NewUpdateOutputRequestWithBody(server string, outputId string, contentType 
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/outputs/%s", pathParam0)
+	operationPath := fmt.Sprintf("/api/fleet/outputs/%s", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -11969,7 +9662,7 @@ func NewGetPackagePoliciesRequest(server string, params *GetPackagePoliciesParam
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/package_policies")
+	operationPath := fmt.Sprintf("/api/fleet/package_policies")
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -12077,7 +9770,7 @@ func NewCreatePackagePolicyRequestWithBody(server string, params *CreatePackageP
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/package_policies")
+	operationPath := fmt.Sprintf("/api/fleet/package_policies")
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -12135,7 +9828,7 @@ func NewDeletePackagePolicyRequest(server string, packagePolicyId string, params
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/package_policies/%s", pathParam0)
+	operationPath := fmt.Sprintf("/api/fleet/package_policies/%s", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -12191,7 +9884,7 @@ func NewGetPackagePolicyRequest(server string, packagePolicyId string, params *G
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/package_policies/%s", pathParam0)
+	operationPath := fmt.Sprintf("/api/fleet/package_policies/%s", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -12258,7 +9951,7 @@ func NewUpdatePackagePolicyRequestWithBody(server string, packagePolicyId string
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/package_policies/%s", pathParam0)
+	operationPath := fmt.Sprintf("/api/fleet/package_policies/%s", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -12291,6 +9984,116 @@ func NewUpdatePackagePolicyRequestWithBody(server string, packagePolicyId string
 	}
 
 	req, err := http.NewRequest("PUT", queryURL.String(), body)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("Content-Type", contentType)
+
+	return req, nil
+}
+
+// NewGenerateServiceTokenRequest generates requests for GenerateServiceToken
+func NewGenerateServiceTokenRequest(server string) (*http.Request, error) {
+	var err error
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/fleet/service_tokens")
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest("POST", queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
+// NewImportSavedObjectsDefaultRequestWithBody generates requests for ImportSavedObjectsDefault with any type of body
+func NewImportSavedObjectsDefaultRequestWithBody(server string, params *ImportSavedObjectsDefaultParams, contentType string, body io.Reader) (*http.Request, error) {
+	var err error
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/saved_objects/_import")
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	if params != nil {
+		queryValues := queryURL.Query()
+
+		if params.CreateNewCopies != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "createNewCopies", runtime.ParamLocationQuery, *params.CreateNewCopies); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		if params.Overwrite != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "overwrite", runtime.ParamLocationQuery, *params.Overwrite); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		if params.CompatibilityMode != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "compatibilityMode", runtime.ParamLocationQuery, *params.CompatibilityMode); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		queryURL.RawQuery = queryValues.Encode()
+	}
+
+	req, err := http.NewRequest("POST", queryURL.String(), body)
 	if err != nil {
 		return nil, err
 	}
@@ -12641,33 +10444,6 @@ func NewUpdateSloOpRequestWithBody(server string, spaceId SpaceId, sloId SloId, 
 	return req, nil
 }
 
-// NewGenerateServiceTokenRequest generates requests for GenerateServiceToken
-func NewGenerateServiceTokenRequest(server string) (*http.Request, error) {
-	var err error
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/service_tokens")
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	req, err := http.NewRequest("POST", queryURL.String(), nil)
-	if err != nil {
-		return nil, err
-	}
-
-	return req, nil
-}
-
 func (c *Client) applyEditors(ctx context.Context, req *http.Request, additionalEditors []RequestEditorFn) error {
 	for _, r := range c.RequestEditors {
 		if err := r(ctx, req); err != nil {
@@ -12711,6 +10487,63 @@ func WithBaseURL(baseURL string) ClientOption {
 
 // ClientWithResponsesInterface is the interface specification for the client with responses above.
 type ClientWithResponsesInterface interface {
+	// DeleteConnectorDefaultWithResponse request
+	DeleteConnectorDefaultWithResponse(ctx context.Context, id string, params *DeleteConnectorDefaultParams, reqEditors ...RequestEditorFn) (*DeleteConnectorDefaultResponse, error)
+
+	// GetConnectorDefaultWithResponse request
+	GetConnectorDefaultWithResponse(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*GetConnectorDefaultResponse, error)
+
+	// CreateConnectorDefaultWithBodyWithResponse request with any body
+	CreateConnectorDefaultWithBodyWithResponse(ctx context.Context, id string, params *CreateConnectorDefaultParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CreateConnectorDefaultResponse, error)
+
+	CreateConnectorDefaultWithResponse(ctx context.Context, id string, params *CreateConnectorDefaultParams, body CreateConnectorDefaultJSONRequestBody, reqEditors ...RequestEditorFn) (*CreateConnectorDefaultResponse, error)
+
+	// UpdateConnectorDefaultWithBodyWithResponse request with any body
+	UpdateConnectorDefaultWithBodyWithResponse(ctx context.Context, id string, params *UpdateConnectorDefaultParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*UpdateConnectorDefaultResponse, error)
+
+	UpdateConnectorDefaultWithResponse(ctx context.Context, id string, params *UpdateConnectorDefaultParams, body UpdateConnectorDefaultJSONRequestBody, reqEditors ...RequestEditorFn) (*UpdateConnectorDefaultResponse, error)
+
+	// GetAllConnectorsDefaultWithResponse request
+	GetAllConnectorsDefaultWithResponse(ctx context.Context, reqEditors ...RequestEditorFn) (*GetAllConnectorsDefaultResponse, error)
+
+	// DeleteRuleDefaultWithResponse request
+	DeleteRuleDefaultWithResponse(ctx context.Context, id string, params *DeleteRuleDefaultParams, reqEditors ...RequestEditorFn) (*DeleteRuleDefaultResponse, error)
+
+	// GetRuleDefaultWithResponse request
+	GetRuleDefaultWithResponse(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*GetRuleDefaultResponse, error)
+
+	// CreateRuleDefaultWithBodyWithResponse request with any body
+	CreateRuleDefaultWithBodyWithResponse(ctx context.Context, id string, params *CreateRuleDefaultParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CreateRuleDefaultResponse, error)
+
+	CreateRuleDefaultWithResponse(ctx context.Context, id string, params *CreateRuleDefaultParams, body CreateRuleDefaultJSONRequestBody, reqEditors ...RequestEditorFn) (*CreateRuleDefaultResponse, error)
+
+	// UpdateRuleDefaultWithBodyWithResponse request with any body
+	UpdateRuleDefaultWithBodyWithResponse(ctx context.Context, id string, params *UpdateRuleDefaultParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*UpdateRuleDefaultResponse, error)
+
+	UpdateRuleDefaultWithResponse(ctx context.Context, id string, params *UpdateRuleDefaultParams, body UpdateRuleDefaultJSONRequestBody, reqEditors ...RequestEditorFn) (*UpdateRuleDefaultResponse, error)
+
+	// FindRuleDefaultWithResponse request
+	FindRuleDefaultWithResponse(ctx context.Context, params *FindRuleDefaultParams, reqEditors ...RequestEditorFn) (*FindRuleDefaultResponse, error)
+
+	// GetAllDataViewsDefaultWithResponse request
+	GetAllDataViewsDefaultWithResponse(ctx context.Context, reqEditors ...RequestEditorFn) (*GetAllDataViewsDefaultResponse, error)
+
+	// CreateDataViewDefaultWithBodyWithResponse request with any body
+	CreateDataViewDefaultWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CreateDataViewDefaultResponse, error)
+
+	CreateDataViewDefaultWithResponse(ctx context.Context, body CreateDataViewDefaultJSONRequestBody, reqEditors ...RequestEditorFn) (*CreateDataViewDefaultResponse, error)
+
+	// DeleteDataViewDefaultWithResponse request
+	DeleteDataViewDefaultWithResponse(ctx context.Context, viewId ViewId, reqEditors ...RequestEditorFn) (*DeleteDataViewDefaultResponse, error)
+
+	// GetDataViewDefaultWithResponse request
+	GetDataViewDefaultWithResponse(ctx context.Context, viewId ViewId, reqEditors ...RequestEditorFn) (*GetDataViewDefaultResponse, error)
+
+	// UpdateDataViewDefaultWithBodyWithResponse request with any body
+	UpdateDataViewDefaultWithBodyWithResponse(ctx context.Context, viewId ViewId, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*UpdateDataViewDefaultResponse, error)
+
+	UpdateDataViewDefaultWithResponse(ctx context.Context, viewId ViewId, body UpdateDataViewDefaultJSONRequestBody, reqEditors ...RequestEditorFn) (*UpdateDataViewDefaultResponse, error)
+
 	// AgentPolicyListWithResponse request
 	AgentPolicyListWithResponse(ctx context.Context, params *AgentPolicyListParams, reqEditors ...RequestEditorFn) (*AgentPolicyListResponse, error)
 
@@ -12725,64 +10558,15 @@ type ClientWithResponsesInterface interface {
 	DeleteAgentPolicyWithResponse(ctx context.Context, body DeleteAgentPolicyJSONRequestBody, reqEditors ...RequestEditorFn) (*DeleteAgentPolicyResponse, error)
 
 	// AgentPolicyInfoWithResponse request
-	AgentPolicyInfoWithResponse(ctx context.Context, agentPolicyId string, reqEditors ...RequestEditorFn) (*AgentPolicyInfoResponse, error)
+	AgentPolicyInfoWithResponse(ctx context.Context, agentPolicyId string, params *AgentPolicyInfoParams, reqEditors ...RequestEditorFn) (*AgentPolicyInfoResponse, error)
 
 	// UpdateAgentPolicyWithBodyWithResponse request with any body
-	UpdateAgentPolicyWithBodyWithResponse(ctx context.Context, agentPolicyId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*UpdateAgentPolicyResponse, error)
+	UpdateAgentPolicyWithBodyWithResponse(ctx context.Context, agentPolicyId string, params *UpdateAgentPolicyParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*UpdateAgentPolicyResponse, error)
 
-	UpdateAgentPolicyWithResponse(ctx context.Context, agentPolicyId string, body UpdateAgentPolicyJSONRequestBody, reqEditors ...RequestEditorFn) (*UpdateAgentPolicyResponse, error)
-
-	// CreateRuleWithBodyWithResponse request with any body
-	CreateRuleWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CreateRuleResponse, error)
-
-	CreateRuleWithResponse(ctx context.Context, body CreateRuleJSONRequestBody, reqEditors ...RequestEditorFn) (*CreateRuleResponse, error)
-
-	// DeleteRuleWithResponse request
-	DeleteRuleWithResponse(ctx context.Context, ruleId RuleId, reqEditors ...RequestEditorFn) (*DeleteRuleResponse, error)
-
-	// GetRuleWithResponse request
-	GetRuleWithResponse(ctx context.Context, ruleId RuleId, reqEditors ...RequestEditorFn) (*GetRuleResponse, error)
-
-	// CreateRuleIdWithBodyWithResponse request with any body
-	CreateRuleIdWithBodyWithResponse(ctx context.Context, ruleId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CreateRuleIdResponse, error)
-
-	CreateRuleIdWithResponse(ctx context.Context, ruleId string, body CreateRuleIdJSONRequestBody, reqEditors ...RequestEditorFn) (*CreateRuleIdResponse, error)
-
-	// UpdateRuleWithBodyWithResponse request with any body
-	UpdateRuleWithBodyWithResponse(ctx context.Context, ruleId RuleId, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*UpdateRuleResponse, error)
-
-	UpdateRuleWithResponse(ctx context.Context, ruleId RuleId, body UpdateRuleJSONRequestBody, reqEditors ...RequestEditorFn) (*UpdateRuleResponse, error)
-
-	// FindRulesWithResponse request
-	FindRulesWithResponse(ctx context.Context, params *FindRulesParams, reqEditors ...RequestEditorFn) (*FindRulesResponse, error)
-
-	// GetAllDataViewsDefaultWithResponse request
-	GetAllDataViewsDefaultWithResponse(ctx context.Context, reqEditors ...RequestEditorFn) (*GetAllDataViewsDefaultResponse, error)
-
-	// CreateDataViewDefaultwWithBodyWithResponse request with any body
-	CreateDataViewDefaultwWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CreateDataViewDefaultwResponse, error)
-
-	CreateDataViewDefaultwWithResponse(ctx context.Context, body CreateDataViewDefaultwJSONRequestBody, reqEditors ...RequestEditorFn) (*CreateDataViewDefaultwResponse, error)
-
-	// DeleteDataViewDefaultWithResponse request
-	DeleteDataViewDefaultWithResponse(ctx context.Context, viewId ViewId, reqEditors ...RequestEditorFn) (*DeleteDataViewDefaultResponse, error)
-
-	// GetDataViewDefaultWithResponse request
-	GetDataViewDefaultWithResponse(ctx context.Context, viewId ViewId, reqEditors ...RequestEditorFn) (*GetDataViewDefaultResponse, error)
-
-	// UpdateDataViewDefaultWithBodyWithResponse request with any body
-	UpdateDataViewDefaultWithBodyWithResponse(ctx context.Context, viewId ViewId, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*UpdateDataViewDefaultResponse, error)
-
-	UpdateDataViewDefaultWithResponse(ctx context.Context, viewId ViewId, body UpdateDataViewDefaultJSONRequestBody, reqEditors ...RequestEditorFn) (*UpdateDataViewDefaultResponse, error)
-
-	// ImportSavedObjectsDefaultWithBodyWithResponse request with any body
-	ImportSavedObjectsDefaultWithBodyWithResponse(ctx context.Context, params *ImportSavedObjectsDefaultParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ImportSavedObjectsDefaultResponse, error)
+	UpdateAgentPolicyWithResponse(ctx context.Context, agentPolicyId string, params *UpdateAgentPolicyParams, body UpdateAgentPolicyJSONRequestBody, reqEditors ...RequestEditorFn) (*UpdateAgentPolicyResponse, error)
 
 	// GetEnrollmentApiKeysWithResponse request
-	GetEnrollmentApiKeysWithResponse(ctx context.Context, reqEditors ...RequestEditorFn) (*GetEnrollmentApiKeysResponse, error)
-
-	// CreateEnrollmentApiKeysWithResponse request
-	CreateEnrollmentApiKeysWithResponse(ctx context.Context, reqEditors ...RequestEditorFn) (*CreateEnrollmentApiKeysResponse, error)
+	GetEnrollmentApiKeysWithResponse(ctx context.Context, params *GetEnrollmentApiKeysParams, reqEditors ...RequestEditorFn) (*GetEnrollmentApiKeysResponse, error)
 
 	// ListAllPackagesWithResponse request
 	ListAllPackagesWithResponse(ctx context.Context, params *ListAllPackagesParams, reqEditors ...RequestEditorFn) (*ListAllPackagesResponse, error)
@@ -12865,6 +10649,12 @@ type ClientWithResponsesInterface interface {
 
 	UpdatePackagePolicyWithResponse(ctx context.Context, packagePolicyId string, params *UpdatePackagePolicyParams, body UpdatePackagePolicyJSONRequestBody, reqEditors ...RequestEditorFn) (*UpdatePackagePolicyResponse, error)
 
+	// GenerateServiceTokenWithResponse request
+	GenerateServiceTokenWithResponse(ctx context.Context, reqEditors ...RequestEditorFn) (*GenerateServiceTokenResponse, error)
+
+	// ImportSavedObjectsDefaultWithBodyWithResponse request with any body
+	ImportSavedObjectsDefaultWithBodyWithResponse(ctx context.Context, params *ImportSavedObjectsDefaultParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ImportSavedObjectsDefaultResponse, error)
+
 	// FindSlosOpWithResponse request
 	FindSlosOpWithResponse(ctx context.Context, spaceId SpaceId, params *FindSlosOpParams, reqEditors ...RequestEditorFn) (*FindSlosOpResponse, error)
 
@@ -12883,25 +10673,15 @@ type ClientWithResponsesInterface interface {
 	UpdateSloOpWithBodyWithResponse(ctx context.Context, spaceId SpaceId, sloId SloId, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*UpdateSloOpResponse, error)
 
 	UpdateSloOpWithResponse(ctx context.Context, spaceId SpaceId, sloId SloId, body UpdateSloOpJSONRequestBody, reqEditors ...RequestEditorFn) (*UpdateSloOpResponse, error)
-
-	// GenerateServiceTokenWithResponse request
-	GenerateServiceTokenWithResponse(ctx context.Context, reqEditors ...RequestEditorFn) (*GenerateServiceTokenResponse, error)
 }
 
-type AgentPolicyListResponse struct {
+type DeleteConnectorDefaultResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *struct {
-		Items   []AgentPolicy `json:"items"`
-		Page    float32       `json:"page"`
-		PerPage float32       `json:"perPage"`
-		Total   float32       `json:"total"`
-	}
-	JSON400 *Error
 }
 
 // Status returns HTTPResponse.Status
-func (r AgentPolicyListResponse) Status() string {
+func (r DeleteConnectorDefaultResponse) Status() string {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.Status
 	}
@@ -12909,24 +10689,21 @@ func (r AgentPolicyListResponse) Status() string {
 }
 
 // StatusCode returns HTTPResponse.StatusCode
-func (r AgentPolicyListResponse) StatusCode() int {
+func (r DeleteConnectorDefaultResponse) StatusCode() int {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
 }
 
-type CreateAgentPolicyResponse struct {
+type GetConnectorDefaultResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *struct {
-		Item *AgentPolicy `json:"item,omitempty"`
-	}
-	JSON400 *Error
+	JSON200      *GetConnectorResponseObject
 }
 
 // Status returns HTTPResponse.Status
-func (r CreateAgentPolicyResponse) Status() string {
+func (r GetConnectorDefaultResponse) Status() string {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.Status
 	}
@@ -12934,25 +10711,21 @@ func (r CreateAgentPolicyResponse) Status() string {
 }
 
 // StatusCode returns HTTPResponse.StatusCode
-func (r CreateAgentPolicyResponse) StatusCode() int {
+func (r GetConnectorDefaultResponse) StatusCode() int {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
 }
 
-type DeleteAgentPolicyResponse struct {
+type CreateConnectorDefaultResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *struct {
-		Id      string `json:"id"`
-		Success bool   `json:"success"`
-	}
-	JSON400 *Error
+	JSON200      *CreateConnectorResponseObject
 }
 
 // Status returns HTTPResponse.Status
-func (r DeleteAgentPolicyResponse) Status() string {
+func (r CreateConnectorDefaultResponse) Status() string {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.Status
 	}
@@ -12960,24 +10733,21 @@ func (r DeleteAgentPolicyResponse) Status() string {
 }
 
 // StatusCode returns HTTPResponse.StatusCode
-func (r DeleteAgentPolicyResponse) StatusCode() int {
+func (r CreateConnectorDefaultResponse) StatusCode() int {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
 }
 
-type AgentPolicyInfoResponse struct {
+type UpdateConnectorDefaultResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *struct {
-		Item AgentPolicy `json:"item"`
-	}
-	JSON400 *Error
+	JSON200      *UpdateConnectorResponseObject
 }
 
 // Status returns HTTPResponse.Status
-func (r AgentPolicyInfoResponse) Status() string {
+func (r UpdateConnectorDefaultResponse) Status() string {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.Status
 	}
@@ -12985,24 +10755,20 @@ func (r AgentPolicyInfoResponse) Status() string {
 }
 
 // StatusCode returns HTTPResponse.StatusCode
-func (r AgentPolicyInfoResponse) StatusCode() int {
+func (r UpdateConnectorDefaultResponse) StatusCode() int {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
 }
 
-type UpdateAgentPolicyResponse struct {
+type GetAllConnectorsDefaultResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *struct {
-		Item AgentPolicy `json:"item"`
-	}
-	JSON400 *Error
 }
 
 // Status returns HTTPResponse.Status
-func (r UpdateAgentPolicyResponse) Status() string {
+func (r GetAllConnectorsDefaultResponse) Status() string {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.Status
 	}
@@ -13010,23 +10776,20 @@ func (r UpdateAgentPolicyResponse) Status() string {
 }
 
 // StatusCode returns HTTPResponse.StatusCode
-func (r UpdateAgentPolicyResponse) StatusCode() int {
+func (r GetAllConnectorsDefaultResponse) StatusCode() int {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
 }
 
-type CreateRuleResponse struct {
+type DeleteRuleDefaultResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *RuleResponseProperties
-	JSON401      *N401Response
-	JSON404      *N404Response
 }
 
 // Status returns HTTPResponse.Status
-func (r CreateRuleResponse) Status() string {
+func (r DeleteRuleDefaultResponse) Status() string {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.Status
 	}
@@ -13034,22 +10797,21 @@ func (r CreateRuleResponse) Status() string {
 }
 
 // StatusCode returns HTTPResponse.StatusCode
-func (r CreateRuleResponse) StatusCode() int {
+func (r DeleteRuleDefaultResponse) StatusCode() int {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
 }
 
-type DeleteRuleResponse struct {
+type GetRuleDefaultResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON401      *N401Response
-	JSON404      *N404Response
+	JSON200      *GetRuleResponseObject
 }
 
 // Status returns HTTPResponse.Status
-func (r DeleteRuleResponse) Status() string {
+func (r GetRuleDefaultResponse) Status() string {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.Status
 	}
@@ -13057,23 +10819,21 @@ func (r DeleteRuleResponse) Status() string {
 }
 
 // StatusCode returns HTTPResponse.StatusCode
-func (r DeleteRuleResponse) StatusCode() int {
+func (r GetRuleDefaultResponse) StatusCode() int {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
 }
 
-type GetRuleResponse struct {
+type CreateRuleDefaultResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *RuleResponseProperties
-	JSON401      *N401Response
-	JSON404      *N404Response
+	JSON200      *CreateRuleResponseObject
 }
 
 // Status returns HTTPResponse.Status
-func (r GetRuleResponse) Status() string {
+func (r CreateRuleDefaultResponse) Status() string {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.Status
 	}
@@ -13081,23 +10841,21 @@ func (r GetRuleResponse) Status() string {
 }
 
 // StatusCode returns HTTPResponse.StatusCode
-func (r GetRuleResponse) StatusCode() int {
+func (r CreateRuleDefaultResponse) StatusCode() int {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
 }
 
-type CreateRuleIdResponse struct {
+type UpdateRuleDefaultResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *RuleResponseProperties
-	JSON401      *N401Response
-	JSON404      *N404Response
+	JSON200      *UpdateRuleResponseObject
 }
 
 // Status returns HTTPResponse.Status
-func (r CreateRuleIdResponse) Status() string {
+func (r UpdateRuleDefaultResponse) Status() string {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.Status
 	}
@@ -13105,23 +10863,21 @@ func (r CreateRuleIdResponse) Status() string {
 }
 
 // StatusCode returns HTTPResponse.StatusCode
-func (r CreateRuleIdResponse) StatusCode() int {
+func (r UpdateRuleDefaultResponse) StatusCode() int {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
 }
 
-type UpdateRuleResponse struct {
+type FindRuleDefaultResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *RuleResponseProperties
-	JSON401      *N401Response
-	JSON404      *N404Response
+	JSON200      *FindRuleResponseObject
 }
 
 // Status returns HTTPResponse.Status
-func (r UpdateRuleResponse) Status() string {
+func (r FindRuleDefaultResponse) Status() string {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.Status
 	}
@@ -13129,35 +10885,7 @@ func (r UpdateRuleResponse) Status() string {
 }
 
 // StatusCode returns HTTPResponse.StatusCode
-func (r UpdateRuleResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-type FindRulesResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	JSON200      *struct {
-		Data    []RuleResponseProperties `json:"data,omitempty"`
-		Page    *int                     `json:"page,omitempty"`
-		PerPage *int                     `json:"per_page,omitempty"`
-		Total   *int                     `json:"total,omitempty"`
-	}
-	JSON401 *N401Response
-}
-
-// Status returns HTTPResponse.Status
-func (r FindRulesResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r FindRulesResponse) StatusCode() int {
+func (r FindRuleDefaultResponse) StatusCode() int {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.StatusCode
 	}
@@ -13167,16 +10895,7 @@ func (r FindRulesResponse) StatusCode() int {
 type GetAllDataViewsDefaultResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *struct {
-		DataView []struct {
-			Id         *string                `json:"id,omitempty"`
-			Name       *string                `json:"name,omitempty"`
-			Namespaces []string               `json:"namespaces,omitempty"`
-			Title      *string                `json:"title,omitempty"`
-			TypeMeta   map[string]interface{} `json:"typeMeta,omitempty"`
-		} `json:"data_view,omitempty"`
-	}
-	JSON400 *N400Response
+	JSON200      *GetAllDataViewsResponseObject
 }
 
 // Status returns HTTPResponse.Status
@@ -13195,15 +10914,14 @@ func (r GetAllDataViewsDefaultResponse) StatusCode() int {
 	return 0
 }
 
-type CreateDataViewDefaultwResponse struct {
+type CreateDataViewDefaultResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON200      *DataViewResponseObject
-	JSON400      *N400Response
 }
 
 // Status returns HTTPResponse.Status
-func (r CreateDataViewDefaultwResponse) Status() string {
+func (r CreateDataViewDefaultResponse) Status() string {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.Status
 	}
@@ -13211,7 +10929,7 @@ func (r CreateDataViewDefaultwResponse) Status() string {
 }
 
 // StatusCode returns HTTPResponse.StatusCode
-func (r CreateDataViewDefaultwResponse) StatusCode() int {
+func (r CreateDataViewDefaultResponse) StatusCode() int {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.StatusCode
 	}
@@ -13221,7 +10939,6 @@ func (r CreateDataViewDefaultwResponse) StatusCode() int {
 type DeleteDataViewDefaultResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON404      *N404Response
 }
 
 // Status returns HTTPResponse.Status
@@ -13244,7 +10961,6 @@ type GetDataViewDefaultResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON200      *DataViewResponseObject
-	JSON404      *N404Response
 }
 
 // Status returns HTTPResponse.Status
@@ -13267,7 +10983,6 @@ type UpdateDataViewDefaultResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON200      *DataViewResponseObject
-	JSON400      *N400Response
 }
 
 // Status returns HTTPResponse.Status
@@ -13286,31 +11001,14 @@ func (r UpdateDataViewDefaultResponse) StatusCode() int {
 	return 0
 }
 
-type ImportSavedObjectsDefaultResponse struct {
+type AgentPolicyListResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *struct {
-		// Errors Indicates the import was unsuccessful and specifies the objects that failed to import.
-		//
-		// NOTE: One object may result in multiple errors, which requires separate steps to resolve. For instance, a `missing_references` error and conflict error.
-		Errors []map[string]interface{} `json:"errors,omitempty"`
-
-		// Success Indicates when the import was successfully completed. When set to false, some objects may not have been created. For additional information, refer to the `errors` and `successResults` properties.
-		Success *bool `json:"success,omitempty"`
-
-		// SuccessCount Indicates the number of successfully imported records.
-		SuccessCount *int `json:"successCount,omitempty"`
-
-		// SuccessResults Indicates the objects that are successfully imported, with any metadata if applicable.
-		//
-		// NOTE: Objects are created only when all resolvable errors are addressed, including conflicts and missing references. If objects are created as new copies, each entry in the `successResults` array includes a `destinationId` attribute.
-		SuccessResults []map[string]interface{} `json:"successResults,omitempty"`
-	}
-	JSON400 *N400Response
+	JSON200      *AgentPolicyListResponseObject
 }
 
 // Status returns HTTPResponse.Status
-func (r ImportSavedObjectsDefaultResponse) Status() string {
+func (r AgentPolicyListResponse) Status() string {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.Status
 	}
@@ -13318,7 +11016,95 @@ func (r ImportSavedObjectsDefaultResponse) Status() string {
 }
 
 // StatusCode returns HTTPResponse.StatusCode
-func (r ImportSavedObjectsDefaultResponse) StatusCode() int {
+func (r AgentPolicyListResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+type CreateAgentPolicyResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON200      *CreateAgentPolicyResponseObject
+}
+
+// Status returns HTTPResponse.Status
+func (r CreateAgentPolicyResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r CreateAgentPolicyResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+type DeleteAgentPolicyResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON200      *DeleteAgentPolicyResponseObject
+}
+
+// Status returns HTTPResponse.Status
+func (r DeleteAgentPolicyResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r DeleteAgentPolicyResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+type AgentPolicyInfoResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON200      *AgentPolicyInfoResponseObject
+}
+
+// Status returns HTTPResponse.Status
+func (r AgentPolicyInfoResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r AgentPolicyInfoResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+type UpdateAgentPolicyResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON200      *UpdateAgentPolicyResponseObject
+}
+
+// Status returns HTTPResponse.Status
+func (r UpdateAgentPolicyResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r UpdateAgentPolicyResponse) StatusCode() int {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.StatusCode
 	}
@@ -13328,15 +11114,7 @@ func (r ImportSavedObjectsDefaultResponse) StatusCode() int {
 type GetEnrollmentApiKeysResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *struct {
-		Items []EnrollmentApiKey `json:"items"`
-		// Deprecated:
-		List    []EnrollmentApiKey `json:"list,omitempty"`
-		Page    float32            `json:"page"`
-		PerPage float32            `json:"perPage"`
-		Total   float32            `json:"total"`
-	}
-	JSON400 *Error
+	JSON200      *GetEnrollmentApiKeysResponseObject
 }
 
 // Status returns HTTPResponse.Status
@@ -13355,37 +11133,10 @@ func (r GetEnrollmentApiKeysResponse) StatusCode() int {
 	return 0
 }
 
-type CreateEnrollmentApiKeysResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	JSON200      *struct {
-		Action *N200Action       `json:"action,omitempty"`
-		Item   *EnrollmentApiKey `json:"item,omitempty"`
-	}
-	JSON400 *Error
-}
-
-// Status returns HTTPResponse.Status
-func (r CreateEnrollmentApiKeysResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r CreateEnrollmentApiKeysResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
 type ListAllPackagesResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON200      *GetPackagesResponse
-	JSON400      *Error
 }
 
 // Status returns HTTPResponse.Status
@@ -13407,14 +11158,7 @@ func (r ListAllPackagesResponse) StatusCode() int {
 type InstallPackageByUploadResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *struct {
-		Meta *struct {
-			InstallSource *PackageInstallSource `json:"install_source,omitempty"`
-		} `json:"_meta,omitempty"`
-		Items PackageItem `json:"items"`
-	}
-	JSON400 *Error
-	JSON429 *Error
+	JSON200      *InstallPackageByUploadResponseObject
 }
 
 // Status returns HTTPResponse.Status
@@ -13436,10 +11180,7 @@ func (r InstallPackageByUploadResponse) StatusCode() int {
 type DeletePackageResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *struct {
-		Items PackageItem `json:"items"`
-	}
-	JSON400 *Error
+	JSON200      *DeletePackageResponseObject
 }
 
 // Status returns HTTPResponse.Status
@@ -13461,17 +11202,7 @@ func (r DeletePackageResponse) StatusCode() int {
 type GetPackageResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *struct {
-		Item                 *PackageInfo `json:"item,omitempty"`
-		KeepPoliciesUpToDate *bool        `json:"keepPoliciesUpToDate,omitempty"`
-		LatestVersion        *string      `json:"latestVersion,omitempty"`
-		LicensePath          *string      `json:"licensePath,omitempty"`
-		Notice               *string      `json:"notice,omitempty"`
-		// Deprecated:
-		SavedObject map[string]interface{} `json:"savedObject"`
-		Status      PackageStatus          `json:"status"`
-	}
-	JSON400 *Error
+	JSON200      *GetPackageResponseObject
 }
 
 // Status returns HTTPResponse.Status
@@ -13493,13 +11224,7 @@ func (r GetPackageResponse) StatusCode() int {
 type InstallPackageResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *struct {
-		Meta *struct {
-			InstallSource *PackageInstallSource `json:"install_source,omitempty"`
-		} `json:"_meta,omitempty"`
-		Items PackageItem `json:"items"`
-	}
-	JSON400 *Error
+	JSON200      *InstallPackageResponseObject
 }
 
 // Status returns HTTPResponse.Status
@@ -13521,10 +11246,7 @@ func (r InstallPackageResponse) StatusCode() int {
 type UpdatePackageResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *struct {
-		Items PackageItem `json:"items"`
-	}
-	JSON400 *Error
+	JSON200      *UpdatePackageResponseObject
 }
 
 // Status returns HTTPResponse.Status
@@ -13546,13 +11268,7 @@ func (r UpdatePackageResponse) StatusCode() int {
 type GetFleetServerHostsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *struct {
-		Items   []FleetServerHost `json:"items,omitempty"`
-		Page    *int              `json:"page,omitempty"`
-		PerPage *int              `json:"perPage,omitempty"`
-		Total   *int              `json:"total,omitempty"`
-	}
-	JSON400 *Error
+	JSON200      *GetFleetServerHostsResponseObject
 }
 
 // Status returns HTTPResponse.Status
@@ -13574,10 +11290,7 @@ func (r GetFleetServerHostsResponse) StatusCode() int {
 type PostFleetServerHostsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *struct {
-		Item *FleetServerHost `json:"item,omitempty"`
-	}
-	JSON400 *Error
+	JSON200      *PostFleetServerHostsResponseObject
 }
 
 // Status returns HTTPResponse.Status
@@ -13599,10 +11312,7 @@ func (r PostFleetServerHostsResponse) StatusCode() int {
 type DeleteFleetServerHostsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *struct {
-		Id string `json:"id"`
-	}
-	JSON400 *Error
+	JSON200      *DeleteFleetServerHostsResponseObject
 }
 
 // Status returns HTTPResponse.Status
@@ -13624,10 +11334,7 @@ func (r DeleteFleetServerHostsResponse) StatusCode() int {
 type GetOneFleetServerHostsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *struct {
-		Item FleetServerHost `json:"item"`
-	}
-	JSON400 *Error
+	JSON200      *GetOneFleetServerHostsResponseObject
 }
 
 // Status returns HTTPResponse.Status
@@ -13649,10 +11356,7 @@ func (r GetOneFleetServerHostsResponse) StatusCode() int {
 type UpdateFleetServerHostsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *struct {
-		Item FleetServerHost `json:"item"`
-	}
-	JSON400 *Error
+	JSON200      *UpdateFleetServerHostsResponseObject
 }
 
 // Status returns HTTPResponse.Status
@@ -13674,13 +11378,7 @@ func (r UpdateFleetServerHostsResponse) StatusCode() int {
 type GetOutputsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *struct {
-		Items   []OutputCreateRequest `json:"items,omitempty"`
-		Page    *int                  `json:"page,omitempty"`
-		PerPage *int                  `json:"perPage,omitempty"`
-		Total   *int                  `json:"total,omitempty"`
-	}
-	JSON400 *Error
+	JSON200      *GetOutputsResponseObject
 }
 
 // Status returns HTTPResponse.Status
@@ -13702,10 +11400,7 @@ func (r GetOutputsResponse) StatusCode() int {
 type PostOutputsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *struct {
-		Item *OutputCreateRequest `json:"item,omitempty"`
-	}
-	JSON400 *Error
+	JSON200      *PostOutputsResponseObject
 }
 
 // Status returns HTTPResponse.Status
@@ -13727,10 +11422,7 @@ func (r PostOutputsResponse) StatusCode() int {
 type DeleteOutputResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *struct {
-		Id string `json:"id"`
-	}
-	JSON400 *Error
+	JSON200      *DeleteOutputResponseObject
 }
 
 // Status returns HTTPResponse.Status
@@ -13752,10 +11444,7 @@ func (r DeleteOutputResponse) StatusCode() int {
 type GetOutputResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *struct {
-		Item *OutputCreateRequest `json:"item,omitempty"`
-	}
-	JSON400 *Error
+	JSON200      *GetOutputResponseObject
 }
 
 // Status returns HTTPResponse.Status
@@ -13777,10 +11466,7 @@ func (r GetOutputResponse) StatusCode() int {
 type UpdateOutputResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *struct {
-		Item *OutputUpdateRequest `json:"item,omitempty"`
-	}
-	JSON400 *Error
+	JSON200      *UpdateOutputResponseObject
 }
 
 // Status returns HTTPResponse.Status
@@ -13802,13 +11488,7 @@ func (r UpdateOutputResponse) StatusCode() int {
 type GetPackagePoliciesResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *struct {
-		Items   []PackagePolicy `json:"items"`
-		Page    *float32        `json:"page,omitempty"`
-		PerPage *float32        `json:"perPage,omitempty"`
-		Total   *float32        `json:"total,omitempty"`
-	}
-	JSON400 *Error
+	JSON200      *GetPackagePoliciesResponseObject
 }
 
 // Status returns HTTPResponse.Status
@@ -13830,11 +11510,7 @@ func (r GetPackagePoliciesResponse) StatusCode() int {
 type CreatePackagePolicyResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *struct {
-		Item PackagePolicy `json:"item"`
-	}
-	JSON400 *Error
-	JSON409 *Error
+	JSON200      *CreatePackagePolicyResponseObject
 }
 
 // Status returns HTTPResponse.Status
@@ -13856,10 +11532,7 @@ func (r CreatePackagePolicyResponse) StatusCode() int {
 type DeletePackagePolicyResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *struct {
-		Id string `json:"id"`
-	}
-	JSON400 *Error
+	JSON200      *DeletePackagePolicyResponseObject
 }
 
 // Status returns HTTPResponse.Status
@@ -13881,10 +11554,7 @@ func (r DeletePackagePolicyResponse) StatusCode() int {
 type GetPackagePolicyResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *struct {
-		Item PackagePolicy `json:"item"`
-	}
-	JSON400 *Error
+	JSON200      *GetPackagePolicyResponseObject
 }
 
 // Status returns HTTPResponse.Status
@@ -13906,11 +11576,7 @@ func (r GetPackagePolicyResponse) StatusCode() int {
 type UpdatePackagePolicyResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *struct {
-		Item   PackagePolicy `json:"item"`
-		Sucess bool          `json:"sucess"`
-	}
-	JSON400 *Error
+	JSON200      *UpdatePackagePolicyResponseObject
 }
 
 // Status returns HTTPResponse.Status
@@ -13929,14 +11595,54 @@ func (r UpdatePackagePolicyResponse) StatusCode() int {
 	return 0
 }
 
+type GenerateServiceTokenResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON200      *GenerateServiceTokenResponseObject
+}
+
+// Status returns HTTPResponse.Status
+func (r GenerateServiceTokenResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r GenerateServiceTokenResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+type ImportSavedObjectsDefaultResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON200      *ImportSavedObjectsResponseObject
+}
+
+// Status returns HTTPResponse.Status
+func (r ImportSavedObjectsDefaultResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r ImportSavedObjectsDefaultResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
 type FindSlosOpResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON200      *FindSloResponse
-	JSON400      *N400Response
-	JSON401      *N401Response
-	JSON403      *N403Response
-	JSON404      *N404Response
 }
 
 // Status returns HTTPResponse.Status
@@ -13959,10 +11665,6 @@ type CreateSloOpResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON200      *CreateSloResponse
-	JSON400      *N400Response
-	JSON401      *N401Response
-	JSON403      *N403Response
-	JSON409      *N409Response
 }
 
 // Status returns HTTPResponse.Status
@@ -13984,10 +11686,6 @@ func (r CreateSloOpResponse) StatusCode() int {
 type DeleteSloOpResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON400      *N400Response
-	JSON401      *N401Response
-	JSON403      *N403Response
-	JSON404      *N404Response
 }
 
 // Status returns HTTPResponse.Status
@@ -14010,10 +11708,6 @@ type GetSloOpResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON200      *SloWithSummaryResponse
-	JSON400      *N400Response
-	JSON401      *N401Response
-	JSON403      *N403Response
-	JSON404      *N404Response
 }
 
 // Status returns HTTPResponse.Status
@@ -14036,10 +11730,6 @@ type UpdateSloOpResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON200      *SloDefinitionResponse
-	JSON400      *N400Response
-	JSON401      *N401Response
-	JSON403      *N403Response
-	JSON404      *N404Response
 }
 
 // Status returns HTTPResponse.Status
@@ -14058,30 +11748,187 @@ func (r UpdateSloOpResponse) StatusCode() int {
 	return 0
 }
 
-type GenerateServiceTokenResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	JSON200      *struct {
-		Name  *string `json:"name,omitempty"`
-		Value *string `json:"value,omitempty"`
+// DeleteConnectorDefaultWithResponse request returning *DeleteConnectorDefaultResponse
+func (c *ClientWithResponses) DeleteConnectorDefaultWithResponse(ctx context.Context, id string, params *DeleteConnectorDefaultParams, reqEditors ...RequestEditorFn) (*DeleteConnectorDefaultResponse, error) {
+	rsp, err := c.DeleteConnectorDefault(ctx, id, params, reqEditors...)
+	if err != nil {
+		return nil, err
 	}
-	JSON400 *Error
+	return ParseDeleteConnectorDefaultResponse(rsp)
 }
 
-// Status returns HTTPResponse.Status
-func (r GenerateServiceTokenResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
+// GetConnectorDefaultWithResponse request returning *GetConnectorDefaultResponse
+func (c *ClientWithResponses) GetConnectorDefaultWithResponse(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*GetConnectorDefaultResponse, error) {
+	rsp, err := c.GetConnectorDefault(ctx, id, reqEditors...)
+	if err != nil {
+		return nil, err
 	}
-	return http.StatusText(0)
+	return ParseGetConnectorDefaultResponse(rsp)
 }
 
-// StatusCode returns HTTPResponse.StatusCode
-func (r GenerateServiceTokenResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
+// CreateConnectorDefaultWithBodyWithResponse request with arbitrary body returning *CreateConnectorDefaultResponse
+func (c *ClientWithResponses) CreateConnectorDefaultWithBodyWithResponse(ctx context.Context, id string, params *CreateConnectorDefaultParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CreateConnectorDefaultResponse, error) {
+	rsp, err := c.CreateConnectorDefaultWithBody(ctx, id, params, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
 	}
-	return 0
+	return ParseCreateConnectorDefaultResponse(rsp)
+}
+
+func (c *ClientWithResponses) CreateConnectorDefaultWithResponse(ctx context.Context, id string, params *CreateConnectorDefaultParams, body CreateConnectorDefaultJSONRequestBody, reqEditors ...RequestEditorFn) (*CreateConnectorDefaultResponse, error) {
+	rsp, err := c.CreateConnectorDefault(ctx, id, params, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseCreateConnectorDefaultResponse(rsp)
+}
+
+// UpdateConnectorDefaultWithBodyWithResponse request with arbitrary body returning *UpdateConnectorDefaultResponse
+func (c *ClientWithResponses) UpdateConnectorDefaultWithBodyWithResponse(ctx context.Context, id string, params *UpdateConnectorDefaultParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*UpdateConnectorDefaultResponse, error) {
+	rsp, err := c.UpdateConnectorDefaultWithBody(ctx, id, params, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseUpdateConnectorDefaultResponse(rsp)
+}
+
+func (c *ClientWithResponses) UpdateConnectorDefaultWithResponse(ctx context.Context, id string, params *UpdateConnectorDefaultParams, body UpdateConnectorDefaultJSONRequestBody, reqEditors ...RequestEditorFn) (*UpdateConnectorDefaultResponse, error) {
+	rsp, err := c.UpdateConnectorDefault(ctx, id, params, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseUpdateConnectorDefaultResponse(rsp)
+}
+
+// GetAllConnectorsDefaultWithResponse request returning *GetAllConnectorsDefaultResponse
+func (c *ClientWithResponses) GetAllConnectorsDefaultWithResponse(ctx context.Context, reqEditors ...RequestEditorFn) (*GetAllConnectorsDefaultResponse, error) {
+	rsp, err := c.GetAllConnectorsDefault(ctx, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseGetAllConnectorsDefaultResponse(rsp)
+}
+
+// DeleteRuleDefaultWithResponse request returning *DeleteRuleDefaultResponse
+func (c *ClientWithResponses) DeleteRuleDefaultWithResponse(ctx context.Context, id string, params *DeleteRuleDefaultParams, reqEditors ...RequestEditorFn) (*DeleteRuleDefaultResponse, error) {
+	rsp, err := c.DeleteRuleDefault(ctx, id, params, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseDeleteRuleDefaultResponse(rsp)
+}
+
+// GetRuleDefaultWithResponse request returning *GetRuleDefaultResponse
+func (c *ClientWithResponses) GetRuleDefaultWithResponse(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*GetRuleDefaultResponse, error) {
+	rsp, err := c.GetRuleDefault(ctx, id, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseGetRuleDefaultResponse(rsp)
+}
+
+// CreateRuleDefaultWithBodyWithResponse request with arbitrary body returning *CreateRuleDefaultResponse
+func (c *ClientWithResponses) CreateRuleDefaultWithBodyWithResponse(ctx context.Context, id string, params *CreateRuleDefaultParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CreateRuleDefaultResponse, error) {
+	rsp, err := c.CreateRuleDefaultWithBody(ctx, id, params, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseCreateRuleDefaultResponse(rsp)
+}
+
+func (c *ClientWithResponses) CreateRuleDefaultWithResponse(ctx context.Context, id string, params *CreateRuleDefaultParams, body CreateRuleDefaultJSONRequestBody, reqEditors ...RequestEditorFn) (*CreateRuleDefaultResponse, error) {
+	rsp, err := c.CreateRuleDefault(ctx, id, params, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseCreateRuleDefaultResponse(rsp)
+}
+
+// UpdateRuleDefaultWithBodyWithResponse request with arbitrary body returning *UpdateRuleDefaultResponse
+func (c *ClientWithResponses) UpdateRuleDefaultWithBodyWithResponse(ctx context.Context, id string, params *UpdateRuleDefaultParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*UpdateRuleDefaultResponse, error) {
+	rsp, err := c.UpdateRuleDefaultWithBody(ctx, id, params, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseUpdateRuleDefaultResponse(rsp)
+}
+
+func (c *ClientWithResponses) UpdateRuleDefaultWithResponse(ctx context.Context, id string, params *UpdateRuleDefaultParams, body UpdateRuleDefaultJSONRequestBody, reqEditors ...RequestEditorFn) (*UpdateRuleDefaultResponse, error) {
+	rsp, err := c.UpdateRuleDefault(ctx, id, params, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseUpdateRuleDefaultResponse(rsp)
+}
+
+// FindRuleDefaultWithResponse request returning *FindRuleDefaultResponse
+func (c *ClientWithResponses) FindRuleDefaultWithResponse(ctx context.Context, params *FindRuleDefaultParams, reqEditors ...RequestEditorFn) (*FindRuleDefaultResponse, error) {
+	rsp, err := c.FindRuleDefault(ctx, params, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseFindRuleDefaultResponse(rsp)
+}
+
+// GetAllDataViewsDefaultWithResponse request returning *GetAllDataViewsDefaultResponse
+func (c *ClientWithResponses) GetAllDataViewsDefaultWithResponse(ctx context.Context, reqEditors ...RequestEditorFn) (*GetAllDataViewsDefaultResponse, error) {
+	rsp, err := c.GetAllDataViewsDefault(ctx, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseGetAllDataViewsDefaultResponse(rsp)
+}
+
+// CreateDataViewDefaultWithBodyWithResponse request with arbitrary body returning *CreateDataViewDefaultResponse
+func (c *ClientWithResponses) CreateDataViewDefaultWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CreateDataViewDefaultResponse, error) {
+	rsp, err := c.CreateDataViewDefaultWithBody(ctx, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseCreateDataViewDefaultResponse(rsp)
+}
+
+func (c *ClientWithResponses) CreateDataViewDefaultWithResponse(ctx context.Context, body CreateDataViewDefaultJSONRequestBody, reqEditors ...RequestEditorFn) (*CreateDataViewDefaultResponse, error) {
+	rsp, err := c.CreateDataViewDefault(ctx, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseCreateDataViewDefaultResponse(rsp)
+}
+
+// DeleteDataViewDefaultWithResponse request returning *DeleteDataViewDefaultResponse
+func (c *ClientWithResponses) DeleteDataViewDefaultWithResponse(ctx context.Context, viewId ViewId, reqEditors ...RequestEditorFn) (*DeleteDataViewDefaultResponse, error) {
+	rsp, err := c.DeleteDataViewDefault(ctx, viewId, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseDeleteDataViewDefaultResponse(rsp)
+}
+
+// GetDataViewDefaultWithResponse request returning *GetDataViewDefaultResponse
+func (c *ClientWithResponses) GetDataViewDefaultWithResponse(ctx context.Context, viewId ViewId, reqEditors ...RequestEditorFn) (*GetDataViewDefaultResponse, error) {
+	rsp, err := c.GetDataViewDefault(ctx, viewId, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseGetDataViewDefaultResponse(rsp)
+}
+
+// UpdateDataViewDefaultWithBodyWithResponse request with arbitrary body returning *UpdateDataViewDefaultResponse
+func (c *ClientWithResponses) UpdateDataViewDefaultWithBodyWithResponse(ctx context.Context, viewId ViewId, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*UpdateDataViewDefaultResponse, error) {
+	rsp, err := c.UpdateDataViewDefaultWithBody(ctx, viewId, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseUpdateDataViewDefaultResponse(rsp)
+}
+
+func (c *ClientWithResponses) UpdateDataViewDefaultWithResponse(ctx context.Context, viewId ViewId, body UpdateDataViewDefaultJSONRequestBody, reqEditors ...RequestEditorFn) (*UpdateDataViewDefaultResponse, error) {
+	rsp, err := c.UpdateDataViewDefault(ctx, viewId, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseUpdateDataViewDefaultResponse(rsp)
 }
 
 // AgentPolicyListWithResponse request returning *AgentPolicyListResponse
@@ -14128,8 +11975,8 @@ func (c *ClientWithResponses) DeleteAgentPolicyWithResponse(ctx context.Context,
 }
 
 // AgentPolicyInfoWithResponse request returning *AgentPolicyInfoResponse
-func (c *ClientWithResponses) AgentPolicyInfoWithResponse(ctx context.Context, agentPolicyId string, reqEditors ...RequestEditorFn) (*AgentPolicyInfoResponse, error) {
-	rsp, err := c.AgentPolicyInfo(ctx, agentPolicyId, reqEditors...)
+func (c *ClientWithResponses) AgentPolicyInfoWithResponse(ctx context.Context, agentPolicyId string, params *AgentPolicyInfoParams, reqEditors ...RequestEditorFn) (*AgentPolicyInfoResponse, error) {
+	rsp, err := c.AgentPolicyInfo(ctx, agentPolicyId, params, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -14137,186 +11984,29 @@ func (c *ClientWithResponses) AgentPolicyInfoWithResponse(ctx context.Context, a
 }
 
 // UpdateAgentPolicyWithBodyWithResponse request with arbitrary body returning *UpdateAgentPolicyResponse
-func (c *ClientWithResponses) UpdateAgentPolicyWithBodyWithResponse(ctx context.Context, agentPolicyId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*UpdateAgentPolicyResponse, error) {
-	rsp, err := c.UpdateAgentPolicyWithBody(ctx, agentPolicyId, contentType, body, reqEditors...)
+func (c *ClientWithResponses) UpdateAgentPolicyWithBodyWithResponse(ctx context.Context, agentPolicyId string, params *UpdateAgentPolicyParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*UpdateAgentPolicyResponse, error) {
+	rsp, err := c.UpdateAgentPolicyWithBody(ctx, agentPolicyId, params, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
 	return ParseUpdateAgentPolicyResponse(rsp)
 }
 
-func (c *ClientWithResponses) UpdateAgentPolicyWithResponse(ctx context.Context, agentPolicyId string, body UpdateAgentPolicyJSONRequestBody, reqEditors ...RequestEditorFn) (*UpdateAgentPolicyResponse, error) {
-	rsp, err := c.UpdateAgentPolicy(ctx, agentPolicyId, body, reqEditors...)
+func (c *ClientWithResponses) UpdateAgentPolicyWithResponse(ctx context.Context, agentPolicyId string, params *UpdateAgentPolicyParams, body UpdateAgentPolicyJSONRequestBody, reqEditors ...RequestEditorFn) (*UpdateAgentPolicyResponse, error) {
+	rsp, err := c.UpdateAgentPolicy(ctx, agentPolicyId, params, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
 	return ParseUpdateAgentPolicyResponse(rsp)
-}
-
-// CreateRuleWithBodyWithResponse request with arbitrary body returning *CreateRuleResponse
-func (c *ClientWithResponses) CreateRuleWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CreateRuleResponse, error) {
-	rsp, err := c.CreateRuleWithBody(ctx, contentType, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseCreateRuleResponse(rsp)
-}
-
-func (c *ClientWithResponses) CreateRuleWithResponse(ctx context.Context, body CreateRuleJSONRequestBody, reqEditors ...RequestEditorFn) (*CreateRuleResponse, error) {
-	rsp, err := c.CreateRule(ctx, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseCreateRuleResponse(rsp)
-}
-
-// DeleteRuleWithResponse request returning *DeleteRuleResponse
-func (c *ClientWithResponses) DeleteRuleWithResponse(ctx context.Context, ruleId RuleId, reqEditors ...RequestEditorFn) (*DeleteRuleResponse, error) {
-	rsp, err := c.DeleteRule(ctx, ruleId, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseDeleteRuleResponse(rsp)
-}
-
-// GetRuleWithResponse request returning *GetRuleResponse
-func (c *ClientWithResponses) GetRuleWithResponse(ctx context.Context, ruleId RuleId, reqEditors ...RequestEditorFn) (*GetRuleResponse, error) {
-	rsp, err := c.GetRule(ctx, ruleId, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseGetRuleResponse(rsp)
-}
-
-// CreateRuleIdWithBodyWithResponse request with arbitrary body returning *CreateRuleIdResponse
-func (c *ClientWithResponses) CreateRuleIdWithBodyWithResponse(ctx context.Context, ruleId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CreateRuleIdResponse, error) {
-	rsp, err := c.CreateRuleIdWithBody(ctx, ruleId, contentType, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseCreateRuleIdResponse(rsp)
-}
-
-func (c *ClientWithResponses) CreateRuleIdWithResponse(ctx context.Context, ruleId string, body CreateRuleIdJSONRequestBody, reqEditors ...RequestEditorFn) (*CreateRuleIdResponse, error) {
-	rsp, err := c.CreateRuleId(ctx, ruleId, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseCreateRuleIdResponse(rsp)
-}
-
-// UpdateRuleWithBodyWithResponse request with arbitrary body returning *UpdateRuleResponse
-func (c *ClientWithResponses) UpdateRuleWithBodyWithResponse(ctx context.Context, ruleId RuleId, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*UpdateRuleResponse, error) {
-	rsp, err := c.UpdateRuleWithBody(ctx, ruleId, contentType, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseUpdateRuleResponse(rsp)
-}
-
-func (c *ClientWithResponses) UpdateRuleWithResponse(ctx context.Context, ruleId RuleId, body UpdateRuleJSONRequestBody, reqEditors ...RequestEditorFn) (*UpdateRuleResponse, error) {
-	rsp, err := c.UpdateRule(ctx, ruleId, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseUpdateRuleResponse(rsp)
-}
-
-// FindRulesWithResponse request returning *FindRulesResponse
-func (c *ClientWithResponses) FindRulesWithResponse(ctx context.Context, params *FindRulesParams, reqEditors ...RequestEditorFn) (*FindRulesResponse, error) {
-	rsp, err := c.FindRules(ctx, params, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseFindRulesResponse(rsp)
-}
-
-// GetAllDataViewsDefaultWithResponse request returning *GetAllDataViewsDefaultResponse
-func (c *ClientWithResponses) GetAllDataViewsDefaultWithResponse(ctx context.Context, reqEditors ...RequestEditorFn) (*GetAllDataViewsDefaultResponse, error) {
-	rsp, err := c.GetAllDataViewsDefault(ctx, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseGetAllDataViewsDefaultResponse(rsp)
-}
-
-// CreateDataViewDefaultwWithBodyWithResponse request with arbitrary body returning *CreateDataViewDefaultwResponse
-func (c *ClientWithResponses) CreateDataViewDefaultwWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CreateDataViewDefaultwResponse, error) {
-	rsp, err := c.CreateDataViewDefaultwWithBody(ctx, contentType, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseCreateDataViewDefaultwResponse(rsp)
-}
-
-func (c *ClientWithResponses) CreateDataViewDefaultwWithResponse(ctx context.Context, body CreateDataViewDefaultwJSONRequestBody, reqEditors ...RequestEditorFn) (*CreateDataViewDefaultwResponse, error) {
-	rsp, err := c.CreateDataViewDefaultw(ctx, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseCreateDataViewDefaultwResponse(rsp)
-}
-
-// DeleteDataViewDefaultWithResponse request returning *DeleteDataViewDefaultResponse
-func (c *ClientWithResponses) DeleteDataViewDefaultWithResponse(ctx context.Context, viewId ViewId, reqEditors ...RequestEditorFn) (*DeleteDataViewDefaultResponse, error) {
-	rsp, err := c.DeleteDataViewDefault(ctx, viewId, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseDeleteDataViewDefaultResponse(rsp)
-}
-
-// GetDataViewDefaultWithResponse request returning *GetDataViewDefaultResponse
-func (c *ClientWithResponses) GetDataViewDefaultWithResponse(ctx context.Context, viewId ViewId, reqEditors ...RequestEditorFn) (*GetDataViewDefaultResponse, error) {
-	rsp, err := c.GetDataViewDefault(ctx, viewId, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseGetDataViewDefaultResponse(rsp)
-}
-
-// UpdateDataViewDefaultWithBodyWithResponse request with arbitrary body returning *UpdateDataViewDefaultResponse
-func (c *ClientWithResponses) UpdateDataViewDefaultWithBodyWithResponse(ctx context.Context, viewId ViewId, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*UpdateDataViewDefaultResponse, error) {
-	rsp, err := c.UpdateDataViewDefaultWithBody(ctx, viewId, contentType, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseUpdateDataViewDefaultResponse(rsp)
-}
-
-func (c *ClientWithResponses) UpdateDataViewDefaultWithResponse(ctx context.Context, viewId ViewId, body UpdateDataViewDefaultJSONRequestBody, reqEditors ...RequestEditorFn) (*UpdateDataViewDefaultResponse, error) {
-	rsp, err := c.UpdateDataViewDefault(ctx, viewId, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseUpdateDataViewDefaultResponse(rsp)
-}
-
-// ImportSavedObjectsDefaultWithBodyWithResponse request with arbitrary body returning *ImportSavedObjectsDefaultResponse
-func (c *ClientWithResponses) ImportSavedObjectsDefaultWithBodyWithResponse(ctx context.Context, params *ImportSavedObjectsDefaultParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ImportSavedObjectsDefaultResponse, error) {
-	rsp, err := c.ImportSavedObjectsDefaultWithBody(ctx, params, contentType, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseImportSavedObjectsDefaultResponse(rsp)
 }
 
 // GetEnrollmentApiKeysWithResponse request returning *GetEnrollmentApiKeysResponse
-func (c *ClientWithResponses) GetEnrollmentApiKeysWithResponse(ctx context.Context, reqEditors ...RequestEditorFn) (*GetEnrollmentApiKeysResponse, error) {
-	rsp, err := c.GetEnrollmentApiKeys(ctx, reqEditors...)
+func (c *ClientWithResponses) GetEnrollmentApiKeysWithResponse(ctx context.Context, params *GetEnrollmentApiKeysParams, reqEditors ...RequestEditorFn) (*GetEnrollmentApiKeysResponse, error) {
+	rsp, err := c.GetEnrollmentApiKeys(ctx, params, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
 	return ParseGetEnrollmentApiKeysResponse(rsp)
-}
-
-// CreateEnrollmentApiKeysWithResponse request returning *CreateEnrollmentApiKeysResponse
-func (c *ClientWithResponses) CreateEnrollmentApiKeysWithResponse(ctx context.Context, reqEditors ...RequestEditorFn) (*CreateEnrollmentApiKeysResponse, error) {
-	rsp, err := c.CreateEnrollmentApiKeys(ctx, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseCreateEnrollmentApiKeysResponse(rsp)
 }
 
 // ListAllPackagesWithResponse request returning *ListAllPackagesResponse
@@ -14580,6 +12270,24 @@ func (c *ClientWithResponses) UpdatePackagePolicyWithResponse(ctx context.Contex
 	return ParseUpdatePackagePolicyResponse(rsp)
 }
 
+// GenerateServiceTokenWithResponse request returning *GenerateServiceTokenResponse
+func (c *ClientWithResponses) GenerateServiceTokenWithResponse(ctx context.Context, reqEditors ...RequestEditorFn) (*GenerateServiceTokenResponse, error) {
+	rsp, err := c.GenerateServiceToken(ctx, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseGenerateServiceTokenResponse(rsp)
+}
+
+// ImportSavedObjectsDefaultWithBodyWithResponse request with arbitrary body returning *ImportSavedObjectsDefaultResponse
+func (c *ClientWithResponses) ImportSavedObjectsDefaultWithBodyWithResponse(ctx context.Context, params *ImportSavedObjectsDefaultParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ImportSavedObjectsDefaultResponse, error) {
+	rsp, err := c.ImportSavedObjectsDefaultWithBody(ctx, params, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseImportSavedObjectsDefaultResponse(rsp)
+}
+
 // FindSlosOpWithResponse request returning *FindSlosOpResponse
 func (c *ClientWithResponses) FindSlosOpWithResponse(ctx context.Context, spaceId SpaceId, params *FindSlosOpParams, reqEditors ...RequestEditorFn) (*FindSlosOpResponse, error) {
 	rsp, err := c.FindSlosOp(ctx, spaceId, params, reqEditors...)
@@ -14641,419 +12349,230 @@ func (c *ClientWithResponses) UpdateSloOpWithResponse(ctx context.Context, space
 	return ParseUpdateSloOpResponse(rsp)
 }
 
-// GenerateServiceTokenWithResponse request returning *GenerateServiceTokenResponse
-func (c *ClientWithResponses) GenerateServiceTokenWithResponse(ctx context.Context, reqEditors ...RequestEditorFn) (*GenerateServiceTokenResponse, error) {
-	rsp, err := c.GenerateServiceToken(ctx, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseGenerateServiceTokenResponse(rsp)
-}
-
-// ParseAgentPolicyListResponse parses an HTTP response from a AgentPolicyListWithResponse call
-func ParseAgentPolicyListResponse(rsp *http.Response) (*AgentPolicyListResponse, error) {
+// ParseDeleteConnectorDefaultResponse parses an HTTP response from a DeleteConnectorDefaultWithResponse call
+func ParseDeleteConnectorDefaultResponse(rsp *http.Response) (*DeleteConnectorDefaultResponse, error) {
 	bodyBytes, err := io.ReadAll(rsp.Body)
 	defer func() { _ = rsp.Body.Close() }()
 	if err != nil {
 		return nil, err
 	}
 
-	response := &AgentPolicyListResponse{
+	response := &DeleteConnectorDefaultResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	return response, nil
+}
+
+// ParseGetConnectorDefaultResponse parses an HTTP response from a GetConnectorDefaultWithResponse call
+func ParseGetConnectorDefaultResponse(rsp *http.Response) (*GetConnectorDefaultResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &GetConnectorDefaultResponse{
 		Body:         bodyBytes,
 		HTTPResponse: rsp,
 	}
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest struct {
-			Items   []AgentPolicy `json:"items"`
-			Page    float32       `json:"page"`
-			PerPage float32       `json:"perPage"`
-			Total   float32       `json:"total"`
-		}
+		var dest GetConnectorResponseObject
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
 		response.JSON200 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
-		var dest Error
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON400 = &dest
 
 	}
 
 	return response, nil
 }
 
-// ParseCreateAgentPolicyResponse parses an HTTP response from a CreateAgentPolicyWithResponse call
-func ParseCreateAgentPolicyResponse(rsp *http.Response) (*CreateAgentPolicyResponse, error) {
+// ParseCreateConnectorDefaultResponse parses an HTTP response from a CreateConnectorDefaultWithResponse call
+func ParseCreateConnectorDefaultResponse(rsp *http.Response) (*CreateConnectorDefaultResponse, error) {
 	bodyBytes, err := io.ReadAll(rsp.Body)
 	defer func() { _ = rsp.Body.Close() }()
 	if err != nil {
 		return nil, err
 	}
 
-	response := &CreateAgentPolicyResponse{
+	response := &CreateConnectorDefaultResponse{
 		Body:         bodyBytes,
 		HTTPResponse: rsp,
 	}
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest struct {
-			Item *AgentPolicy `json:"item,omitempty"`
-		}
+		var dest CreateConnectorResponseObject
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
 		response.JSON200 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
-		var dest Error
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON400 = &dest
 
 	}
 
 	return response, nil
 }
 
-// ParseDeleteAgentPolicyResponse parses an HTTP response from a DeleteAgentPolicyWithResponse call
-func ParseDeleteAgentPolicyResponse(rsp *http.Response) (*DeleteAgentPolicyResponse, error) {
+// ParseUpdateConnectorDefaultResponse parses an HTTP response from a UpdateConnectorDefaultWithResponse call
+func ParseUpdateConnectorDefaultResponse(rsp *http.Response) (*UpdateConnectorDefaultResponse, error) {
 	bodyBytes, err := io.ReadAll(rsp.Body)
 	defer func() { _ = rsp.Body.Close() }()
 	if err != nil {
 		return nil, err
 	}
 
-	response := &DeleteAgentPolicyResponse{
+	response := &UpdateConnectorDefaultResponse{
 		Body:         bodyBytes,
 		HTTPResponse: rsp,
 	}
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest struct {
-			Id      string `json:"id"`
-			Success bool   `json:"success"`
-		}
+		var dest UpdateConnectorResponseObject
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
 		response.JSON200 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
-		var dest Error
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON400 = &dest
 
 	}
 
 	return response, nil
 }
 
-// ParseAgentPolicyInfoResponse parses an HTTP response from a AgentPolicyInfoWithResponse call
-func ParseAgentPolicyInfoResponse(rsp *http.Response) (*AgentPolicyInfoResponse, error) {
+// ParseGetAllConnectorsDefaultResponse parses an HTTP response from a GetAllConnectorsDefaultWithResponse call
+func ParseGetAllConnectorsDefaultResponse(rsp *http.Response) (*GetAllConnectorsDefaultResponse, error) {
 	bodyBytes, err := io.ReadAll(rsp.Body)
 	defer func() { _ = rsp.Body.Close() }()
 	if err != nil {
 		return nil, err
 	}
 
-	response := &AgentPolicyInfoResponse{
+	response := &GetAllConnectorsDefaultResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	return response, nil
+}
+
+// ParseDeleteRuleDefaultResponse parses an HTTP response from a DeleteRuleDefaultWithResponse call
+func ParseDeleteRuleDefaultResponse(rsp *http.Response) (*DeleteRuleDefaultResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &DeleteRuleDefaultResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	return response, nil
+}
+
+// ParseGetRuleDefaultResponse parses an HTTP response from a GetRuleDefaultWithResponse call
+func ParseGetRuleDefaultResponse(rsp *http.Response) (*GetRuleDefaultResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &GetRuleDefaultResponse{
 		Body:         bodyBytes,
 		HTTPResponse: rsp,
 	}
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest struct {
-			Item AgentPolicy `json:"item"`
-		}
+		var dest GetRuleResponseObject
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
 		response.JSON200 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
-		var dest Error
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON400 = &dest
 
 	}
 
 	return response, nil
 }
 
-// ParseUpdateAgentPolicyResponse parses an HTTP response from a UpdateAgentPolicyWithResponse call
-func ParseUpdateAgentPolicyResponse(rsp *http.Response) (*UpdateAgentPolicyResponse, error) {
+// ParseCreateRuleDefaultResponse parses an HTTP response from a CreateRuleDefaultWithResponse call
+func ParseCreateRuleDefaultResponse(rsp *http.Response) (*CreateRuleDefaultResponse, error) {
 	bodyBytes, err := io.ReadAll(rsp.Body)
 	defer func() { _ = rsp.Body.Close() }()
 	if err != nil {
 		return nil, err
 	}
 
-	response := &UpdateAgentPolicyResponse{
+	response := &CreateRuleDefaultResponse{
 		Body:         bodyBytes,
 		HTTPResponse: rsp,
 	}
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest struct {
-			Item AgentPolicy `json:"item"`
-		}
+		var dest CreateRuleResponseObject
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
 		response.JSON200 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
-		var dest Error
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON400 = &dest
 
 	}
 
 	return response, nil
 }
 
-// ParseCreateRuleResponse parses an HTTP response from a CreateRuleWithResponse call
-func ParseCreateRuleResponse(rsp *http.Response) (*CreateRuleResponse, error) {
+// ParseUpdateRuleDefaultResponse parses an HTTP response from a UpdateRuleDefaultWithResponse call
+func ParseUpdateRuleDefaultResponse(rsp *http.Response) (*UpdateRuleDefaultResponse, error) {
 	bodyBytes, err := io.ReadAll(rsp.Body)
 	defer func() { _ = rsp.Body.Close() }()
 	if err != nil {
 		return nil, err
 	}
 
-	response := &CreateRuleResponse{
+	response := &UpdateRuleDefaultResponse{
 		Body:         bodyBytes,
 		HTTPResponse: rsp,
 	}
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest RuleResponseProperties
+		var dest UpdateRuleResponseObject
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
 		response.JSON200 = &dest
 
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
-		var dest N401Response
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON401 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
-		var dest N404Response
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON404 = &dest
-
 	}
 
 	return response, nil
 }
 
-// ParseDeleteRuleResponse parses an HTTP response from a DeleteRuleWithResponse call
-func ParseDeleteRuleResponse(rsp *http.Response) (*DeleteRuleResponse, error) {
+// ParseFindRuleDefaultResponse parses an HTTP response from a FindRuleDefaultWithResponse call
+func ParseFindRuleDefaultResponse(rsp *http.Response) (*FindRuleDefaultResponse, error) {
 	bodyBytes, err := io.ReadAll(rsp.Body)
 	defer func() { _ = rsp.Body.Close() }()
 	if err != nil {
 		return nil, err
 	}
 
-	response := &DeleteRuleResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
-		var dest N401Response
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON401 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
-		var dest N404Response
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON404 = &dest
-
-	}
-
-	return response, nil
-}
-
-// ParseGetRuleResponse parses an HTTP response from a GetRuleWithResponse call
-func ParseGetRuleResponse(rsp *http.Response) (*GetRuleResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &GetRuleResponse{
+	response := &FindRuleDefaultResponse{
 		Body:         bodyBytes,
 		HTTPResponse: rsp,
 	}
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest RuleResponseProperties
+		var dest FindRuleResponseObject
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
 		response.JSON200 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
-		var dest N401Response
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON401 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
-		var dest N404Response
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON404 = &dest
-
-	}
-
-	return response, nil
-}
-
-// ParseCreateRuleIdResponse parses an HTTP response from a CreateRuleIdWithResponse call
-func ParseCreateRuleIdResponse(rsp *http.Response) (*CreateRuleIdResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &CreateRuleIdResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest RuleResponseProperties
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
-		var dest N401Response
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON401 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
-		var dest N404Response
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON404 = &dest
-
-	}
-
-	return response, nil
-}
-
-// ParseUpdateRuleResponse parses an HTTP response from a UpdateRuleWithResponse call
-func ParseUpdateRuleResponse(rsp *http.Response) (*UpdateRuleResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &UpdateRuleResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest RuleResponseProperties
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
-		var dest N401Response
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON401 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
-		var dest N404Response
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON404 = &dest
-
-	}
-
-	return response, nil
-}
-
-// ParseFindRulesResponse parses an HTTP response from a FindRulesWithResponse call
-func ParseFindRulesResponse(rsp *http.Response) (*FindRulesResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &FindRulesResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest struct {
-			Data    []RuleResponseProperties `json:"data,omitempty"`
-			Page    *int                     `json:"page,omitempty"`
-			PerPage *int                     `json:"per_page,omitempty"`
-			Total   *int                     `json:"total,omitempty"`
-		}
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
-		var dest N401Response
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON401 = &dest
 
 	}
 
@@ -15075,41 +12594,26 @@ func ParseGetAllDataViewsDefaultResponse(rsp *http.Response) (*GetAllDataViewsDe
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest struct {
-			DataView []struct {
-				Id         *string                `json:"id,omitempty"`
-				Name       *string                `json:"name,omitempty"`
-				Namespaces []string               `json:"namespaces,omitempty"`
-				Title      *string                `json:"title,omitempty"`
-				TypeMeta   map[string]interface{} `json:"typeMeta,omitempty"`
-			} `json:"data_view,omitempty"`
-		}
+		var dest GetAllDataViewsResponseObject
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
 		response.JSON200 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
-		var dest N400Response
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON400 = &dest
 
 	}
 
 	return response, nil
 }
 
-// ParseCreateDataViewDefaultwResponse parses an HTTP response from a CreateDataViewDefaultwWithResponse call
-func ParseCreateDataViewDefaultwResponse(rsp *http.Response) (*CreateDataViewDefaultwResponse, error) {
+// ParseCreateDataViewDefaultResponse parses an HTTP response from a CreateDataViewDefaultWithResponse call
+func ParseCreateDataViewDefaultResponse(rsp *http.Response) (*CreateDataViewDefaultResponse, error) {
 	bodyBytes, err := io.ReadAll(rsp.Body)
 	defer func() { _ = rsp.Body.Close() }()
 	if err != nil {
 		return nil, err
 	}
 
-	response := &CreateDataViewDefaultwResponse{
+	response := &CreateDataViewDefaultResponse{
 		Body:         bodyBytes,
 		HTTPResponse: rsp,
 	}
@@ -15121,13 +12625,6 @@ func ParseCreateDataViewDefaultwResponse(rsp *http.Response) (*CreateDataViewDef
 			return nil, err
 		}
 		response.JSON200 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
-		var dest N400Response
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON400 = &dest
 
 	}
 
@@ -15145,16 +12642,6 @@ func ParseDeleteDataViewDefaultResponse(rsp *http.Response) (*DeleteDataViewDefa
 	response := &DeleteDataViewDefaultResponse{
 		Body:         bodyBytes,
 		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
-		var dest N404Response
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON404 = &dest
-
 	}
 
 	return response, nil
@@ -15180,13 +12667,6 @@ func ParseGetDataViewDefaultResponse(rsp *http.Response) (*GetDataViewDefaultRes
 			return nil, err
 		}
 		response.JSON200 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
-		var dest N404Response
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON404 = &dest
 
 	}
 
@@ -15214,61 +12694,135 @@ func ParseUpdateDataViewDefaultResponse(rsp *http.Response) (*UpdateDataViewDefa
 		}
 		response.JSON200 = &dest
 
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
-		var dest N400Response
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON400 = &dest
-
 	}
 
 	return response, nil
 }
 
-// ParseImportSavedObjectsDefaultResponse parses an HTTP response from a ImportSavedObjectsDefaultWithResponse call
-func ParseImportSavedObjectsDefaultResponse(rsp *http.Response) (*ImportSavedObjectsDefaultResponse, error) {
+// ParseAgentPolicyListResponse parses an HTTP response from a AgentPolicyListWithResponse call
+func ParseAgentPolicyListResponse(rsp *http.Response) (*AgentPolicyListResponse, error) {
 	bodyBytes, err := io.ReadAll(rsp.Body)
 	defer func() { _ = rsp.Body.Close() }()
 	if err != nil {
 		return nil, err
 	}
 
-	response := &ImportSavedObjectsDefaultResponse{
+	response := &AgentPolicyListResponse{
 		Body:         bodyBytes,
 		HTTPResponse: rsp,
 	}
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest struct {
-			// Errors Indicates the import was unsuccessful and specifies the objects that failed to import.
-			//
-			// NOTE: One object may result in multiple errors, which requires separate steps to resolve. For instance, a `missing_references` error and conflict error.
-			Errors []map[string]interface{} `json:"errors,omitempty"`
-
-			// Success Indicates when the import was successfully completed. When set to false, some objects may not have been created. For additional information, refer to the `errors` and `successResults` properties.
-			Success *bool `json:"success,omitempty"`
-
-			// SuccessCount Indicates the number of successfully imported records.
-			SuccessCount *int `json:"successCount,omitempty"`
-
-			// SuccessResults Indicates the objects that are successfully imported, with any metadata if applicable.
-			//
-			// NOTE: Objects are created only when all resolvable errors are addressed, including conflicts and missing references. If objects are created as new copies, each entry in the `successResults` array includes a `destinationId` attribute.
-			SuccessResults []map[string]interface{} `json:"successResults,omitempty"`
-		}
+		var dest AgentPolicyListResponseObject
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
 		response.JSON200 = &dest
 
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
-		var dest N400Response
+	}
+
+	return response, nil
+}
+
+// ParseCreateAgentPolicyResponse parses an HTTP response from a CreateAgentPolicyWithResponse call
+func ParseCreateAgentPolicyResponse(rsp *http.Response) (*CreateAgentPolicyResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &CreateAgentPolicyResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest CreateAgentPolicyResponseObject
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
-		response.JSON400 = &dest
+		response.JSON200 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseDeleteAgentPolicyResponse parses an HTTP response from a DeleteAgentPolicyWithResponse call
+func ParseDeleteAgentPolicyResponse(rsp *http.Response) (*DeleteAgentPolicyResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &DeleteAgentPolicyResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest DeleteAgentPolicyResponseObject
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseAgentPolicyInfoResponse parses an HTTP response from a AgentPolicyInfoWithResponse call
+func ParseAgentPolicyInfoResponse(rsp *http.Response) (*AgentPolicyInfoResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &AgentPolicyInfoResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest AgentPolicyInfoResponseObject
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseUpdateAgentPolicyResponse parses an HTTP response from a UpdateAgentPolicyWithResponse call
+func ParseUpdateAgentPolicyResponse(rsp *http.Response) (*UpdateAgentPolicyResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &UpdateAgentPolicyResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest UpdateAgentPolicyResponseObject
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
 
 	}
 
@@ -15290,61 +12844,11 @@ func ParseGetEnrollmentApiKeysResponse(rsp *http.Response) (*GetEnrollmentApiKey
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest struct {
-			Items []EnrollmentApiKey `json:"items"`
-			// Deprecated:
-			List    []EnrollmentApiKey `json:"list,omitempty"`
-			Page    float32            `json:"page"`
-			PerPage float32            `json:"perPage"`
-			Total   float32            `json:"total"`
-		}
+		var dest GetEnrollmentApiKeysResponseObject
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
 		response.JSON200 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
-		var dest Error
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON400 = &dest
-
-	}
-
-	return response, nil
-}
-
-// ParseCreateEnrollmentApiKeysResponse parses an HTTP response from a CreateEnrollmentApiKeysWithResponse call
-func ParseCreateEnrollmentApiKeysResponse(rsp *http.Response) (*CreateEnrollmentApiKeysResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &CreateEnrollmentApiKeysResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest struct {
-			Action *N200Action       `json:"action,omitempty"`
-			Item   *EnrollmentApiKey `json:"item,omitempty"`
-		}
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
-		var dest Error
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON400 = &dest
 
 	}
 
@@ -15372,13 +12876,6 @@ func ParseListAllPackagesResponse(rsp *http.Response) (*ListAllPackagesResponse,
 		}
 		response.JSON200 = &dest
 
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
-		var dest Error
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON400 = &dest
-
 	}
 
 	return response, nil
@@ -15399,30 +12896,11 @@ func ParseInstallPackageByUploadResponse(rsp *http.Response) (*InstallPackageByU
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest struct {
-			Meta *struct {
-				InstallSource *PackageInstallSource `json:"install_source,omitempty"`
-			} `json:"_meta,omitempty"`
-			Items PackageItem `json:"items"`
-		}
+		var dest InstallPackageByUploadResponseObject
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
 		response.JSON200 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
-		var dest Error
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON400 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 429:
-		var dest Error
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON429 = &dest
 
 	}
 
@@ -15444,20 +12922,11 @@ func ParseDeletePackageResponse(rsp *http.Response) (*DeletePackageResponse, err
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest struct {
-			Items PackageItem `json:"items"`
-		}
+		var dest DeletePackageResponseObject
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
 		response.JSON200 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
-		var dest Error
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON400 = &dest
 
 	}
 
@@ -15479,27 +12948,11 @@ func ParseGetPackageResponse(rsp *http.Response) (*GetPackageResponse, error) {
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest struct {
-			Item                 *PackageInfo `json:"item,omitempty"`
-			KeepPoliciesUpToDate *bool        `json:"keepPoliciesUpToDate,omitempty"`
-			LatestVersion        *string      `json:"latestVersion,omitempty"`
-			LicensePath          *string      `json:"licensePath,omitempty"`
-			Notice               *string      `json:"notice,omitempty"`
-			// Deprecated:
-			SavedObject map[string]interface{} `json:"savedObject"`
-			Status      PackageStatus          `json:"status"`
-		}
+		var dest GetPackageResponseObject
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
 		response.JSON200 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
-		var dest Error
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON400 = &dest
 
 	}
 
@@ -15521,23 +12974,11 @@ func ParseInstallPackageResponse(rsp *http.Response) (*InstallPackageResponse, e
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest struct {
-			Meta *struct {
-				InstallSource *PackageInstallSource `json:"install_source,omitempty"`
-			} `json:"_meta,omitempty"`
-			Items PackageItem `json:"items"`
-		}
+		var dest InstallPackageResponseObject
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
 		response.JSON200 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
-		var dest Error
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON400 = &dest
 
 	}
 
@@ -15559,20 +13000,11 @@ func ParseUpdatePackageResponse(rsp *http.Response) (*UpdatePackageResponse, err
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest struct {
-			Items PackageItem `json:"items"`
-		}
+		var dest UpdatePackageResponseObject
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
 		response.JSON200 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
-		var dest Error
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON400 = &dest
 
 	}
 
@@ -15594,23 +13026,11 @@ func ParseGetFleetServerHostsResponse(rsp *http.Response) (*GetFleetServerHostsR
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest struct {
-			Items   []FleetServerHost `json:"items,omitempty"`
-			Page    *int              `json:"page,omitempty"`
-			PerPage *int              `json:"perPage,omitempty"`
-			Total   *int              `json:"total,omitempty"`
-		}
+		var dest GetFleetServerHostsResponseObject
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
 		response.JSON200 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
-		var dest Error
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON400 = &dest
 
 	}
 
@@ -15632,20 +13052,11 @@ func ParsePostFleetServerHostsResponse(rsp *http.Response) (*PostFleetServerHost
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest struct {
-			Item *FleetServerHost `json:"item,omitempty"`
-		}
+		var dest PostFleetServerHostsResponseObject
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
 		response.JSON200 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
-		var dest Error
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON400 = &dest
 
 	}
 
@@ -15667,20 +13078,11 @@ func ParseDeleteFleetServerHostsResponse(rsp *http.Response) (*DeleteFleetServer
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest struct {
-			Id string `json:"id"`
-		}
+		var dest DeleteFleetServerHostsResponseObject
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
 		response.JSON200 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
-		var dest Error
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON400 = &dest
 
 	}
 
@@ -15702,20 +13104,11 @@ func ParseGetOneFleetServerHostsResponse(rsp *http.Response) (*GetOneFleetServer
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest struct {
-			Item FleetServerHost `json:"item"`
-		}
+		var dest GetOneFleetServerHostsResponseObject
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
 		response.JSON200 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
-		var dest Error
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON400 = &dest
 
 	}
 
@@ -15737,20 +13130,11 @@ func ParseUpdateFleetServerHostsResponse(rsp *http.Response) (*UpdateFleetServer
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest struct {
-			Item FleetServerHost `json:"item"`
-		}
+		var dest UpdateFleetServerHostsResponseObject
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
 		response.JSON200 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
-		var dest Error
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON400 = &dest
 
 	}
 
@@ -15772,23 +13156,11 @@ func ParseGetOutputsResponse(rsp *http.Response) (*GetOutputsResponse, error) {
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest struct {
-			Items   []OutputCreateRequest `json:"items,omitempty"`
-			Page    *int                  `json:"page,omitempty"`
-			PerPage *int                  `json:"perPage,omitempty"`
-			Total   *int                  `json:"total,omitempty"`
-		}
+		var dest GetOutputsResponseObject
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
 		response.JSON200 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
-		var dest Error
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON400 = &dest
 
 	}
 
@@ -15810,20 +13182,11 @@ func ParsePostOutputsResponse(rsp *http.Response) (*PostOutputsResponse, error) 
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest struct {
-			Item *OutputCreateRequest `json:"item,omitempty"`
-		}
+		var dest PostOutputsResponseObject
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
 		response.JSON200 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
-		var dest Error
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON400 = &dest
 
 	}
 
@@ -15845,20 +13208,11 @@ func ParseDeleteOutputResponse(rsp *http.Response) (*DeleteOutputResponse, error
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest struct {
-			Id string `json:"id"`
-		}
+		var dest DeleteOutputResponseObject
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
 		response.JSON200 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
-		var dest Error
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON400 = &dest
 
 	}
 
@@ -15880,20 +13234,11 @@ func ParseGetOutputResponse(rsp *http.Response) (*GetOutputResponse, error) {
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest struct {
-			Item *OutputCreateRequest `json:"item,omitempty"`
-		}
+		var dest GetOutputResponseObject
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
 		response.JSON200 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
-		var dest Error
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON400 = &dest
 
 	}
 
@@ -15915,20 +13260,11 @@ func ParseUpdateOutputResponse(rsp *http.Response) (*UpdateOutputResponse, error
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest struct {
-			Item *OutputUpdateRequest `json:"item,omitempty"`
-		}
+		var dest UpdateOutputResponseObject
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
 		response.JSON200 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
-		var dest Error
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON400 = &dest
 
 	}
 
@@ -15950,23 +13286,11 @@ func ParseGetPackagePoliciesResponse(rsp *http.Response) (*GetPackagePoliciesRes
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest struct {
-			Items   []PackagePolicy `json:"items"`
-			Page    *float32        `json:"page,omitempty"`
-			PerPage *float32        `json:"perPage,omitempty"`
-			Total   *float32        `json:"total,omitempty"`
-		}
+		var dest GetPackagePoliciesResponseObject
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
 		response.JSON200 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
-		var dest Error
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON400 = &dest
 
 	}
 
@@ -15988,27 +13312,11 @@ func ParseCreatePackagePolicyResponse(rsp *http.Response) (*CreatePackagePolicyR
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest struct {
-			Item PackagePolicy `json:"item"`
-		}
+		var dest CreatePackagePolicyResponseObject
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
 		response.JSON200 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
-		var dest Error
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON400 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 409:
-		var dest Error
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON409 = &dest
 
 	}
 
@@ -16030,20 +13338,11 @@ func ParseDeletePackagePolicyResponse(rsp *http.Response) (*DeletePackagePolicyR
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest struct {
-			Id string `json:"id"`
-		}
+		var dest DeletePackagePolicyResponseObject
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
 		response.JSON200 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
-		var dest Error
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON400 = &dest
 
 	}
 
@@ -16065,20 +13364,11 @@ func ParseGetPackagePolicyResponse(rsp *http.Response) (*GetPackagePolicyRespons
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest struct {
-			Item PackagePolicy `json:"item"`
-		}
+		var dest GetPackagePolicyResponseObject
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
 		response.JSON200 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
-		var dest Error
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON400 = &dest
 
 	}
 
@@ -16100,21 +13390,63 @@ func ParseUpdatePackagePolicyResponse(rsp *http.Response) (*UpdatePackagePolicyR
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest struct {
-			Item   PackagePolicy `json:"item"`
-			Sucess bool          `json:"sucess"`
-		}
+		var dest UpdatePackagePolicyResponseObject
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
 		response.JSON200 = &dest
 
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
-		var dest Error
+	}
+
+	return response, nil
+}
+
+// ParseGenerateServiceTokenResponse parses an HTTP response from a GenerateServiceTokenWithResponse call
+func ParseGenerateServiceTokenResponse(rsp *http.Response) (*GenerateServiceTokenResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &GenerateServiceTokenResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest GenerateServiceTokenResponseObject
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
-		response.JSON400 = &dest
+		response.JSON200 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseImportSavedObjectsDefaultResponse parses an HTTP response from a ImportSavedObjectsDefaultWithResponse call
+func ParseImportSavedObjectsDefaultResponse(rsp *http.Response) (*ImportSavedObjectsDefaultResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &ImportSavedObjectsDefaultResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest ImportSavedObjectsResponseObject
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
 
 	}
 
@@ -16142,34 +13474,6 @@ func ParseFindSlosOpResponse(rsp *http.Response) (*FindSlosOpResponse, error) {
 		}
 		response.JSON200 = &dest
 
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
-		var dest N400Response
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON400 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
-		var dest N401Response
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON401 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 403:
-		var dest N403Response
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON403 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
-		var dest N404Response
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON404 = &dest
-
 	}
 
 	return response, nil
@@ -16196,34 +13500,6 @@ func ParseCreateSloOpResponse(rsp *http.Response) (*CreateSloOpResponse, error) 
 		}
 		response.JSON200 = &dest
 
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
-		var dest N400Response
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON400 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
-		var dest N401Response
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON401 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 403:
-		var dest N403Response
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON403 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 409:
-		var dest N409Response
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON409 = &dest
-
 	}
 
 	return response, nil
@@ -16240,37 +13516,6 @@ func ParseDeleteSloOpResponse(rsp *http.Response) (*DeleteSloOpResponse, error) 
 	response := &DeleteSloOpResponse{
 		Body:         bodyBytes,
 		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
-		var dest N400Response
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON400 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
-		var dest N401Response
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON401 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 403:
-		var dest N403Response
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON403 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
-		var dest N404Response
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON404 = &dest
-
 	}
 
 	return response, nil
@@ -16297,34 +13542,6 @@ func ParseGetSloOpResponse(rsp *http.Response) (*GetSloOpResponse, error) {
 		}
 		response.JSON200 = &dest
 
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
-		var dest N400Response
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON400 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
-		var dest N401Response
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON401 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 403:
-		var dest N403Response
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON403 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
-		var dest N404Response
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON404 = &dest
-
 	}
 
 	return response, nil
@@ -16350,70 +13567,6 @@ func ParseUpdateSloOpResponse(rsp *http.Response) (*UpdateSloOpResponse, error) 
 			return nil, err
 		}
 		response.JSON200 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
-		var dest N400Response
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON400 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
-		var dest N401Response
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON401 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 403:
-		var dest N403Response
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON403 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
-		var dest N404Response
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON404 = &dest
-
-	}
-
-	return response, nil
-}
-
-// ParseGenerateServiceTokenResponse parses an HTTP response from a GenerateServiceTokenWithResponse call
-func ParseGenerateServiceTokenResponse(rsp *http.Response) (*GenerateServiceTokenResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &GenerateServiceTokenResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest struct {
-			Name  *string `json:"name,omitempty"`
-			Value *string `json:"value,omitempty"`
-		}
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
-		var dest Error
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON400 = &dest
 
 	}
 

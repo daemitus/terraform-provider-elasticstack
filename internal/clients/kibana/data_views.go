@@ -9,7 +9,7 @@ import (
 )
 
 // ReadDataView reads a specific data view from the API.
-func ReadDataView(ctx context.Context, client *Client, spaceID string, viewID string) (*kbapi.DataViewsDataViewResponseObject, diag.Diagnostics) {
+func ReadDataView(ctx context.Context, client *Client, spaceID string, viewID string) (*kbapi.DataViewResponseObject, diag.Diagnostics) {
 	resp, err := client.API.GetDataViewWithResponse(ctx, spaceID, viewID)
 	if err != nil {
 		return nil, fromErr(err)
@@ -26,7 +26,7 @@ func ReadDataView(ctx context.Context, client *Client, spaceID string, viewID st
 }
 
 // CreateDataView creates a new data view.
-func CreateDataView(ctx context.Context, client *Client, spaceID string, req kbapi.DataViewsCreateDataViewRequestObject) (*kbapi.DataViewsDataViewResponseObject, diag.Diagnostics) {
+func CreateDataView(ctx context.Context, client *Client, spaceID string, req kbapi.CreateDataViewRequestObject) (*kbapi.DataViewResponseObject, diag.Diagnostics) {
 	resp, err := client.API.CreateDataViewWithResponse(ctx, spaceID, req)
 	if err != nil {
 		return nil, fromErr(err)
@@ -41,7 +41,7 @@ func CreateDataView(ctx context.Context, client *Client, spaceID string, req kba
 }
 
 // UpdateDataView updates an existing data view.
-func UpdateDataView(ctx context.Context, client *Client, spaceID string, viewID string, req kbapi.DataViewsUpdateDataViewRequestObject) (*kbapi.DataViewsDataViewResponseObject, diag.Diagnostics) {
+func UpdateDataView(ctx context.Context, client *Client, spaceID string, viewID string, req kbapi.UpdateDataViewRequestObject) (*kbapi.DataViewResponseObject, diag.Diagnostics) {
 	resp, err := client.API.UpdateDataViewWithResponse(ctx, spaceID, viewID, req)
 	if err != nil {
 		return nil, fromErr(err)
@@ -73,7 +73,7 @@ func DeleteDataView(ctx context.Context, client *Client, spaceID string, viewID 
 }
 
 // ReadDataViewDefault reads a specific data view from the API.
-func ReadDataViewDefault(ctx context.Context, client *Client, viewID string) (*kbapi.DataViewsDataViewResponseObject, diag.Diagnostics) {
+func ReadDataViewDefault(ctx context.Context, client *Client, viewID string) (*kbapi.DataViewResponseObject, diag.Diagnostics) {
 	resp, err := client.API.GetDataViewDefaultWithResponse(ctx, viewID)
 	if err != nil {
 		return nil, fromErr(err)
@@ -90,7 +90,7 @@ func ReadDataViewDefault(ctx context.Context, client *Client, viewID string) (*k
 }
 
 // CreateDataViewDefault creates a new data view.
-func CreateDataViewDefault(ctx context.Context, client *Client, req kbapi.DataViewsCreateDataViewRequestObject) (*kbapi.DataViewsDataViewResponseObject, diag.Diagnostics) {
+func CreateDataViewDefault(ctx context.Context, client *Client, req kbapi.CreateDataViewRequestObject) (*kbapi.DataViewResponseObject, diag.Diagnostics) {
 	resp, err := client.API.CreateDataViewDefaultWithResponse(ctx, req)
 	if err != nil {
 		return nil, fromErr(err)
@@ -105,7 +105,7 @@ func CreateDataViewDefault(ctx context.Context, client *Client, req kbapi.DataVi
 }
 
 // UpdateDataViewDefault updates an existing data view.
-func UpdateDataViewDefault(ctx context.Context, client *Client, viewID string, req kbapi.DataViewsUpdateDataViewRequestObject) (*kbapi.DataViewsDataViewResponseObject, diag.Diagnostics) {
+func UpdateDataViewDefault(ctx context.Context, client *Client, viewID string, req kbapi.UpdateDataViewRequestObject) (*kbapi.DataViewResponseObject, diag.Diagnostics) {
 	resp, err := client.API.UpdateDataViewDefaultWithResponse(ctx, viewID, req)
 	if err != nil {
 		return nil, fromErr(err)

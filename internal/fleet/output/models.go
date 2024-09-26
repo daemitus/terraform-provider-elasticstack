@@ -31,7 +31,7 @@ type outputSslModel struct {
 	Key                    types.String `tfsdk:"key"`
 }
 
-func (model *outputModel) populateFromAPICreate(ctx context.Context, data *fleetapi.FleetOutputCreateRequest) (diags diag.Diagnostics) {
+func (model *outputModel) populateFromAPICreate(ctx context.Context, data *fleetapi.OutputCreateRequest) (diags diag.Diagnostics) {
 	if data == nil {
 		return
 	}
@@ -44,7 +44,7 @@ func (model *outputModel) populateFromAPICreate(ctx context.Context, data *fleet
 
 	var nd diag.Diagnostics
 	switch data := union.(type) {
-	case fleetapi.FleetOutputCreateRequestElasticsearch:
+	case fleetapi.OutputCreateRequestElasticsearch:
 		model.ID = types.StringPointerValue(data.Id)
 		model.OutputID = types.StringPointerValue(data.Id)
 		model.Name = types.StringValue(data.Name)
@@ -69,7 +69,7 @@ func (model *outputModel) populateFromAPICreate(ctx context.Context, data *fleet
 			model.Ssl = types.ListNull(getSslAttrTypes())
 		}
 
-	case fleetapi.FleetOutputCreateRequestLogstash:
+	case fleetapi.OutputCreateRequestLogstash:
 		model.ID = types.StringPointerValue(data.Id)
 		model.OutputID = types.StringPointerValue(data.Id)
 		model.Name = types.StringValue(data.Name)
@@ -94,7 +94,7 @@ func (model *outputModel) populateFromAPICreate(ctx context.Context, data *fleet
 			model.Ssl = types.ListNull(getSslAttrTypes())
 		}
 
-	case fleetapi.FleetOutputCreateRequestKafka:
+	case fleetapi.OutputCreateRequestKafka:
 		model.ID = types.StringPointerValue(data.Id)
 		model.OutputID = types.StringPointerValue(data.Id)
 		model.Name = types.StringValue(data.Name)
@@ -126,7 +126,7 @@ func (model *outputModel) populateFromAPICreate(ctx context.Context, data *fleet
 	return
 }
 
-func (model *outputModel) populateFromAPIUpdate(ctx context.Context, data *fleetapi.FleetOutputUpdateRequest) (diags diag.Diagnostics) {
+func (model *outputModel) populateFromAPIUpdate(ctx context.Context, data *fleetapi.OutputUpdateRequest) (diags diag.Diagnostics) {
 	if data == nil {
 		return
 	}
@@ -139,7 +139,7 @@ func (model *outputModel) populateFromAPIUpdate(ctx context.Context, data *fleet
 
 	var nd diag.Diagnostics
 	switch data := union.(type) {
-	case fleetapi.FleetOutputUpdateRequestElasticsearch:
+	case fleetapi.OutputUpdateRequestElasticsearch:
 		model.ID = types.StringPointerValue(data.Id)
 		model.OutputID = types.StringPointerValue(data.Id)
 		model.Name = types.StringValue(data.Name)
@@ -164,7 +164,7 @@ func (model *outputModel) populateFromAPIUpdate(ctx context.Context, data *fleet
 			model.Ssl = types.ListNull(getSslAttrTypes())
 		}
 
-	case fleetapi.FleetOutputUpdateRequestLogstash:
+	case fleetapi.OutputUpdateRequestLogstash:
 		model.ID = types.StringPointerValue(data.Id)
 		model.OutputID = types.StringPointerValue(data.Id)
 		model.Name = types.StringValue(data.Name)
@@ -189,7 +189,7 @@ func (model *outputModel) populateFromAPIUpdate(ctx context.Context, data *fleet
 			model.Ssl = types.ListNull(getSslAttrTypes())
 		}
 
-	case fleetapi.FleetOutputUpdateRequestKafka:
+	case fleetapi.OutputUpdateRequestKafka:
 		model.ID = types.StringPointerValue(data.Id)
 		model.OutputID = types.StringPointerValue(data.Id)
 		model.Name = types.StringValue(data.Name)
@@ -221,11 +221,11 @@ func (model *outputModel) populateFromAPIUpdate(ctx context.Context, data *fleet
 	return
 }
 
-func (model outputModel) toAPICreateModel(ctx context.Context) (union fleetapi.FleetOutputCreateRequest, diags diag.Diagnostics) {
+func (model outputModel) toAPICreateModel(ctx context.Context) (union fleetapi.OutputCreateRequest, diags diag.Diagnostics) {
 	outputType := model.Type.ValueString()
 	switch outputType {
 	case "elasticsearch":
-		body := fleetapi.FleetOutputCreateRequestElasticsearch{
+		body := fleetapi.OutputCreateRequestElasticsearch{
 			CaSha256:             model.CaSha256.ValueStringPointer(),
 			CaTrustedFingerprint: model.CaTrustedFingerprint.ValueStringPointer(),
 			ConfigYaml:           model.ConfigYaml.ValueStringPointer(),
@@ -234,7 +234,7 @@ func (model outputModel) toAPICreateModel(ctx context.Context) (union fleetapi.F
 			IsDefault:            model.DefaultIntegrations.ValueBoolPointer(),
 			IsDefaultMonitoring:  model.DefaultMonitoring.ValueBoolPointer(),
 			Name:                 model.Name.ValueString(),
-			Type:                 fleetapi.FleetOutputCreateRequestElasticsearchTypeElasticsearch,
+			Type:                 fleetapi.OutputCreateRequestElasticsearchTypeElasticsearch,
 		}
 
 		// Can't use helpers for anonymous structs
@@ -253,13 +253,13 @@ func (model outputModel) toAPICreateModel(ctx context.Context) (union fleetapi.F
 			}
 		}
 
-		err := union.FromFleetOutputCreateRequestElasticsearch(body)
+		err := union.FromOutputCreateRequestElasticsearch(body)
 		if err != nil {
 			diags.AddError(err.Error(), "")
 		}
 
 	case "logstash":
-		body := fleetapi.FleetOutputCreateRequestLogstash{
+		body := fleetapi.OutputCreateRequestLogstash{
 			CaSha256:             model.CaSha256.ValueStringPointer(),
 			CaTrustedFingerprint: model.CaTrustedFingerprint.ValueStringPointer(),
 			ConfigYaml:           model.ConfigYaml.ValueStringPointer(),
@@ -268,7 +268,7 @@ func (model outputModel) toAPICreateModel(ctx context.Context) (union fleetapi.F
 			IsDefault:            model.DefaultIntegrations.ValueBoolPointer(),
 			IsDefaultMonitoring:  model.DefaultMonitoring.ValueBoolPointer(),
 			Name:                 model.Name.ValueString(),
-			Type:                 fleetapi.FleetOutputCreateRequestLogstashTypeLogstash,
+			Type:                 fleetapi.OutputCreateRequestLogstashTypeLogstash,
 		}
 
 		// Can't use helpers for anonymous structs
@@ -287,14 +287,14 @@ func (model outputModel) toAPICreateModel(ctx context.Context) (union fleetapi.F
 			}
 		}
 
-		err := union.FromFleetOutputCreateRequestLogstash(body)
+		err := union.FromOutputCreateRequestLogstash(body)
 		if err != nil {
 			diags.AddError(err.Error(), "")
 		}
 
 	case "kafka":
-		body := fleetapi.FleetOutputCreateRequestKafka{
-			Type:                 fleetapi.FleetOutputCreateRequestKafkaTypeKafka,
+		body := fleetapi.OutputCreateRequestKafka{
+			Type:                 fleetapi.OutputCreateRequestKafkaTypeKafka,
 			CaSha256:             model.CaSha256.ValueStringPointer(),
 			CaTrustedFingerprint: model.CaTrustedFingerprint.ValueStringPointer(),
 			ConfigYaml:           model.ConfigYaml.ValueStringPointer(),
@@ -310,10 +310,10 @@ func (model outputModel) toAPICreateModel(ctx context.Context) (union fleetapi.F
 			sslModels := utils.ListTypeAs[outputSslModel](ctx, model.Ssl, path.Root("ssl"), diags)
 			if len(sslModels) > 0 {
 				body.Ssl = &struct {
-					Certificate            *string                                                    `json:"certificate,omitempty"`
-					CertificateAuthorities []string                                                   `json:"certificate_authorities,omitempty"`
-					Key                    *string                                                    `json:"key,omitempty"`
-					VerificationMode       *fleetapi.FleetOutputCreateRequestKafkaSslVerificationMode `json:"verification_mode,omitempty"`
+					Certificate            *string                                               `json:"certificate,omitempty"`
+					CertificateAuthorities []string                                              `json:"certificate_authorities,omitempty"`
+					Key                    *string                                               `json:"key,omitempty"`
+					VerificationMode       *fleetapi.OutputCreateRequestKafkaSslVerificationMode `json:"verification_mode,omitempty"`
 				}{
 					Certificate:            sslModels[0].Certificate.ValueStringPointer(),
 					CertificateAuthorities: utils.ListTypeToSlice_String(ctx, sslModels[0].CertificateAuthorities, path.Root("certificate_authorities"), diags),
@@ -322,7 +322,7 @@ func (model outputModel) toAPICreateModel(ctx context.Context) (union fleetapi.F
 			}
 		}
 
-		err := union.FromFleetOutputCreateRequestKafka(body)
+		err := union.FromOutputCreateRequestKafka(body)
 		if err != nil {
 			diags.AddError(err.Error(), "")
 		}
@@ -334,12 +334,12 @@ func (model outputModel) toAPICreateModel(ctx context.Context) (union fleetapi.F
 	return
 }
 
-func (model outputModel) toAPIUpdateModel(ctx context.Context) (union fleetapi.FleetOutputUpdateRequest, diags diag.Diagnostics) {
+func (model outputModel) toAPIUpdateModel(ctx context.Context) (union fleetapi.OutputUpdateRequest, diags diag.Diagnostics) {
 	outputType := model.Type.ValueString()
 	switch outputType {
 	case "elasticsearch":
-		body := fleetapi.FleetOutputUpdateRequestElasticsearch{
-			Type:                 fleetapi.FleetOutputUpdateRequestElasticsearchTypeElasticsearch,
+		body := fleetapi.OutputUpdateRequestElasticsearch{
+			Type:                 fleetapi.OutputUpdateRequestElasticsearchTypeElasticsearch,
 			CaSha256:             model.CaSha256.ValueStringPointer(),
 			CaTrustedFingerprint: model.CaTrustedFingerprint.ValueStringPointer(),
 			ConfigYaml:           model.ConfigYaml.ValueStringPointer(),
@@ -365,13 +365,13 @@ func (model outputModel) toAPIUpdateModel(ctx context.Context) (union fleetapi.F
 			}
 		}
 
-		err := union.FromFleetOutputUpdateRequestElasticsearch(body)
+		err := union.FromOutputUpdateRequestElasticsearch(body)
 		if err != nil {
 			diags.AddError(err.Error(), "")
 		}
 
 	case "logstash":
-		body := fleetapi.FleetOutputUpdateRequestLogstash{
+		body := fleetapi.OutputUpdateRequestLogstash{
 			CaSha256:             model.CaSha256.ValueStringPointer(),
 			CaTrustedFingerprint: model.CaTrustedFingerprint.ValueStringPointer(),
 			ConfigYaml:           model.ConfigYaml.ValueStringPointer(),
@@ -379,7 +379,7 @@ func (model outputModel) toAPIUpdateModel(ctx context.Context) (union fleetapi.F
 			IsDefault:            model.DefaultIntegrations.ValueBoolPointer(),
 			IsDefaultMonitoring:  model.DefaultMonitoring.ValueBoolPointer(),
 			Name:                 model.Name.ValueString(),
-			Type:                 fleetapi.FleetOutputUpdateRequestLogstashTypeLogstash,
+			Type:                 fleetapi.OutputUpdateRequestLogstashTypeLogstash,
 		}
 
 		// Can't use helpers for anonymous structs
@@ -398,14 +398,14 @@ func (model outputModel) toAPIUpdateModel(ctx context.Context) (union fleetapi.F
 			}
 		}
 
-		err := union.FromFleetOutputUpdateRequestLogstash(body)
+		err := union.FromOutputUpdateRequestLogstash(body)
 		if err != nil {
 			diags.AddError(err.Error(), "")
 		}
 
 	case "kafka":
-		body := fleetapi.FleetOutputUpdateRequestKafka{
-			Type:                 fleetapi.FleetOutputUpdateRequestKafkaTypeKafka,
+		body := fleetapi.OutputUpdateRequestKafka{
+			Type:                 fleetapi.OutputUpdateRequestKafkaTypeKafka,
 			CaSha256:             model.CaSha256.ValueStringPointer(),
 			CaTrustedFingerprint: model.CaTrustedFingerprint.ValueStringPointer(),
 			ConfigYaml:           model.ConfigYaml.ValueStringPointer(),
@@ -420,10 +420,10 @@ func (model outputModel) toAPIUpdateModel(ctx context.Context) (union fleetapi.F
 			sslModels := utils.ListTypeAs[outputSslModel](ctx, model.Ssl, path.Root("ssl"), diags)
 			if len(sslModels) > 0 {
 				body.Ssl = &struct {
-					Certificate            *string                                                    `json:"certificate,omitempty"`
-					CertificateAuthorities []string                                                   `json:"certificate_authorities,omitempty"`
-					Key                    *string                                                    `json:"key,omitempty"`
-					VerificationMode       *fleetapi.FleetOutputUpdateRequestKafkaSslVerificationMode `json:"verification_mode,omitempty"`
+					Certificate            *string                                               `json:"certificate,omitempty"`
+					CertificateAuthorities []string                                              `json:"certificate_authorities,omitempty"`
+					Key                    *string                                               `json:"key,omitempty"`
+					VerificationMode       *fleetapi.OutputUpdateRequestKafkaSslVerificationMode `json:"verification_mode,omitempty"`
 				}{
 					Certificate:            sslModels[0].Certificate.ValueStringPointer(),
 					CertificateAuthorities: utils.ListTypeToSlice_String(ctx, sslModels[0].CertificateAuthorities, path.Root("certificate_authorities"), diags),
@@ -432,7 +432,7 @@ func (model outputModel) toAPIUpdateModel(ctx context.Context) (union fleetapi.F
 			}
 		}
 
-		err := union.FromFleetOutputUpdateRequestKafka(body)
+		err := union.FromOutputUpdateRequestKafka(body)
 		if err != nil {
 			diags.AddError(err.Error(), "")
 		}

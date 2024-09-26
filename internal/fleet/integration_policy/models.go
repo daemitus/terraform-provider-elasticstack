@@ -35,7 +35,7 @@ type integrationPolicyInputModel struct {
 	VarsJson    jsontypes.Normalized `tfsdk:"vars_json"`
 }
 
-func (model *integrationPolicyModel) populateFromAPI(ctx context.Context, data *fleetapi.FleetPackagePolicy) diag.Diagnostics {
+func (model *integrationPolicyModel) populateFromAPI(ctx context.Context, data *fleetapi.PackagePolicy) diag.Diagnostics {
 	if data == nil {
 		return nil
 	}
@@ -55,7 +55,7 @@ func (model *integrationPolicyModel) populateFromAPI(ctx context.Context, data *
 
 	{
 		newInputs := utils.TransformMapToSlice(data.Inputs, path.Root("input"), diags,
-			func(inputData fleetapi.FleetNewPackagePolicyInput, meta utils.MapMeta) integrationPolicyInputModel {
+			func(inputData fleetapi.NewPackagePolicyInput, meta utils.MapMeta) integrationPolicyInputModel {
 				return integrationPolicyInputModel{
 					InputID:     types.StringValue(meta.Key),
 					Enabled:     types.BoolValue(inputData.Enabled),
@@ -79,10 +79,10 @@ func (model *integrationPolicyModel) populateFromAPI(ctx context.Context, data *
 	return diags
 }
 
-func (model integrationPolicyModel) toAPIModel(ctx context.Context, isUpdate bool) (fleetapi.FleetPackagePolicyRequest, diag.Diagnostics) {
+func (model integrationPolicyModel) toAPIModel(ctx context.Context, isUpdate bool) (fleetapi.PackagePolicyRequest, diag.Diagnostics) {
 	var diags diag.Diagnostics
 
-	body := fleetapi.FleetPackagePolicyRequest{
+	body := fleetapi.PackagePolicyRequest{
 		Description: model.Description.ValueStringPointer(),
 		Force:       model.Force.ValueBoolPointer(),
 		Name:        model.Name.ValueString(),
@@ -103,10 +103,10 @@ func (model integrationPolicyModel) toAPIModel(ctx context.Context, isUpdate boo
 	}
 
 	body.Inputs = utils.ListTypeToMap(ctx, model.Input, path.Root("input"), diags,
-		func(inputModel integrationPolicyInputModel, meta utils.ListMeta) (string, fleetapi.FleetPackagePolicyRequestInput) {
-			return inputModel.InputID.ValueString(), fleetapi.FleetPackagePolicyRequestInput{
+		func(inputModel integrationPolicyInputModel, meta utils.ListMeta) (string, fleetapi.PackagePolicyRequestInput) {
+			return inputModel.InputID.ValueString(), fleetapi.PackagePolicyRequestInput{
 				Enabled: inputModel.Enabled.ValueBoolPointer(),
-				Streams: utils.NormalizedTypeToMap[fleetapi.FleetPackagePolicyRequestInputStream](inputModel.StreamsJson, meta.Path.AtName("streams_json"), diags),
+				Streams: utils.NormalizedTypeToMap[fleetapi.PackagePolicyRequestInputStream](inputModel.StreamsJson, meta.Path.AtName("streams_json"), diags),
 				Vars:    utils.NormalizedTypeToMap[any](inputModel.VarsJson, meta.Path.AtName("vars_json"), diags),
 			}
 		})
@@ -181,7 +181,7 @@ func (s secretStore) Save(ctx context.Context, private privateData) (diags diag.
 // extractVars first extracts each wrapped var from the response,
 // then replaces any secretRefs with the original value from the
 // secret store if it exists.
-func extractVars(resp *fleetapi.FleetPackagePolicy, secrets secretStore) {
+func extractVars(resp *fleetapi.PackagePolicy, secrets secretStore) {
 	// First unwrap the response from the {"value": ...} struct. Then for
 	// any values that have `isSecretRef` set, replace with the original
 	// value from reqVars. If req is empty, fetch from the store instead.
@@ -226,7 +226,7 @@ func extractVars(resp *fleetapi.FleetPackagePolicy, secrets secretStore) {
 // saveVars first extracts each wrapped var from the response,
 // then replaces/saves the original value from the request with the ref from
 // the response.
-func saveVars(req fleetapi.FleetPackagePolicyRequest, resp *fleetapi.FleetPackagePolicy, secrets secretStore) {
+func saveVars(req fleetapi.PackagePolicyRequest, resp *fleetapi.PackagePolicy, secrets secretStore) {
 	// Prune the store and only keep the currently used refs.
 	if resp.SecretReferences != nil {
 		for _, ref := range resp.SecretReferences {
