@@ -2,6 +2,7 @@ package integration_policy
 
 import (
 	"context"
+	"encoding/json"
 	"sort"
 
 	fleetapi "github.com/elastic/terraform-provider-elasticstack/generated/fleet"
@@ -50,7 +51,41 @@ func (model *integrationPolicyModel) populateFromAPI(ctx context.Context, data *
 	model.Enabled = types.BoolPointerValue(data.Enabled)
 	model.IntegrationName = types.StringValue(data.Package.Name)
 	model.IntegrationVersion = types.StringValue(data.Package.Version)
-	model.VarsJson = utils.MapToNormalizedType(utils.Deref(data.Vars), path.Root("vars_json"), &diags)
+
+	var nd diag.Diagnostics
+	model.VarsJson = utils.MapToNormalizedType(utils.Deref(data.Vars), path.Root("vars_json"), &nd)
+	diags.Append(nd.Warnings()...)
+
+	// In versions <= 0.11.7, vars_json and streams_json are "" when null.
+	// After upgrading the end user will receive "Invalid JSON String Value errors"
+
+	if nd.HasError() {
+		// Filter out any JSON diags
+		var jsonDiags diag.Diagnostics
+		for _, d := range nd.Errors() {
+			if d.Summary() == "Invalid JSON String Value" {
+				jsonDiags.Append(d)
+			} else {
+				diags.Append(d)
+			}
+		}
+
+		// Check if the Invalid JSON was from an empty string or actual invalid JSON.
+		if len(jsonDiags) > 0 {
+			hasInvalid := false
+			varsJSON := model.VarsJson.ValueStringPointer()
+			if varsJSON != nil {
+				if *varsJSON == "" {
+					model.VarsJson = jsontypes.NewNormalizedNull()
+				} else if !json.Valid([]byte(*varsJSON)) {
+					hasInvalid = true
+				}
+			}
+			if hasInvalid {
+				diags.Append(jsonDiags...)
+			}
+		}
+	}
 
 	model.populateInputFromAPI(ctx, data.Inputs, &diags)
 
@@ -70,7 +105,58 @@ func (model *integrationPolicyModel) populateInputFromAPI(ctx context.Context, i
 	if newInputs == nil {
 		model.Input = types.ListNull(getInputType())
 	} else {
-		oldInputs := utils.ListTypeAs[integrationPolicyInputModel](ctx, model.Input, path.Root("input"), diags)
+		var nd diag.Diagnostics
+		oldInputs := utils.ListTypeAs[integrationPolicyInputModel](ctx, model.Input, path.Root("input"), &nd)
+		diags.Append(nd.Warnings()...)
+
+		// In versions <= 0.11.7, vars_json and streams_json are "" when null.
+		// After upgrading the end user will receive "Invalid JSON String Value errors"
+
+		if nd.HasError() {
+			// Filter out any JSON diags
+			var jsonDiags diag.Diagnostics
+			for _, d := range nd.Errors() {
+				if d.Summary() == "Invalid JSON String Value" {
+					jsonDiags.Append(d)
+				} else {
+					diags.Append(d)
+				}
+			}
+
+			// Check each element if the Invalid JSON was from an empty string
+			// or actual invalid JSON.
+			if len(jsonDiags) > 0 {
+				hasInvalidJSON := false
+				for _, elem := range oldInputs {
+
+					streamsJSON := elem.StreamsJson.ValueStringPointer()
+					if streamsJSON != nil {
+						if *streamsJSON == "" {
+							elem.StreamsJson = jsontypes.NewNormalizedNull()
+						} else if !json.Valid([]byte(*streamsJSON)) {
+							hasInvalidJSON = true
+						}
+					}
+
+					varsJSON := elem.VarsJson.ValueStringPointer()
+					if varsJSON != nil {
+						if *varsJSON == "" {
+							elem.VarsJson = jsontypes.NewNormalizedNull()
+						} else if !json.Valid([]byte(*varsJSON)) {
+							hasInvalidJSON = true
+						}
+					}
+				}
+
+				if hasInvalidJSON {
+					diags.Append(jsonDiags...)
+				}
+			}
+		}
+
+		if diags.HasError() {
+			panic("111")
+		}
 		sortInputs(newInputs, oldInputs)
 
 		inputList, d := types.ListValueFrom(ctx, getInputType(), newInputs)
