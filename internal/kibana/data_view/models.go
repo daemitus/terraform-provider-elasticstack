@@ -24,22 +24,6 @@ func (model *dataViewModel) populateFromAPI(ctx context.Context, data *kbapi.Dat
 		ResourceId: *data.DataView.Id,
 	}
 
-	// An existing null map should should be semantically equal to an empty map.
-	semanticEqualEmptyMap := func(existing types.Map, incoming types.Map) types.Map {
-		if !utils.IsKnown(existing) && len(incoming.Elements()) == 0 {
-			return types.MapNull(incoming.ElementType(ctx))
-		}
-		return incoming
-	}
-
-	// An existing null slice should be semantically equal to an empty slice.
-	semanticEqualEmptySlice := func(existing types.List, incoming types.List) types.List {
-		if !utils.IsKnown(existing) && len(incoming.Elements()) == 0 {
-			return types.ListNull(incoming.ElementType(ctx))
-		}
-		return incoming
-	}
-
 	handleNamespaces := func(existingList types.List, incoming []string) types.List {
 		p := path.Root("data_view").AtName("namespaces")
 		existing := utils.ListTypeToSlice_String(ctx, existingList, p, &diags)
@@ -89,12 +73,12 @@ func (model *dataViewModel) populateFromAPI(ctx context.Context, data *kbapi.Dat
 				Name:          types.StringPointerValue(item.Name),
 				ID:            types.StringPointerValue(item.Id),
 				TimeFieldName: types.StringPointerValue(item.TimeFieldName),
-				SourceFilters: semanticEqualEmptySlice(dvInner.SourceFilters,
+				SourceFilters: utils.SemanticEqualEmptyList(ctx, dvInner.SourceFilters,
 					utils.SliceToListType(ctx, utils.Deref(item.SourceFilters), types.StringType, meta.Path.AtName("source_filters"), &diags,
 						func(item kbapi.DataViewsSourcefilterItem, meta utils.ListMeta) string {
 							return item.Value
 						})),
-				FieldAttributes: semanticEqualEmptyMap(dvInner.FieldAttributes,
+				FieldAttributes: utils.SemanticEqualEmptyMap(ctx, dvInner.FieldAttributes,
 					utils.MapToMapType(ctx, utils.Deref(item.FieldAttrs), getFieldAttrElemType(), meta.Path.AtName("field_attrs"), &diags,
 						func(item kbapi.DataViewsFieldattrs, meta utils.MapMeta) fieldAttrModel {
 							return fieldAttrModel{
@@ -102,7 +86,7 @@ func (model *dataViewModel) populateFromAPI(ctx context.Context, data *kbapi.Dat
 								Count:       types.Int64PointerValue(utils.Itol(item.Count)),
 							}
 						})),
-				RuntimeFieldMap: semanticEqualEmptyMap(dvInner.RuntimeFieldMap,
+				RuntimeFieldMap: utils.SemanticEqualEmptyMap(ctx, dvInner.RuntimeFieldMap,
 					utils.MapToMapType(ctx, utils.Deref(item.RuntimeFieldMap), getRuntimeFieldMapElemType(), meta.Path.AtName("runtime_field_map"), &diags,
 						func(item kbapi.DataViewsRuntimefieldmap, meta utils.MapMeta) runtimeFieldModel {
 							return runtimeFieldModel{
@@ -110,7 +94,7 @@ func (model *dataViewModel) populateFromAPI(ctx context.Context, data *kbapi.Dat
 								ScriptSource: types.StringPointerValue(item.Script.Source),
 							}
 						})),
-				FieldFormats: semanticEqualEmptyMap(dvInner.FieldFormats,
+				FieldFormats: utils.SemanticEqualEmptyMap(ctx, dvInner.FieldFormats,
 					utils.MapToMapType(ctx, utils.Deref(item.FieldFormats), getFieldFormatElemType(), meta.Path.AtName("field_formats"), &diags,
 						func(item kbapi.DataViewsFieldformat, meta utils.MapMeta) fieldFormatModel {
 							return fieldFormatModel{

@@ -570,6 +570,8 @@ func transformFilterPaths(schema *Schema) {
 		"/api/fleet/outputs/{outputId}":                  {"get", "put", "delete"},
 		"/api/fleet/package_policies":                    {"get", "post"},
 		"/api/fleet/package_policies/{packagePolicyId}":  {"get", "put", "delete"},
+		"/api/spaces/space":                              {"get", "post"},
+		"/api/spaces/space/{id}":                         {"get", "put", "delete"},
 	}
 
 	for path, pathInfo := range schema.Paths {
@@ -775,6 +777,29 @@ func transformKibanaPaths(schema *Schema) {
 
 	schema.Components.CreateRef(schema, "Data_views_create_data_view_request_object_inner", "schemas.Data_views_create_data_view_request_object.properties.data_view")
 	schema.Components.CreateRef(schema, "Data_views_update_data_view_request_object_inner", "schemas.Data_views_update_data_view_request_object.properties.data_view")
+
+	// Spaces
+	// https://github.com/elastic/kibana/tree/main/x-pack/plugins/spaces/server/routes/api/external
+
+	spacesPath := schema.MustGetPath("/api/spaces/space")
+	spacePath := schema.MustGetPath("/api/spaces/space/{id}")
+
+	spacesPath.Post.CreateRef(schema, "kibana_space", "requestBody.content.application/json.schema")
+	spacePath.Put.CreateRef(schema, "kibana_space", "requestBody.content.application/json.schema")
+
+	// The entire response body is missing for all endpoints
+	schema.Components.Set("schemas.kibana_spaces", Map{
+		"type":  "array",
+		"items": Map{"$ref": "#/components/schemas/kibana_space"},
+	})
+
+	spacesPath.Get.Set("responses.200.content.application/json.schema", Map{"$ref": "#/components/schemas/kibana_spaces"})
+	spacesPath.Post.Set("responses.200.content.application/json.schema", Map{"$ref": "#/components/schemas/kibana_space"})
+	spacePath.Get.Set("responses.200.content.application/json.schema", Map{"$ref": "#/components/schemas/kibana_space"})
+	spacePath.Put.Set("responses.200.content.application/json.schema", Map{"$ref": "#/components/schemas/kibana_space"})
+
+	// See: https://github.com/elastic/kibana/issues/197153
+	spacesPath.Get.MustDelete("parameters.1.schema.anyOf")
 }
 
 // transformFleetPaths fixes the fleet paths.

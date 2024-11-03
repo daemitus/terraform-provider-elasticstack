@@ -52,6 +52,14 @@ const (
 	Inactive AgentPolicyStatus = "inactive"
 )
 
+// Defines values for KibanaSpaceSolution.
+const (
+	Classic  KibanaSpaceSolution = "classic"
+	Es       KibanaSpaceSolution = "es"
+	Oblt     KibanaSpaceSolution = "oblt"
+	Security KibanaSpaceSolution = "security"
+)
+
 // Defines values for NewOutputElasticsearchPreset.
 const (
 	NewOutputElasticsearchPresetBalanced   NewOutputElasticsearchPreset = "balanced"
@@ -564,6 +572,18 @@ const (
 	Simplified PutFleetPackagePoliciesPackagepolicyidParamsFormat = "simplified"
 )
 
+// Defines values for GetSpacesSpaceParamsPurpose.
+const (
+	Any                        GetSpacesSpaceParamsPurpose = "any"
+	CopySavedObjectsIntoSpace  GetSpacesSpaceParamsPurpose = "copySavedObjectsIntoSpace"
+	ShareSavedObjectsIntoSpace GetSpacesSpaceParamsPurpose = "shareSavedObjectsIntoSpace"
+)
+
+// Defines values for GetSpacesSpaceParamsIncludeAuthorizedPurposes0.
+const (
+	False GetSpacesSpaceParamsIncludeAuthorizedPurposes0 = false
+)
+
 // DataViews400Response defines model for Data_views_400_response.
 type DataViews400Response struct {
 	Error      string  `json:"error"`
@@ -1048,6 +1068,37 @@ type GetDataViewsResponseItem struct {
 	Title      *string                 `json:"title,omitempty"`
 	TypeMeta   *map[string]interface{} `json:"typeMeta,omitempty"`
 }
+
+// KibanaSpace defines model for kibana_space.
+type KibanaSpace struct {
+	Reserved *bool `json:"_reserved,omitempty"`
+
+	// Color The hexadecimal color code used in the space avatar. By default, the color is automatically generated from the space name.
+	Color *string `json:"color,omitempty"`
+
+	// Description A description for the space.
+	Description      *string   `json:"description,omitempty"`
+	DisabledFeatures *[]string `json:"disabledFeatures,omitempty"`
+
+	// Id The space ID that is part of the Kibana URL when inside the space. Space IDs are limited to lowercase alphanumeric, underscore, and hyphen characters (a-z, 0-9, _, and -). You are cannot change the ID with the update operation.
+	Id string `json:"id"`
+
+	// ImageUrl The data-URL encoded image to display in the space avatar. If specified, initials will not be displayed and the color will be visible as the background color for transparent images. For best results, your image should be 64x64. Images will not be optimized by this API call, so care should be taken when using custom images.
+	ImageUrl *string `json:"imageUrl,omitempty"`
+
+	// Initials One or two characters that are shown in the space avatar. By default, the initials are automatically generated from the space name.
+	Initials *string `json:"initials,omitempty"`
+
+	// Name The display name for the space.
+	Name     string               `json:"name"`
+	Solution *KibanaSpaceSolution `json:"solution,omitempty"`
+}
+
+// KibanaSpaceSolution defines model for KibanaSpace.Solution.
+type KibanaSpaceSolution string
+
+// KibanaSpaces defines model for kibana_spaces.
+type KibanaSpaces = []KibanaSpace
 
 // NewOutputElasticsearch defines model for new_output_elasticsearch.
 type NewOutputElasticsearch struct {
@@ -2782,6 +2833,26 @@ type PutFleetPackagePoliciesPackagepolicyidParams struct {
 // PutFleetPackagePoliciesPackagepolicyidParamsFormat defines parameters for PutFleetPackagePoliciesPackagepolicyid.
 type PutFleetPackagePoliciesPackagepolicyidParamsFormat string
 
+// GetSpacesSpaceParams defines parameters for GetSpacesSpace.
+type GetSpacesSpaceParams struct {
+	// Purpose Specifies which authorization checks are applied to the API call. The default value is `any`.
+	Purpose *GetSpacesSpaceParamsPurpose `form:"purpose,omitempty" json:"purpose,omitempty"`
+
+	// IncludeAuthorizedPurposes When enabled, the API returns any spaces that the user is authorized to access in any capacity and each space will contain the purposes for which the user is authorized. This can be useful to determine which spaces a user can read but not take a specific action in. If the security plugin is not enabled, this parameter has no effect, since no authorization checks take place. This parameter cannot be used in with the `purpose` parameter.
+	IncludeAuthorizedPurposes struct {
+		union json.RawMessage
+	} `form:"include_authorized_purposes" json:"include_authorized_purposes"`
+}
+
+// GetSpacesSpaceParamsPurpose defines parameters for GetSpacesSpace.
+type GetSpacesSpaceParamsPurpose string
+
+// GetSpacesSpaceParamsIncludeAuthorizedPurposes0 defines parameters for GetSpacesSpace.
+type GetSpacesSpaceParamsIncludeAuthorizedPurposes0 bool
+
+// GetSpacesSpaceParamsIncludeAuthorizedPurposes1 defines parameters for GetSpacesSpace.
+type GetSpacesSpaceParamsIncludeAuthorizedPurposes1 = bool
+
 // PostFleetAgentPoliciesJSONRequestBody defines body for PostFleetAgentPolicies for application/json ContentType.
 type PostFleetAgentPoliciesJSONRequestBody PostFleetAgentPoliciesJSONBody
 
@@ -2814,6 +2885,12 @@ type PostFleetPackagePoliciesJSONRequestBody = PackagePolicyRequest
 
 // PutFleetPackagePoliciesPackagepolicyidJSONRequestBody defines body for PutFleetPackagePoliciesPackagepolicyid for application/json ContentType.
 type PutFleetPackagePoliciesPackagepolicyidJSONRequestBody = PackagePolicyRequest
+
+// PostSpacesSpaceJSONRequestBody defines body for PostSpacesSpace for application/json ContentType.
+type PostSpacesSpaceJSONRequestBody = KibanaSpace
+
+// PutSpacesSpaceIdJSONRequestBody defines body for PutSpacesSpaceId for application/json ContentType.
+type PutSpacesSpaceIdJSONRequestBody = KibanaSpace
 
 // CreateDataViewDefaultwJSONRequestBody defines body for CreateDataViewDefaultw for application/json ContentType.
 type CreateDataViewDefaultwJSONRequestBody = DataViewsCreateDataViewRequestObject
@@ -11893,6 +11970,25 @@ type ClientInterface interface {
 
 	PutFleetPackagePoliciesPackagepolicyid(ctx context.Context, packagePolicyId string, params *PutFleetPackagePoliciesPackagepolicyidParams, body PutFleetPackagePoliciesPackagepolicyidJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
+	// GetSpacesSpace request
+	GetSpacesSpace(ctx context.Context, params *GetSpacesSpaceParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// PostSpacesSpaceWithBody request with any body
+	PostSpacesSpaceWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	PostSpacesSpace(ctx context.Context, body PostSpacesSpaceJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// DeleteSpacesSpaceId request
+	DeleteSpacesSpaceId(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// GetSpacesSpaceId request
+	GetSpacesSpaceId(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// PutSpacesSpaceIdWithBody request with any body
+	PutSpacesSpaceIdWithBody(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	PutSpacesSpaceId(ctx context.Context, id string, body PutSpacesSpaceIdJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+
 	// GetAllDataViewsDefault request
 	GetAllDataViewsDefault(ctx context.Context, spaceId SpaceId, reqEditors ...RequestEditorFn) (*http.Response, error)
 
@@ -12347,6 +12443,90 @@ func (c *Client) PutFleetPackagePoliciesPackagepolicyidWithBody(ctx context.Cont
 
 func (c *Client) PutFleetPackagePoliciesPackagepolicyid(ctx context.Context, packagePolicyId string, params *PutFleetPackagePoliciesPackagepolicyidParams, body PutFleetPackagePoliciesPackagepolicyidJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewPutFleetPackagePoliciesPackagepolicyidRequest(c.Server, packagePolicyId, params, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) GetSpacesSpace(ctx context.Context, params *GetSpacesSpaceParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetSpacesSpaceRequest(c.Server, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) PostSpacesSpaceWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewPostSpacesSpaceRequestWithBody(c.Server, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) PostSpacesSpace(ctx context.Context, body PostSpacesSpaceJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewPostSpacesSpaceRequest(c.Server, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) DeleteSpacesSpaceId(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewDeleteSpacesSpaceIdRequest(c.Server, id)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) GetSpacesSpaceId(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetSpacesSpaceIdRequest(c.Server, id)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) PutSpacesSpaceIdWithBody(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewPutSpacesSpaceIdRequestWithBody(c.Server, id, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) PutSpacesSpaceId(ctx context.Context, id string, body PutSpacesSpaceIdJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewPutSpacesSpaceIdRequest(c.Server, id, body)
 	if err != nil {
 		return nil, err
 	}
@@ -14169,6 +14349,222 @@ func NewPutFleetPackagePoliciesPackagepolicyidRequestWithBody(server string, pac
 	return req, nil
 }
 
+// NewGetSpacesSpaceRequest generates requests for GetSpacesSpace
+func NewGetSpacesSpaceRequest(server string, params *GetSpacesSpaceParams) (*http.Request, error) {
+	var err error
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/spaces/space")
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	if params != nil {
+		queryValues := queryURL.Query()
+
+		if params.Purpose != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "purpose", runtime.ParamLocationQuery, *params.Purpose); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "include_authorized_purposes", runtime.ParamLocationQuery, params.IncludeAuthorizedPurposes); err != nil {
+			return nil, err
+		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+			return nil, err
+		} else {
+			for k, v := range parsed {
+				for _, v2 := range v {
+					queryValues.Add(k, v2)
+				}
+			}
+		}
+
+		queryURL.RawQuery = queryValues.Encode()
+	}
+
+	req, err := http.NewRequest("GET", queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
+// NewPostSpacesSpaceRequest calls the generic PostSpacesSpace builder with application/json body
+func NewPostSpacesSpaceRequest(server string, body PostSpacesSpaceJSONRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	buf, err := json.Marshal(body)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = bytes.NewReader(buf)
+	return NewPostSpacesSpaceRequestWithBody(server, "application/json", bodyReader)
+}
+
+// NewPostSpacesSpaceRequestWithBody generates requests for PostSpacesSpace with any type of body
+func NewPostSpacesSpaceRequestWithBody(server string, contentType string, body io.Reader) (*http.Request, error) {
+	var err error
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/spaces/space")
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest("POST", queryURL.String(), body)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("Content-Type", contentType)
+
+	return req, nil
+}
+
+// NewDeleteSpacesSpaceIdRequest generates requests for DeleteSpacesSpaceId
+func NewDeleteSpacesSpaceIdRequest(server string, id string) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "id", runtime.ParamLocationPath, id)
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/spaces/space/%s", pathParam0)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest("DELETE", queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
+// NewGetSpacesSpaceIdRequest generates requests for GetSpacesSpaceId
+func NewGetSpacesSpaceIdRequest(server string, id string) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "id", runtime.ParamLocationPath, id)
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/spaces/space/%s", pathParam0)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest("GET", queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
+// NewPutSpacesSpaceIdRequest calls the generic PutSpacesSpaceId builder with application/json body
+func NewPutSpacesSpaceIdRequest(server string, id string, body PutSpacesSpaceIdJSONRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	buf, err := json.Marshal(body)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = bytes.NewReader(buf)
+	return NewPutSpacesSpaceIdRequestWithBody(server, id, "application/json", bodyReader)
+}
+
+// NewPutSpacesSpaceIdRequestWithBody generates requests for PutSpacesSpaceId with any type of body
+func NewPutSpacesSpaceIdRequestWithBody(server string, id string, contentType string, body io.Reader) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "id", runtime.ParamLocationPath, id)
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/spaces/space/%s", pathParam0)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest("PUT", queryURL.String(), body)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("Content-Type", contentType)
+
+	return req, nil
+}
+
 // NewGetAllDataViewsDefaultRequest generates requests for GetAllDataViewsDefault
 func NewGetAllDataViewsDefaultRequest(server string, spaceId SpaceId) (*http.Request, error) {
 	var err error
@@ -14528,6 +14924,25 @@ type ClientWithResponsesInterface interface {
 	PutFleetPackagePoliciesPackagepolicyidWithBodyWithResponse(ctx context.Context, packagePolicyId string, params *PutFleetPackagePoliciesPackagepolicyidParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PutFleetPackagePoliciesPackagepolicyidResponse, error)
 
 	PutFleetPackagePoliciesPackagepolicyidWithResponse(ctx context.Context, packagePolicyId string, params *PutFleetPackagePoliciesPackagepolicyidParams, body PutFleetPackagePoliciesPackagepolicyidJSONRequestBody, reqEditors ...RequestEditorFn) (*PutFleetPackagePoliciesPackagepolicyidResponse, error)
+
+	// GetSpacesSpaceWithResponse request
+	GetSpacesSpaceWithResponse(ctx context.Context, params *GetSpacesSpaceParams, reqEditors ...RequestEditorFn) (*GetSpacesSpaceResponse, error)
+
+	// PostSpacesSpaceWithBodyWithResponse request with any body
+	PostSpacesSpaceWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostSpacesSpaceResponse, error)
+
+	PostSpacesSpaceWithResponse(ctx context.Context, body PostSpacesSpaceJSONRequestBody, reqEditors ...RequestEditorFn) (*PostSpacesSpaceResponse, error)
+
+	// DeleteSpacesSpaceIdWithResponse request
+	DeleteSpacesSpaceIdWithResponse(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*DeleteSpacesSpaceIdResponse, error)
+
+	// GetSpacesSpaceIdWithResponse request
+	GetSpacesSpaceIdWithResponse(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*GetSpacesSpaceIdResponse, error)
+
+	// PutSpacesSpaceIdWithBodyWithResponse request with any body
+	PutSpacesSpaceIdWithBodyWithResponse(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PutSpacesSpaceIdResponse, error)
+
+	PutSpacesSpaceIdWithResponse(ctx context.Context, id string, body PutSpacesSpaceIdJSONRequestBody, reqEditors ...RequestEditorFn) (*PutSpacesSpaceIdResponse, error)
 
 	// GetAllDataViewsDefaultWithResponse request
 	GetAllDataViewsDefaultWithResponse(ctx context.Context, spaceId SpaceId, reqEditors ...RequestEditorFn) (*GetAllDataViewsDefaultResponse, error)
@@ -15745,6 +16160,115 @@ func (r PutFleetPackagePoliciesPackagepolicyidResponse) StatusCode() int {
 	return 0
 }
 
+type GetSpacesSpaceResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON200      *KibanaSpaces
+}
+
+// Status returns HTTPResponse.Status
+func (r GetSpacesSpaceResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r GetSpacesSpaceResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+type PostSpacesSpaceResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON200      *KibanaSpace
+}
+
+// Status returns HTTPResponse.Status
+func (r PostSpacesSpaceResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r PostSpacesSpaceResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+type DeleteSpacesSpaceIdResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+}
+
+// Status returns HTTPResponse.Status
+func (r DeleteSpacesSpaceIdResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r DeleteSpacesSpaceIdResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+type GetSpacesSpaceIdResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON200      *KibanaSpace
+}
+
+// Status returns HTTPResponse.Status
+func (r GetSpacesSpaceIdResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r GetSpacesSpaceIdResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+type PutSpacesSpaceIdResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON200      *KibanaSpace
+}
+
+// Status returns HTTPResponse.Status
+func (r PutSpacesSpaceIdResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r PutSpacesSpaceIdResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
 type GetAllDataViewsDefaultResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -16181,6 +16705,67 @@ func (c *ClientWithResponses) PutFleetPackagePoliciesPackagepolicyidWithResponse
 		return nil, err
 	}
 	return ParsePutFleetPackagePoliciesPackagepolicyidResponse(rsp)
+}
+
+// GetSpacesSpaceWithResponse request returning *GetSpacesSpaceResponse
+func (c *ClientWithResponses) GetSpacesSpaceWithResponse(ctx context.Context, params *GetSpacesSpaceParams, reqEditors ...RequestEditorFn) (*GetSpacesSpaceResponse, error) {
+	rsp, err := c.GetSpacesSpace(ctx, params, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseGetSpacesSpaceResponse(rsp)
+}
+
+// PostSpacesSpaceWithBodyWithResponse request with arbitrary body returning *PostSpacesSpaceResponse
+func (c *ClientWithResponses) PostSpacesSpaceWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostSpacesSpaceResponse, error) {
+	rsp, err := c.PostSpacesSpaceWithBody(ctx, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParsePostSpacesSpaceResponse(rsp)
+}
+
+func (c *ClientWithResponses) PostSpacesSpaceWithResponse(ctx context.Context, body PostSpacesSpaceJSONRequestBody, reqEditors ...RequestEditorFn) (*PostSpacesSpaceResponse, error) {
+	rsp, err := c.PostSpacesSpace(ctx, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParsePostSpacesSpaceResponse(rsp)
+}
+
+// DeleteSpacesSpaceIdWithResponse request returning *DeleteSpacesSpaceIdResponse
+func (c *ClientWithResponses) DeleteSpacesSpaceIdWithResponse(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*DeleteSpacesSpaceIdResponse, error) {
+	rsp, err := c.DeleteSpacesSpaceId(ctx, id, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseDeleteSpacesSpaceIdResponse(rsp)
+}
+
+// GetSpacesSpaceIdWithResponse request returning *GetSpacesSpaceIdResponse
+func (c *ClientWithResponses) GetSpacesSpaceIdWithResponse(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*GetSpacesSpaceIdResponse, error) {
+	rsp, err := c.GetSpacesSpaceId(ctx, id, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseGetSpacesSpaceIdResponse(rsp)
+}
+
+// PutSpacesSpaceIdWithBodyWithResponse request with arbitrary body returning *PutSpacesSpaceIdResponse
+func (c *ClientWithResponses) PutSpacesSpaceIdWithBodyWithResponse(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PutSpacesSpaceIdResponse, error) {
+	rsp, err := c.PutSpacesSpaceIdWithBody(ctx, id, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParsePutSpacesSpaceIdResponse(rsp)
+}
+
+func (c *ClientWithResponses) PutSpacesSpaceIdWithResponse(ctx context.Context, id string, body PutSpacesSpaceIdJSONRequestBody, reqEditors ...RequestEditorFn) (*PutSpacesSpaceIdResponse, error) {
+	rsp, err := c.PutSpacesSpaceId(ctx, id, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParsePutSpacesSpaceIdResponse(rsp)
 }
 
 // GetAllDataViewsDefaultWithResponse request returning *GetAllDataViewsDefaultResponse
@@ -17319,6 +17904,126 @@ func ParsePutFleetPackagePoliciesPackagepolicyidResponse(rsp *http.Response) (*P
 			return nil, err
 		}
 		response.JSON403 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseGetSpacesSpaceResponse parses an HTTP response from a GetSpacesSpaceWithResponse call
+func ParseGetSpacesSpaceResponse(rsp *http.Response) (*GetSpacesSpaceResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &GetSpacesSpaceResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest KibanaSpaces
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParsePostSpacesSpaceResponse parses an HTTP response from a PostSpacesSpaceWithResponse call
+func ParsePostSpacesSpaceResponse(rsp *http.Response) (*PostSpacesSpaceResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &PostSpacesSpaceResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest KibanaSpace
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseDeleteSpacesSpaceIdResponse parses an HTTP response from a DeleteSpacesSpaceIdWithResponse call
+func ParseDeleteSpacesSpaceIdResponse(rsp *http.Response) (*DeleteSpacesSpaceIdResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &DeleteSpacesSpaceIdResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	return response, nil
+}
+
+// ParseGetSpacesSpaceIdResponse parses an HTTP response from a GetSpacesSpaceIdWithResponse call
+func ParseGetSpacesSpaceIdResponse(rsp *http.Response) (*GetSpacesSpaceIdResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &GetSpacesSpaceIdResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest KibanaSpace
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParsePutSpacesSpaceIdResponse parses an HTTP response from a PutSpacesSpaceIdWithResponse call
+func ParsePutSpacesSpaceIdResponse(rsp *http.Response) (*PutSpacesSpaceIdResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &PutSpacesSpaceIdResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest KibanaSpace
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
 
 	}
 

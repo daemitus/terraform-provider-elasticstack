@@ -3,14 +3,19 @@ package spaces
 import (
 	"context"
 
+	"github.com/hashicorp/terraform-plugin-framework/attr"
 	"github.com/hashicorp/terraform-plugin-framework/datasource"
 	"github.com/hashicorp/terraform-plugin-framework/datasource/schema"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 )
 
 // Schema defines the schema for the data source.
-func (d *dataSource) Schema(_ context.Context, _ datasource.SchemaRequest, resp *datasource.SchemaResponse) {
-	resp.Schema = schema.Schema{
+func (d *spacesDataSource) Schema(_ context.Context, _ datasource.SchemaRequest, resp *datasource.SchemaResponse) {
+	resp.Schema = getSchema()
+}
+
+func getSchema() schema.Schema {
+	return schema.Schema{
 		Description: "Manages Kibana spaces",
 		Attributes: map[string]schema.Attribute{
 			"id": schema.StringAttribute{
@@ -56,4 +61,8 @@ func (d *dataSource) Schema(_ context.Context, _ datasource.SchemaRequest, resp 
 			},
 		},
 	}
+}
+
+func getSpaceType() attr.Type {
+	return getSchema().Attributes["spaces"].GetType().(attr.TypeWithElementType).ElementType()
 }

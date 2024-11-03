@@ -208,6 +208,90 @@ func ListValueFrom[T any](ctx context.Context, value []T, elemType attr.Type, p 
 	return list
 }
 
+// ================
+// ===== Sets =====
+// ================
+
+// SliceToSetType converts a tfsdk naive []T1 into an types.Set of []T2.
+// This handles both structs and simple types to attr.Values.
+func SliceToSetType[T1 any, T2 any](ctx context.Context, value []T1, elemType attr.Type, p path.Path, diags *diag.Diagnostics, iteratee func(item T1, meta ListMeta) T2) types.Set {
+	if value == nil {
+		return types.SetNull(elemType)
+	}
+
+	elems := TransformSlice(ctx, value, p, diags, iteratee)
+	set, nd := types.SetValueFrom(ctx, elemType, elems)
+	diags.Append(ConvertToAttrDiags(nd, p)...)
+
+	return set
+}
+
+// SliceToSetType_String converts a tfsdk naive []string into a types.Set.
+// This is a shorthand SliceToSetType helper for strings.
+func SliceToSetType_String(ctx context.Context, value []string, p path.Path, diags *diag.Diagnostics) types.Set {
+	return SliceToSetType(ctx, value, types.StringType, p, diags,
+		func(item string, meta ListMeta) types.String {
+			return types.StringValue(item)
+		})
+}
+
+// SetTypeToMap converts a types.Set first into a tfsdk aware map[string]T1
+// and transforms the result into a map[string]T2.
+func SetTypeToMap[T1 any, T2 any](ctx context.Context, value types.Set, p path.Path, diags *diag.Diagnostics, iteratee func(item T1, meta ListMeta) (key string, elem T2)) map[string]T2 {
+	if !IsKnown(value) {
+		return nil
+	}
+
+	items := SetTypeAs[T1](ctx, value, p, diags)
+	if diags.HasError() {
+		return nil
+	}
+
+	return TransformSliceToMap(ctx, items, p, diags, iteratee)
+}
+
+// SetTypeToSlice converts a types.Set first into a tfsdk aware []T1 and transforms
+// the result into a []T2.
+func SetTypeToSlice[T1 any, T2 any](ctx context.Context, value types.Set, p path.Path, diags *diag.Diagnostics, iteratee func(item T1, meta ListMeta) T2) []T2 {
+	if !IsKnown(value) {
+		return nil
+	}
+
+	elems := SetTypeAs[T1](ctx, value, p, diags)
+	if diags.HasError() {
+		return nil
+	}
+
+	return TransformSlice(ctx, elems, p, diags, iteratee)
+}
+
+// SetTypeToSlice_String converts a types.Set into a []string.
+// This is a shorthand SetTypeToSlice helper for strings.
+func SetTypeToSlice_String(ctx context.Context, value types.Set, p path.Path, diags *diag.Diagnostics) []string {
+	return SetTypeToSlice(ctx, value, p, diags, func(item types.String, meta ListMeta) string {
+		return item.ValueString()
+	})
+}
+
+// SetTypeAs converts a types.Set into a tfsdk aware []T.
+func SetTypeAs[T any](ctx context.Context, value types.Set, p path.Path, diags *diag.Diagnostics) []T {
+	if !IsKnown(value) {
+		return nil
+	}
+
+	var items []T
+	nd := value.ElementsAs(ctx, &items, false)
+	diags.Append(ConvertToAttrDiags(nd, p)...)
+	return items
+}
+
+// SetValueFrom converts a tfsdk aware []T to a types.Set.
+func SetValueFrom[T any](ctx context.Context, value []T, elemType attr.Type, p path.Path, diags *diag.Diagnostics) types.Set {
+	set, d := types.SetValueFrom(ctx, elemType, value)
+	diags.Append(ConvertToAttrDiags(d, p)...)
+	return set
+}
+
 // ===================
 // ===== Objects =====
 // ===================
